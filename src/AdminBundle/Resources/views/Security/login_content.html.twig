@@ -1,0 +1,70 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+<div id="page-wrapper" style="margin-left:0px;">
+
+    <div class="main-page login-page ">
+        <h2 class="title1">Login</h2>
+        <div class="widget-shadow">
+            <div class="login-body">
+
+                <form action="{{ path("fos_user_security_check") }}" method="post">
+                    {% if csrf_token %}
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                    {% endif %}
+                    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" placeholder="Login" />
+                    <input type="password" id="password" name="_password" required="required" autocomplete="current-password" placeholder="Password" />
+
+
+                    <div class="forgot-grid">
+                        <label class="checkbox"><input type="checkbox" id="remember_me" name="_remember_me" value="on" /><i></i>Remember me</label>
+
+
+
+
+
+                        <div class="forgot">
+                            <a href="#">forgot password?</a>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <input type="submit" id="_submit" name="_submit" value="login" />
+                    <div class="registration">
+                       <h4 style="color:indianred;">
+                        {% if error %}
+                            <div>Login ou mot de passe invalid </div>
+                        {% endif %}
+                       </h4>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
