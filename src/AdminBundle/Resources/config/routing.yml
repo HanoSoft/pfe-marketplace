@@ -1,8 +1,10 @@
 admin_homepage:
     path:     /admin
     defaults: { _controller: AdminBundle:Admin:index }
+
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
 
 admin_category_show:
     path:     /admin/category
@@ -11,4 +13,40 @@ admin_category_show:
 admin_category_add:
     path:     /admin/category/add
     defaults: { _controller: AdminBundle:Category:add }
+
+admin_category_edit:
+    path:     /admin/category/edit/{id}
+    defaults:
+            _controller: AdminBundle:Category:edit
+            requirements:
+            id: \d+
+
+admin_category_delete:
+    path:     /admin/category/delete/{id}
+    defaults:
+            _controller: AdminBundle:Category:delete
+            requirements:
+            id: \d+
+
+admin_product_show:
+    path:     /admin/product
+    defaults: { _controller: AdminBundle:Product:index }
+
+admin_product_add:
+    path:     /admin/product/add
+    defaults: { _controller: AdminBundle:Product:add }
+
+admin_product_edit:
+    path:     /admin/category/edit/{id}
+    defaults:
+            _controller: AdminBundle:Category:edit
+            requirements:
+            id: \d+
+
+admin_product_delete:
+    path:     /admin/category/delete/{id}
+    defaults:
+            _controller: AdminBundle:Category:delete
+            requirements:
+            id: \d+
 
