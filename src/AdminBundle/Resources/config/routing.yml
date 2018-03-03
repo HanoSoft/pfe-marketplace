@@ -3,7 +3,12 @@ admin_homepage:
     defaults: { _controller: AdminBundle:Admin:index }
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+admin_category_show:
+    path:     /admin/category
+    defaults: { _controller: AdminBundle:Category:index }
+
 admin_category_add:
     path:     /admin/category/add
-    defaults: { _controller: AdminBundle:Admin:index }
+    defaults: { _controller: AdminBundle:Category:add }
 
