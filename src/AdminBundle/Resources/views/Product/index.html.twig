@@ -1,14 +1,5 @@
-{% extends "AdminBundle:Admin:index.html.twig" %}
-{% block body %}
-{{ parent() }}
-
-    <div id="page-wrapper">
-        <div class="main-page">
-           {% block content %}
-
-            {% endblock %}
-        </div>
-    </div>
-
-
+{% extends "AdminBundle::adminLayout.html.twig" %}
+{% block content %}
+    {{ parent() }}
+    list product 
 {% endblock %}
