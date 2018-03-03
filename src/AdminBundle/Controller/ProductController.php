@@ -11,7 +11,7 @@ namespace AdminBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-
+use AdminBundle\Entity\Product;
 class ProductController extends Controller
 {
     public function indexAction()
@@ -21,12 +21,11 @@ class ProductController extends Controller
     public function addArticleAction(Request $request)
     {
 
-        $article = new Article();
-        $form   = $this->get('form.factory')->create(ArticlesType::class, $article);
+        $product = new Product();
+        $form   = $this->get('form.factory')->create(ProductType::class, $product);
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-            // Ajoutez cette ligne :
-            // c'est elle qui déplace l'image là où on veut les stocker
+
             $article->getImage()->upload();
 
 
