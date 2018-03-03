@@ -1,9 +1,30 @@
+
+{% extends "AdminBundle::adminLayout.html.twig" %} 
+
+
+
+{% block content %}
+    {{ parent() }}
+
+
 {% for category in listCategory %}
 
     <h3>id</h3>{{ category.id }}
 
     <h3>name</h3>{{ category.name }}
-
-   
+    <button>modifier</button>
+    <button>supprimer</button>
 
 {% endfor %}
+
+   
+{% endblock %}
+
+
+
+
+
+
+
+
+ 

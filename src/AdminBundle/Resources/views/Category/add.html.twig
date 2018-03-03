@@ -1,3 +1,12 @@
+
+{% extends "AdminBundle::adminLayout.html.twig" %} 
+
+
+
+{% block content %}
+    {{ parent() }}
+
+
 {{ form_start(form) }}
 
   {{ form_errors(form) }}
@@ -10,3 +19,16 @@
 
 
   {{ form_end(form) }}
+
+
+   
+{% endblock %}
+
+
+
+
+
+
+
+
+ 

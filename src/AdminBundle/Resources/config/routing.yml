@@ -8,7 +8,7 @@ fos_user:
 
 admin_category_show:
     path:     /admin/category
-    defaults: { _controller: AdminBundle:Category:index }
+    defaults: { _controller: AdminBundle:Category:show }
 
 admin_category_add:
     path:     /admin/category/add
