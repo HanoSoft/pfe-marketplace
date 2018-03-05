@@ -2,7 +2,9 @@
 
 namespace AdminBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,7 +15,17 @@ class ProductType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('productName')->add('price')->add('quantity')->add('deleted')->add('productDetails')->add('productColor')->add('category');
+        $builder->add('productName')
+            ->add('price')
+            ->add('quantity')
+            ->add('productDetails',TextareaType::class)
+            ->add('productColor')
+
+            ->add('category',EntityType::class, array(
+                'class'        => 'AdminBundle:Category',
+                'choice_label' => 'name',
+                'multiple'     => false,
+            ));
     }/**
      * {@inheritdoc}
      */
