@@ -4,7 +4,9 @@ namespace AdminBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AdminBundle\Form\CategoryType;
 use Symfony\Component\HttpFoundation\Request;
-use AdminBundle\Entity\category;
+use AdminBundle\Entity\Category;
+use AdminBundle\Form\CategoryEditType;
+
 
 class CategoryController extends Controller
 {
@@ -12,7 +14,7 @@ class CategoryController extends Controller
 
     
 
-    /* ajout*/
+
 
 public function addAction(Request $request)
     {
@@ -44,7 +46,7 @@ public function addAction(Request $request)
         // On récupère le repository
         $repository = $this->getDoctrine()
             ->getManager()
-            ->getRepository('AdminBundle:category')
+            ->getRepository('AdminBundle:Category')
         ;
         // On récupère l'entité correspondante
 
@@ -58,4 +60,29 @@ public function addAction(Request $request)
 
 
     }
+
+
+    /*modifier categorie*/
+
+    public function editAction($id, Request $request)
+  {
+    $em = $this->getDoctrine()->getManager();
+
+    $category = $em->getRepository('AdminBundle:Category')->find($id);
+
+
+    $form = $this->get('form.factory')->create(CategoryEditType::class, $category);
+
+    if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+      // Inutile de persister ici, Doctrine connait déjà notre annonce
+      $em->flush();
+ return $this->redirectToRoute('admin_category_show');
+    }
+
+    return $this->render('AdminBundle:Category:edit.html.twig', array(
+      'category' => $category,
+      'form'   => $form->createView(),
+    ));
+  }
+
 }
