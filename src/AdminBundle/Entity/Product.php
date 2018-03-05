@@ -58,7 +58,7 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="product_details", type="string", length=255)
+     * @ORM\Column(name="product_details", type="text", length=255)
      */
 
     private $productDetails;
