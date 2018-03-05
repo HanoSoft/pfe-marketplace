@@ -19,7 +19,7 @@ class CategoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('name')   
-         ->add('Ajouter',SubmitType::class);     ;
+         ->add('Ajouter',SubmitType::class);  
     }
     
     /**
@@ -28,7 +28,7 @@ class CategoryType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AdminBundle\Entity\category'
+            'data_class' => 'AdminBundle\Entity\Category'
         ));
     }
 

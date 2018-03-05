@@ -10,4 +10,22 @@ namespace AdminBundle\Repository;
  */
 class categoryRepository extends \Doctrine\ORM\EntityRepository
 {
+	// tansn3ou hna methode 7obi tjbna tous les categ l3ndom deleted false ba3ed na7i 
+
+	public function findCategories($value)
+	{
+		
+		//qb est un attribut qui fait appel au service QueryBuilder kima em entityManager 
+		 $qb = $this->createQueryBuilder('c');
+// ->Where equivalent mta3 wher fi sql select *wher id=12 ama hna lazem ta3mli c.deletd 
+  $qb
+    ->where('c.deleted = :deleted')
+    ->setParameter('deleted', $value) ;
+
+  return $qb->getQuery()->getResult();
+
+
+	}
+
+    
 }
