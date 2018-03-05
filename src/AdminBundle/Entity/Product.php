@@ -24,7 +24,7 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="productName", type="string", length=255)
+     * @ORM\Column(name="product_name", type="string", length=255)
      */
     private $productName;
 
@@ -55,7 +55,25 @@ class Product
      */
     private $images;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="product_details", type="string", length=255)
+     */
 
+    private $productDetails;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="product_color", type="string", length=255)
+     */
+    private $productColor;
+
+    /**
+     *@ORM\ManyToOne(targetEntity="AdminBundle\Entity\Category",inversedBy="products",cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category;
 
     /**
      * Get id
@@ -202,5 +220,77 @@ class Product
     public function getImages()
     {
         return $this->images;
+    }
+
+    /**
+     * Set productDetails
+     *
+     * @param string $productDetails
+     *
+     * @return Product
+     */
+    public function setProductDetails($productDetails)
+    {
+        $this->productDetails = $productDetails;
+
+        return $this;
+    }
+
+    /**
+     * Get productDetails
+     *
+     * @return string
+     */
+    public function getProductDetails()
+    {
+        return $this->productDetails;
+    }
+
+    /**
+     * Set productColor
+     *
+     * @param string $productColor
+     *
+     * @return Product
+     */
+    public function setProductColor($productColor)
+    {
+        $this->productColor = $productColor;
+
+        return $this;
+    }
+
+    /**
+     * Get productColor
+     *
+     * @return string
+     */
+    public function getProductColor()
+    {
+        return $this->productColor;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \AdminBundle\Entity\Category $category
+     *
+     * @return Product
+     */
+    public function setCategory(\AdminBundle\Entity\Category $category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \AdminBundle\Entity\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }
