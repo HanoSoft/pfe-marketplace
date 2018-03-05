@@ -20,6 +20,7 @@ public function addAction(Request $request)
     {
         $category = new category();
 
+               
         $form   = $this->get('form.factory')->create(CategoryType::class, $category);
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
@@ -42,15 +43,15 @@ public function addAction(Request $request)
         public function showAction(Request $request)
     {
 
-
+        // hna taw tanwalou ne5dmou bel methode ta3na mch mta3 par defaut hh 
         // On récupère le repository
         $repository = $this->getDoctrine()
             ->getManager()
             ->getRepository('AdminBundle:Category')
         ;
-        // On récupère l'entité correspondante
+        // On récupère l'entité correspondante hna tw jibna l3ndhom delted false n7bou  
 
-        $category = $repository->findAll();
+        $category = $repository->findCategories(false);
 
         // Le render ne change pas, on passait avant un tableau, maintenant un objet
         return $this->render('AdminBundle:Category:index.html.twig', array(

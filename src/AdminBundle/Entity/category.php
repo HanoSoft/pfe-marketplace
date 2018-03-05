@@ -34,6 +34,14 @@ class Category
      */
     private $products;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="deleted", type="boolean")
+     */
+    private $deleted=false;
+
     /**
      * Get id
      *
@@ -107,5 +115,29 @@ class Category
     public function getProducts()
     {
         return $this->products;
+    }
+
+    /**
+     * Set deleted
+     *
+     * @param boolean $deleted
+     *
+     * @return Category
+     */
+    public function setDeleted($deleted)
+    {
+        $this->deleted = $deleted;
+
+        return $this;
+    }
+
+    /**
+     * Get deleted
+     *
+     * @return boolean
+     */
+    public function getDeleted()
+    {
+        return $this->deleted;
     }
 }
