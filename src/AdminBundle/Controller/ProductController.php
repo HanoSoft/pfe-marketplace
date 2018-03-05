@@ -11,35 +11,32 @@ namespace AdminBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-
+use AdminBundle\Entity\Product;
+use AdminBundle\Form\ProductType;
 class ProductController extends Controller
 {
     public function indexAction()
     {
         return $this->render('AdminBundle:Product:index.html.twig');
     }
-    public function addArticleAction(Request $request)
+    public function addAction(Request $request)
     {
 
-        $article = new Article();
-        $form   = $this->get('form.factory')->create(ArticlesType::class, $article);
+        $product = new Product();
+        $form   = $this->get('form.factory')->create(ProductType::class, $product);
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-            // Ajoutez cette ligne :
-            // c'est elle qui déplace l'image là où on veut les stocker
-            $article->getImage()->upload();
 
+           /* $product->getImage()->upload();*/
 
-
-            $article->setPublished(new \Datetime());
-
+            $product->setDeleted(false);
             $em = $this->getDoctrine()->getManager();
-            $em->persist($article);
+            $em->persist($product);
             $em->flush();
-            return $this->redirectToRoute('hn_admin_menu');
+            return $this->redirectToRoute('admin_product_show');
 
         }
-        return $this->render('HNAdminBundle:Default:add.html.twig', array(
+        return $this->render('AdminBundle:Product:add.html.twig', array(
             'form' => $form->createView(),
         ));
 
