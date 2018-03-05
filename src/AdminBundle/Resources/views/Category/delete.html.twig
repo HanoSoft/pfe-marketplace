@@ -1,0 +1,23 @@
+
+{% extends "AdminBundle::adminLayout.html.twig" %} 
+
+{% block content %}
+    {{ parent() }}
+
+
+    
+{{ category.name }}
+
+     <form action="{{ path('admin_category_delete', {'id': category.id}) }}" method="post">
+    
+    <input type="submit" value="Supprimer" />
+
+    {{ form_rest(form) }}
+  </form>
+
+
+
+
+
+
+{% endblock %}

@@ -26,4 +26,6 @@ class categoryRepository extends \Doctrine\ORM\EntityRepository
 
 
 	}
+
+    
 }
