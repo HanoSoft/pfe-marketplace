@@ -3,27 +3,13 @@
 {% block content %}
 
     {{ parent() }}
-{#
-    {{ form_start(form) }}
-    {{ form_errors(form) }}
 
-<label>Produit :</label>
-    {{ form_widget(form.productName, {'attr': {'class': 'form-control','placeholder':'classe'}}) }}
-
-    <label>Quantité :</label>
-    {{ form_widget(form.quantity, {'attr': {'class': 'form-control','placeholder':'classe'}}) }}
-
-    <label>Prix :</label>
-    {{ form_widget(form.price, {'attr': {'class': 'form-control','placeholder':'classe'}}) }}
-<button type="submit" class="btn btn-warning">ajouter</button>
-
-    {{ form_rest(form) }} #}
 <br>
     <div class=" form-grids row form-grids-right">
         <div class="widget-shadow " data-example-id="basic-forms">
 
             <div class="form-title form-header">
-                <h4>Ajouter Produit :</h4>
+                <h4>Ajouter Produit</h4>
             </div>
                 <div class="form-body">
 
@@ -72,7 +58,7 @@
                         </div>
                     </div>
 
-                    <button class="btn btn-warning col-md-offset-10"><span class="fa fa-plus-circle"> </span> Ajouter</button>
+                    <button class="btn btn-warning col-md-offset-10" type="submit"><span class="fa fa-plus-circle"> </span> Ajouter</button>
 
                    {# <button class="btn btn-success"><span class="fa fa-edit"> </span> Modifier</button>
                     <button class="btn btn-danger"><span class="fa fa-trash-o"> </span> Supprimer</button>

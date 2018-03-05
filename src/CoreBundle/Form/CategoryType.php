@@ -1,6 +1,6 @@
 <?php
 
-namespace AdminBundle\Form;
+namespace CoreBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -8,7 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use AdminBundle\Form\ImageType;
+use CoreBundle\Form\ImageType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class CategoryType extends AbstractType
@@ -28,7 +28,7 @@ class CategoryType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AdminBundle\Entity\Category'
+            'data_class' => 'CoreBundle\Entity\Category'
         ));
     }
 
@@ -37,7 +37,7 @@ class CategoryType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'Adminbundle_category';
+        return 'CoreBundle_category';
     }
 
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace AdminBundle\Entity;
+namespace CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * category
  *
  * @ORM\Table(name="category")
- * @ORM\Entity(repositoryClass="AdminBundle\Repository\categoryRepository")
+ * @ORM\Entity(repositoryClass="CoreBundle\Repository\categoryRepository")
  */
 class Category
 {
@@ -29,7 +29,7 @@ class Category
     private $name;
 
     /**
-     *@ORM\OneToMany(targetEntity="AdminBundle\Entity\Product",mappedBy="category")
+     *@ORM\OneToMany(targetEntity="CoreBundle\Entity\Product",mappedBy="category")
      * @ORM\JoinColumn(nullable=false)
      */
     private $products;
@@ -86,11 +86,11 @@ class Category
     /**
      * Add product
      *
-     * @param \AdminBundle\Entity\Product $product
+     * @param \CoreBundle\Entity\Product $product
      *
      * @return Category
      */
-    public function addProduct(\AdminBundle\Entity\Product $product)
+    public function addProduct(\CoreBundle\Entity\Product $product)
     {
         $this->products[] = $product;
 
@@ -100,9 +100,9 @@ class Category
     /**
      * Remove product
      *
-     * @param \AdminBundle\Entity\Product $product
+     * @param \CoreBundle\Entity\Product $product
      */
-    public function removeProduct(\AdminBundle\Entity\Product $product)
+    public function removeProduct(\CoreBundle\Entity\Product $product)
     {
         $this->products->removeElement($product);
     }

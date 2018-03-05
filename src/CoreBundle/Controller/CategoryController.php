@@ -1,11 +1,11 @@
 <?php
 
-namespace AdminBundle\Controller;
+namespace CoreBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use AdminBundle\Form\CategoryType;
+use CoreBundle\Form\CategoryType;
 use Symfony\Component\HttpFoundation\Request;
-use AdminBundle\Entity\Category;
-use AdminBundle\Form\CategoryEditType;
+use CoreBundle\Entity\Category;
+use CoreBundle\Form\CategoryEditType;
 
 
 
@@ -28,7 +28,7 @@ class CategoryController extends Controller
             return $this->redirectToRoute('admin_category_show');
 
         }
-        return $this->render('AdminBundle:Category:add.html.twig', array(
+        return $this->render('CoreBundle:Category:add.html.twig', array(
             'form' => $form->createView(),
         ));    }
 
@@ -38,18 +38,17 @@ class CategoryController extends Controller
         public function showAction(Request $request)
     {
 
-        // hna taw tanwalou ne5dmou bel methode ta3na mch mta3 par defaut hh
-        // On récupère le repository
+
         $repository = $this->getDoctrine()
             ->getManager()
-            ->getRepository('AdminBundle:Category')
+            ->getRepository('CoreBundle:Category')
         ;
         // On récupère l'entité correspondante hna tw jibna l3ndhom delted false n7bou
 
         $category = $repository->findCategories(false);
 
         // Le render ne change pas, on passait avant un tableau, maintenant un objet
-        return $this->render('AdminBundle:Category:index.html.twig', array(
+        return $this->render('CoreBundle:Category:index.html.twig', array(
             'listCategory' => $category,
 
         ));
@@ -75,7 +74,7 @@ class CategoryController extends Controller
  return $this->redirectToRoute('admin_category_show');
     }
 
-    return $this->render('AdminBundle:Category:edit.html.twig', array(
+    return $this->render('CoreBundle:Category:edit.html.twig', array(
       'category' => $category,
       'form'   => $form->createView(),
     ));
@@ -106,7 +105,7 @@ public function deleteAction(Request $request, $id)
    return $this->redirectToRoute('admin_category_show');
     }
     
-    return $this->render('AdminBundle:Category:delete.html.twig', array(
+    return $this->render('CoreBundle:Category:delete.html.twig', array(
       'category' => $category,
       'form'   => $form->createView(),
     ));

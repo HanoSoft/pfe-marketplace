@@ -1,6 +1,6 @@
 <?php
 
-namespace AdminBundle\Form;
+namespace CoreBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -20,7 +20,7 @@ class ImageType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AdminBundle\Entity\Image'
+            'data_class' => 'CoreBundle\Entity\Image'
         ));
     }
 
@@ -29,7 +29,7 @@ class ImageType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'adminbundle_image';
+        return 'corebundle_image';
     }
 
 

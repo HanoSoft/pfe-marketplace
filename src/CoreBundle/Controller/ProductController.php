@@ -6,18 +6,18 @@
  * Time: 12:42
  */
 
-namespace AdminBundle\Controller;
+namespace CoreBundle\Controller;
 
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use AdminBundle\Entity\Product;
-use AdminBundle\Form\ProductType;
+use CoreBundle\Entity\Product;
+use CoreBundle\Form\ProductType;
 class ProductController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('AdminBundle:Product:index.html.twig');
+        return $this->render('CoreBundle:Product:index.html.twig');
     }
     public function addAction(Request $request)
     {
@@ -36,7 +36,7 @@ class ProductController extends Controller
             return $this->redirectToRoute('admin_product_show');
 
         }
-        return $this->render('AdminBundle:Product:add.html.twig', array(
+        return $this->render('CoreBundle:Product:add.html.twig', array(
             'form' => $form->createView(),
         ));
 

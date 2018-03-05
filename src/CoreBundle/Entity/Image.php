@@ -1,6 +1,6 @@
 <?php
 
-namespace AdminBundle\Entity;
+namespace CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Image
  *
  * @ORM\Table(name="image")
- * @ORM\Entity(repositoryClass="AdminBundle\Repository\ImageRepository")
+ * @ORM\Entity(repositoryClass="CoreBundle\Repository\ImageRepository")
  */
 class Image
 {
@@ -43,7 +43,7 @@ class Image
     private $deleted;
 
     /**
-     *@ORM\ManyToOne(targetEntity="AdminBundle\Entity\Product",inversedBy="images",cascade={"persist"})
+     *@ORM\ManyToOne(targetEntity="CoreBundle\Entity\Product",inversedBy="images",cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $product;
@@ -197,7 +197,7 @@ class Image
     /**
      * Get product
      *
-     * @return \AdminBundle\Entity\Product
+     * @return \CoreBundle\Entity\Product
      */
     public function getProduct()
     {
