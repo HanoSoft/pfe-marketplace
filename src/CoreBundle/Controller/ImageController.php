@@ -9,6 +9,7 @@
 namespace CoreBundle\Controller;
 
 
+use CoreBundle\Entity\Image;
 use CoreBundle\Form\ImageType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,24 +17,24 @@ use Symfony\Component\HttpFoundation\Request;
 class ImageController extends Controller
 {
     public function addAction($id, Request $request){
-
         $em = $this->getDoctrine()->getManager();
-
-        $image = $em->getRepository('CoreBundle:Image')->find($id);
-
-
+        $image = new Image();
         $form = $this->get('form.factory')->create(ImageType::class, $image);
+        $product = $em->getRepository('CoreBundle:Product')->find($id);
+        $image->setProduct($product);
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-           $image->setDeleted(false);
+
+            $image->setDeleted(false);
+            $image->upload();
+
             $em->persist($image);
             $em->flush();
-            return $this->redirectToRoute('admin_category_show');
-        }
 
+
+        }
         return $this->render('CoreBundle:Image:add.html.twig', array(
-            'image' => $image,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         ));
     }
 

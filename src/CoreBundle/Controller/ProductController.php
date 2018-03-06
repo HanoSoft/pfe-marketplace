@@ -26,23 +26,18 @@ class ProductController extends Controller
     public function addAction(Request $request)
     {
         $product = new Product();
-        $image=new Image();
-        $file = $request->request->get("file1");
-        $image->setFile($file);
-
         $form = $this->get('form.factory')->create(ProductType::class, $product);
 
-            if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
 
                 $product->setDeleted(false);
-                $image->setDeleted(false);
-                $image->setProduct($product->getId());
 
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($product);
                 $em->flush();
-                return $this->redirectToRoute('admin_product_show');
-            }
+            $id=$product->getId();
+                return $this->redirectToRoute('admin_product_image_add',array('id' => $id));
+         }
         return $this->render('CoreBundle:Product:add.html.twig', array(
             'form' => $form->createView(),
         ));

@@ -3,7 +3,7 @@
 namespace CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 /**
  * Image
  *
@@ -59,13 +59,13 @@ class Image
         $date=new \Datetime();
         $dateString= $date->format('Y-m-d-H-i-s');
 
-        $url =$dateString. $this->file->getClientOriginalName();
+        $name =$dateString. $this->file->getClientOriginalName();
 
 
-        $this->file->move($this->getUploadRootDir(), $url);
+        $this->file->move($this->getUploadRootDir(), $name);
 
 
-        $this->name = $url;
+        $this->name = $name;
 
 
     }
