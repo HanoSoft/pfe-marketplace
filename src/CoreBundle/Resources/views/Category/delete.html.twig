@@ -6,16 +6,15 @@
 
 
     
-{{ category.name }}
+		{{ category.name }}
 
-     <form action="{{ path('admin_category_delete', {'id': category.id}) }}" method="post">
+     	<form action="{{ path('admin_category_delete', {'id': category.id}) }}" method="post">
     
-    <input type="submit" value="Supprimer" />
+    	<input type="submit" value="Supprimer" />
 
-    {{ form_rest(form) }}
-  </form>
+    	{{ form_rest(form) }}
 
-
+  		</form>
 
 
 
