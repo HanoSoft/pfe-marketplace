@@ -34,49 +34,42 @@ class CategoryController extends Controller
 
 
 
-/*lister les categories*/
         public function showAction(Request $request)
     {
 
-
-        $repository = $this->getDoctrine()
+            $repository = $this->getDoctrine()
             ->getManager()
-            ->getRepository('CoreBundle:Category')
-        ;
-        // On récupère l'entité correspondante hna tw jibna l3ndhom delted false n7bou
+            ->getRepository('CoreBundle:Category');
 
-        $category = $repository->findCategories(false);
+            // On récupère l'entité correspondante hna tw jibna l3ndhom delted false n7bou
+            $category = $repository->findCategories(false);
 
-        // Le render ne change pas, on passait avant un tableau, maintenant un objet
-        return $this->render('CoreBundle:Category:index.html.twig', array(
+            // Le render ne change pas, on passait avant un tableau, maintenant un objet
+             return $this->render('CoreBundle:Category:index.html.twig', array(
             'listCategory' => $category,
-
         ));
-
-
     }
 
 
     /*modifier categorie*/
 
-    public function editAction($id, Request $request)
+         public function editAction($id, Request $request)
   {
-    $em = $this->getDoctrine()->getManager();
+              $em = $this->getDoctrine()->getManager();
 
-    $category = $em->getRepository('CoreBundle:Category')->find($id);
+              $category = $em->getRepository('CoreBundle:Category')->find($id);
 
 
-    $form = $this->get('form.factory')->create(CategoryEditType::class, $category);
+              $form = $this->get('form.factory')->create(CategoryEditType::class, $category);
 
-    if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-      // Inutile de persister ici, Doctrine connait déjà notre annonce
-      $em->flush();
- return $this->redirectToRoute('admin_category_show');
-    }
+               if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+                // Inutile de persister ici, Doctrine connait déjà notre annonce
+              $em->flush();
+                return $this->redirectToRoute('admin_category_show');}
 
-    return $this->render('CoreBundle:Category:edit.html.twig', array(
-      'category' => $category,
-      'form'   => $form->createView(),
+                 return $this->render('CoreBundle:Category:edit.html.twig', array(
+                    'category' => $category,
+                    'form'   => $form->createView(),
     ));
   }
 
@@ -84,30 +77,25 @@ class CategoryController extends Controller
 
 public function deleteAction(Request $request, $id)
   {
-    $em = $this->getDoctrine()->getManager();
+      $em = $this->getDoctrine()->getManager();
+      $category  = $em->getRepository('CoreBundle:Category')->find($id);
+      $category->setDeleted(true);
+  
+        if (null === $category) {
+          throw new NotFoundHttpException("La categorie  ".$id." n'existe pas.");
+              }
 
-   // 3a ya5a  ba3d mayjibha na3ml appel lel methode setDeleted(false) ma3mltch 7aja o5ra khow notion poo 7obi appel lel methode hathika hya wkbh bhi mch lbhi chno na3l bha fhma la la ey mthbta ey fhmt bhi taw kent fog 
-    $category  = $em->getRepository('CoreBundle:Category')->find($id);
-    $category->setDeleted(true);
+        // On crée un formulaire vide, qui ne contiendra que le champ CSRF
+       // Cela permet de protéger la suppression d'annonce contre cette faille
+        $form = $this->get('form.factory')->create();
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+          $em->flush();
+            return $this->redirectToRoute('admin_category_show');
+          }
     
-
-    if (null === $category) {
-      throw new NotFoundHttpException("La categorie  ".$id." n'existe pas.");
-    }
-
-    // On crée un formulaire vide, qui ne contiendra que le champ CSRF
-    // Cela permet de protéger la suppression d'annonce contre cette faille
-    $form = $this->get('form.factory')->create();
-
-    if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-
-         $em->flush();
-   return $this->redirectToRoute('admin_category_show');
-    }
-    
-    return $this->render('CoreBundle:Category:delete.html.twig', array(
-      'category' => $category,
-      'form'   => $form->createView(),
+        return $this->render('CoreBundle:Category:delete.html.twig', array(
+          'category' => $category,
+          'form'   => $form->createView(),
     ));
   }
 
