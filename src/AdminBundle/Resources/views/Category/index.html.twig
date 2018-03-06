@@ -7,15 +7,14 @@
 
 
 
-
-
 {% for category in listCategory %}
 
     <h3>id</h3>{{ category.id }}
 
     <h3>name</h3>{{ category.name }}
-    <button>modifier</button>
-    <button>supprimer</button>
+   <a href="{{ path('admin_category_edit',{'id': category.id})}}" class="btn btn-primary btn-lg square" role="button">Modifier</a>
+
+   <a href="{{ path('admin_category_delete',{'id': category.id}) }}" class="btn btn-primary btn-lg square" role="button">Supprimer</a>
 
 {% endfor %}
 
