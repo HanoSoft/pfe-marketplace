@@ -27,12 +27,12 @@
                             <thead>
                             <tr>
 
-                                <th class="hidden-xs">ID</th>
-                                <th>Produit</th>
-                                <th>Description</th>
-                                <th>Prix</th>
-                                <th>Quantité</th>
-                                <th>Couleur</th>
+                                <th class="hidden-xs">{{ knp_pagination_sortable(products, 'Id', 'p.id') }}</th>
+                                <th>{{ knp_pagination_sortable(products, 'Produit', 'p.productName') }}</th>
+                                <th>{{ knp_pagination_sortable(products, 'Description', 'p.productDetails') }}</th>
+                                <th>{{ knp_pagination_sortable(products, 'Prix', 'p.price') }}</th>
+                                <th>{{ knp_pagination_sortable(products, 'Quantité', 'p.quantity') }}</th>
+                                <th>{{ knp_pagination_sortable(products, 'Couleur', 'p.productColor') }}</th>
                                 <th><em class="fa fa-cog"></em></th>
 
                             </tr>
@@ -63,10 +63,15 @@
                     <div class="panel-footer">
                         <div class="row">
 
-                            <div class="col col-xs-4">Pagination ici
-
+                            <div class="col-md-offset-3">
+                                {# display navigation #}
+                                <div class="navigation">
+                                    {{ knp_pagination_render(products) }}
+                                </div>
                             </div>
-
+                            <div class="count">
+                                {{ products.getTotalItemCount }}
+                            </div>
 
                         </div>
                     </div>
