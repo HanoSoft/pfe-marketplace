@@ -1,6 +1,6 @@
 <?php
 
-namespace AdminBundle\Entity;
+namespace CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Product
  *
  * @ORM\Table(name="product")
- * @ORM\Entity(repositoryClass="AdminBundle\Repository\ProductRepository")
+ * @ORM\Entity(repositoryClass="CoreBundle\Repository\ProductRepository")
  */
 class Product
 {
@@ -50,7 +50,7 @@ class Product
     private $deleted;
 
     /**
-     *@ORM\OneToMany(targetEntity="AdminBundle\Entity\Image",mappedBy="product")
+     *@ORM\OneToMany(targetEntity="CoreBundle\Entity\Image",mappedBy="product")
      * @ORM\JoinColumn(nullable=false)
      */
     private $images;
@@ -70,7 +70,7 @@ class Product
     private $productColor;
 
     /**
-     *@ORM\ManyToOne(targetEntity="AdminBundle\Entity\Category",inversedBy="products",cascade={"persist"})
+     *@ORM\ManyToOne(targetEntity="CoreBundle\Entity\Category",inversedBy="products",cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $category;
@@ -191,11 +191,11 @@ class Product
     /**
      * Add image
      *
-     * @param \AdminBundle\Entity\Image $image
+     * @param \CoreBundle\Entity\Image $image
      *
      * @return Product
      */
-    public function addImage(\AdminBundle\Entity\Image $image)
+    public function addImage(\CoreBundle\Entity\Image $image)
     {
         $this->images[] = $image;
 
@@ -205,9 +205,9 @@ class Product
     /**
      * Remove image
      *
-     * @param \AdminBundle\Entity\Image $image
+     * @param \CoreBundle\Entity\Image $image
      */
-    public function removeImage(\AdminBundle\Entity\Image $image)
+    public function removeImage(\CoreBundle\Entity\Image $image)
     {
         $this->images->removeElement($image);
     }
@@ -273,11 +273,11 @@ class Product
     /**
      * Set category
      *
-     * @param \AdminBundle\Entity\Category $category
+     * @param \CoreBundle\Entity\Category $category
      *
      * @return Product
      */
-    public function setCategory(\AdminBundle\Entity\Category $category)
+    public function setCategory(\CoreBundle\Entity\Category $category)
     {
         $this->category = $category;
 
@@ -287,7 +287,7 @@ class Product
     /**
      * Get category
      *
-     * @return \AdminBundle\Entity\Category
+     * @return \CoreBundle\Entity\Category
      */
     public function getCategory()
     {

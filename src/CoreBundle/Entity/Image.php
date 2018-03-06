@@ -1,14 +1,14 @@
 <?php
 
-namespace AdminBundle\Entity;
+namespace CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 /**
  * Image
  *
  * @ORM\Table(name="image")
- * @ORM\Entity(repositoryClass="AdminBundle\Repository\ImageRepository")
+ * @ORM\Entity(repositoryClass="CoreBundle\Repository\ImageRepository")
  */
 class Image
 {
@@ -43,7 +43,7 @@ class Image
     private $deleted;
 
     /**
-     *@ORM\ManyToOne(targetEntity="AdminBundle\Entity\Product",inversedBy="images",cascade={"persist"})
+     *@ORM\ManyToOne(targetEntity="CoreBundle\Entity\Product",inversedBy="images",cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $product;
@@ -59,13 +59,13 @@ class Image
         $date=new \Datetime();
         $dateString= $date->format('Y-m-d-H-i-s');
 
-        $url =$dateString. $this->file->getClientOriginalName();
+        $name =$dateString. $this->file->getClientOriginalName();
 
 
-        $this->file->move($this->getUploadRootDir(), $url);
+        $this->file->move($this->getUploadRootDir(), $name);
 
 
-        $this->name = $url;
+        $this->name = $name;
 
 
     }
@@ -183,11 +183,11 @@ class Image
     /**
      * Set product
      *
-     * @param \AdminBundle\Entity\Product $product
+     * @param \CoreBundle\Entity\Product $product
      *
      * @return Image
      */
-    public function setProduct(\AdminBundle\Entity\Product $product)
+    public function setProduct(\CoreBundle\Entity\Product $product)
     {
         $this->product = $product;
 
@@ -197,7 +197,7 @@ class Image
     /**
      * Get product
      *
-     * @return \AdminBundle\Entity\Product
+     * @return \CoreBundle\Entity\Product
      */
     public function getProduct()
     {

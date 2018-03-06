@@ -1,6 +1,6 @@
 <?php
 
-namespace AdminBundle\Entity;
+namespace CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * ProductSize
  *
  * @ORM\Table(name="product_size")
- * @ORM\Entity(repositoryClass="AdminBundle\Repository\ProductSizeRepository")
+ * @ORM\Entity(repositoryClass="CoreBundle\Repository\ProductSizeRepository")
  */
 class ProductSize
 {
