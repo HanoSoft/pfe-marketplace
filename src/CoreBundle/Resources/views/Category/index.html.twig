@@ -4,26 +4,74 @@
     {{ parent() }}
 
 
+    <div class="container">
+        <div class="row">
+            <div class="">
+
+                <div class="panel panel-primary  panel-table" >
+                    <div class="panel-heading" style="color:#FFFFFF; height: 70px;">
+                        <div class="row" >
+
+                            <div class="col col-xs-6">
+                                <h3 class="panel-title">Consulter Catégorie</h3>
+                            </div>
+
+                            <div class="col col-xs-6 text-right" >
+                                <button type="button" class="btn btn-success btn-md "><span class="fa fa-plus"> </span> </button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="panel-body table-responsive" >
+                        <table class="table table-striped table-bordered table-list">
+                            <thead>
+                            <tr>
+
+                                <th class="hidden-xs">ID</th>
+                                <th>name</th>
+                               
+                                <th><em class="fa fa-cog"></em></th>
+
+                            </tr>
+                            </thead>
+                            <tbody >
+                                {% for category in listCategory %}
+                                    <tr>
 
 
+                                        <td>{{ category.id }}</td>
+                                        <td>{{ category.name }}</td>
+                                        
+                                        <td align="center">
+                                            <a href="{{ path('admin_category_edit', {'id': category.id}) }}" class="btn btn-warning"><em class="fa fa-edit"></em></a>
+                                            <a href="{{ path('admin_category_delete', {'id': category.id}) }}" class="btn btn-danger"><em class="fa fa-trash-o"></em></a>
+                                        </td>
 
-{% for category in listCategory %}
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
 
-    <h3>id</h3>{{ category.id }}
+                        </table>
 
-    <h3>name</h3>{{ category.name }}
-   <a href="{{ path('admin_category_edit',{'id': category.id})}}" class="btn btn-primary btn-lg square" role="button">Modifier</a>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="row">
 
-   <a href="{{ path('admin_category_delete',{'id': category.id}) }}" class="btn btn-primary btn-lg square" role="button">Supprimer</a>
+                            <div class="col col-xs-4">Pagination ici
 
-{% endfor %}
-
-
-
+                            </div>
 
 
+                        </div>
+                    </div>
 
-   
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
 {% endblock %}
 
 
