@@ -10,7 +10,7 @@
 
             <div class="form-title form-header">
 
-                <h4>Ajouter Image Prod</h4>
+                <h4>Ajouter Produit</h4>
 
 
             </div>
@@ -20,6 +20,20 @@
                 {{ form_errors(form) }}
 
 
+
+                <div class="form-group">
+                    <label  class="col-sm-2 control-label">label</label>
+                    <div class="col-sm-9">
+                        {{ form_widget(form.label, {'attr': {'class': 'form-control','placeholder':'Nom De Produit'}}) }}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label  class="col-sm-2 control-label">file :</label>
+                    <div class="col-sm-9">
+                        {{ form_widget(form.file, {'attr': {'class': 'form-control','placeholder':'Description','rows':'10','cols':'100'}}) }}
+                    </div>
+                </div>
 
 
 
