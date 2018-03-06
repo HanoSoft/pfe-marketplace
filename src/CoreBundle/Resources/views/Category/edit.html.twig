@@ -4,38 +4,69 @@
     {{ parent() }}
 
 
+   <div class=" form-grids row form-grids-right">
+        <div class="widget-shadow " data-example-id="basic-forms">
 
-  
-  {# ouverture de la formulaire equivalent a la balise <form> #} 
-   {{ form_start(form) }}
-{# //form erros genere des erreurs sur un champ exemple champ email sans @ doit introduireun erreur #} 
-  {{ form_errors(form) }}
+            <div class="form-title form-header">
 
-  
-{# 
- label de champ c-a-d le nom de champ dans la base de donne exemple on a champ tite dans entite category mais on a modifier par  name#}
-
-    {{ form_label(form.name, "name :") }}
-
-    {#//  pour recupere l'erreur sur name#}
-    {{ form_errors(form.name) }}
-
-     
-     
-      {#// widget c'est le champ  elle meme le champ de text name ici pour introduire les classe css on utilise attr:#}
-        {{ form_widget(form.name, {'attr': {'class': 'form-control','placeholder':'name'}}) }}
-   
-   
-
-{# ici on a creer une button ici et pas dans le form #}
-
-<button type="submit" class="btn btn-success" >Modifier</button>
+                <h4>Modifier Catégorie</h4>
 
 
+            </div>
+                <div class="form-body">
 
-  {{ form_rest(form) }}
+                    {{ form_start(form,{'attr': {'class': 'form-horizontal'}}) }}
+                    {{ form_errors(form) }}
 
-  {{ form_end(form) }}
+                    
+
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label">Catégorie</label>
+                        <div class="col-sm-9">
+                           
+                            {{ form_widget(form.name, {'attr': {'class': 'form-control','placeholder':'name'}}) }}
+                        </div>
+                    </div>
+
+                    <button class="btn btn-success col-md-offset-10"><span class="fa fa-edit"> </span> Modifier</button>
+
+
+
+                   {# <button class="btn btn-success"><span class="fa fa-edit"> </span> Modifier</button>
+                    <button class="btn btn-danger"><span class="fa fa-trash-o"> </span> Supprimer</button>
+                    #}
+
+
+                    {{ form_rest(form) }}
+                    {{ form_end(form) }}
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 {% endblock %}
