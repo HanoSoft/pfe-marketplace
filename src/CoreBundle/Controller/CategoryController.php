@@ -15,7 +15,7 @@ class CategoryController extends Controller
     {
         $category = new category();
 
-               
+
         $form   = $this->get('form.factory')->create(CategoryType::class, $category);
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {

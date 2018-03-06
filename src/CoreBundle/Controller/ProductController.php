@@ -30,17 +30,29 @@ class ProductController extends Controller
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
 
-                $product->setDeleted(false);
-
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($product);
-                $em->flush();
+            $product->setDeleted(false);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($product);
+            $em->flush();
             $id=$product->getId();
-                return $this->redirectToRoute('admin_product_image_add',array('id' => $id));
+            return $this->redirectToRoute('admin_product_image_add',array('id' => $id));
          }
         return $this->render('CoreBundle:Product:add.html.twig', array(
             'form' => $form->createView(),
         ));
 
+    }
+
+    public function showAction(Request $request)
+    {
+        $repository = $this->getDoctrine()
+            ->getManager()->
+            getRepository('CoreBundle:Product');
+
+        $products = $repository->getAllProducts(false);
+
+        return $this->render('CoreBundle:Product:index.html.twig', array(
+            'products' => $products,
+            ));
     }
 }
