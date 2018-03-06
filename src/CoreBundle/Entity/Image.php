@@ -187,7 +187,7 @@ class Image
      *
      * @return Image
      */
-    public function setProduct(\AdminBundle\Entity\Product $product)
+    public function setProduct(\CoreBundle\Entity\Product $product)
     {
         $this->product = $product;
 

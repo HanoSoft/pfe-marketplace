@@ -9,6 +9,9 @@
 namespace CoreBundle\Controller;
 
 
+
+use CoreBundle\Entity\Image;
+use CoreBundle\Form\ImageType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use CoreBundle\Entity\Product;
@@ -19,23 +22,27 @@ class ProductController extends Controller
     {
         return $this->render('CoreBundle:Product:index.html.twig');
     }
+
     public function addAction(Request $request)
     {
-
         $product = new Product();
-        $form   = $this->get('form.factory')->create(ProductType::class, $product);
+        $image=new Image();
+        $file = $request->request->get("file1");
+        $image->setFile($file);
 
-        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+        $form = $this->get('form.factory')->create(ProductType::class, $product);
 
-           /* $product->getImage()->upload();*/
+            if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
 
-            $product->setDeleted(false);
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($product);
-            $em->flush();
-            return $this->redirectToRoute('admin_product_show');
+                $product->setDeleted(false);
+                $image->setDeleted(false);
+                $image->setProduct($product->getId());
 
-        }
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($product);
+                $em->flush();
+                return $this->redirectToRoute('admin_product_show');
+            }
         return $this->render('CoreBundle:Product:add.html.twig', array(
             'form' => $form->createView(),
         ));

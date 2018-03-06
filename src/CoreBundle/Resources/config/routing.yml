@@ -41,4 +41,9 @@ admin_product_delete:
             _controller: CoreBundle:Product:delete
             requirements:
             id: \d+
-
+admin_product_image_add:
+    path:     /admin/product/image/add/{id}
+    defaults:
+            _controller: CoreBundle:Image:add
+            requirements:
+            id: \d+

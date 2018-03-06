@@ -20,7 +20,6 @@ class ProductType extends AbstractType
             ->add('quantity')
             ->add('productDetails',TextareaType::class)
             ->add('productColor')
-
             ->add('category',EntityType::class, array(
                 'class'        => 'CoreBundle:Category',
                 'choice_label' => 'name',

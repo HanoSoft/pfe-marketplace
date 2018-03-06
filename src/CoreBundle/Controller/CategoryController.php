@@ -63,7 +63,7 @@ class CategoryController extends Controller
   {
     $em = $this->getDoctrine()->getManager();
 
-    $category = $em->getRepository('AdminBundle:Category')->find($id);
+    $category = $em->getRepository('CoreBundle:Category')->find($id);
 
 
     $form = $this->get('form.factory')->create(CategoryEditType::class, $category);
@@ -87,7 +87,7 @@ public function deleteAction(Request $request, $id)
     $em = $this->getDoctrine()->getManager();
 
    // 3a ya5a  ba3d mayjibha na3ml appel lel methode setDeleted(false) ma3mltch 7aja o5ra khow notion poo 7obi appel lel methode hathika hya wkbh bhi mch lbhi chno na3l bha fhma la la ey mthbta ey fhmt bhi taw kent fog 
-    $category  = $em->getRepository('AdminBundle:Category')->find($id);
+    $category  = $em->getRepository('CoreBundle:Category')->find($id);
     $category->setDeleted(true);
     
 

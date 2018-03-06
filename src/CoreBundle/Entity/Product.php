@@ -277,7 +277,7 @@ class Product
      *
      * @return Product
      */
-    public function setCategory(\AdminBundle\Entity\Category $category)
+    public function setCategory(\CoreBundle\Entity\Category $category)
     {
         $this->category = $category;
 
