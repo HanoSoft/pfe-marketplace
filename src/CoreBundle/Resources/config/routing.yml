@@ -22,7 +22,7 @@ admin_category_delete:
 
 admin_product_show:
     path:     /admin/product
-    defaults: { _controller: CoreBundle:Product:index }
+    defaults: { _controller: CoreBundle:Product:show }
 
 admin_product_add:
     path:     /admin/product/add

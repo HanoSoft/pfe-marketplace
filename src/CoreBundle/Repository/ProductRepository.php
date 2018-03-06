@@ -10,4 +10,12 @@ namespace CoreBundle\Repository;
  */
 class ProductRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getAllProducts($value){
+
+        $qb = $this->createQueryBuilder('p');
+        $qb
+            ->where('p.deleted = :deleted')
+            ->setParameter('deleted', $value) ;
+        return $qb->getQuery()->getResult();
+    }
 }
