@@ -183,7 +183,7 @@ class Image
     /**
      * Set product
      *
-     * @param \AdminBundle\Entity\Product $product
+     * @param \CoreBundle\Entity\Product $product
      *
      * @return Image
      */
