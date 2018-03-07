@@ -1,0 +1,26 @@
+imports:
+   - { resource: foselasticabundle.yml }
+
+fos_elastica:
+   clients:
+       default:
+           host: %fos_elastica.host%
+           port: %fos_elastica.port%
+   indexes:
+       search:
+           finder: ~
+           client: default
+           types:
+               Product:
+                   mappings:
+                       id:
+                           type: integer
+                       productName: ~
+                       price: ~
+                       productColor: ~
+                   persistence:
+                       driver: orm
+                       model: CoreBundle\Entity\Product
+                       finder: ~
+                       provider: ~
+                       listener: ~

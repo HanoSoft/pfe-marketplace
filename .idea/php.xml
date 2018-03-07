@@ -45,6 +45,12 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle" />
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-components" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/streams" />
+      <path value="$PROJECT_DIR$/vendor/react/promise" />
+      <path value="$PROJECT_DIR$/vendor/ruflin/elastica" />
+      <path value="$PROJECT_DIR$/vendor/elasticsearch/elasticsearch" />
+      <path value="$PROJECT_DIR$/vendor/pagerfanta/pagerfanta" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/ringphp" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="5.5.0" />
