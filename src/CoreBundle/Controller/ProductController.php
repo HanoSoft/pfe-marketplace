@@ -47,6 +47,7 @@ class ProductController extends Controller
             getRepository('CoreBundle:Product');
         $products = $repository->getAllProducts(false);
 
+
         /**
          * @var $paginator\knp\component\Pager\Paginator
          */

@@ -300,29 +300,7 @@ class Product
         return $this->category;
     }
 
-    /**
-     * Set size
-     *
-     * @param string $size
-     *
-     * @return Product
-     */
-    public function setSize($size)
-    {
-        $this->size = $size;
 
-        return $this;
-    }
-
-    /**
-     * Get size
-     *
-     * @return string
-     */
-    public function getSize()
-    {
-        return $this->size;
-    }
 
     /**
      * Add size

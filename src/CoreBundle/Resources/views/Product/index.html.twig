@@ -4,7 +4,7 @@
     {{ parent() }}
 
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="">
 
@@ -33,6 +33,7 @@
                                 <th>{{ knp_pagination_sortable(products, 'Prix', 'p.price') }}</th>
                                 <th>{{ knp_pagination_sortable(products, 'Quantité', 'p.quantity') }}</th>
                                 <th>{{ knp_pagination_sortable(products, 'Couleur', 'p.productColor') }}</th>
+                                <th> Taille </th>
                                 <th><em class="fa fa-cog"></em></th>
 
                             </tr>
@@ -48,6 +49,11 @@
                                         <td>{{ product.price }}</td>
                                         <td>{{ product.quantity }}</td>
                                         <td>{{ product.productColor }}</td>
+                                        <td>
+                                            {% for sizes in product.sizes %}
+                                            {{ sizes.size }}
+                                            {% endfor %}
+                                        </td>
                                         <td align="center">
                                             <a href="{{ path('admin_product_edit', {'id': product.id}) }}" class="btn btn-warning"><em class="fa fa-edit"></em></a>
                                             <a href="{{ path('admin_product_delete', {'id': product.id}) }}" class="btn btn-danger"><em class="fa fa-trash-o"></em></a>
