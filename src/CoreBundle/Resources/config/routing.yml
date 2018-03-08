@@ -47,3 +47,9 @@ admin_product_image_add:
             _controller: CoreBundle:Image:add
             requirements:
             id: \d+
+admin_product_size_add:
+    path:     /admin/product/size/add/{id}
+    defaults:
+            _controller: CoreBundle:ProductSize:add
+            requirements:
+            id: \d+
