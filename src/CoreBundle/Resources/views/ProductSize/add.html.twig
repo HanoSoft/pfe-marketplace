@@ -22,26 +22,25 @@
 
 
                 <div class="form-group">
-                    <label  class="col-sm-2 control-label">label</label>
+                    <label  class="col-sm-2 control-label">Taille :</label>
                     <div class="col-sm-9">
-                        {{ form_widget(form.label, {'attr': {'class': 'form-control','placeholder':'Nom De Produit'}}) }}
+                        {{ form_widget(form.size, {'attr': {'class': 'form-control','placeholder':'Description','rows':'10','cols':'100'}}) }}
+
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label  class="col-sm-2 control-label">file :</label>
+                    <label  class="col-sm-2 control-label">Type :</label>
                     <div class="col-sm-9">
-                        {{ form_widget(form.file, {'attr': {'class': 'form-control','placeholder':'Description','rows':'10','cols':'100'}}) }}
+                        {{ form_widget(form.type, {'attr': {'class': 'form-control','placeholder':'Description','rows':'10','cols':'100'}}) }}
                     </div>
                 </div>
 
 
 
 
-                <button class="btn btn-warning col-md-offset-9" type="submit"><span class="fa fa-plus-circle"> </span> Ajouter</button>
-                <a href="{{ path('admin_product_show') }}" class="btn btn-primary " type=><span class="fa fa-check-square-o"> </span> Passer</a>
-
-
+                    <button class="btn btn-warning col-md-offset-9" type="submit"><span class="fa fa-plus-circle"> </span> Ajouter</button>
+                    <a href="{{ path('admin_product_image_add', {'id': product.id}) }}" class="btn btn-primary " type=><span class="fa fa-check-square-o"> </span> Passer</a>
 
 
 

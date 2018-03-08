@@ -32,7 +32,7 @@ class ProductController extends Controller
             $em->persist($product);
             $em->flush();
             $id=$product->getId();
-            return $this->redirectToRoute('admin_product_image_add',array('id' => $id));
+            return $this->redirectToRoute('admin_product_size_add',array('id' => $id));
          }
         return $this->render('CoreBundle:Product:add.html.twig', array(
             'form' => $form->createView(),

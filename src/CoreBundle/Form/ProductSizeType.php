@@ -13,7 +13,7 @@ class ProductSizeType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('size')->add('type')->add('deleted')->add('product');
+        $builder->add('size')->add('type');
     }/**
      * {@inheritdoc}
      */

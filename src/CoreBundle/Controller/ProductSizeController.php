@@ -7,6 +7,7 @@
  */
 
 namespace CoreBundle\Controller;
+use CoreBundle\Form\ProductSizeType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use CoreBundle\Entity\ProductSize;
@@ -14,23 +15,23 @@ class ProductSizeController extends Controller
 {
     public function addAction($id, Request $request){
         $em = $this->getDoctrine()->getManager();
-        $size = new ();
-        $form = $this->get('form.factory')->create(ImageType::class, $image);
+        $size = new ProductSize();
+        $form = $this->get('form.factory')->create(ProductSizeType::class, $size);
         $product = $em->getRepository('CoreBundle:Product')->find($id);
-        $image->setProduct($product);
+        $size->setProduct($product);
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
 
-            $image->setDeleted(false);
-            $image->upload();
+            $size->setDeleted(false);
 
-            $em->persist($image);
+
+            $em->persist($size);
             $em->flush();
 
-
         }
-        return $this->render('CoreBundle:Image:add.html.twig', array(
+        return $this->render('CoreBundle:ProductSize:add.html.twig', array(
             'form' => $form->createView(),
+            'product'=>$product
         ));
     }
 
