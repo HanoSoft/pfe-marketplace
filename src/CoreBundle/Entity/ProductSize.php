@@ -35,6 +35,18 @@ class ProductSize
      */
     private $type;
 
+    /**
+     *@ORM\ManyToOne(targetEntity="CoreBundle\Entity\Product",inversedBy="sizes",cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $product;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="deleted", type="boolean")
+     */
+    private $deleted;
 
     /**
      * Get id
@@ -93,5 +105,58 @@ class ProductSize
     {
         return $this->type;
     }
-}
 
+    /**
+     * Set product
+     *
+     * @param \CoreBundle\Entity\Product $product
+     *
+     * @return ProductSize
+     */
+    public function setProduct(\CoreBundle\Entity\Product $product = null)
+    {
+        $this->product = $product;
+
+        return $this;
+    }
+
+    /**
+     * Get product
+     *
+     * @return \CoreBundle\Entity\Product
+     */
+    public function getProduct()
+    {
+        return $this->product;
+    }
+    /**
+     * Set deleted
+     *
+     * @param boolean $deleted
+     *
+     * @return Product
+     */
+    public function setDeleted($deleted)
+    {
+        $this->deleted = $deleted;
+
+        return $this;
+    }
+
+    /**
+     * Get deleted
+     *
+     * @return bool
+     */
+    public function getDeleted()
+    {
+        return $this->deleted;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+}

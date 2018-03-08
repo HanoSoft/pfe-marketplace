@@ -16,6 +16,6 @@ class ProductRepository extends \Doctrine\ORM\EntityRepository
         $qb
             ->where('p.deleted = :deleted')
             ->setParameter('deleted', $value) ;
-        return $this->createQueryBuilder("p");
+        return $qb;
     }
 }

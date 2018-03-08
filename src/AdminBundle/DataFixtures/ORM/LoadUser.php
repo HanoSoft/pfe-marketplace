@@ -43,6 +43,7 @@ class LoadUser implements FixtureInterface,ContainerAwareInterface
         $user->setPlainPassword('nhstudio');
         $user->setEnabled(true);
         $user->addRole('ROLE_ADMIN');
+        $manager->persist($user);
 
 
         $manager->flush();

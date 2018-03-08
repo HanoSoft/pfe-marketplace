@@ -8,14 +8,11 @@
 
 namespace CoreBundle\Controller;
 
-
-
-use CoreBundle\Entity\Image;
-use CoreBundle\Form\ImageType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use CoreBundle\Entity\Product;
 use CoreBundle\Form\ProductType;
+use CoreBundle\Entity\ProductSize;
 class ProductController extends Controller
 {
     public function indexAction()
