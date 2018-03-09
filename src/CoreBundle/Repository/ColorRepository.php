@@ -10,4 +10,12 @@ namespace CoreBundle\Repository;
  */
 class ColorRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function getAllColors($value){
+
+	        $qb = $this->createQueryBuilder('c');
+	        $qb
+	            ->where('c.deleted = :deleted')
+	            ->setParameter('deleted', $value) ;
+	        return $qb;
+	}
 }

@@ -1,0 +1,57 @@
+
+{% extends "AdminBundle::adminLayout.html.twig" %} 
+
+{% block content %}
+
+    {{ parent() }}
+
+
+  <div class=" form-grids row form-grids-right">
+        <div class="widget-shadow " data-example-id="basic-forms">
+
+            <div class="form-title form-header">
+
+                <h4>Ajouter couleur</h4>
+
+
+            </div>
+                <div class="form-body">
+
+                    {{ form_start(form,{'attr': {'class': 'form-horizontal'}}) }}
+                    {{ form_errors(form) }}
+
+                    
+
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label">couleur</label>
+                        <div class="col-sm-9">
+                            {{ form_widget(form.name, {'attr': {'class': 'form-control','placeholder':'Couleur'}}) }}
+                        </div>
+                    </div>
+
+                    <button class="btn btn-warning col-md-offset-10" type="submit"><span class="fa fa-plus-circle"> </span> Ajouter</button>
+
+                    
+
+                   {# <button class="btn btn-success"><span class="fa fa-edit"> </span> Modifier</button>
+                    <button class="btn btn-danger"><span class="fa fa-trash-o"> </span> Supprimer</button>
+                    #}
+
+
+                    {{ form_rest(form) }}
+                    {{ form_end(form) }}
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+ 
