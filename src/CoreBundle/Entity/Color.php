@@ -28,6 +28,14 @@ class Color
      */
     private $colorName;
 
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="deleted", type="boolean")
+     */
+    private $deleted=false;
+
 
     /**
      * Get id
@@ -62,5 +70,28 @@ class Color
     {
         return $this->colorName;
     }
-}
 
+    /**
+     * Set deleted
+     *
+     * @param boolean $deleted
+     *
+     * @return Color
+     */
+    public function setDeleted($deleted)
+    {
+        $this->deleted = $deleted;
+
+        return $this;
+    }
+
+    /**
+     * Get deleted
+     *
+     * @return boolean
+     */
+    public function getDeleted()
+    {
+        return $this->deleted;
+    }
+}
