@@ -10,20 +10,12 @@ namespace CoreBundle\Repository;
  */
 class categoryRepository extends \Doctrine\ORM\EntityRepository
 {
+public function getAllCategories($value){
 
-
-	public function findCategories($value)
-	{
-	    $qb = $this->createQueryBuilder('c');
-
+        $qb = $this->createQueryBuilder('c');
         $qb
-        ->where('c.deleted = :deleted')
-         ->setParameter('deleted', $value) ;
-
-        return $qb->getQuery()->getResult();
-
-
-	}
-
-    
+            ->where('c.deleted = :deleted')
+            ->setParameter('deleted', $value) ;
+        return $qb;
+}
 }

@@ -43,17 +43,17 @@ class ProductController extends Controller
 
     public function showAction(Request $request)
     {
-        $repository = $this->getDoctrine()
+            $repository = $this->getDoctrine()
             ->getManager()->
             getRepository('CoreBundle:Product');
-        $products = $repository->getAllProducts(false);
+            $products = $repository->getAllProducts(false);
 
 
         /**
          * @var $paginator\knp\component\Pager\Paginator
          */
-        $paginator=$this->get('knp_paginator');
-        $pagination=$paginator->paginate(
+            $paginator=$this->get('knp_paginator');
+            $pagination=$paginator->paginate(
             $products,
             $request->query->getInt('page',1),
             $request->query->getInt('limit',5)
