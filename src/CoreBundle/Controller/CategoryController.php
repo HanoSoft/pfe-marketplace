@@ -11,7 +11,7 @@ use CoreBundle\Form\CategoryEditType;
 
 class CategoryController extends Controller
 {
-    public function addAction(Request $request)
+        public function addAction(Request $request)
     {
         $category = new category();
 
@@ -34,7 +34,7 @@ class CategoryController extends Controller
 
 
 
-    public function showAction(Request $request)
+        public function showAction(Request $request)
     {
             $repository = $this->getDoctrine()
             ->getManager()->
@@ -49,7 +49,7 @@ class CategoryController extends Controller
             $pagination=$paginator->paginate(
             $category,
             $request->query->getInt('page',1),
-            $request->query->getInt('limit',2)
+            $request->query->getInt('limit',5)
         );
 
 
@@ -84,7 +84,7 @@ class CategoryController extends Controller
 
 
 
-public function deleteAction(Request $request, $id)
+        public function deleteAction(Request $request, $id)
   {
       $em = $this->getDoctrine()->getManager();
       $category  = $em->getRepository('CoreBundle:Category')->find($id);
