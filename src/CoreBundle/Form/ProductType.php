@@ -20,7 +20,11 @@ class ProductType extends AbstractType
             ->add('price',MoneyType::class,array('currency'=>''))
             ->add('quantity')
             ->add('productDetails',TextareaType::class)
-            ->add('productColor')
+            ->add('productColor',EntityType::class, array(
+                'class'        => 'CoreBundle:Color',
+                'choice_label' => 'colorName',
+                'multiple'     => false,
+            ))
             ->add('category',EntityType::class, array(
                 'class'        => 'CoreBundle:Category',
                 'choice_label' => 'name',
