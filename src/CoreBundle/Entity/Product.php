@@ -62,12 +62,14 @@ class Product
      */
 
     private $productDetails;
+
     /**
      * @var string
      *
      * @ORM\Column(name="product_color", type="string", length=255)
      */
-    private $productColor;
+
+      private $productColor;
 
     /**
      *@ORM\OneToMany(targetEntity="CoreBundle\Entity\ProductSize",mappedBy="product")

@@ -24,6 +24,7 @@ class ProductController extends Controller
     {
         $product = new Product();
         $form = $this->get('form.factory')->create(ProductType::class, $product);
+       
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
 

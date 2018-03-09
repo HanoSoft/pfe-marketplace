@@ -5,6 +5,7 @@
     {{ parent() }}
 
 
+
     <div class=" form-grids row form-grids-right">
         <div class="widget-shadow " data-example-id="basic-forms">
 
@@ -20,23 +21,30 @@
                     {{ form_errors(form) }}
 
                     <div class="form-group">
-                        <label  class="col-sm-2 control-label">Catégorie :</label>
+                        <label  class="col-sm-2 control-label">Catégorie : *</label>
                         <div class="col-sm-9">
                             {{ form_widget(form.category, {'attr': {'class': 'form-control'}}) }}
+
                         </div>
+
+                    </div>
+
+                    <div class="form-group prod ">
+                        <label  class="col-sm-2 control-label">Produit : *</label>
+                        <div class="col-sm-9" >
+                           {{ form_widget(form.productName, {'attr': {'class': 'form-control productID','placeholder':'Nom De Produit'}}) }}
+
+                               <span id="productHelp" class="help-block sr-only">
+                            le nom de produit doit contenir au minimum 2 caracteres.
+                            </span>
+                        </div>
+
                     </div>
 
                     <div class="form-group">
-                        <label  class="col-sm-2 control-label">Produit :</label>
+                        <label  class="col-sm-2 control-label">Description : *</label>
                         <div class="col-sm-9">
-                            {{ form_widget(form.productName, {'attr': {'class': 'form-control','placeholder':'Nom De Produit'}}) }}
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label  class="col-sm-2 control-label">Description :</label>
-                        <div class="col-sm-9">
-                            {{ form_widget(form.productDetails, {'attr': {'class': 'form-control','placeholder':'Description','rows':'10','cols':'100'}}) }}
+                            {{ form_widget(form.productDetails, {'attr': {'class': 'form-control productDetails','placeholder':'Description','rows':'10','cols':'100'}}) }}
                         </div>
                     </div>
 
@@ -48,34 +56,21 @@
                     </div>
 
                     <div class="form-group">
-                        <label  class="col-sm-2 control-label">Quantité :</label>
+                        <label  class="col-sm-2 control-label">Quantité : *</label>
                         <div class="col-sm-9">
-                            {{ form_widget(form.quantity, {'attr': {'class': 'form-control','placeholder':'Quantité'}}) }}
+                            {{ form_widget(form.quantity, {'attr': {'class': 'form-control quantity','placeholder':'Quantité'}}) }}
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label  class="col-sm-2 control-label">Prix :</label>
+                        <label  class="col-sm-2 control-label">Prix : *</label>
                         <div class="col-sm-9">
-                            {{ form_widget(form.price, {'attr': {'class': 'form-control','placeholder':'Prix'}}) }}
+                            {{ form_widget(form.price, {'attr': {'class': 'form-control price','placeholder':'Prix'}}) }}
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label  class="col-sm-2 control-label">Taille :</label>
-                        <div class="row">
-                            <div class="col-sm-9">
-                               <input type="text" class="form-control" placeholder="Taille" name="size">
-                            </div>
 
-                            <button type="button" class="btn btn-success btn-md " id="addSize"><span class="fa fa-plus"> </span> </button>
-
-                        </div>
-                    </div>
-                    <p id="container"></p>
-
-
-                    <button class="btn btn-warning col-md-offset-10 " type="submit"><span class="fa fa-plus-circle"> </span> Ajouter</button>
+                    <button class="btn btn-warning col-md-offset-10 " type="submit" id="btn"><span class="fa fa-plus-circle"> </span> Ajouter</button>
 
                    {# <button class="btn btn-success"><span class="fa fa-edit"> </span> Modifier</button>
                     <button class="btn btn-danger"><span class="fa fa-trash-o"> </span> Supprimer</button>
