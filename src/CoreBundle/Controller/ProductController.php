@@ -59,8 +59,6 @@ class ProductController extends Controller
             $request->query->getInt('limit',5)
         );
 
-
-
         return $this->render('CoreBundle:Product:index.html.twig', array(
             'products' => $pagination,
             ));

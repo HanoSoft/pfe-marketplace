@@ -44,11 +44,6 @@ function check(){
 }
 
 
-
-
-
-
-
 // this check only for the price to have a numeric value
 $('.price').on('input',function () {
     price=$('.price').val();
@@ -81,7 +76,19 @@ $(".quantity").on('input',function() {
 });
 
 
-//enable the input type
+//code modal js
+
+$('#myModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) ;// Button that triggered the modal
+    var id= button.data('whatever'); // Extract info from data-* attributes
+    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+    var modal = $(this);
+
+    modal.find('#delete').attr("href",id);
+
+
+});
 
 
 
