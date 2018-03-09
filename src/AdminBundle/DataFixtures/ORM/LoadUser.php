@@ -36,6 +36,16 @@ class LoadUser implements FixtureInterface,ContainerAwareInterface
         $user->setEnabled(true);
         $user->addRole('ROLE_ADMIN');
         $manager->persist($user);
+
+        $user = $userManager->createUser();
+        $user->setUsername('nouha');
+        $user->setEmail('nouha@gmail.com');
+        $user->setPlainPassword('nhstudio');
+        $user->setEnabled(true);
+        $user->addRole('ROLE_ADMIN');
+        $manager->persist($user);
+
+
         $manager->flush();
     }
 }

@@ -58,7 +58,7 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="product_details", type="text", length=255)
+     * @ORM\Column(name="product_details", type="text")
      */
 
     private $productDetails;
@@ -68,6 +68,12 @@ class Product
      * @ORM\Column(name="product_color", type="string", length=255)
      */
     private $productColor;
+
+    /**
+     *@ORM\OneToMany(targetEntity="CoreBundle\Entity\ProductSize",mappedBy="product")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $sizes;
 
     /**
      *@ORM\ManyToOne(targetEntity="CoreBundle\Entity\Category",inversedBy="products",cascade={"persist"})
@@ -292,5 +298,41 @@ class Product
     public function getCategory()
     {
         return $this->category;
+    }
+
+
+
+    /**
+     * Add size
+     *
+     * @param \CoreBundle\Entity\ProductSize $size
+     *
+     * @return Product
+     */
+    public function addSize(\CoreBundle\Entity\ProductSize $size)
+    {
+        $this->sizes[] = $size;
+
+        return $this;
+    }
+
+    /**
+     * Remove size
+     *
+     * @param \CoreBundle\Entity\ProductSize $size
+     */
+    public function removeSize(\CoreBundle\Entity\ProductSize $size)
+    {
+        $this->sizes->removeElement($size);
+    }
+
+    /**
+     * Get sizes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSizes()
+    {
+        return $this->sizes;
     }
 }
