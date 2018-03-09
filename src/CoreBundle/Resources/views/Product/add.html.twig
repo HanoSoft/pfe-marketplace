@@ -32,10 +32,10 @@
                     <div class="form-group prod ">
                         <label  class="col-sm-2 control-label">Produit : *</label>
                         <div class="col-sm-9" >
-                           {{ form_widget(form.productName, {'attr': {'class': 'form-control productID','placeholder':'Nom De Produit'}}) }}
+                           {{ form_widget(form.productName, {'attr': {'class': 'form-control productName','placeholder':'Nom De Produit'}}) }}
 
-                               <span id="productHelp" class="help-block sr-only">
-                            le nom de produit doit contenir au minimum 2 caracteres.
+                            <span id="productHelp" class="help-block sr-only">
+                            le nom de produit doit contenir au minimum 2 caractères.
                             </span>
                         </div>
 
@@ -45,6 +45,9 @@
                         <label  class="col-sm-2 control-label">Description : *</label>
                         <div class="col-sm-9">
                             {{ form_widget(form.productDetails, {'attr': {'class': 'form-control productDetails','placeholder':'Description','rows':'10','cols':'100'}}) }}
+                            <span id="productDetailsHelp" class="help-block sr-only">
+                            la description de produit doit contenir au minimum 5 caractères.
+                            </span>
                         </div>
                     </div>
 
