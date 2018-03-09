@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="147a269a-7d8a-4ce3-a8b2-fee3ec9c69d7" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/CoreBundle/Controller/ProductController.php" afterPath="$PROJECT_DIR$/src/CoreBundle/Controller/ProductController.php" />
       <change beforePath="$PROJECT_DIR$/src/CoreBundle/Resources/views/Product/index.html.twig" afterPath="$PROJECT_DIR$/src/CoreBundle/Resources/views/Product/index.html.twig" />
-      <change beforePath="$PROJECT_DIR$/web/CoreJs/addProduct.js" afterPath="$PROJECT_DIR$/web/CoreJs/addProduct.js" />
       <change beforePath="$PROJECT_DIR$/web/adminCss/formStyle.css" afterPath="$PROJECT_DIR$/web/adminCss/formStyle.css" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,22 +43,13 @@
       <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Product/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1939">
-              <caret line="113" column="16" lean-forward="false" selection-start-line="113" selection-start-column="16" selection-end-line="113" selection-end-column="16" />
+            <state relative-caret-position="480">
+              <caret line="111" column="82" lean-forward="false" selection-start-line="111" selection-start-column="82" selection-end-line="111" selection-end-column="82" />
               <folding>
                 <element signature="n#style#0;n#b#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
                 <element signature="e#4384#4391#1#HTML" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#div#2;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="formStyle.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/adminCss/formStyle.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="33" column="19" lean-forward="false" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -163,10 +151,10 @@
         <option value="$PROJECT_DIR$/src/CoreBundle/Form/ProductType.php" />
         <option value="$PROJECT_DIR$/src/CoreBundle/Resources/views/Product/add.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-        <option value="$PROJECT_DIR$/web/adminCss/formStyle.css" />
         <option value="$PROJECT_DIR$/src/CoreBundle/Controller/ProductController.php" />
         <option value="$PROJECT_DIR$/web/CoreJs/addProduct.js" />
         <option value="$PROJECT_DIR$/src/CoreBundle/Resources/views/Product/index.html.twig" />
+        <option value="$PROJECT_DIR$/web/adminCss/formStyle.css" />
       </list>
     </option>
   </component>
@@ -340,12 +328,12 @@
       <workItem from="1520538322091" duration="7014000" />
       <workItem from="1520584614997" duration="8867000" />
       <workItem from="1520596556883" duration="16991000" />
-      <workItem from="1520619588120" duration="7886000" />
+      <workItem from="1520619588120" duration="8310000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="163271000" />
+    <option name="totallyTimeSpent" value="163695000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -706,14 +694,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/adminCss/formStyle.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="33" column="19" lean-forward="false" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/CoreJs/addProduct.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="586">
@@ -722,13 +702,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web/adminCss/formStyle.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="712">
+          <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Product/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1939">
-          <caret line="113" column="16" lean-forward="false" selection-start-line="113" selection-start-column="16" selection-end-line="113" selection-end-column="16" />
+        <state relative-caret-position="480">
+          <caret line="111" column="82" lean-forward="false" selection-start-line="111" selection-start-column="82" selection-end-line="111" selection-end-column="82" />
           <folding>
             <element signature="n#style#0;n#b#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
             <element signature="e#4384#4391#1#HTML" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#2;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
