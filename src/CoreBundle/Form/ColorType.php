@@ -18,8 +18,10 @@ class ColorType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('colorName')->add('deleted');
-    }/**
+        $builder->add('colorName');
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)

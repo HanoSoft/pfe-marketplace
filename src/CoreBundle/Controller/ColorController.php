@@ -8,7 +8,8 @@ use Symfony\Component\HttpFoundation\Request;
 use CoreBundle\Entity\Color;
 use CoreBundle\Form\ColorEditType;
 
-
+class ColorController extends Controller
+{
         public function showAction(Request $request)
     {
               $repository = $this->getDoctrine()
@@ -21,7 +22,7 @@ use CoreBundle\Form\ColorEditType;
            */
               $paginator=$this->get('knp_paginator');
               $pagination=$paginator->paginate(
-              $category,
+              $color,
               $request->query->getInt('page',1),
               $request->query->getInt('limit',5)
         );
@@ -31,3 +32,4 @@ use CoreBundle\Form\ColorEditType;
             ));
     }
 
+}
