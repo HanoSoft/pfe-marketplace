@@ -37,7 +37,10 @@ function check(){
     if(name>0 && details>0 && quantity>0 &&price>0){
     $('#btn').removeClass('disabled');
     }
-    
+    else{
+        $('#btn').addClass('disabled');
+    }
+
 }
 
 
