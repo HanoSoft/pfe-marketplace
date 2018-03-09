@@ -55,8 +55,9 @@
                                             {% endfor %}
                                         </td>
                                         <td align="center">
+
                                             <a href="{{ path('admin_product_edit', {'id': product.id}) }}" class="btn btn-warning"><em class="fa fa-edit"></em></a>
-                                            <a href="{{ path('admin_product_delete', {'id': product.id}) }}" class="btn btn-danger"><em class="fa fa-trash-o"></em></a>
+                                            <a href="#myModal" class="btn btn-danger" data-toggle="modal"><em class="fa fa-trash-o"></em></a>
                                         </td>
 
                                     </tr>
@@ -91,6 +92,28 @@
         </div>
     </div>
 
-{% endblock %}
+{#modal start#}
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="icon-box" >
+                <b style="color:red;font-size: 46px;">!</b>
+                </div>
+                <h4 class="modal-title">Êtes-vous sûr ?</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Voulez-vous vraiment supprimer ce produit ? Ce processus ne peut pas être annulé.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info " data-dismiss="modal"><span class="fa fa-close"> </span> Quitter</button>
+                <button class="btn btn-danger"><span class="fa fa-trash-o"> </span> Supprimer</button>
 
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
 
