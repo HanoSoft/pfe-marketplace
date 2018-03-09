@@ -34,20 +34,29 @@ class CategoryController extends Controller
 
 
 
-        public function showAction(Request $request)
+    public function showAction(Request $request)
     {
-
             $repository = $this->getDoctrine()
-            ->getManager()
-            ->getRepository('CoreBundle:Category');
+            ->getManager()->
+            getRepository('CoreBundle:Category');
+            $category = $repository->getAllCategories(false);
 
-            // On récupère l'entité correspondante hna tw jibna l3ndhom delted false n7bou
-            $category = $repository->findCategories(false);
 
-            // Le render ne change pas, on passait avant un tableau, maintenant un objet
-             return $this->render('CoreBundle:Category:index.html.twig', array(
-            'listCategory' => $category,
-        ));
+        /**
+         * @var $paginator\knp\component\Pager\Paginator
+         */
+            $paginator=$this->get('knp_paginator');
+            $pagination=$paginator->paginate(
+            $category,
+            $request->query->getInt('page',1),
+            $request->query->getInt('limit',2)
+        );
+
+
+
+        return $this->render('CoreBundle:Category:index.html.twig', array(
+            'categories' => $pagination,
+            ));
     }
 
 
