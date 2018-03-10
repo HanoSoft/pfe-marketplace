@@ -36,8 +36,13 @@
                     <label  class="col-sm-2 control-label">file :</label>
                     <div class="col-sm-9">
                         {{ form_widget(form.file, {'attr': {'class': 'form-control fileImage ','placeholder':'file'}}) }}
+
                         <span id="fileHelp" class="help-block sr-only">
-                           file type jpg
+                          Format d'image invalide! Le format d'image doit être JPG, JPEG, PNG ou GIF.
+                            </span>
+
+                        <span id="fileSize" class="help-block sr-only">
+                           La taille maximale du fichier est de 1 Mo.
                             </span>
                     </div>
                     <span class="glyphicon " id="fileAlertIcon"></span>

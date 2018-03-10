@@ -181,10 +181,7 @@ function alertFile(input,container,help,alertIcon) {
         case 'jpeg':
         case 'png':
         case 'gif': {
-            $('.' + container).addClass('has-success has-feedback');
-            $('#' + help).addClass('sr-only');
-            $('#' + alertIcon).addClass('glyphicon-ok').removeClass('glyphicon-warning-sign');
-            file=1;
+
             alert(file);
             break;
         }
@@ -213,22 +210,31 @@ $('.fileImage').bind('change', function() {
 
     var ext = $('.fileImage').val().split('.').pop().toLowerCase();
     if ($.inArray(ext, ['gif','png','jpg','jpeg']) === -1){
+        $('#fileSize').slideUp("slow");
+        $('#fileHelp').slideDown("slow");
         $('#fileHelp' ).removeClass('sr-only');
+        $('.conainerFile').addClass('has-warning has-feedback');
+        $('#fileAlertIcon').addClass('glyphicon-warning-sign').removeClass('glyphicon-ok');
 
         a=0;
     }else{
         var picsize = (this.files[0].size);
         if (picsize > 1000000){
-            $('#fileHelp').slideDown("slow");
+            $('#fileHelp').slideUp("slow");
+            $('#fileSize').slideDown("slow");
+            $('#fileSize' ).removeClass('sr-only');
+            $('.conainerFile').addClass('has-warning has-feedback');
+            $('#fileAlertIcon').addClass('glyphicon-warning-sign').removeClass('glyphicon-ok');
             a=0;
         }else{
             a=1;
             $('#fileHelp').slideUp("slow");
+            $('#fileSize').slideUp("slow");
+            $('.conainerFile').addClass('has-success has-feedback');
+            $('#fileAlertIcon').addClass('glyphicon-ok').removeClass('glyphicon-warning-sign');
         }
-        $('#fileHelp').slideUp("slow");
-        if (a===1){
 
-        }
+
     }
 });
 
