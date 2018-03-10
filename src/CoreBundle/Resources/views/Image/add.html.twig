@@ -51,7 +51,7 @@
 
 
 
-                <button class="btn btn-warning col-md-offset-9" type="submit"><span class="fa fa-plus-circle"> </span> Ajouter</button>
+                <button id="btnAddImage" class="btn btn-warning col-md-offset-9 disabled" type="submit"><span class="fa fa-plus-circle"> </span> Ajouter</button>
                 <a href="{{ path('admin_product_show') }}" class="btn btn-primary " type=><span class="fa fa-check-square-o"> </span> Passer</a>
 
 
@@ -66,6 +66,13 @@
 
 
             </div>
+            {% if app.session.flashBag.has('success') %}
+                <div class="alert alert-success">
+                    {% for msg in app.session.flashBag.get('success') %}
+                        {{ msg }}
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

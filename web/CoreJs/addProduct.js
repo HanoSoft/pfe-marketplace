@@ -137,7 +137,7 @@ $(".size").on('input',function() {
 });
 
 // chek the image
-var label,file=0;
+var label=0;
 function alertImage(input,container,help,alertIcon,limit){
 
     var  size=$("."+input).val();
@@ -163,7 +163,7 @@ function alertImage(input,container,help,alertIcon,limit){
 }
 
 function checkImage() {
-    if (label > 0 ) {
+    if (label >0 && file>0 ) {
         $('#btnAddImage').removeClass('disabled');
     }
     else {
@@ -178,20 +178,23 @@ $(".labelImage").on('input',function() {
 
 
 // validate the file
-var a=0;
+var file=0;
 //binds to onchange event of your input field
 $('.fileImage').bind('change', function() {
 
     var ext = $('.fileImage').val().split('.').pop().toLowerCase();
     if ($.inArray(ext, ['gif','png','jpg','jpeg']) === -1){
+
         $('#fileSize').slideUp("slow");
         $('#fileHelp').slideDown("slow");
         $('#fileHelp' ).removeClass('sr-only');
         $('.conainerFile').addClass('has-warning has-feedback');
         $('#fileAlertIcon').addClass('glyphicon-warning-sign').removeClass('glyphicon-ok');
 
-        a=0;
-    }else{
+        file=0;
+        checkImage();
+    }
+    else{
         var picsize = (this.files[0].size);
         if (picsize > 1000000){
             $('#fileHelp').slideUp("slow");
@@ -199,15 +202,16 @@ $('.fileImage').bind('change', function() {
             $('#fileSize' ).removeClass('sr-only');
             $('.conainerFile').addClass('has-warning has-feedback');
             $('#fileAlertIcon').addClass('glyphicon-warning-sign').removeClass('glyphicon-ok');
-            a=0;
+            file=0;
+            checkImage();
         }else{
-            a=1;
+            file=1;
             $('#fileHelp').slideUp("slow");
             $('#fileSize').slideUp("slow");
             $('.conainerFile').addClass('has-success has-feedback');
             $('#fileAlertIcon').addClass('glyphicon-ok').removeClass('glyphicon-warning-sign');
+            checkImage();
         }
-
 
     }
 });
