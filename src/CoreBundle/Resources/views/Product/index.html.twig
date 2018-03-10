@@ -57,7 +57,7 @@
                                         <td align="center">
 
                                             <a href="{{ path('admin_product_edit', {'id': product.id}) }}" class="btn btn-warning"><em class="fa fa-edit"></em></a>
-                                            <a href="#myModal" class="btn btn-danger" data-toggle="modal" data-whatever="{{ path('admin_product_delete', {'id': product.id}) }}"><em class="fa fa-trash-o"></em></a>
+                                            <a href="#myModal" class="btn btn-danger" data-toggle="modal" data-productPath="{{ path('admin_product_delete', {'id': product.id}) }}"><em class="fa fa-trash-o"></em></a>
                                         </td>
 
                                     </tr>

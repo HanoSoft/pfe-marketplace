@@ -28,9 +28,6 @@ function alertInput(input,container,help,alertIcon,limit){
         else if (input==="quantity"){quantity=1;}
         check();
 
-
-
-
     }
 }
 
@@ -91,17 +88,49 @@ $(".quantity").on('input',function() {
 
 $('#myModal').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) ;// Button that triggered the modal
-    var id= button.data('whatever'); // Extract info from data-* attributes
-    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+    var id= button.data('productPath'); // Extract info from data-* attributes
+
     var modal = $(this);
 
     modal.find('#delete').attr("href",id);
 
-
 });
 
+/*product Size*/
+var sizeName=0;
+function alertSize(input,container,help,alertIcon,limit){
 
+    var  size=$("."+input).val();
 
+    if (size.length <limit)
+    {
+        $('.'+container).addClass('has-warning has-feedback');
+        $('#'+help).removeClass('sr-only');
+        $('#'+alertIcon).addClass('glyphicon-warning-sign').removeClass('glyphicon-ok');
+        sizeName=0;
+        checkSize();
+    }
 
+    else{
+        $('.'+container).addClass('has-success has-feedback');
+        $('#'+help).addClass('sr-only');
+        $('#'+alertIcon).addClass('glyphicon-ok').removeClass('glyphicon-warning-sign');
+        sizeName=1;
+        checkSize();
 
+    }
+}
+
+function checkSize(){
+    if(sizeName>0 ){
+        $('#btnAddSize').removeClass('disabled');
+    }
+    else{
+        $('#btnAddSize').addClass('disabled');
+    }
+
+}
+
+$(".size").on('input',function() {
+    alertSize('size','containerSize','sizeHelp','sizeAlertIcon',1);
+});

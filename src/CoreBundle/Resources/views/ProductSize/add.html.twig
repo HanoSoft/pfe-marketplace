@@ -14,19 +14,22 @@
 
 
             </div>
-            <div class="form-body">
+            <div class="form-body ">
 
                 {{ form_start(form,{'attr': {'class': 'form-horizontal'}}) }}
                 {{ form_errors(form) }}
 
 
 
-                <div class="form-group">
+                <div class="form-group containerSize">
                     <label  class="col-sm-2 control-label">Taille :</label>
                     <div class="col-sm-9">
-                        {{ form_widget(form.size, {'attr': {'class': 'form-control','placeholder':'Description','rows':'10','cols':'100'}}) }}
-
+                        {{ form_widget(form.size, {'attr': {'class': 'form-control size','placeholder':'Taille'}}) }}
+                        <span id="sizeHelp" class="help-block sr-only">
+                            taille doit contenir 1 caractére au min.
+                            </span>
                     </div>
+                    <span class="glyphicon " id="sizeAlertIcon"></span>
                 </div>
 
                 <div class="form-group">
@@ -38,15 +41,13 @@
 
 
 
-
-                    <button class="btn btn-warning col-md-offset-9" type="submit"><span class="fa fa-plus-circle"> </span> Ajouter</button>
+                    <button id="btnAddSize" class="btn btn-warning col-md-offset-9 disabled" type="submit" ><span class="fa fa-plus-circle"> </span> Ajouter</button>
                     <a href="{{ path('admin_product_image_add', {'id': product.id}) }}" class="btn btn-primary " type=><span class="fa fa-check-square-o"> </span> Passer</a>
 
 
 
                 {{ form_rest(form) }}
                 {{ form_end(form) }}
-
 
 
 
