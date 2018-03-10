@@ -36,6 +36,10 @@ class Color
      */
     private $deleted=false;
 
+    /**
+     *@ORM\OneToMany(targetEntity="CoreBundle\Entity\Product",mappedBy="color")
+     * @ORM\JoinColumn(nullable=false)
+     */
 
     /**
      * Get id
