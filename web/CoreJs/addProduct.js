@@ -171,32 +171,6 @@ function checkImage() {
     }
 }
 
-function alertFile(input,container,help,alertIcon) {
-
-    var size = $("." + input);
-
-    var ext = size.value.match(/\.(.+)$/)[1];
-    switch (ext) {
-        case 'jpg':
-        case 'jpeg':
-        case 'png':
-        case 'gif': {
-
-            alert(file);
-            break;
-        }
-        default: {
-            $('.' + container).addClass('has-warning has-feedback');
-            $('#' + help).removeClass('sr-only');
-            $('#' + alertIcon).addClass('glyphicon-warning-sign').removeClass('glyphicon-ok');
-            file = 0;
-
-        }
-    }
-}
-
-
-
 $(".labelImage").on('input',function() {
     alertImage('labelImage','containerLabelImage','LabelImageHelp','LabelImageAlertIcon',1);
 });
