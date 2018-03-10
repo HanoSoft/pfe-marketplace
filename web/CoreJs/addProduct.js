@@ -142,18 +142,15 @@ function alertImage(input,container,help,alertIcon,limit){
 
     var  size=$("."+input).val();
 
-    if (size.length <limit)
-    {
-        $('.'+container).addClass('has-warning has-feedback');
-        $('#'+help).removeClass('sr-only');
-        $('#'+alertIcon).addClass('glyphicon-warning-sign').removeClass('glyphicon-ok');
+    if (size.length <limit) {
+        $('.' + container).addClass('has-warning has-feedback');
+        $('#' + help).removeClass('sr-only');
+        $('#' + alertIcon).addClass('glyphicon-warning-sign').removeClass('glyphicon-ok');
 
-       label=0;
-
-
+        label = 0;
         checkImage();
-    }
 
+    }
     else{
         $('.'+container).addClass('has-success has-feedback');
         $('#'+help).addClass('sr-only');
@@ -164,6 +161,7 @@ function alertImage(input,container,help,alertIcon,limit){
         checkImage();
     }
 }
+
 function checkImage() {
     if (label > 0 ) {
         $('#btnAddImage').removeClass('disabled');
@@ -173,9 +171,64 @@ function checkImage() {
     }
 }
 
+function alertFile(input,container,help,alertIcon) {
+
+    var size = $("." + input);
+
+    var ext = size.value.match(/\.(.+)$/)[1];
+    switch (ext) {
+        case 'jpg':
+        case 'jpeg':
+        case 'png':
+        case 'gif': {
+            $('.' + container).addClass('has-success has-feedback');
+            $('#' + help).addClass('sr-only');
+            $('#' + alertIcon).addClass('glyphicon-ok').removeClass('glyphicon-warning-sign');
+            file=1;
+            alert(file);
+            break;
+        }
+        default: {
+            $('.' + container).addClass('has-warning has-feedback');
+            $('#' + help).removeClass('sr-only');
+            $('#' + alertIcon).addClass('glyphicon-warning-sign').removeClass('glyphicon-ok');
+            file = 0;
+
+        }
+    }
+}
+
+
+
 $(".labelImage").on('input',function() {
     alertImage('labelImage','containerLabelImage','LabelImageHelp','LabelImageAlertIcon',1);
 });
 
 
+
+// validate the file
+var a=0;
+//binds to onchange event of your input field
+$('.fileImage').bind('change', function() {
+
+    var ext = $('.fileImage').val().split('.').pop().toLowerCase();
+    if ($.inArray(ext, ['gif','png','jpg','jpeg']) === -1){
+        $('#fileHelp' ).removeClass('sr-only');
+
+        a=0;
+    }else{
+        var picsize = (this.files[0].size);
+        if (picsize > 1000000){
+            $('#fileHelp').slideDown("slow");
+            a=0;
+        }else{
+            a=1;
+            $('#fileHelp').slideUp("slow");
+        }
+        $('#fileHelp').slideUp("slow");
+        if (a===1){
+
+        }
+    }
+});
 
