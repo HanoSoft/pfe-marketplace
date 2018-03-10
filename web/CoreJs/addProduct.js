@@ -13,6 +13,7 @@ function alertInput(input,container,help,alertIcon,limit){
         }
         else if (input==="details"){details=0;}
         else if (input==="quantity"){quantity=0;}
+        check();
 
     }
     else{
@@ -49,12 +50,22 @@ $('.price').on('input',function () {
     price=$('.price').val();
 
     if($.isNumeric(price)){
-    $('#priceHelp').addClass('sr-only');
-    price=1;
+        $('#priceHelp').addClass('sr-only');
+
+        $('.containerPrice').addClass('has-warning has-feedback');
+
+        $('#priceAlertIcon').addClass('glyphicon-ok').removeClass('glyphicon-warning-sign');
+
+
+        price=1;
+
         check();
     }
     else{
         $('#priceHelp').removeClass('sr-only');
+        $('.containerPrice').addClass('has-warning has-feedback');
+
+        $('#priceAlertIcon').addClass('glyphicon-warning-sign').removeClass('glyphicon-ok');
         price=0;
 
     }
