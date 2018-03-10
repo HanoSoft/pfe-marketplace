@@ -21,11 +21,15 @@
 
 
 
-                <div class="form-group">
+                <div class="form-group containerLabelImage">
                     <label  class="col-sm-2 control-label">label</label>
                     <div class="col-sm-9">
-                        {{ form_widget(form.label, {'attr': {'class': 'form-control','placeholder':'Nom De Produit'}}) }}
+                        {{ form_widget(form.label, {'attr': {'class': 'form-control labelImage ','placeholder':'Nom image'}}) }}
+                        <span id="LabelImageHelp" class="help-block sr-only">
+                           le nom doit contenir au minimum 2 caractere.
+                            </span>
                     </div>
+                    <span class="glyphicon " id="LabelImageAlertIcon"></span>
                 </div>
 
                 <div class="form-group">

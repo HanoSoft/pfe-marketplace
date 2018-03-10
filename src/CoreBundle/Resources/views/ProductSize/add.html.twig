@@ -26,7 +26,7 @@
                     <div class="col-sm-9">
                         {{ form_widget(form.size, {'attr': {'class': 'form-control size','placeholder':'Taille'}}) }}
                         <span id="sizeHelp" class="help-block sr-only">
-                            taille doit contenir 1 caractére au min.
+                            la taille de produit doit contenir au minimum 1 caractère.
                             </span>
                     </div>
                     <span class="glyphicon " id="sizeAlertIcon"></span>
@@ -35,7 +35,7 @@
                 <div class="form-group">
                     <label  class="col-sm-2 control-label">Type :</label>
                     <div class="col-sm-9">
-                        {{ form_widget(form.type, {'attr': {'class': 'form-control','placeholder':'Description','rows':'10','cols':'100'}}) }}
+                        {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
                     </div>
                 </div>
 
@@ -49,10 +49,16 @@
                 {{ form_rest(form) }}
                 {{ form_end(form) }}
 
-
-
-
             </div>
+
+            {% if app.session.flashBag.has('success') %}
+                <div class="alert alert-success">
+                    {% for msg in app.session.flashBag.get('success') %}
+                        {{ msg }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+
         </div>
     </div>
 {% endblock %}
