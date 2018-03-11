@@ -13,6 +13,9 @@ use Symfony\Component\HttpFoundation\Request;
 use CoreBundle\Entity\Product;
 use CoreBundle\Form\ProductType;
 use CoreBundle\Entity\ProductSize;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpFoundation\Response;
+
 class ProductController extends Controller
 {
     public function indexAction()
@@ -47,7 +50,7 @@ class ProductController extends Controller
             ->getManager()->
             getRepository('CoreBundle:Product');
             $products = $repository->getAllProducts(false);
-
+        $form = $this->get('form.factory')->create();
 
         /**
          * @var $paginator\knp\component\Pager\Paginator
@@ -61,6 +64,33 @@ class ProductController extends Controller
 
         return $this->render('CoreBundle:Product:index.html.twig', array(
             'products' => $pagination,
+            'form'   => $form->createView(),
             ));
     }
+
+    public function deleteAction(Request $request,$id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $product = $em->getRepository('CoreBundle:Product')->find($id);
+
+        if (null === $product) {
+            throw new NotFoundHttpException("L'article  ".$id." n'existe pas.");
+        }
+
+        $form = $this->get('form.factory')->create();
+
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+            $product->setDeleted(true);
+
+            $em->flush();
+
+            return $this->redirectToRoute('admin_product_show');
+        }
+        return $this->render('CoreBundle:Product:delete.html.twig', array(
+            'product' => $product,
+            'form'   => $form->createView(),
+        ));
+
+    }
+
 }

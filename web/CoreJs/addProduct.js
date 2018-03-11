@@ -1,3 +1,17 @@
+//code modal js
+$('#myModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) ;// Button that triggered the modal
+    var id= button.data('wathever'); // Extract info from data-* attributes
+
+    var modal = $(this);
+
+    modal.find('#form').attr("action",id);
+
+
+});
+// end modal
+
+//methode fir the help
 var name,details,quantity,price =0;
 function alertInput(input,container,help,alertIcon,limit){
 
@@ -80,19 +94,6 @@ $(".details").on('input',function() {
 });
 $(".quantity").on('input',function() {
     alertInput('quantity','containerQuantity','quantityHelp','quantityAlertIcon',1);
-
-});
-
-
-//code modal js
-
-$('#myModal').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget) ;// Button that triggered the modal
-    var id= button.data('productPath'); // Extract info from data-* attributes
-
-    var modal = $(this);
-
-    modal.find('#delete').attr("href",id);
 
 });
 

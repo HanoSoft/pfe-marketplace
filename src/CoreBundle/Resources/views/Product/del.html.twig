@@ -1,0 +1,11 @@
+{{ product.productName }}
+
+<form action="{{ path('admin_product_delete', {'id': product.id}) }}" method="post">
+
+    <input type="submit" value="Supprimer" class="btn btn-danger" />
+    {{ form_rest(form) }}
+
+</form>
+
+
+</div>
