@@ -29,14 +29,15 @@
                             {{ form_widget(form.name, {'attr': {'class': 'form-control categoryName','placeholder':'Nom Du Catégorie'}}) }}
 
                             <span id="categoryHelp" class="help-block sr-only">
-                            le nom de categorie doit contenir au minimum 2 caractères.
+                            le nom de la catégorie doit contenir au minimum 2 caractères.
                             </span>
 
                         </div>
                         <span class="glyphicon " id="categoryAlertIcon"></span>
                     </div>
 
-                    <button class="btn btn-warning col-md-offset-10 disabled" type="submit" id="btnAdd"><span class="fa fa-plus-circle"> </span> Ajouter</button>
+                    <button class="btn btn-warning col-md-offset-10 disabled" type="submit" 
+                    id="btnAdd"><span class="fa fa-plus-circle"> </span> Ajouter</button>
 
                     
 
@@ -53,12 +54,3 @@
     </div>
 
 {% endblock %}
-
-
-
-
-
-
-
-
- 

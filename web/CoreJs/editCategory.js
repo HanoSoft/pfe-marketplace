@@ -10,7 +10,6 @@ function alertInput(input,container,help,alertIcon,limit){
  
             name=0;
             check();
-
     }
     else{
         $('.'+container).addClass('has-success has-feedback');
@@ -19,17 +18,15 @@ function alertInput(input,container,help,alertIcon,limit){
         
             name=1;
             check();
-
-
     }
 }
 
 function check(){
     if(name>0){
-        $('#btnAdd').removeClass('disabled');
+    $('#btnEdit').removeClass('disabled');
     }
     else{
-        $('#btnAdd').addClass('disabled');
+    $('#btnEdit').addClass('disabled');
     }
 
 }
