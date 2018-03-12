@@ -1,3 +1,6 @@
 services:
     CoreBundle\DataFixtures\ORM\LoadProduct:
         tags: [doctrine.fixture.orm]
+
+    CoreBundle\DataFixtures\ORM\LoadColor:
+        tags: [doctrine.fixture.orm]

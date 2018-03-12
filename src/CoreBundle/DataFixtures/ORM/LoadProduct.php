@@ -28,7 +28,7 @@ class LoadProduct implements FixtureInterface
             $category->setName($name);
             $category->setDeleted(false);
             $manager->persist($category);
-
+/*
             for ($i=0;$i<10;$i++){
                 $product=new Product();
                 $product->setCategory($category);
@@ -38,8 +38,9 @@ class LoadProduct implements FixtureInterface
                 $product->setProductDetails('description de produit'. $i);
                 $product->setQuantity(120);
                 $product->setDeleted(false);
+                
                 $manager->persist($product);
-            }
+            }*/
         }
 
 
