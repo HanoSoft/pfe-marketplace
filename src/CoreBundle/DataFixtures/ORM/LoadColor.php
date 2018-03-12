@@ -1,6 +1,5 @@
 <?php
 
-
 namespace CoreBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
@@ -14,15 +13,8 @@ class LoadColor implements FixtureInterface
     public function load(ObjectManager $manager)
     {
    
-        
-      
+   
         $manager->flush();
-
-
-
-
-
-
 
          $names = array(
             'Rouge',
