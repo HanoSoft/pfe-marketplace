@@ -1,3 +1,17 @@
+//code modal js
+$('#myModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) ;// Button that triggered the modal
+    var id= button.data('wathever'); // Extract info from data-* attributes
+
+    var modal = $(this);
+
+    modal.find('#form').attr("action",id);
+
+
+});
+// end modal
+
+//methode fir the help
 var name,details,quantity,price =0;
 function alertInput(input,container,help,alertIcon,limit){
 
@@ -27,9 +41,6 @@ function alertInput(input,container,help,alertIcon,limit){
         else if (input==="details"){details=1;}
         else if (input==="quantity"){quantity=1;}
         check();
-
-
-
 
     }
 }
@@ -86,22 +97,123 @@ $(".quantity").on('input',function() {
 
 });
 
+/*product Size*/
+var sizeName=0;
+function alertSize(input,container,help,alertIcon,limit){
 
-//code modal js
+    var  size=$("."+input).val();
 
-$('#myModal').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget) ;// Button that triggered the modal
-    var id= button.data('whatever'); // Extract info from data-* attributes
-    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-    var modal = $(this);
+    if (size.length <limit)
+    {
+        $('.'+container).addClass('has-warning has-feedback');
+        $('#'+help).removeClass('sr-only');
+        $('#'+alertIcon).addClass('glyphicon-warning-sign').removeClass('glyphicon-ok');
+        sizeName=0;
+        checkSize();
+    }
 
-    modal.find('#delete').attr("href",id);
+    else{
+        $('.'+container).addClass('has-success has-feedback');
+        $('#'+help).addClass('sr-only');
+        $('#'+alertIcon).addClass('glyphicon-ok').removeClass('glyphicon-warning-sign');
+        sizeName=1;
+        checkSize();
+
+    }
+}
+
+function checkSize(){
+    if(sizeName>0 ){
+        $('#btnAddSize').removeClass('disabled');
+    }
+    else{
+        $('#btnAddSize').addClass('disabled');
+    }
+
+}
 
 
+$(".size").on('input',function() {
+    alertSize('size','containerSize','sizeHelp','sizeAlertIcon',1);
+});
+
+// chek the image
+var label=0;
+function alertImage(input,container,help,alertIcon,limit){
+
+    var  size=$("."+input).val();
+
+    if (size.length <limit) {
+        $('.' + container).addClass('has-warning has-feedback');
+        $('#' + help).removeClass('sr-only');
+        $('#' + alertIcon).addClass('glyphicon-warning-sign').removeClass('glyphicon-ok');
+
+        label = 0;
+        checkImage();
+
+    }
+    else{
+        $('.'+container).addClass('has-success has-feedback');
+        $('#'+help).addClass('sr-only');
+        $('#'+alertIcon).addClass('glyphicon-ok').removeClass('glyphicon-warning-sign');
+
+        if (input==="labelImage"){label=1;}
+
+        checkImage();
+    }
+}
+
+function checkImage() {
+    if (label >0 && file>0 ) {
+        $('#btnAddImage').removeClass('disabled');
+    }
+    else {
+        $('#btnAddImage').addClass('disabled');
+    }
+}
+
+$(".labelImage").on('input',function() {
+    alertImage('labelImage','containerLabelImage','LabelImageHelp','LabelImageAlertIcon',1);
 });
 
 
 
+// validate the file
+var file=0;
+//binds to onchange event of your input field
+$('.fileImage').bind('change', function() {
 
+    var ext = $('.fileImage').val().split('.').pop().toLowerCase();
+    if ($.inArray(ext, ['gif','png','jpg','jpeg']) === -1){
+
+        $('#fileSize').slideUp("slow");
+        $('#fileHelp').slideDown("slow");
+        $('#fileHelp' ).removeClass('sr-only');
+        $('.conainerFile').addClass('has-warning has-feedback');
+        $('#fileAlertIcon').addClass('glyphicon-warning-sign').removeClass('glyphicon-ok');
+
+        file=0;
+        checkImage();
+    }
+    else{
+        var picsize = (this.files[0].size);
+        if (picsize > 1000000){
+            $('#fileHelp').slideUp("slow");
+            $('#fileSize').slideDown("slow");
+            $('#fileSize' ).removeClass('sr-only');
+            $('.conainerFile').addClass('has-warning has-feedback');
+            $('#fileAlertIcon').addClass('glyphicon-warning-sign').removeClass('glyphicon-ok');
+            file=0;
+            checkImage();
+        }else{
+            file=1;
+            $('#fileHelp').slideUp("slow");
+            $('#fileSize').slideUp("slow");
+            $('.conainerFile').addClass('has-success has-feedback');
+            $('#fileAlertIcon').addClass('glyphicon-ok').removeClass('glyphicon-warning-sign');
+            checkImage();
+        }
+
+    }
+});
 

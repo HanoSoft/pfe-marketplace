@@ -1,4 +1,4 @@
-var name=0;
+/*var name=0;
 function alertInput(input,container,help,alertIcon,limit){
 
     var  prod=$("."+input).val();
@@ -33,3 +33,4 @@ function check(){
 
 $(".categoryName").on('input',function() {
     alertInput('categoryName','containerCategory','categoryHelp','categoryAlertIcon',2);});
+    */

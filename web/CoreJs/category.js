@@ -1,5 +1,5 @@
 var name=0;
-function alertInput(input,container,help,alertIcon,limit){
+function alertInputCateg(input,container,help,alertIcon,limit){
 
     var  prod=$("."+input).val();
     if (prod.length <limit)
@@ -35,4 +35,4 @@ function check(){
 }
 
 $(".categoryName").on('input',function() {
-    alertInput('categoryName','containerCategory','categoryHelp','categoryAlertIcon',2);});
+    alertInputCateg('categoryName','containerCategory','categoryHelp','categoryAlertIcon',2);});
