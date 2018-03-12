@@ -1,5 +1,5 @@
+{% extends "CoreBundle:Category:layout.html.twig" %} 
 
-{% extends "AdminBundle::adminLayout.html.twig" %} 
 
 {% block content %}
 
@@ -21,15 +21,23 @@
                     {{ form_errors(form) }}
 
                     
+                    
+                    <div class="form-group containerCategory">
 
-                    <div class="form-group">
                         <label  class="col-sm-2 control-label">Catégorie</label>
                         <div class="col-sm-9">
-                            {{ form_widget(form.name, {'attr': {'class': 'form-control','placeholder':'Nom Du Catégorie'}}) }}
+                            {{ form_widget(form.name, {'attr': {'class': 'form-control categoryName','placeholder':'Nom Du Catégorie'}}) }}
+
+                            <span id="categoryHelp" class="help-block sr-only">
+                            le nom de la catégorie doit contenir au minimum 2 caractères.
+                            </span>
+
                         </div>
+                        <span class="glyphicon " id="categoryAlertIcon"></span>
                     </div>
 
-                    <button class="btn btn-warning col-md-offset-10" type="submit"><span class="fa fa-plus-circle"> </span> Ajouter</button>
+                    <button class="btn btn-warning col-md-offset-10 disabled" type="submit" 
+                    id="btnAdd"><span class="fa fa-plus-circle"> </span> Ajouter</button>
 
                     
 
@@ -45,13 +53,9 @@
         </div>
     </div>
 
+{% block js%}
+
+{{ parent() }}
 {% endblock %}
 
-
-
-
-
-
-
-
- 
+{% endblock %}
