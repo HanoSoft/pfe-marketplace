@@ -1,4 +1,4 @@
-{% extends "AdminBundle::adminLayout.html.twig" %}
+{% extends "CoreBundle:Product:layout.html.twig" %}
 
 {% block content %}
     {{ parent() }}
@@ -97,7 +97,9 @@
 
 {#modal start#}
     {{ include("CoreBundle:Product:delete.html.twig") }}
-
+    {% block js %}
+        {{ parent() }}
+    {% endblock %}
 
 
 
