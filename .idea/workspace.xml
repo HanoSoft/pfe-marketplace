@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="147a269a-7d8a-4ce3-a8b2-fee3ec9c69d7" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/web/CoreJs/Image/delete.js" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/CoreBundle/Controller/ImageController.php" afterPath="$PROJECT_DIR$/src/CoreBundle/Controller/ImageController.php" />
-      <change beforePath="$PROJECT_DIR$/src/CoreBundle/Controller/ProductController.php" afterPath="$PROJECT_DIR$/src/CoreBundle/Controller/ProductController.php" />
-      <change beforePath="$PROJECT_DIR$/src/CoreBundle/Resources/config/routing.yml" afterPath="$PROJECT_DIR$/src/CoreBundle/Resources/config/routing.yml" />
-      <change beforePath="$PROJECT_DIR$/src/CoreBundle/Resources/views/Image/edit.html.twig" afterPath="$PROJECT_DIR$/src/CoreBundle/Resources/views/Image/edit.html.twig" />
-      <change beforePath="$PROJECT_DIR$/src/CoreBundle/Resources/views/Product/delete.html.twig" afterPath="$PROJECT_DIR$/src/CoreBundle/Resources/views/Product/delete.html.twig" />
-      <change beforePath="$PROJECT_DIR$/src/CoreBundle/Resources/views/Product/edit.html.twig" afterPath="$PROJECT_DIR$/src/CoreBundle/Resources/views/Product/edit.html.twig" />
-      <change beforePath="$PROJECT_DIR$/src/CoreBundle/Resources/views/Product/index.html.twig" afterPath="$PROJECT_DIR$/src/CoreBundle/Resources/views/Product/index.html.twig" />
-      <change beforePath="$PROJECT_DIR$/web/CoreJs/editImage.js" afterPath="$PROJECT_DIR$/web/CoreJs/Image/editImage.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -40,7 +31,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ImageController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ImageController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CoreBundle/Controller/ImageController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="437">
@@ -83,10 +74,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Product/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1691">
+            <state relative-caret-position="589">
               <caret line="100" column="53" lean-forward="false" selection-start-line="100" selection-start-column="53" selection-end-line="100" selection-end-column="53" />
               <folding />
             </state>
@@ -455,12 +446,12 @@
       <workItem from="1520784342652" duration="4529000" />
       <workItem from="1520843215051" duration="3158000" />
       <workItem from="1520850177856" duration="8534000" />
-      <workItem from="1520865865339" duration="3104000" />
+      <workItem from="1520865865339" duration="4277000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="208296000" />
+    <option name="totallyTimeSpent" value="209469000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -807,26 +798,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Product/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1691">
-          <caret line="100" column="53" lean-forward="false" selection-start-line="100" selection-start-column="53" selection-end-line="100" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Product/edit.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="235">
           <caret line="19" column="34" lean-forward="false" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Product/delete.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="20" column="43" lean-forward="false" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="43" />
           <folding />
         </state>
       </provider>
@@ -849,6 +824,22 @@
             <element signature="e#2145#2163#1#PHP" expanded="true" />
             <element signature="e#2623#2660#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Product/delete.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="20" column="43" lean-forward="false" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Product/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="589">
+          <caret line="100" column="53" lean-forward="false" selection-start-line="100" selection-start-column="53" selection-end-line="100" selection-end-column="53" />
+          <folding />
         </state>
       </provider>
     </entry>
