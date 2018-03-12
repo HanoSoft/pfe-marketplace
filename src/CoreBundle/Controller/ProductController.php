@@ -53,7 +53,7 @@ class ProductController extends Controller
             ->getManager()->
             getRepository('CoreBundle:Product');
             $products = $repository->getAllProducts(false);
-        $form = $this->get('form.factory')->create();
+        $formDelete = $this->get('form.factory')->create();
 
         /**
          * @var $paginator\knp\component\Pager\Paginator
@@ -67,7 +67,7 @@ class ProductController extends Controller
 
         return $this->render('CoreBundle:Product:index.html.twig', array(
             'products' => $pagination,
-            'form'   => $form->createView(),
+            'formDelete'   => $formDelete->createView(),
 
             ));
     }
@@ -81,9 +81,9 @@ class ProductController extends Controller
             throw new NotFoundHttpException("L'article  ".$id." n'existe pas.");
         }
 
-        $form = $this->get('form.factory')->create();
+        $formDelete = $this->get('form.factory')->create();
 
-        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+        if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
             $product->setDeleted(true);
             $images=$product->getImages();
             $sizes=$product->getSizes();
@@ -101,7 +101,7 @@ class ProductController extends Controller
         }
         return $this->render('CoreBundle:Product:delete.html.twig', array(
             'product' => $product,
-            'form'   => $form->createView(),
+            'formDelete'   => $formDelete->createView(),
 
         ));
 
@@ -115,7 +115,7 @@ class ProductController extends Controller
         $sizes=$product->getSizes();
         $images=$product->getImages();
         $form = $this->get('form.factory')->create(ProductEditType::class, $product);
-
+        $formDelete = $this->get('form.factory')->create();
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
 
             $em->flush();
@@ -125,6 +125,7 @@ class ProductController extends Controller
         return $this->render('CoreBundle:Product:edit.html.twig', array(
             'product' => $product,
             'form'   => $form->createView(),
+            'formDelete'   => $formDelete->createView(),
             'sizes'  => $sizes,
             'images'  => $images,
 

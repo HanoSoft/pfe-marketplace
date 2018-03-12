@@ -118,23 +118,39 @@
                             <p>Nom : {{ image.label }}</p>
                         </div>
                     <a href="{{ path('admin_product_image_edit', {'id': image.id}) }}" class="btn btn-success"><span class="fa fa-edit"> </span> Modifier</a>
-                    <a class="btn btn-danger"><span class="fa fa-trash-o"> </span> Supprimer</a>
+                    <a href="#myModal" class="btn btn-danger" data-toggle="modal" data-wathever="{{ path('admin_product_image_delete', {'id': image.id}) }}" ><em class="fa fa-trash-o"></em></a>
+
                 </div>
             </div>
 
     {% endfor %}
         </div>
 
+    <div class="row">
+
+        {%  for size in sizes %}
 
 
 
 
-    
+            <div class="col-md-3">
+                {{ size.size }}
+                    <a href="{{ path('admin_product_image_edit', {'id': size.id}) }}" class="btn btn-success"><span class="fa fa-edit"> </span> Modifier</a>
+                    <a class="btn btn-danger"><span class="fa fa-trash-o"> </span> Supprimer</a>
+            </div>
+
+        {% endfor %}
+    </div>
+
+
+
+    {{ include("CoreBundle:Product:delete.html.twig") }}
     
     
     
     {% block js %}
         {{ parent() }}
+        <script src="{{ asset('CoreJs/Image/delete.js') }}"></script>
     {% endblock %}
 
 {% endblock %}

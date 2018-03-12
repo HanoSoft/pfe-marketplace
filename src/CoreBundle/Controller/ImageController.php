@@ -15,6 +15,8 @@ use CoreBundle\Form\ImageType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 class ImageController extends Controller
 {
     public function addAction($id, Request $request){
@@ -59,6 +61,32 @@ class ImageController extends Controller
             'form'   => $form->createView(),
 
         ));
+    }
+
+    public function deleteAction(Request $request,$id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $image = $em->getRepository('CoreBundle:Image')->find($id);
+
+        if (null === $image) {
+            throw new NotFoundHttpException("L'image  ".$id." n'existe pas.");
+        }
+
+        $formDelete = $this->get('form.factory')->create();
+
+        if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
+            $image->setDeleted(true);
+
+            $em->flush();
+
+            return $this->redirectToRoute('admin_product_show');
+        }
+        return $this->render('CoreBundle:Product:delete.html.twig', array(
+            'image' => $image,
+            'formDelete'   => $formDelete->createView(),
+
+        ));
+
     }
 
 }

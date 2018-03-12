@@ -61,13 +61,13 @@ admin_color_add:
     path:     /admin/color/add
     defaults: { _controller: CoreBundle:Color:add }
 admin_product_image_edit:
-    path:     /admin/product/image/{id}
+    path:     /admin/product/image/edit/{id}
     defaults:
             _controller: CoreBundle:Image:edit
             requirements:
             id: \d+
 admin_product_image_delete:
-    path:     /admin/product/image/{id}
+    path:     /admin/product/image/delete/{id}
     defaults:
             _controller: CoreBundle:Image:delete
             requirements:

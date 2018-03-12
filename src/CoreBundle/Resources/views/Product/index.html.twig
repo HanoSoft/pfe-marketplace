@@ -98,7 +98,7 @@
 {#modal start#}
     {{ include("CoreBundle:Product:delete.html.twig") }}
     {% block js %}
-        {{ parent() }}
+       <script src="{{ asset('CoreJs/Product/modal.js') }}"></script>
     {% endblock %}
 
 
