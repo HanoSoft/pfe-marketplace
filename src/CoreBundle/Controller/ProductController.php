@@ -8,6 +8,7 @@
 
 namespace CoreBundle\Controller;
 
+use CoreBundle\Form\ProductEditType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use CoreBundle\Entity\Product;
@@ -105,5 +106,25 @@ class ProductController extends Controller
         ));
 
     }
+
+    public function editAction($id, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $product = $em->getRepository('CoreBundle:Product')->find($id);
+        $form = $this->get('form.factory')->create(ProductEditType::class, $product);
+
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+
+            $em->flush();
+            return $this->redirectToRoute('admin_product_show');
+        }
+
+        return $this->render('CoreBundle:Product:edit.html.twig', array(
+            'product' => $product,
+            'form'   => $form->createView(),
+        ));
+    }
+
 
 }
