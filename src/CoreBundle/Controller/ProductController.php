@@ -46,6 +46,8 @@ class ProductController extends Controller
 
     public function showAction(Request $request)
     {
+
+
             $repository = $this->getDoctrine()
             ->getManager()->
             getRepository('CoreBundle:Product');
@@ -65,6 +67,7 @@ class ProductController extends Controller
         return $this->render('CoreBundle:Product:index.html.twig', array(
             'products' => $pagination,
             'form'   => $form->createView(),
+
             ));
     }
 
@@ -81,14 +84,19 @@ class ProductController extends Controller
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $product->setDeleted(true);
+            $images=$product->getImages();
+             foreach ( $image as $images){
 
-            $em->flush();
+            }
+
+           $em->flush();
 
             return $this->redirectToRoute('admin_product_show');
         }
         return $this->render('CoreBundle:Product:delete.html.twig', array(
             'product' => $product,
             'form'   => $form->createView(),
+
         ));
 
     }
