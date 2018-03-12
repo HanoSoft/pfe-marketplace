@@ -1,4 +1,4 @@
-{% extends "AdminBundle::adminLayout.html.twig" %}
+{% extends "CoreBundle:Product:layout.html.twig" %}
 
 {% block content %}
 
@@ -101,5 +101,9 @@
             </div>
         </div>
     </div>
+    {% block js %}
+     {{ parent() }}
+    {% endblock %}
+
 {% endblock %}
 

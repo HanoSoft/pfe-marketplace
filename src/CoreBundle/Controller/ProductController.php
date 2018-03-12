@@ -85,7 +85,7 @@ class ProductController extends Controller
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $product->setDeleted(true);
             $images=$product->getImages();
-             foreach ( $image as $images){
+             foreach ( $images as $image){
 
             }
 
