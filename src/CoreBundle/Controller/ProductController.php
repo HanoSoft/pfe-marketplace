@@ -85,9 +85,13 @@ class ProductController extends Controller
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $product->setDeleted(true);
             $images=$product->getImages();
-            $size=$product->getSizes();
+            $sizes=$product->getSizes();
             foreach ( $images as $image){
                 $image->setDeleted(true);
+            }
+
+            foreach ( $sizes as $size){
+                $size->setDeleted(true);
             }
 
            $em->flush();
