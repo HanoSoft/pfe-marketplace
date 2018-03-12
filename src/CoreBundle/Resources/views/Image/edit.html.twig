@@ -1,0 +1,60 @@
+{% extends "CoreBundle:Product:layout.html.twig" %}
+
+{% block content %}
+
+    {{ parent() }}
+
+
+
+    <div class=" form-grids row form-grids-right">
+        <div class="widget-shadow " data-example-id="basic-forms">
+
+            <div class="form-title form-header">
+
+                <h4>Modifier Image</h4>
+
+
+            </div>
+            <div class="form-body">
+
+                {{ form_start(form,{'attr': {'class': 'form-horizontal'}}) }}
+                {{ form_errors(form) }}
+
+
+                <div class="form-group containerLabelImage">
+                    <label  class="col-sm-2 control-label">label</label>
+                    <div class="col-sm-9">
+                        {{ form_widget(form.label, {'attr': {'class': 'form-control labelImage ','placeholder':'Nom image'}}) }}
+                        <span id="LabelImageHelp" class="help-block sr-only">
+                           le nom doit contenir au minimum 2 caractere.
+                            </span>
+                    </div>
+                    <span class="glyphicon " id="LabelImageAlertIcon"></span>
+                </div>
+
+
+
+
+
+
+                <button id="btnAddImage" class="btn btn-warning col-md-offset-9 " type="submit"><span class="fa fa-plus-circle"> </span> Ajouter</button>
+
+
+
+
+                {{ form_rest(form) }}
+                {{ form_end(form) }}
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+    {% block js %}
+        {{ parent() }}
+    {% endblock %}
+
+{% endblock %}
+
