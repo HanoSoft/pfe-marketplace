@@ -60,3 +60,15 @@ admin_color_show:
 admin_color_add:
     path:     /admin/color/add
     defaults: { _controller: CoreBundle:Color:add }
+admin_product_image_edit:
+    path:     /admin/product/image/{id}
+    defaults:
+            _controller: CoreBundle:Image:edit
+            requirements:
+            id: \d+
+admin_product_image_delete:
+    path:     /admin/product/image/{id}
+    defaults:
+            _controller: CoreBundle:Image:delete
+            requirements:
+            id: \d+

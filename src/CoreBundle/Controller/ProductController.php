@@ -112,6 +112,8 @@ class ProductController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $product = $em->getRepository('CoreBundle:Product')->find($id);
+        $sizes=$product->getSizes();
+        $images=$product->getImages();
         $form = $this->get('form.factory')->create(ProductEditType::class, $product);
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
@@ -123,6 +125,9 @@ class ProductController extends Controller
         return $this->render('CoreBundle:Product:edit.html.twig', array(
             'product' => $product,
             'form'   => $form->createView(),
+            'sizes'  => $sizes,
+            'images'  => $images,
+
         ));
     }
 

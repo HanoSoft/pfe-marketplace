@@ -101,6 +101,38 @@
             </div>
         </div>
     </div>
+
+
+    <div class="row">
+    
+    {%  for image in images %}
+
+
+
+
+            <div class="col-md-3">
+                <div class="thumbnail">
+
+                        <img src="{{ asset('uploads/productImage/'~ image.name ) }}">
+                        <div class="caption">
+                            <p>Nom : {{ image.label }}</p>
+                        </div>
+                    <a href="{{ path('admin_product_image_edit', {'id': image.id}) }}" class="btn btn-success"><span class="fa fa-edit"> </span> Modifier</a>
+                    <a class="btn btn-danger"><span class="fa fa-trash-o"> </span> Supprimer</a>
+                </div>
+            </div>
+
+    {% endfor %}
+        </div>
+
+
+
+
+
+    
+    
+    
+    
     {% block js %}
         {{ parent() }}
     {% endblock %}
