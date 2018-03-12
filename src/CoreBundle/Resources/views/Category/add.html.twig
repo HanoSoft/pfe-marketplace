@@ -1,5 +1,5 @@
+{% extends "CoreBundle:Category:layout.html.twig" %} 
 
-{% extends "AdminBundle::adminLayout.html.twig" %} 
 
 {% block content %}
 
@@ -52,6 +52,10 @@
             </div>
         </div>
     </div>
-<script src="{{ asset('CoreJs/category.js') }}"> </script>
+
+{% block js%}
+
+{{ parent() }}
+{% endblock %}
 
 {% endblock %}

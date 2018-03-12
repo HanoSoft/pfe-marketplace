@@ -1,0 +1,11 @@
+{% extends "AdminBundle::adminLayout.html.twig" %} 
+
+	{% block content %}
+
+		
+		{{ parent() }}
+		
+		{%block js%}
+		<script src="{{ asset('CoreJs/category.js') }}"> </script>
+		{% endblock %}
+	{% endblock%}
