@@ -6,6 +6,7 @@ use AdminBundle\Form\CategoryType;
 use Symfony\Component\HttpFoundation\Request;
 use CoreBundle\Entity\Category;
 use AdminBundle\Form\CategoryEditType;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class CategoryController extends Controller
 {
@@ -29,7 +30,7 @@ class CategoryController extends Controller
     {
             $repository = $this->getDoctrine()
             ->getManager()->
-            getRepository('AdminBundle:Category');
+            getRepository('CoreBundle:Category');
             $category = $repository->getAllCategories(false);
         /**
          * @var $paginator\knp\component\Pager\Paginator
@@ -49,10 +50,11 @@ class CategoryController extends Controller
          public function editAction($id, Request $request)
   {
               $em = $this->getDoctrine()->getManager();
-              $category = $em->getRepository('AdminBundle:Category')->find($id);
+              $category = $em->getRepository('CoreBundle:Category')->find($id);
               $form = $this->get('form.factory')->create(CategoryEditType::class, $category);
 
                if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+
               $em->flush();
                 return $this->redirectToRoute('admin_category_show');}
                  return $this->render('AdminBundle:Category:edit.html.twig', array(
