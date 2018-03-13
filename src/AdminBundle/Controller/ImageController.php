@@ -24,7 +24,7 @@ class ImageController extends Controller
         $em = $this->getDoctrine()->getManager();
         $image = new Image();
         $form = $this->get('form.factory')->create(ImageType::class, $image);
-        $product = $em->getRepository('AdminBundle:Product')->find($id);
+        $product = $em->getRepository('CoreBundle:Product')->find($id);
         $image->setProduct($product);
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
@@ -47,7 +47,7 @@ class ImageController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $image = $em->getRepository('AdminBundle:Image')->find($id);
+        $image = $em->getRepository('CoreBundle:Image')->find($id);
         $form = $this->get('form.factory')->create(ImageEditType::class, $image);
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {

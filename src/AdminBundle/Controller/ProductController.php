@@ -71,7 +71,7 @@ class ProductController extends Controller
     public function deleteAction(Request $request,$id)
     {
         $em = $this->getDoctrine()->getManager();
-        $product = $em->getRepository('AdminBundle:Product')->find($id);
+        $product = $em->getRepository('CoreBundle:Product')->find($id);
 
         if (null === $product) {
             throw new NotFoundHttpException("L'article  ".$id." n'existe pas.");
@@ -101,7 +101,7 @@ class ProductController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $product = $em->getRepository('AdminBundle:Product')->find($id);
+        $product = $em->getRepository('CoreBundle:Product')->find($id);
         $sizes=$product->getSizes();
         $images=$product->getImages();
         $form = $this->get('form.factory')->create(ProductEditType::class, $product);

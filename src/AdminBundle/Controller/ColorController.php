@@ -11,7 +11,7 @@ class ColorController extends Controller
     {
               $repository = $this->getDoctrine()
               ->getManager()->
-              getRepository('AdminBundle:Color');
+              getRepository('CoreBundle:Color');
               $color = $repository->getAllColors(false);
 
           /**
