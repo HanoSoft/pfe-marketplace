@@ -1,13 +1,10 @@
 <?php
-
-
 namespace AdminBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AdminBundle\Form\ColorType;
 use Symfony\Component\HttpFoundation\Request;
 use CoreBundle\Entity\Color;
 use AdminBundle\Form\ColorEditType;
-
 class ColorController extends Controller
 {
         public function showAction(Request $request)
@@ -31,19 +28,12 @@ class ColorController extends Controller
             'colors' => $pagination,
             ));
     }
-
-
         public function addAction(Request $request)
         {
             $color = new Color();
 
-
         $form   = $this->get('form.factory')->create(ColorType::class, $color);
-
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-            
-
-
             $em = $this->getDoctrine()->getManager();
             $em->persist($color);
             $em->flush();
