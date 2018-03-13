@@ -1,3 +1,4 @@
+// validate the add form
 var name=0;
 function alertInput(input,container,help,alertIcon,limit){
 
@@ -10,7 +11,6 @@ function alertInput(input,container,help,alertIcon,limit){
  
             name=0;
             check();
-
     }
     else{
         $('.'+container).addClass('has-success has-feedback');
@@ -19,11 +19,8 @@ function alertInput(input,container,help,alertIcon,limit){
         
             name=1;
             check();
-
-
     }
 }
-
 function check(){
     if(name>0){
         $('#btnAdd').removeClass('disabled');
@@ -31,8 +28,8 @@ function check(){
     else{
         $('#btnAdd').addClass('disabled');
     }
-
 }
-
 $(".categoryName").on('input',function() {
     alertInput('categoryName','containerCategory','categoryHelp','categoryAlertIcon',2);});
+
+
