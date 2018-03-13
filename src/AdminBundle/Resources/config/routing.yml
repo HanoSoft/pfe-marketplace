@@ -9,72 +9,74 @@ admin_category_show:
 
 admin_category_add:
     path:     /admin/category/add
-    defaults: { _controller: CoreBundle:Category:add }
+    defaults: { _controller: AdminBundle:Category:add }
 
 admin_category_edit:
     path:     /admin/category/edit/{id}
     defaults:
-            _controller: CoreBundle:Category:edit
+            _controller: AdminBundle:Category:edit
             requirements:
             id: \d+
 
 admin_category_delete:
     path:     /admin/category/delete/{id}
     defaults:
-            _controller: CoreBundle:Category:delete
+            _controller: AdminBundle:Category:delete
             requirements:
             id: \d+
 
 admin_product_show:
     path:     /admin/product
-    defaults: { _controller: CoreBundle:Product:show }
+    defaults: { _controller: AdminBundle:Product:show }
 
 admin_product_add:
     path:     /admin/product/add
-    defaults: { _controller: CoreBundle:Product:add }
+    defaults: { _controller: AdminBundle:Product:add }
 
 admin_product_edit:
     path:     /admin/product/edit/{id}
     defaults:
-            _controller: CoreBundle:Product:edit
+            _controller: AdminBundle:Product:edit
             requirements:
             id: \d+
 
 admin_product_delete:
     path:     /admin/product/delete/{id}
     defaults:
-            _controller: CoreBundle:Product:delete
+            _controller: AdminBundle:Product:delete
             requirements:
             id: \d+
 admin_product_image_add:
     path:     /admin/product/image/add/{id}
     defaults:
-            _controller: CoreBundle:Image:add
+            _controller: AdminBundle:Image:add
             requirements:
             id: \d+
 admin_product_size_add:
     path:     /admin/product/size/add/{id}
     defaults:
-            _controller: CoreBundle:ProductSize:add
+            _controller: AdminBundle:ProductSize:add
             requirements:
             id: \d+
 admin_color_show:
     path:     /admin/color
-    defaults: { _controller: CoreBundle:Color:show }
+    defaults: { _controller: AdminBundle:Color:show }
 
 admin_color_add:
     path:     /admin/color/add
-    defaults: { _controller: CoreBundle:Color:add }
+    defaults: { _controller: AdminBundle:Color:add }
+
 admin_product_image_edit:
     path:     /admin/product/image/edit/{id}
     defaults:
-            _controller: CoreBundle:Image:edit
+            _controller: AdminBundle:Image:edit
             requirements:
             id: \d+
+            
 admin_product_image_delete:
     path:     /admin/product/image/delete/{id}
     defaults:
-            _controller: CoreBundle:Image:delete
+            _controller: AdminBundle:Image:delete
             requirements:
             id: \d+
 
