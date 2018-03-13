@@ -5,14 +5,13 @@
  * Date: 03/03/2018
  * Time: 12:42
  */
+namespace AdminBundle\Controller;
 
-namespace CoreBundle\Controller;
-
-use CoreBundle\Form\ProductEditType;
+use AdminBundle\Form\ProductEditType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use CoreBundle\Entity\Product;
-use CoreBundle\Form\ProductType;
+use AdminBundle\Form\ProductType;
 use CoreBundle\Entity\ProductSize;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,7 +20,7 @@ class ProductController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('CoreBundle:Product:index.html.twig');
+        return $this->render('AdminBundle:Product:index.html.twig');
     }
 
     public function addAction(Request $request)
@@ -39,7 +38,7 @@ class ProductController extends Controller
             $id=$product->getId();
             return $this->redirectToRoute('admin_product_size_add',array('id' => $id));
          }
-        return $this->render('CoreBundle:Product:add.html.twig', array(
+        return $this->render('AdminBundle:Product:add.html.twig', array(
             'form' => $form->createView(),
         ));
 
@@ -47,11 +46,9 @@ class ProductController extends Controller
 
     public function showAction(Request $request)
     {
-
-
             $repository = $this->getDoctrine()
             ->getManager()->
-            getRepository('CoreBundle:Product');
+            getRepository('AdminBundle:Product');
             $products = $repository->getAllProducts(false);
         $formDelete = $this->get('form.factory')->create();
 
@@ -65,17 +62,16 @@ class ProductController extends Controller
             $request->query->getInt('limit',5)
         );
 
-        return $this->render('CoreBundle:Product:index.html.twig', array(
+        return $this->render('AdminBundle:Product:index.html.twig', array(
             'products' => $pagination,
             'formDelete'   => $formDelete->createView(),
 
             ));
     }
-
     public function deleteAction(Request $request,$id)
     {
         $em = $this->getDoctrine()->getManager();
-        $product = $em->getRepository('CoreBundle:Product')->find($id);
+        $product = $em->getRepository('AdminBundle:Product')->find($id);
 
         if (null === $product) {
             throw new NotFoundHttpException("L'article  ".$id." n'existe pas.");
@@ -90,39 +86,31 @@ class ProductController extends Controller
             foreach ( $images as $image){
                 $image->setDeleted(true);
             }
-
             foreach ( $sizes as $size){
                 $size->setDeleted(true);
             }
-
            $em->flush();
-
             return $this->redirectToRoute('admin_product_show');
         }
-        return $this->render('CoreBundle:Product:delete.html.twig', array(
+        return $this->render('AdminBundle:Product:delete.html.twig', array(
             'product' => $product,
             'formDelete'   => $formDelete->createView(),
-
         ));
-
     }
-
     public function editAction($id, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $product = $em->getRepository('CoreBundle:Product')->find($id);
+        $product = $em->getRepository('AdminBundle:Product')->find($id);
         $sizes=$product->getSizes();
         $images=$product->getImages();
         $form = $this->get('form.factory')->create(ProductEditType::class, $product);
         $formDelete = $this->get('form.factory')->create();
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-
             $em->flush();
             return $this->redirectToRoute('admin_product_show');
         }
-
-        return $this->render('CoreBundle:Product:edit.html.twig', array(
+        return $this->render('AdminBundle:Product:edit.html.twig', array(
             'product' => $product,
             'form'   => $form->createView(),
             'formDelete'   => $formDelete->createView(),

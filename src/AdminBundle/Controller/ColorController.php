@@ -1,12 +1,12 @@
 <?php
 
 
-namespace CoreBundle\Controller;
+namespace AdminBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use CoreBundle\Form\ColorType;
+use AdminBundle\Form\ColorType;
 use Symfony\Component\HttpFoundation\Request;
 use CoreBundle\Entity\Color;
-use CoreBundle\Form\ColorEditType;
+use AdminBundle\Form\ColorEditType;
 
 class ColorController extends Controller
 {
@@ -14,7 +14,7 @@ class ColorController extends Controller
     {
               $repository = $this->getDoctrine()
               ->getManager()->
-              getRepository('CoreBundle:Color');
+              getRepository('AdminBundle:Color');
               $color = $repository->getAllColors(false);
 
           /**
@@ -27,7 +27,7 @@ class ColorController extends Controller
               $request->query->getInt('limit',5)
         );
 
-        return $this->render('CoreBundle:Color:index.html.twig', array(
+        return $this->render('AdminBundle:Color:index.html.twig', array(
             'colors' => $pagination,
             ));
     }
@@ -50,7 +50,7 @@ class ColorController extends Controller
             return $this->redirectToRoute('admin_color_show');
 
         }
-        return $this->render('CoreBundle:Color:add.html.twig', array(
+        return $this->render('AdminBundle:Color:add.html.twig', array(
             'form' => $form->createView(),
         ));    }
 

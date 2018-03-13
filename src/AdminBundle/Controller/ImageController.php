@@ -6,12 +6,12 @@
  * Time: 10:40
  */
 
-namespace CoreBundle\Controller;
+namespace AdminBundle\Controller;
 
 
 use CoreBundle\Entity\Image;
-use CoreBundle\Form\ImageEditType;
-use CoreBundle\Form\ImageType;
+use AdminBundle\Form\ImageEditType;
+use AdminBundle\Form\ImageType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -24,7 +24,7 @@ class ImageController extends Controller
         $em = $this->getDoctrine()->getManager();
         $image = new Image();
         $form = $this->get('form.factory')->create(ImageType::class, $image);
-        $product = $em->getRepository('CoreBundle:Product')->find($id);
+        $product = $em->getRepository('AdminBundle:Product')->find($id);
         $image->setProduct($product);
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
@@ -38,7 +38,7 @@ class ImageController extends Controller
             return $this->redirectToRoute('admin_product_image_add',array('id' => $id));
         }
 
-        return $this->render('CoreBundle:Image:add.html.twig', array(
+        return $this->render('AdminBundle:Image:add.html.twig', array(
             'form' => $form->createView(),
         ));
     }
@@ -47,7 +47,7 @@ class ImageController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $image = $em->getRepository('CoreBundle:Image')->find($id);
+        $image = $em->getRepository('AdminBundle:Image')->find($id);
         $form = $this->get('form.factory')->create(ImageEditType::class, $image);
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
@@ -56,7 +56,7 @@ class ImageController extends Controller
             return $this->redirectToRoute('admin_product_show');
         }
 
-        return $this->render('CoreBundle:Image:edit.html.twig', array(
+        return $this->render('AdminBundle:Image:edit.html.twig', array(
             'image' => $image,
             'form'   => $form->createView(),
 
