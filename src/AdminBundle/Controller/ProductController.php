@@ -43,7 +43,6 @@ class ProductController extends Controller
         ));
 
     }
-
     public function showAction(Request $request)
     {
             $repository = $this->getDoctrine()
