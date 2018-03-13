@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Hamdi
- * Date: 06/03/2018
- * Time: 10:40
- */
 
 namespace AdminBundle\Controller;
-
 
 use CoreBundle\Entity\Image;
 use AdminBundle\Form\ImageEditType;
