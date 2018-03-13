@@ -15,7 +15,6 @@ class ProductEditType extends AbstractType
     {
 
     }
-
     public function getParent()
     {
         return ProductType::class;
