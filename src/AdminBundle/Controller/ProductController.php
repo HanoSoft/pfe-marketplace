@@ -16,6 +16,7 @@ use CoreBundle\Entity\ProductSize;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\Response;
 
+
 class ProductController extends Controller
 {
     public function indexAction()
@@ -47,7 +48,7 @@ class ProductController extends Controller
     {
             $repository = $this->getDoctrine()
             ->getManager()->
-            getRepository('AdminBundle:Product');
+            getRepository('CoreBundle:Product');
             $products = $repository->getAllProducts(false);
         $formDelete = $this->get('form.factory')->create();
 

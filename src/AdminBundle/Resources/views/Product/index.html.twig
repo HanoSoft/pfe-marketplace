@@ -1,4 +1,4 @@
-{% extends "CoreBundle:Product:layout.html.twig" %}
+{% extends "AdminBundle::adminLayout.html.twig" %}
 
 {% block content %}
     {{ parent() }}
@@ -96,7 +96,7 @@
     </div>
 
 {#modal start#}
-    {{ include("CoreBundle:Product:delete.html.twig") }}
+    {{ include("AdminBundle:Product:delete.html.twig") }}
     {% block js %}
        <script src="{{ asset('CoreJs/Product/modal.js') }}"></script>
     {% endblock %}
