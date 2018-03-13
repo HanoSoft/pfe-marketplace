@@ -53,7 +53,6 @@ class CategoryController extends Controller
               $form = $this->get('form.factory')->create(CategoryEditType::class, $category);
 
                if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-                // Inutile de persister ici, Doctrine connait déjà notre annonce
               $em->flush();
                 return $this->redirectToRoute('admin_category_show');}
                  return $this->render('AdminBundle:Category:edit.html.twig', array(
