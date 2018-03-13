@@ -3,6 +3,80 @@ admin_homepage:
     defaults: { _controller: AdminBundle:Admin:index }
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+admin_category_show:
+    path:     /admin/category
+    defaults: { _controller: AdminBundle:Category:show }
+
+admin_category_add:
+    path:     /admin/category/add
+    defaults: { _controller: CoreBundle:Category:add }
+
+admin_category_edit:
+    path:     /admin/category/edit/{id}
+    defaults:
+            _controller: CoreBundle:Category:edit
+            requirements:
+            id: \d+
+
+admin_category_delete:
+    path:     /admin/category/delete/{id}
+    defaults:
+            _controller: CoreBundle:Category:delete
+            requirements:
+            id: \d+
+
+admin_product_show:
+    path:     /admin/product
+    defaults: { _controller: CoreBundle:Product:show }
+
+admin_product_add:
+    path:     /admin/product/add
+    defaults: { _controller: CoreBundle:Product:add }
+
+admin_product_edit:
+    path:     /admin/product/edit/{id}
+    defaults:
+            _controller: CoreBundle:Product:edit
+            requirements:
+            id: \d+
+
+admin_product_delete:
+    path:     /admin/product/delete/{id}
+    defaults:
+            _controller: CoreBundle:Product:delete
+            requirements:
+            id: \d+
+admin_product_image_add:
+    path:     /admin/product/image/add/{id}
+    defaults:
+            _controller: CoreBundle:Image:add
+            requirements:
+            id: \d+
+admin_product_size_add:
+    path:     /admin/product/size/add/{id}
+    defaults:
+            _controller: CoreBundle:ProductSize:add
+            requirements:
+            id: \d+
+admin_color_show:
+    path:     /admin/color
+    defaults: { _controller: CoreBundle:Color:show }
+
+admin_color_add:
+    path:     /admin/color/add
+    defaults: { _controller: CoreBundle:Color:add }
+admin_product_image_edit:
+    path:     /admin/product/image/edit/{id}
+    defaults:
+            _controller: CoreBundle:Image:edit
+            requirements:
+            id: \d+
+admin_product_image_delete:
+    path:     /admin/product/image/delete/{id}
+    defaults:
+            _controller: CoreBundle:Image:delete
+            requirements:
+            id: \d+
 
 
 

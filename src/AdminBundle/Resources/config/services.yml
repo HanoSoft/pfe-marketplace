@@ -1,3 +1,5 @@
 services:
     AdminBundle\DataFixtures\ORM\LoadUser:
         tags: [doctrine.fixture.orm]
+    CoreBundle\DataFixtures\ORM\LoadProduct:
+            tags: [doctrine.fixture.orm]
