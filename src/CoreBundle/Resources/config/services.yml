@@ -1,10 +1,4 @@
 services:
-<<<<<<< HEAD
 
-=======
-    CoreBundle\DataFixtures\ORM\LoadProduct:
-        tags: [doctrine.fixture.orm]
 
-    CoreBundle\DataFixtures\ORM\LoadColor:
-        tags: [doctrine.fixture.orm]
->>>>>>> b9c03711c8b05de44f4b961c945b228b8709eef7
+

@@ -1,5 +1,7 @@
 services:
     AdminBundle\DataFixtures\ORM\LoadUser:
         tags: [doctrine.fixture.orm]
-    CoreBundle\DataFixtures\ORM\LoadProduct:
+    AdminBundle\DataFixtures\ORM\LoadProduct:
             tags: [doctrine.fixture.orm]
+    AdminBundle\DataFixtures\ORM\LoadColor:
+                tags: [doctrine.fixture.orm]
