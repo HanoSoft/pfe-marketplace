@@ -25,9 +25,9 @@ admin_category_delete:
             requirements:
             id: \d+
 
-admin_product_show:
-    path:     /admin/product
-    defaults: { _controller: AdminBundle:Product:show }
+admin_product_list:
+    path:     /admin/products
+    defaults: { _controller: AdminBundle:Product:list }
 
 admin_product_add:
     path:     /admin/product/add

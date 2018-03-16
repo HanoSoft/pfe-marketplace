@@ -57,8 +57,12 @@ class ProductManager  implements AbstractRepository
         // TODO: Implement delete() method.
     }
 
-    public function getAll()
+    public function getAll($value)
     {
-        // TODO: Implement getAll() method.
+        $qb = $this->repository->createQueryBuilder('p');
+        $qb
+            ->where('p.deleted = :deleted')
+            ->setParameter('deleted', $value) ;
+        return $qb;
     }
 }

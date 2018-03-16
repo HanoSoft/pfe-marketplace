@@ -28,7 +28,7 @@ class ProductController extends Controller
     {
         $form = $this->createForm(ProductType::class);
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-            $manager = $this->container->get('core.service.product.manager');
+            $manager = $this->get('core.service.product.manager');
             $manager->add($form);
             return $this->redirectToRoute('admin_product_show');
         }
@@ -52,14 +52,19 @@ class ProductController extends Controller
 
     }
 
-    public function showAction(Request $request)
+    public function listAction(Request $request)
     {
-        $repository = $this->getDoctrine()
-            ->getManager()->
-            getRepository('CoreBundle:Product');
-        $products = $repository->getAllProducts(false);
+        $manager = $this->get('core.service.product.manager');
+        $products=$manager->getAll(false);
         $formDelete = $this->get('form.factory')->create();
 
+     /*   $repository = $this->getDoctrine()
+            ->getManager()->
+            getRepository('CoreBundle:Product');
+        $products = $repository->findAll();
+ $formDelete = $this->get('form.factory')->create();
+
+*/
         /**
          * @var $paginator\knp\component\Pager\Paginator
          */
