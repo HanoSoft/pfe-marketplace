@@ -33,19 +33,6 @@ class ProductController extends Controller
             return $this->redirectToRoute('admin_product_show');
         }
 
-        /*
-        $product = new Product();
-        $form = $this->get('form.factory')->create(ProductType::class, $product);
-        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-
-            $product->setDeleted(false);
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($product);
-            $em->flush();
-            $id=$product->getId();
-            return $this->redirectToRoute('admin_product_size_add',array('id' => $id));
-         }
-        */
         return $this->render('AdminBundle:Product:add.html.twig', array(
             'form' => $form->createView(),
         ));
