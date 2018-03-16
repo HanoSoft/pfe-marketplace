@@ -45,13 +45,6 @@ class ProductController extends Controller
         $products=$manager->getAll(false);
         $formDelete = $this->get('form.factory')->create();
 
-     /*   $repository = $this->getDoctrine()
-            ->getManager()->
-            getRepository('CoreBundle:Product');
-        $products = $repository->findAll();
- $formDelete = $this->get('form.factory')->create();
-
-*/
         /**
          * @var $paginator\knp\component\Pager\Paginator
          */

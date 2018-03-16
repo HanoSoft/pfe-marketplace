@@ -1,43 +1,30 @@
 {% extends "AdminBundle::adminLayout.html.twig" %}
 
+{% block css %}
+{{ parent() }}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css"/>
+{% endblock %}
 {% block content %}
     {{ parent() }}
 
 
     <div class="container-fluid">
         <div class="row">
-            <div class="">
 
-                <div class="panel panel-primary  panel-table" >
-                    <div class="panel-heading" style="color:#FFFFFF; height: 70px;">
-                        <div class="row" >
+            <table id="exemple" class="display" style="width:100%">
+                <thead>
+                <tr>
+                    <th class="hidden-xs">ID</th>
+                    <th>Produit</th>
 
-                            <div class="col col-xs-6">
-                                <h3 class="panel-title">Consulter produit</h3>
-                            </div>
-
-                            <div class="col col-xs-6 text-right" >
-                                <a href="{{ path('admin_product_add') }}" type="button" class="btn btn-success btn-md "><span class="fa fa-plus"> </span> </a>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="panel-body table-responsive" >
-                        <table class="table table-striped table-bordered table-list">
-                            <thead>
-                            <tr>
-
-                                <th class="hidden-xs">{{ knp_pagination_sortable(products, 'Id', 'p.id') }}</th>
-                                <th>{{ knp_pagination_sortable(products, 'Produit', 'p.productName') }}</th>
-
-                                <th>{{ knp_pagination_sortable(products, 'Prix', 'p.price') }}</th>
-                                <th>{{ knp_pagination_sortable(products, 'Quantité', 'p.quantity') }}</th>
-                                <th>{{ knp_pagination_sortable(products, 'Couleur', 'p.productColor') }}</th>
-                                <th> Taille </th>
-                                <th><em class="fa fa-cog"></em></th>
-
+                    <th>Prix</th>
+                    <th>Quantité</th>
+                    <th>Couleur</th>
+                    <th> Taille </th>
+                    <th><em class="fa fa-cog"></em></th>
                             </tr>
                             </thead>
+
                             <tbody >
                                 {% for product in products %}
                                     <tr>
@@ -67,39 +54,20 @@
                             </tbody>
 
                         </table>
-
-                    </div>
-                    <div class="panel-footer">
-                        <div class="row">
-
-                            <div class="col-md-offset-3">
-
-                                {# display navigation #}
-                                <div class="navigation">
-                                    {{ knp_pagination_render(products) }}
-                                </div>
-
-                            </div>
-                            <div class="count">
-                                {{ products.getTotalItemCount }}
-
-                            </div>
+        </div></div>
 
 
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-    </div>
 
 {#modal start#}
     {{ include("AdminBundle:Product:delete.html.twig") }}
     {% block js %}
-       <script src="{{ asset('CoreJs/Product/modal.js') }}"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js"></script>
+        
+        <script>$(document).ready( function () {
+                $('#exemple').DataTable();
+            } );</script>
     {% endblock %}
+
 
 
 
