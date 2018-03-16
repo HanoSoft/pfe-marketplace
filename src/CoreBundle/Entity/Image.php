@@ -72,7 +72,7 @@ class Image
 
     public function getUploadDir()
     {
-             return 'uploads/productImage';
+             return 'uploads/product';
     }
 
     protected function getUploadRootDir()
