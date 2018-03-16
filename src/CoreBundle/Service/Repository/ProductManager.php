@@ -63,6 +63,6 @@ class ProductManager  implements AbstractRepository
         $qb
             ->where('p.deleted = :deleted')
             ->setParameter('deleted', $value) ;
-        return $qb;
+        return $qb->getQuery()->getResult();
     }
 }

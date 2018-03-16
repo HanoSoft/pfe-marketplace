@@ -10,18 +10,16 @@
 
     <div class="container-fluid">
         <div class="row">
-
             <table id="exemple" class="display" style="width:100%">
                 <thead>
-                <tr>
-                    <th class="hidden-xs">ID</th>
-                    <th>Produit</th>
-
-                    <th>Prix</th>
-                    <th>Quantité</th>
-                    <th>Couleur</th>
-                    <th> Taille </th>
-                    <th><em class="fa fa-cog"></em></th>
+                    <tr>
+                        <th class="hidden-xs">ID</th>
+                        <th>Produit</th>
+                        <th>Prix</th>
+                        <th>Quantité</th>
+                        <th>Couleur</th>
+                        <th> Taille </th>
+                        <th><em class="fa fa-cog"></em></th>
                             </tr>
                             </thead>
 
@@ -62,7 +60,7 @@
     {{ include("AdminBundle:Product:delete.html.twig") }}
     {% block js %}
         <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js"></script>
-        
+
         <script>$(document).ready( function () {
                 $('#exemple').DataTable();
             } );</script>

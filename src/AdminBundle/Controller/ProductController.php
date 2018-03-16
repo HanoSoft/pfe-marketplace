@@ -32,35 +32,24 @@ class ProductController extends Controller
             $manager->add($form);
             return $this->redirectToRoute('admin_product_show');
         }
-
         return $this->render('AdminBundle:Product:add.html.twig', array(
             'form' => $form->createView(),
         ));
-
     }
-
     public function listAction(Request $request)
     {
         $manager = $this->get('core.service.product.manager');
         $products=$manager->getAll(false);
         $formDelete = $this->get('form.factory')->create();
-
-        /**
-         * @var $paginator\knp\component\Pager\Paginator
-         */
-        $paginator=$this->get('knp_paginator');
-        $pagination=$paginator->paginate(
-            $products,
-            $request->query->getInt('page',1),
-            $request->query->getInt('limit',5)
-        );
-
         return $this->render('AdminBundle:Product:index.html.twig', array(
-            'products' => $pagination,
+            'products' => $products,
             'formDelete'   => $formDelete->createView(),
-
         ));
     }
+
+
+
+    
     public function deleteAction(Request $request,$id)
     {
         $em = $this->getDoctrine()->getManager();
