@@ -26,10 +26,16 @@ class ProductController extends Controller
 
     public function addAction(Request $request)
     {
+        $form = $this->createForm(ProductType::class);
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+            $manager = $this->container->get('core.service.product.manager');
+            $manager->add($form);
+            return $this->redirectToRoute('admin_product_show');
+        }
+
+        /*
         $product = new Product();
         $form = $this->get('form.factory')->create(ProductType::class, $product);
-       
-
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
 
             $product->setDeleted(false);
@@ -39,24 +45,26 @@ class ProductController extends Controller
             $id=$product->getId();
             return $this->redirectToRoute('admin_product_size_add',array('id' => $id));
          }
+        */
         return $this->render('AdminBundle:Product:add.html.twig', array(
             'form' => $form->createView(),
         ));
 
     }
+
     public function showAction(Request $request)
     {
-            $repository = $this->getDoctrine()
+        $repository = $this->getDoctrine()
             ->getManager()->
             getRepository('CoreBundle:Product');
-            $products = $repository->getAllProducts(false);
+        $products = $repository->getAllProducts(false);
         $formDelete = $this->get('form.factory')->create();
 
         /**
          * @var $paginator\knp\component\Pager\Paginator
          */
-            $paginator=$this->get('knp_paginator');
-            $pagination=$paginator->paginate(
+        $paginator=$this->get('knp_paginator');
+        $pagination=$paginator->paginate(
             $products,
             $request->query->getInt('page',1),
             $request->query->getInt('limit',5)
@@ -66,7 +74,7 @@ class ProductController extends Controller
             'products' => $pagination,
             'formDelete'   => $formDelete->createView(),
 
-            ));
+        ));
     }
     public function deleteAction(Request $request,$id)
     {
@@ -89,7 +97,7 @@ class ProductController extends Controller
             foreach ( $sizes as $size){
                 $size->setDeleted(true);
             }
-           $em->flush();
+            $em->flush();
             return $this->redirectToRoute('admin_product_show');
         }
         return $this->render('AdminBundle:Product:delete.html.twig', array(

@@ -1,4 +1,6 @@
 services:
-
+    core.service.product.manager:
+        class: CoreBundle\Service\Repository\ProductManager
+        arguments: ['@doctrine.orm.entity_manager',getRepository]
 
 

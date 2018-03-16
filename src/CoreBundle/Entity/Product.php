@@ -47,7 +47,7 @@ class Product
      *
      * @ORM\Column(name="deleted", type="boolean")
      */
-    private $deleted;
+    private $deleted=false;
 
     /**
      *@ORM\OneToMany(targetEntity="CoreBundle\Entity\Image",mappedBy="product")

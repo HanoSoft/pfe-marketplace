@@ -1,6 +1,6 @@
 <?php
 
-
+namespace CoreBundle\Service\Repository;
 
 /**
  * Created by PhpStorm.
