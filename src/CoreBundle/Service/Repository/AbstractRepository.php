@@ -1,4 +1,7 @@
 <?php
+
+
+
 /**
  * Created by PhpStorm.
  * User: Hamdi
@@ -6,7 +9,7 @@
  * Time: 12:00
  */
 Interface AbstractRepository {
-    public function add();
+    public function add($form);
     public function edit();
     public function delete();
     public function getAll();

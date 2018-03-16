@@ -11,10 +11,12 @@ namespace CoreBundle\Service\Repository;
 
 use CoreBundle\Entity\Product;
 use Doctrine\ORM\EntityManager;
+use Elastica\Request;
 
 
 class ProductManager extends RepositoryManager implements \AbstractRepository
 {
+
     public function __construct()
     {   $em=$this->getEntityManager();
         $repository=$em->getRepository(Product::class);
@@ -22,9 +24,12 @@ class ProductManager extends RepositoryManager implements \AbstractRepository
     }
 
 
-    public function add()
+    public function add($form)
     {
-        // TODO: Implement add() method.
+        $em = $this->getEntityManager();
+        $product = new Product();
+        $product = $form->getData();
+        $this->save($product);
     }
 
     public function edit()

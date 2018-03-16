@@ -58,5 +58,9 @@ class RepositoryManager
     {
         $this->repository = $repository;
     }
+    public function save($object){
+        $this->getEntityManager()->persist($object);
+        $this->getEntityManager()->flush();
+    }
 
 }
