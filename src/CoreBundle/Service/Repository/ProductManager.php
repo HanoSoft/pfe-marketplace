@@ -10,14 +10,15 @@ namespace CoreBundle\Service\Repository;
 
 
 use CoreBundle\Entity\Product;
+use Doctrine\ORM\EntityManager;
 
 
 class ProductManager extends RepositoryManager implements \AbstractRepository
 {
     public function __construct()
-    {
-        $repository = $entityManager->getRepository(Product::class);
-        parent::__construct();
+    {   $em=$this->getEntityManager();
+        $repository=$em->getRepository(Product::class);
+        parent::__construct($em,$repository);
     }
 
 

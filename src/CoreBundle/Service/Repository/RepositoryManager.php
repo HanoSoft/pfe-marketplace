@@ -20,6 +20,7 @@ class RepositoryManager
      */
     private $entityManager;
 
+
     public function __construct(EntityManager $entityManager,EntityRepository $repository)
     {
         $this->repository=$repository;
