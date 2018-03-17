@@ -11,6 +11,7 @@ use CoreBundle\Entity\Product;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\OptimisticLockException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 
 class ProductManager  implements AbstractRepository
@@ -27,7 +28,6 @@ class ProductManager  implements AbstractRepository
         $this->repository=$em->getRepository(Product::class);
         $this->em=$em;
     }
-
     /**
      * @param $object
      */
@@ -38,7 +38,6 @@ class ProductManager  implements AbstractRepository
         } catch (OptimisticLockException $e) {
         }
     }
-
     public function add($form)
     {
         $product = new Product();
@@ -46,23 +45,37 @@ class ProductManager  implements AbstractRepository
         $this->save($product);
 
     }
-
-    public function edit()
+    public function edit($form)
     {
         // TODO: Implement edit() method.
     }
-
-    public function delete()
+    public function delete($id)
     {
-        // TODO: Implement delete() method.
+        $product=$this->find($id);
+        if (null === $product) {
+            throw new NotFoundHttpException("le Produit de l'".$id." n'existe pas.");
+        }
+        $product->setDeleted(true);
+        $images=$product->getImages();
+        $sizes=$product->getSizes();
+        foreach ( $images as $image){
+            $image->setDeleted(true);
+        }
+        foreach ( $sizes as $size){
+            $size->setDeleted(true);
+        }
+        $this->save($product);
     }
-
     public function getAll($value)
     {
         $qb = $this->repository->createQueryBuilder('p');
         $qb
             ->where('p.deleted = :deleted')
             ->setParameter('deleted', $value) ;
-        return $qb;
+        return $qb->getQuery()->getResult();
+    }
+    public function find($id)
+    {
+       return $this->repository->find($id);
     }
 }

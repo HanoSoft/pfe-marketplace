@@ -1,18 +1,14 @@
 {% extends "AdminBundle:Admin:index.html.twig" %}
 {% block css %}
     {{ parent() }}
-    <link href="{{ asset('adminCss/formStyle.css') }}" rel='stylesheet' type='text/css'>
 {% endblock  %}
 {% block body %}
     {{ parent() }}
-
     <div id="page-wrapper">
         <div class="main-page">
             {% block content %}
-
             {% endblock %}
         </div>
     </div>
-
 
 {% endblock %}
