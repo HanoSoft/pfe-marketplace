@@ -18,8 +18,8 @@ class ProductController extends Controller
         $form = $this->createForm(ProductType::class);
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $manager = $this->get('core.service.product.manager');
-            $manager->add($form);
-            return $this->redirectToRoute('admin_product_list');
+            $id=$manager->add($form);
+            return $this->redirectToRoute('admin_product_size_add',array('id' => $id));
         }
         return $this->render('AdminBundle:Product:add.html.twig', array(
             'form' => $form->createView(),

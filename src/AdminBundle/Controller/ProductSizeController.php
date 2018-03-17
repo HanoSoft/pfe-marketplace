@@ -1,11 +1,13 @@
 <?php
 
 namespace AdminBundle\Controller;
+
 use AdminBundle\Form\ProductSizeType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use CoreBundle\Entity\ProductSize;
 use Symfony\Component\HttpFoundation\Session\Session;
+
 class ProductSizeController extends Controller
 {
     public function addAction($id, Request $request){
@@ -13,7 +15,7 @@ class ProductSizeController extends Controller
         $em = $this->getDoctrine()->getManager();
         $size = new ProductSize();
         $form = $this->get('form.factory')->create(ProductSizeType::class, $size);
-        $product = $em->getRepository('AdminBundle:Product')->find($id);
+        $product = $em->getRepository('CoreBundle:Product')->find($id);
         $size->setProduct($product);
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {

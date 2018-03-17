@@ -7,12 +7,12 @@
  */
 
 namespace CoreBundle\Service\Repository;
+
 use CoreBundle\Entity\Product;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-
 
 class ProductManager  implements AbstractRepository
 {
@@ -38,12 +38,17 @@ class ProductManager  implements AbstractRepository
         } catch (OptimisticLockException $e) {
         }
     }
+    protected function setDeleted($objects){
+        foreach ( $objects as $object){
+            $object->setDeleted(true);
+        }
+    }
     public function add($form)
     {
         $product = new Product();
         $product = $form->getData();
         $this->save($product);
-
+        return $product->getId();
     }
     public function edit($form)
     {
@@ -58,12 +63,8 @@ class ProductManager  implements AbstractRepository
         $product->setDeleted(true);
         $images=$product->getImages();
         $sizes=$product->getSizes();
-        foreach ( $images as $image){
-            $image->setDeleted(true);
-        }
-        foreach ( $sizes as $size){
-            $size->setDeleted(true);
-        }
+        $this->setDeleted($images);
+        $this->setDeleted($sizes);
         $this->save($product);
     }
     public function getAll($value)

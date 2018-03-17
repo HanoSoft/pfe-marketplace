@@ -2,5 +2,8 @@ services:
     core.service.product.manager:
         class: CoreBundle\Service\Repository\ProductManager
         arguments: ['@doctrine.orm.entity_manager',getRepository]
+    core.service.product.size.manager:
+            class: CoreBundle\Service\Repository\ProductSizeManager
+            arguments: ['@doctrine.orm.entity_manager',getRepository]
 
 
