@@ -10,7 +10,7 @@ namespace CoreBundle\Service\Repository;
  */
 Interface AbstractRepository {
     public function add($form);
-    public function edit();
-    public function delete();
+    public function edit($from);
+    public function delete($form);
     public function getAll($value);
 }

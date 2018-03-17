@@ -27,7 +27,6 @@ class ProductManager  implements AbstractRepository
         $this->repository=$em->getRepository(Product::class);
         $this->em=$em;
     }
-
     /**
      * @param $object
      */
@@ -38,7 +37,6 @@ class ProductManager  implements AbstractRepository
         } catch (OptimisticLockException $e) {
         }
     }
-
     public function add($form)
     {
         $product = new Product();
@@ -46,17 +44,14 @@ class ProductManager  implements AbstractRepository
         $this->save($product);
 
     }
-
-    public function edit()
+    public function edit($form)
     {
         // TODO: Implement edit() method.
     }
-
-    public function delete()
+    public function delete($form)
     {
-        // TODO: Implement delete() method.
-    }
 
+    }
     public function getAll($value)
     {
         $qb = $this->repository->createQueryBuilder('p');

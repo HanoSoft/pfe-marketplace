@@ -1,21 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Hamdi
- * Date: 03/03/2018
- * Time: 12:42
- */
+
 namespace AdminBundle\Controller;
 
 use AdminBundle\Form\ProductEditType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use CoreBundle\Entity\Product;
 use AdminBundle\Form\ProductType;
-use CoreBundle\Entity\ProductSize;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\HttpFoundation\Response;
-
 
 class ProductController extends Controller
 {
@@ -23,7 +14,6 @@ class ProductController extends Controller
     {
         return $this->render('AdminBundle:Product:index.html.twig');
     }
-
     public function addAction(Request $request)
     {
         $form = $this->createForm(ProductType::class);
@@ -49,7 +39,7 @@ class ProductController extends Controller
 
 
 
-    
+
     public function deleteAction(Request $request,$id)
     {
         $em = $this->getDoctrine()->getManager();
