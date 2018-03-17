@@ -1,7 +1,7 @@
 {% extends "AdminBundle::adminLayout.html.twig" %}
 
 {% block css %}
-{{ parent() }}
+    {{ parent() }}
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css"/>
 {% endblock %}
 {% block content %}
@@ -12,52 +12,52 @@
         <div class="row">
             <table id="exemple" class="display" style="width:100%">
                 <thead>
+                <tr>
+                    <th class="hidden-xs">ID</th>
+                    <th>Produit</th>
+                    <th>Prix</th>
+                    <th>Quantité</th>
+                    <th>Couleur</th>
+                    <th> Taille </th>
+                    <th><em class="fa fa-cog"></em></th>
+                </tr>
+                </thead>
+
+                <tbody >
+                {% for product in products %}
                     <tr>
-                        <th class="hidden-xs">ID</th>
-                        <th>Produit</th>
-                        <th>Prix</th>
-                        <th>Quantité</th>
-                        <th>Couleur</th>
-                        <th> Taille </th>
-                        <th><em class="fa fa-cog"></em></th>
-                            </tr>
-                            </thead>
-
-                            <tbody >
-                                {% for product in products %}
-                                    <tr>
 
 
-                                        <td>{{ product.id }}</td>
-                                        <td>{{ product.productName }}</td>
+                        <td>{{ product.id }}</td>
+                        <td>{{ product.productName }}</td>
 
-                                        <td>{{ product.price }}</td>
-                                        <td>{{ product.quantity }}</td>
-                                        <td>{{ product.color.colorName }}</td>
-                                        <td>
-                                            {% for sizes in product.sizes %}
-                                            {{ sizes.size }}
-                                            {% endfor %}
-                                        </td>
-                                        <td align="center">
+                        <td>{{ product.price }}</td>
+                        <td>{{ product.quantity }}</td>
+                        <td>{{ product.color.colorName }}</td>
+                        <td>
+                            {% for sizes in product.sizes %}
+                                {{ sizes.size }}
+                            {% endfor %}
+                        </td>
+                        <td align="center">
 
-                                            <a href="{{ path('admin_product_edit', {'id': product.id}) }}" class="btn btn-warning"><em class="fa fa-edit"></em></a>
-                                            <a href="#myModal" class="btn btn-danger" data-toggle="modal" data-wathever="{{ path('admin_product_delete', {'id': product.id}) }}" ><em class="fa fa-trash-o"></em></a>
+                            <a href="{{ path('admin_product_edit', {'id': product.id}) }}" class="btn btn-warning"><em class="fa fa-edit"></em></a>
+                            <a href="#myModal" class="btn btn-danger" data-toggle="modal" data-wathever="{{ path('admin_product_delete', {'id': product.id}) }}" ><em class="fa fa-trash-o"></em></a>
 
 
-                                        </td>
+                        </td>
 
-                                    </tr>
-                                {% endfor %}
-                            </tbody>
+                    </tr>
+                {% endfor %}
+                </tbody>
 
-                        </table>
+            </table>
         </div></div>
 
 
 
-{#modal start#}
-    {{ include("AdminBundle:Product:delete.html.twig") }}
+    {#modal start#}
+    {{ include("AdminBundle::delete.html.twig") }}
     {% block js %}
         <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js"></script>
 
