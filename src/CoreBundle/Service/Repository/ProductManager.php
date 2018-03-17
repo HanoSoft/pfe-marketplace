@@ -14,7 +14,7 @@ use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class ProductManager  implements AbstractRepository
+class ProductManager extends RepositoryManager implements AbstractRepository
 {
     /**
      * @var EntityRepository
@@ -25,18 +25,9 @@ class ProductManager  implements AbstractRepository
 
     public function __construct(EntityManager $em)
     {
-        $this->repository=$em->getRepository(Product::class);
+        $repository=$em->getRepository(Product::class);
         $this->em=$em;
-    }
-    /**
-     * @param $object
-     */
-    protected function save($object){
-        $this->em->persist($object);
-        try {
-            $this->em->flush();
-        } catch (OptimisticLockException $e) {
-        }
+        parent::__construct($em,$repository);
     }
     protected function setDeleted($objects){
         foreach ( $objects as $object){
@@ -66,17 +57,5 @@ class ProductManager  implements AbstractRepository
         $this->setDeleted($images);
         $this->setDeleted($sizes);
         $this->save($product);
-    }
-    public function getAll($value)
-    {
-        $qb = $this->repository->createQueryBuilder('p');
-        $qb
-            ->where('p.deleted = :deleted')
-            ->setParameter('deleted', $value) ;
-        return $qb->getQuery()->getResult();
-    }
-    public function find($id)
-    {
-       return $this->repository->find($id);
     }
 }

@@ -13,6 +13,7 @@ class ProductController extends Controller
     {
         return $this->render('AdminBundle:Product:index.html.twig');
     }
+
     public function addAction(Request $request)
     {
         $form = $this->createForm(ProductType::class);
