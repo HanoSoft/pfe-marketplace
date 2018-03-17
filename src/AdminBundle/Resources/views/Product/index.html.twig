@@ -6,8 +6,6 @@
 {% endblock %}
 {% block content %}
     {{ parent() }}
-
-
     <div class="container-fluid">
         <div class="row">
             <table id="exemple" class="display" style="width:100%">
@@ -60,7 +58,6 @@
     {{ include("AdminBundle::delete.html.twig") }}
     {% block js %}
         <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js"></script>
-
         <script>$(document).ready( function () {
                 $('#exemple').DataTable();
             } );</script>

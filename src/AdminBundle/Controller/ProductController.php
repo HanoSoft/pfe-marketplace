@@ -62,9 +62,9 @@ class ProductController extends Controller
                 $size->setDeleted(true);
             }
             $em->flush();
-            return $this->redirectToRoute('admin_product_show');
+            return $this->redirectToRoute('admin_product_list');
         }
-        return $this->render('AdminBundle:Product:delete.html.twig', array(
+        return $this->render('AdminBundle::delete.html.twig', array(
             'product' => $product,
             'formDelete'   => $formDelete->createView(),
         ));
