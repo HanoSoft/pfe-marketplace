@@ -6,29 +6,26 @@ $('#myModal').on('show.bs.modal', function (event) {
     modal.find('#form').attr("action",id);
 });
 // form validation
-
-
-    $.validator.setDefaults({
-        highlight: function(element) {
-            $(element).closest('.form-group').removeClass('has-success').addClass('has-warning');
-            $(element).closest('.form-group').find('span.glyphicon').removeClass('glyphicon-ok').addClass('glyphicon-warning-sign');
-            $(element).closest('.form-group').find('span.glyphicon').effect( "slide" );
-        },
-        unhighlight: function(element) {
-            $(element).closest('.form-group').removeClass('has-warning').addClass('has-success');
-            $(element).closest('.form-group').find('span.glyphicon').removeClass('glyphicon-warning-sign').addClass('glyphicon-ok');
-        },
-        errorElement: 'span',
-        errorClass: 'help-block',
-        errorPlacement: function(error, element) {
-            if(element.parent('.input-group').length) {
-                error.insertAfter(element.parent());
+$.validator.setDefaults({
+    highlight: function(element) {
+        $(element).closest('.form-group').removeClass('has-success').addClass('has-warning');
+        $(element).closest('.form-group').find('span.glyphicon').removeClass('glyphicon-ok').addClass('glyphicon-warning-sign');
+        $(element).closest('.form-group').find('span.glyphicon').effect( "slide" );
+    },
+    unhighlight: function(element) {
+        $(element).closest('.form-group').removeClass('has-warning').addClass('has-success');
+        $(element).closest('.form-group').find('span.glyphicon').removeClass('glyphicon-warning-sign').addClass('glyphicon-ok');
+    },
+    errorElement: 'span',
+    errorClass: 'help-block',
+    errorPlacement: function(error, element) {
+        if(element.parent('.input-group').length) {
+            error.insertAfter(element.parent());
             } else {
                 error.insertAfter(element);
             }
         }
     });
-
 $(".form").validate();
 $('.form input').on('keyup blur', function () {
     if ($('.form').valid()) {
