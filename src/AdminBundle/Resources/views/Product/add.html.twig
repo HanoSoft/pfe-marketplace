@@ -1,109 +1,60 @@
 {% extends "AdminBundle::adminLayout.html.twig" %}
 
 {% block content %}
-
     {{ parent() }}
-
-
-
     <div class=" form-grids row form-grids-right">
         <div class="widget-shadow " data-example-id="basic-forms">
-
             <div class="form-title form-header">
-
                 <h4>Ajouter Produit</h4>
-
-
             </div>
                 <div class="form-body">
-
-                    {{ form_start(form,{'attr': {'class': 'form-horizontal'}}) }}
+                    {{ form_start(form,{'attr': {'class': 'form-horizontal form'}}) }}
                     {{ form_errors(form) }}
-
                     <div class="form-group">
                         <label  class="col-sm-2 control-label">Catégorie : <span style="color:#C82829;">*</span></label>
                         <div class="col-sm-9">
                             {{ form_widget(form.category, {'attr': {'class': 'form-control'}}) }}
-
                         </div>
-
                     </div>
-
-                    <div class="form-group prod ">
+                    <div class="form-group has-feedback">
                         <label  class="col-sm-2 control-label">Produit : *</label>
                         <div class="col-sm-9" >
-
-                           {{ form_widget(form.productName, {'attr': {'class': 'form-control productName','placeholder':'Nom De Produit'}}) }}
-
-                            <span id="productHelp" class="help-block sr-only">
-                            le nom de produit doit contenir au minimum 2 caractères.
-                            </span>
+                           {{ form_widget(form.productName, {'attr': {'class': 'form-control','placeholder':'Nom De Produit','minlength':'2'}}) }}
                         </div>
-                        <span class="glyphicon " id="productAlertIcon"></span>
+                        <span class="glyphicon "></span>
                     </div>
-
-                    <div class="form-group containerDetails">
+                    <div class="form-group has-feedback">
                         <label  class="col-sm-2 control-label">Description : *</label>
                         <div class="col-sm-9">
-                            {{ form_widget(form.productDetails, {'attr': {'class': 'form-control details','placeholder':'Description','rows':'10','cols':'100'}}) }}
-                            <span id="detailsHelp" class="help-block sr-only">
-                            la description de produit doit contenir au minimum 5 caractères.
-                            </span>
+                            {{ form_widget(form.productDetails, {'attr': {'class': 'form-control','placeholder':'Description','rows':'10','cols':'100','minlength':'5'}}) }}
                         </div>
-                        <span class="glyphicon " id="detailsAlertIcon"></span>
+                        <span class="glyphicon "></span>
                     </div>
-
-                    <div class="form-group containerDetails">
+                    <div class="form-group has-feedback">
                         <label  class="col-sm-2 control-label">Couleur :</label>
                         <div class="col-sm-9">
                             {{ form_widget(form.color, {'attr': {'class': 'form-control','placeholder':'Couleur'}}) }}
                         </div>
                     </div>
-
-                    <div class="form-group containerQuantity">
+                    <div class="form-group has-feedback">
                         <label  class="col-sm-2 control-label">Quantité : *</label>
                         <div class="col-sm-9">
-                            {{ form_widget(form.quantity, {'attr': {'class': 'form-control quantity','placeholder':'Quantité'}}) }}
-                            <span id="quantityHelp" class="help-block sr-only">
-                            quantité doit contenir 1 caractére au min.
-                            </span>
+                            {{ form_widget(form.quantity, {'attr': {'class': 'form-control','placeholder':'Quantité','minlength':'1'}}) }}
                         </div>
-                        <span class="glyphicon " id="quantityAlertIcon"></span>
+                        <span class="glyphicon"></span>
                     </div>
-
-                    <div class="form-group containerPrice">
+                    <div class="form-group has-feedback">
                         <label  class="col-sm-2 control-label">Prix : *</label>
                         <div class="col-sm-9 ">
-                            {{ form_widget(form.price, {'attr': {'class': 'form-control price','placeholder':'Prix'}}) }}
-                            <span id="priceHelp" class="help-block sr-only">
-                            le prix doit etre de type decimal
-                            </span>
+                            {{ form_widget(form.price, {'attr': {'class': 'form-control number','placeholder':'Prix','minlength':'1'}}) }}
                         </div>
-                        <span class="glyphicon "  id="priceAlertIcon"></span>
+                        <span class="glyphicon " ></span>
                     </div>
-
-
-                    <button class="btn btn-warning col-md-offset-10 " type="submit" id="btn" ><span class="fa fa-plus-circle"> </span> Ajouter</button>
-
-                   {# <button class="btn btn-success"><span class="fa fa-edit"> </span> Modifier</button>
-                    <button class="btn btn-danger"><span class="fa fa-trash-o"> </span> Supprimer</button>
-                    #}
-
-
-
+                    <button class="btn btn-warning col-md-offset-10 " type="submit" disabled="true" ><span class="fa fa-plus-circle"> </span> Ajouter</button>
                     {{ form_rest(form) }}
                     {{ form_end(form) }}
-
-
-
-
-
             </div>
         </div>
     </div>
-    {% block js %}
-     <script src="{{ asset('CoreJs/Product/Product.js') }}"></script>
-    {% endblock %}
-
 {% endblock %}
 
