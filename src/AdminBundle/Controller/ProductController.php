@@ -6,7 +6,6 @@ use AdminBundle\Form\ProductEditType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AdminBundle\Form\ProductType;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ProductController extends Controller
 {
@@ -20,7 +19,7 @@ class ProductController extends Controller
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $manager = $this->get('core.service.product.manager');
             $manager->add($form);
-            return $this->redirectToRoute('admin_product_show');
+            return $this->redirectToRoute('admin_product_list');
         }
         return $this->render('AdminBundle:Product:add.html.twig', array(
             'form' => $form->createView(),
@@ -36,39 +35,20 @@ class ProductController extends Controller
             'formDelete'   => $formDelete->createView(),
         ));
     }
-
-
-
-
     public function deleteAction(Request $request,$id)
     {
-        $em = $this->getDoctrine()->getManager();
-        $product = $em->getRepository('CoreBundle:Product')->find($id);
-
-        if (null === $product) {
-            throw new NotFoundHttpException("L'article  ".$id." n'existe pas.");
-        }
-
         $formDelete = $this->get('form.factory')->create();
-
         if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
-            $product->setDeleted(true);
-            $images=$product->getImages();
-            $sizes=$product->getSizes();
-            foreach ( $images as $image){
-                $image->setDeleted(true);
-            }
-            foreach ( $sizes as $size){
-                $size->setDeleted(true);
-            }
-            $em->flush();
+            $manager = $this->get('core.service.product.manager');
+            $manager->delete($id);
             return $this->redirectToRoute('admin_product_list');
         }
         return $this->render('AdminBundle::delete.html.twig', array(
-            'product' => $product,
             'formDelete'   => $formDelete->createView(),
         ));
     }
+
+
     public function editAction($id, Request $request)
     {
         $em = $this->getDoctrine()->getManager();

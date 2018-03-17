@@ -11,6 +11,7 @@ use CoreBundle\Entity\Product;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\OptimisticLockException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 
 class ProductManager  implements AbstractRepository
@@ -48,9 +49,22 @@ class ProductManager  implements AbstractRepository
     {
         // TODO: Implement edit() method.
     }
-    public function delete($form)
+    public function delete($id)
     {
-
+        $product=$this->find($id);
+        if (null === $product) {
+            throw new NotFoundHttpException("le Produit de l'".$id." n'existe pas.");
+        }
+        $product->setDeleted(true);
+        $images=$product->getImages();
+        $sizes=$product->getSizes();
+        foreach ( $images as $image){
+            $image->setDeleted(true);
+        }
+        foreach ( $sizes as $size){
+            $size->setDeleted(true);
+        }
+        $this->save($product);
     }
     public function getAll($value)
     {
@@ -59,5 +73,9 @@ class ProductManager  implements AbstractRepository
             ->where('p.deleted = :deleted')
             ->setParameter('deleted', $value) ;
         return $qb->getQuery()->getResult();
+    }
+    public function find($id)
+    {
+       return $this->repository->find($id);
     }
 }
