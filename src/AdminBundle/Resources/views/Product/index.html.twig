@@ -20,41 +20,29 @@
                     <th><em class="fa fa-cog"></em></th>
                 </tr>
                 </thead>
-
-                <tbody >
-                {% for product in products %}
-                    <tr>
-
-
-                        <td>{{ product.id }}</td>
-                        <td>{{ product.productName }}</td>
-
-                        <td>{{ product.price }}</td>
-                        <td>{{ product.quantity }}</td>
-                        <td>{{ product.color.colorName }}</td>
-                        <td>
-                            {% for sizes in product.sizes %}
-                                {{ sizes.size }}
-                            {% endfor %}
-                        </td>
-                        <td align="center">
-
-                            <a href="{{ path('admin_product_edit', {'id': product.id}) }}" class="btn btn-warning"><em class="fa fa-edit"></em></a>
-                            <a href="#myModal" class="btn btn-danger" data-toggle="modal" data-wathever="{{ path('admin_product_delete', {'id': product.id}) }}" ><em class="fa fa-trash-o"></em></a>
-
-
-                        </td>
-
-                    </tr>
-                {% endfor %}
+                <tbody>
+                    {% for product in products %}
+                        <tr>
+                            <td>{{ product.id }}</td>
+                            <td>{{ product.productName }}</td>
+                            <td>{{ product.price }}</td>
+                            <td>{{ product.quantity }}</td>
+                            <td>{{ product.color.colorName }}</td>
+                            <td>
+                                {% for sizes in product.sizes %}
+                                    {{ sizes.size }}
+                                {% endfor %}
+                            </td>
+                            <td align="center">
+                                <a href="{{ path('admin_product_edit', {'id': product.id}) }}" class="btn btn-warning"><em class="fa fa-edit"></em></a>
+                                <a href="#myModal" class="btn btn-danger" data-toggle="modal" data-wathever="{{ path('admin_product_delete', {'id': product.id}) }}" ><em class="fa fa-trash-o"></em></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
                 </tbody>
-
             </table>
-        </div></div>
-
-
-
-    {#modal start#}
+        </div>
+    </div>
     {{ include("AdminBundle::delete.html.twig") }}
     {% block js %}
         <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js"></script>
@@ -62,9 +50,5 @@
                 $('#exemple').DataTable();
             } );</script>
     {% endblock %}
-
-
-
-
 {% endblock %}
 
