@@ -2,6 +2,7 @@
 
 namespace AdminBundle\Form;
 
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
@@ -19,7 +20,7 @@ class ProductType extends AbstractType
         $builder->add('productName')
             ->add('price',MoneyType::class,array('currency'=>''))
             ->add('quantity')
-            ->add('productDetails',TextareaType::class)
+            ->add('productDetails',CKEditorType::class)
             ->add('color',EntityType::class, array(
                 'class'        => 'CoreBundle:Color',
                 'choice_label' => 'colorName',
