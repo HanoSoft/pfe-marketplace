@@ -35,8 +35,7 @@
                         <span class="glyphicon " id="categoryAlertIcon"></span>
                     </div>
 
-                    <button class="btn btn-warning col-md-offset-10 disabled" type="submit" 
-                    id="btnAdd"><span class="fa fa-plus-circle"> </span> Ajouter</button>
+                    <button class="btn btn-warning col-md-offset-10 " type="submit" id="btnAdd"><span class="fa fa-plus-circle"> </span> Ajouter</button>
 
                     {{ form_rest(form) }}
                     {{ form_end(form) }}
@@ -45,11 +44,6 @@
         </div>
     </div>
 
-{% block js %}
-{{ parent() }}
 
-<script src="{{ asset('CoreJs/Category/addCategory.js') }}"></script>
-
-{% endblock %}
 
 {% endblock %}
