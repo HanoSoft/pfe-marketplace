@@ -18,10 +18,7 @@ class RepositoryManager
      * @var EntityRepository
      */
     private $repository;
-
-    private $em; // hatha entity manegr rti 3mlin 3ena 2 attributs wa7ed entity manegr w lo5er repositoryey je vois donc entity
-    // manger em hatha nfsh hatha houwa appel ta3servive netitymanger hatha attribut repository fi classe ta3na hey cv taw
-    // kima em ey wadha7
+    private $em;
 
     public function __construct(EntityManager $em,EntityRepository $repository)
     {
