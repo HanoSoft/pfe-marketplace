@@ -28,8 +28,8 @@
                             <thead>
                             <tr>
 
-                                <th class="hidden-xs">{{ knp_pagination_sortable(categories, 'Id', 'c.id') }}</th>
-                                <th>{{ knp_pagination_sortable(categories, 'Category', 'c.name') }}</th>
+                                <th class="hidden-xs">ID</th>
+                                <th>Category</th>
                                
                                 <th><em class="fa fa-cog"></em></th>
 
@@ -62,12 +62,12 @@
 
                                 {# display navigation #}
                                 <div class="navigation">
-                                    {{ knp_pagination_render(categories) }}
+
                                 </div>
 
                                     </div>
                                     <div class="count">
-                                        {{ categories.getTotalItemCount }}
+
                                     </div>
 
 

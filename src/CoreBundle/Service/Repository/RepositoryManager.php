@@ -19,7 +19,9 @@ class RepositoryManager
      */
     private $repository;
 
-    private $em;
+    private $em; // hatha entity manegr rti 3mlin 3ena 2 attributs wa7ed entity manegr w lo5er repositoryey je vois donc entity
+    // manger em hatha nfsh hatha houwa appel ta3servive netitymanger hatha attribut repository fi classe ta3na hey cv taw
+    // kima em ey wadha7
 
     public function __construct(EntityManager $em,EntityRepository $repository)
     {
@@ -47,5 +49,12 @@ class RepositoryManager
             ->where('p.deleted = :deleted')
             ->setParameter('deleted', $value) ;
         return $qb->getQuery()->getResult();
+    }
+    /**
+     * @return EntityManager
+     */
+    public function getEm()
+    {
+        return $this->em;
     }
 }

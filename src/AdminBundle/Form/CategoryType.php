@@ -8,9 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use CoreBundle\Form\ImageType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-
 class CategoryType extends AbstractType
 {
     /**
