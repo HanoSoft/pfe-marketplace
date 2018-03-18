@@ -16,20 +16,18 @@
             </div>
             <div class="form-body ">
 
-                {{ form_start(form,{'attr': {'class': 'form-horizontal'}}) }}
+                {{ form_start(form,{'attr': {'class': 'form-horizontal form'}}) }}
                 {{ form_errors(form) }}
 
 
 
-                <div class="form-group containerSize">
+                <div class="form-group has-feedback">
                     <label  class="col-sm-2 control-label">Taille :</label>
                     <div class="col-sm-9">
-                        {{ form_widget(form.size, {'attr': {'class': 'form-control size','placeholder':'Taille'}}) }}
-                        <span id="sizeHelp" class="help-block sr-only">
-                            la taille de produit doit contenir au minimum 1 caractère.
-                            </span>
+                        {{ form_widget(form.size, {'attr': {'class': 'form-control size','placeholder':'Taille','minlength':'1'}}) }}
+
                     </div>
-                    <span class="glyphicon " id="sizeAlertIcon"></span>
+                    <span class="glyphicon "></span>
                 </div>
 
                 <div class="form-group">
@@ -41,7 +39,7 @@
 
 
 
-                    <button id="btnAddSize" class="btn btn-warning col-md-offset-9 disabled" type="submit" ><span class="fa fa-plus-circle"> </span> Ajouter</button>
+                    <button  class="btn btn-warning col-md-offset-9" disabled="true" type="submit" ><span class="fa fa-plus-circle"> </span> Ajouter</button>
                     <a href="{{ path('admin_product_image_add', {'id': product.id}) }}" class="btn btn-primary " type=><span class="fa fa-check-square-o"> </span> Passer</a>
 
 
@@ -62,9 +60,7 @@
         </div>
     </div>
 
-    {% block js %}
-        <script src="{{ asset('CoreJs/Product/Product.js') }}"></script>
-    {% endblock %}
+
 
 {% endblock %}
 

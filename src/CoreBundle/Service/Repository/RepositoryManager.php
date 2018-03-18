@@ -8,7 +8,6 @@
 
 namespace CoreBundle\Service\Repository;
 
-
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\OptimisticLockException;
