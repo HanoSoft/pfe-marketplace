@@ -18,7 +18,7 @@ class ProductController extends Controller
     {
         $form = $this->createForm(ProductType::class);
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-            $manager = $this->get('core.service.product.manager');
+            $manager = $this->get('core.service.product_manager');
             $id=$manager->add($form);
             return $this->redirectToRoute('admin_product_size_add',array('id' => $id));
         }
@@ -28,7 +28,7 @@ class ProductController extends Controller
     }
     public function listAction(Request $request)
     {
-        $manager = $this->get('core.service.product.manager');
+        $manager = $this->get('core.service.product_manager');
         $products=$manager->getAll(false);
         $formDelete = $this->get('form.factory')->create();
         return $this->render('AdminBundle:Product:index.html.twig', array(
@@ -40,7 +40,7 @@ class ProductController extends Controller
     {
         $formDelete = $this->get('form.factory')->create();
         if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
-            $manager = $this->get('core.service.product.manager');
+            $manager = $this->get('core.service.product_manager');
             $manager->delete($id);
             return $this->redirectToRoute('admin_product_list');
         }

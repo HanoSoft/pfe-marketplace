@@ -40,7 +40,7 @@ class Image
      *
      * @ORM\Column(name="deleted", type="boolean")
      */
-    private $deleted;
+    private $deleted=false;
 
     /**
      *@ORM\ManyToOne(targetEntity="CoreBundle\Entity\Product",inversedBy="images",cascade={"persist"})
@@ -92,11 +92,6 @@ class Image
     {
         $this->file = $file;
     }
-
-
-
-
-
 
     /**
      * Get id

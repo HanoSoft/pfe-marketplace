@@ -11,7 +11,6 @@ namespace CoreBundle\Service\Repository;
 use CoreBundle\Entity\Product;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
-use Doctrine\ORM\OptimisticLockException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ProductManager extends RepositoryManager implements AbstractRepository
