@@ -41,7 +41,6 @@ class CategoryController extends Controller
         $category=$manager->find($id);
         $form = $this->get('form.factory')->create(CategoryEditType::class,$category);
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-
             $manager->edit($form,$id);
             return $this->redirectToRoute('admin_category_list');
         }
@@ -55,7 +54,6 @@ class CategoryController extends Controller
       $category=$manager->find($id);
       $formDelete = $this->get('form.factory')->create();
       if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
-
           $manager->delete($id);
           return $this->redirectToRoute('admin_category_list');
       }
