@@ -50,6 +50,9 @@ class ProductController extends Controller
     }
 
 
+
+
+
     public function editAction($id, Request $request)
     {
         $em = $this->getDoctrine()->getManager();

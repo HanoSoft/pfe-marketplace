@@ -40,8 +40,9 @@
 
 
                     <button  class="btn btn-warning col-md-offset-9" disabled="true" type="submit" ><span class="fa fa-plus-circle"> </span> Ajouter</button>
-                    <a href="{{ path('admin_product_image_add', {'id': product.id}) }}" class="btn btn-primary " type=><span class="fa fa-check-square-o"> </span> Passer</a>
-
+                   {# <a href="{{ path('admin_product_image_add', {'id': product.id}) }}" class="btn btn-primary " type=><span class="fa fa-check-square-o"> </span> Passer</a>
+#}
+                {{ product.id }}
 
 
                 {{ form_rest(form) }}

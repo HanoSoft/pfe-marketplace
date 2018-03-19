@@ -134,7 +134,7 @@ class ProductSize
      *
      * @param boolean $deleted
      *
-     * @return Product
+     * @return ProductSize
      */
     public function setDeleted($deleted)
     {
@@ -151,12 +151,5 @@ class ProductSize
     public function getDeleted()
     {
         return $this->deleted;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
     }
 }
