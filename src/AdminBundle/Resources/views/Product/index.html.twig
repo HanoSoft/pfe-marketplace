@@ -1,7 +1,12 @@
 {% extends "AdminBundle::adminLayout.html.twig" %}
 {% block content %}
     {{ parent() }}
+
     <div class="container-fluid">
+        <h2>Produits<a class="col-md-offset-10 btn btn-primary btn-md">
+                <span class="fa fa-plus-circle"> </span></span> Nouveau Produit </a>
+        </h2>
+        <br>
         <div class="row dataTables_wrapper form-inline dt-bootstrap no-footer">
             <table  class="data-table table table-striped table-bordered dataTable no-footer" style="width:100%">
                 <thead>
@@ -21,8 +26,8 @@
                         <tr>
                             <td>{{ product.category.name }}</td>
                             <td>{{ product.productName }}</td>
-                            <td>{{ product.price }}</td>
-                            <td>{{ product.quantity }}</td>
+                            <td class="money">{{ product.price }} €</td>
+                            <td class="money">{{ product.quantity }}</td>
                             <td>{{ product.color.colorName }}</td>
                             <td>
                                 {% for sizes in product.sizes %}
@@ -31,9 +36,9 @@
                             </td>
                             <td>
                                 {% if product.deleted ==false %}
-                                <span class="glyphicon glyphicon-ok"></span>
+                                <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
                                 {% else %}
-                                    <span class="glyphicon glyphicon-remove"></span>
+                                    <span class="glyphicon glyphicon-remove " style="color:red;"></span>
                                 {% endif %}
                             </td>
                             <td align="center">
