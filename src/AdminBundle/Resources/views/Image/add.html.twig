@@ -1,5 +1,4 @@
 {% extends "AdminBundle::adminLayout.html.twig" %}
-
 {% block content %}
     {{ parent() }}
     <div class=" form-grids row form-grids-right">
@@ -28,7 +27,6 @@
                 <a href="{{ path('admin_product_list') }}" class="btn btn-primary " type=><span class="fa fa-check-square-o"> </span> Passer</a>
                 {{ form_rest(form) }}
                 {{ form_end(form) }}
-
             </div>
             {% if app.session.flashBag.has('success') %}
                 <div class="alert alert-success">
@@ -39,10 +37,5 @@
             {% endif %}
         </div>
     </div>
-
-
-
-
-
 {% endblock %}
 
