@@ -46,7 +46,7 @@ class ProductSize
      *
      * @ORM\Column(name="deleted", type="boolean")
      */
-    private $deleted;
+    private $deleted=false;
 
     /**
      * Get id

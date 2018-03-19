@@ -26,7 +26,9 @@ $.validator.setDefaults({
             }
         }
     });
+
 $(".form").validate();
+
 $('.form input').on('keyup blur', function () {
     if ($('.form').valid()) {
         $('button.btn').prop('disabled', false);

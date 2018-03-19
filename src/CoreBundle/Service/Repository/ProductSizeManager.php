@@ -49,7 +49,6 @@ class ProductSizeManager implements AbstractRepository
         $product=$this->productManager->find($id);
         $size = new ProductSize();
         $size = $form->getData();
-        $size->setDeleted(false);
         $size->setProduct($product);
         $this->save($size);
         return $product;
