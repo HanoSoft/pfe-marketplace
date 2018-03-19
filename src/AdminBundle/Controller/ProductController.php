@@ -29,7 +29,7 @@ class ProductController extends Controller
     public function listAction(Request $request)
     {
         $manager = $this->get('core.service.product_manager');
-        $products=$manager->getAll(false);
+        $products=$manager->getAll();
         $formDelete = $this->get('form.factory')->create();
         return $this->render('AdminBundle:Product:index.html.twig', array(
             'products' => $products,
