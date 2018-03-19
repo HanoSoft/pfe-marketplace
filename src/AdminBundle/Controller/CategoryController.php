@@ -25,21 +25,17 @@ class CategoryController extends Controller
             'form' => $form->createView(),
         ));
     }
-
-
-
-        public function listAction(Request $request)
+    public function listAction(Request $request)
     {
-            $repository = $this->getDoctrine()
-            ->getManager()->
-            getRepository('CoreBundle:Category');
-            $category = $repository->getAllCategories(false);
-
-
+        $manager= $this->get('core.service.category.manager');
+        $categories=$manager->getAll(false);
+        $formDelete= $this->get('form.factory')->create();
         return $this->render('AdminBundle:Category:index.html.twig', array(
-            'categories' => $category,
-            ));
+            'categories' => $categories,
+            'formDelete' => $formDelete->createView(),
+        ));
     }
+
 
          public function editAction($id, Request $request)
   {
