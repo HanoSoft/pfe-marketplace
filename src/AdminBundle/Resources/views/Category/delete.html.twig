@@ -8,12 +8,11 @@
     
 		{{ category.name }}
 
-     	<form action="{{ path('admin_category_delete', {'id': category.id}) }}" method="post">
+     	<form action="{{ path('admin_category_delete', {'id': category.id}) }}" method="post" id="form">
     
     	<input type="submit" value="Supprimer" />
 
-    	{{ form_rest(form) }}
-
+    	{{ form_rest(formDelete) }}
   		</form>
 
 

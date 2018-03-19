@@ -53,7 +53,7 @@ class ProductSizeManager implements AbstractRepository
         $this->save($size);
         return $product;
     }
-    public function edit($from)
+    public function edit($from,$id)
     {
         // TODO: Implement edit() method.
     }
