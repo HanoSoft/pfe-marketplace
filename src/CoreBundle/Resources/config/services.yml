@@ -5,11 +5,12 @@ services:
     core.service.product.size_manager:
             class: CoreBundle\Service\Repository\ProductSizeManager
             arguments: ['@doctrine.orm.entity_manager', '@core.service.product_manager']
-    core.service.category.manager:
-                class: CoreBundle\Service\Repository\CategoryManager
-                arguments: ['@doctrine.orm.entity_manager',getRepository]
     core.service.image_manager:
                 class: CoreBundle\Service\Repository\ImageManager
                 arguments: ['@doctrine.orm.entity_manager', '@core.service.product_manager']
+    core.service.category_manager:
+                class: CoreBundle\Service\Repository\CategoryManager
+                arguments: ['@doctrine.orm.entity_manager']
+
 
 

@@ -6,6 +6,7 @@ $('#myModal').on('show.bs.modal', function (event) {
     modal.find('#form').attr("action",id);
 });
 // form validation
+
 $.validator.setDefaults({
     highlight: function(element) {
         $(element).closest('.form-group').removeClass('has-success').addClass('has-warning');
@@ -26,7 +27,6 @@ $.validator.setDefaults({
             }
         }
     });
-
 $(".form").validate();
 
 $('.form input').on('keyup blur', function () {

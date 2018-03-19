@@ -1,46 +1,37 @@
-{% extends "AdminBundle::adminLayout.html.twig" %} 
-
-
+{% extends "AdminBundle::adminLayout.html.twig" %}
 {% block content %}
-
     {{ parent() }}
-
   <div class=" form-grids row form-grids-right">
         <div class="widget-shadow " data-example-id="basic-forms">
-
             <div class="form-title form-header">
-
                 <h4>Ajouter Catégorie</h4>
-
-
             </div>
                 <div class="form-body">
-
-                    {{ form_start(form,{'attr': {'class': 'form-horizontal'}}) }}
+                    {{ form_start(form,{'attr': {'class': 'form-horizontal form'}}) }}
                     {{ form_errors(form) }}
-
-                    
-                    
-                    <div class="form-group containerCategory">
-
+                    <div class="form-group ">
                         <label  class="col-sm-2 control-label">Catégorie</label>
                         <div class="col-sm-9">
-                            {{ form_widget(form.name, {'attr': {'class': 'form-control categoryName','placeholder':'Nom Du Catégorie'}}) }}
-
-                            <span id="categoryHelp" class="help-block sr-only">
-                            le nom de la catégorie doit contenir au minimum 2 caractères.
-                            </span>
+                            {{ form_widget(form.name, {'attr': {'class': 'form-control ','placeholder':'Nom Du Catégorie','minlength':'2'}}) }}
 
                         </div>
-                        <span class="glyphicon " id="categoryAlertIcon"></span>
+                        <span class="glyphicon " ></span>
                     </div>
-
-                    <button class="btn btn-warning col-md-offset-10 " type="submit" id="btnAdd"><span class="fa fa-plus-circle"> </span> Ajouter</button>
+                    <button class="btn btn-warning col-md-offset-10 " type="submit" disabled="true" ><span class="fa fa-plus-circle"> </span> Ajouter</button>
 
                     {{ form_rest(form) }}
                     {{ form_end(form) }}
 
             </div>
+
+            {% if app.session.flashBag.has('success') %}
+                <div class="alert alert-success">
+                    {% for msg in app.session.flashBag.get('success') %}
+                        {{ msg }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+
         </div>
     </div>
 

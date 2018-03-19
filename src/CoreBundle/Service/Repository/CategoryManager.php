@@ -33,9 +33,11 @@ class CategoryManager extends RepositoryManager implements AbstractRepository
         $this->save($category);
     }
 
-    public function edit($from)
+    public function edit($from,$id)
     {
-        // TODO: Implement edit() method.
+        $category=$this->find($id);
+        $category=$from->getData();
+        $this->save($category);
     }
 
     public function delete($id)
