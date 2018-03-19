@@ -6,23 +6,29 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AdminBundle\Form\CategoryType;
 use Symfony\Component\HttpFoundation\Request;
 use AdminBundle\Form\CategoryEditType;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class CategoryController extends Controller
 {
-        public function addAction(Request $request)
+    public function addAction(Request $request)
     {
-
+        $session=new Session();
         $form   = $this->get('form.factory')->create(CategoryType::class);
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $manager = $this->get('core.service.category.manager');
             $manager->add($form);
-            return $this->redirectToRoute('admin_category_show');
+            $session->getFlashBag()->add('success', 'la Catégorie est bien enregistrée !');
+            return $this->redirectToRoute('admin_category_add');
         }
         return $this->render('AdminBundle:Category:add.html.twig', array(
             'form' => $form->createView(),
-        ));    }
-     public function showAction(Request $request)
+        ));
+    }
+
+
+
+        public function listAction(Request $request)
     {
             $repository = $this->getDoctrine()
             ->getManager()->
