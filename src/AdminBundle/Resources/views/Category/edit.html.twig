@@ -11,9 +11,9 @@
                     {{ form_errors(form) }}
                     <div class="form-group containerCategory">
                         <label  class="col-sm-2 control-label">Catégorie</label>
-                        <div class="col-sm-9">
-                            {{ form_widget(form.name, {'attr': {'class': 'form-control ','placeholder':'Nom Du Catégorie','minlength':'2'}}) }}
-                        </div>
+                            <div class="col-sm-9">
+                                {{ form_widget(form.name, {'attr': {'class': 'form-control ','placeholder':'Nom Du Catégorie','minlength':'2'}}) }}
+                            </div>
                         <span class="glyphicon " id="categoryAlertIcon"></span>
                     </div>
                     <button class="btn btn-success col-md-offset-10 " type="submit" disabled="true"><span class="fa fa-edit"> </span> Modifier</button>
