@@ -37,4 +37,7 @@ $('.form input').on('keyup blur', function () {
         $('button.btn').prop('disabled', 'disabled');
     }
 });
-
+// dataTable
+$(document).ready( function () {
+    $('.data-table').DataTable();
+} );
