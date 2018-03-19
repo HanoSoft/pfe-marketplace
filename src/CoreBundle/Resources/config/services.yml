@@ -7,6 +7,6 @@ services:
             arguments: ['@doctrine.orm.entity_manager',getRepository]
     core.service.category.manager:
                 class: CoreBundle\Service\Repository\CategoryManager
-                arguments: ['@doctrine.orm.entity_manager',getRepository]
+                arguments: ['@doctrine.orm.entity_manager']
 
 
