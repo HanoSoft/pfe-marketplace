@@ -2,11 +2,11 @@
 {% block content %}
     {{ parent() }}
     <div class="container-fluid">
-        <div class="row">
-            <table  class="data-table display" style="width:100%">
+        <div class="row dataTables_wrapper form-inline dt-bootstrap no-footer">
+            <table  class="data-table table table-striped table-bordered dataTable no-footer" style="width:100%">
                 <thead>
                 <tr>
-                    <th class="hidden-xs">ID</th>
+                    <th class="sorting_asc">ID</th>
                     <th>Produit</th>
                     <th>Prix</th>
                     <th>Quantité</th>
