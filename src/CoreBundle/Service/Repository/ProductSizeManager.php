@@ -51,7 +51,7 @@ class ProductSizeManager extends RepositoryManager  implements AbstractRepositor
         // TODO: Implement delete() method.
     }
 
-    public function getAll($value)
+    public function getAll()
     {
         // TODO: Implement getAll() method.
     }

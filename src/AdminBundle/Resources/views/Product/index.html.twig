@@ -42,10 +42,10 @@
                                 {% endif %}
                             </td>
                             <td align="center">
-                                <a href="{{ path('admin_product_edit', {'id': product.id}) }}" class="link" ><em class="fa fa-eye"></em></a>
+                                <a href="" class="link" data-toggle="modal" data-target="#galery" data-wathever="{{ product.id }}"><em class="fa fa-eye"></em></a>
                                 <a href="{{ path('admin_product_edit', {'id': product.id}) }}" class="link" ><em class="fa fa-edit"></em></a>
                                 <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_product_delete', {'id': product.id}) }}" ><em class="fa fa-trash-o"></em></a>
-                                <a href="{{ path('admin_product_edit', {'id': product.id}) }}" class="link"><em class="fa fa-picture-o"></em></a>
+                                <a href="" class="link"><em class="fa fa-picture-o"></em></a>
                             </td>
                         </tr>
                     {% endfor %}
@@ -54,6 +54,7 @@
         </div>
     </div>
     {{ include("AdminBundle::delete.html.twig") }}
+
 
 {% endblock %}
 
