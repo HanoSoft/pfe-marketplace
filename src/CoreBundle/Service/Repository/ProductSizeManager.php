@@ -8,6 +8,7 @@
 
 namespace CoreBundle\Service\Repository;
 
+use CoreBundle\Entity\Product;
 use CoreBundle\Entity\ProductSize;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
@@ -20,11 +21,17 @@ class ProductSizeManager implements AbstractRepository
      */
     private $repository;
     private $em;
+    /**
+     * @var ProductManager
+     */
+    private $productManager;
 
-    public function __construct(EntityManager $em)
+
+    public function __construct(EntityManager $em,ProductManager $productManager)
     {
         $this->repository=$em->getRepository(ProductSize::class);
         $this->em=$em;
+        $this->productManager=$productManager;
     }
 
     /**
@@ -38,13 +45,14 @@ class ProductSizeManager implements AbstractRepository
         }
     }
 
-    public function add($form)
-    {
+    public function addSize($id,$form){
+        $product=$this->productManager->find($id);
         $size = new ProductSize();
         $size = $form->getData();
+        $size->setProduct($product);
         $this->save($size);
+        return $product;
     }
-
     public function edit($from)
     {
         // TODO: Implement edit() method.
@@ -63,5 +71,10 @@ class ProductSizeManager implements AbstractRepository
     public function find($id)
     {
         // TODO: Implement find() method.
+    }
+
+    public function add($form)
+    {
+        // TODO: Implement add() method.
     }
 }

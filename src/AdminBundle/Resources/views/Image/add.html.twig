@@ -1,69 +1,33 @@
 {% extends "AdminBundle::adminLayout.html.twig" %}
 
 {% block content %}
-
     {{ parent() }}
-
-
     <div class=" form-grids row form-grids-right">
         <div class="widget-shadow " data-example-id="basic-forms">
-
             <div class="form-title form-header">
-
                 <h4>Ajouter Produit</h4>
-
-
             </div>
             <div class="form-body">
-
-                {{ form_start(form,{'attr': {'class': 'form-horizontal'}}) }}
+                {{ form_start(form,{'attr': {'class': 'form-horizontal form'}}) }}
                 {{ form_errors(form) }}
-
-
-
                 <div class="form-group containerLabelImage">
                     <label  class="col-sm-2 control-label">label</label>
                     <div class="col-sm-9">
-                        {{ form_widget(form.label, {'attr': {'class': 'form-control labelImage ','placeholder':'Nom image'}}) }}
-                        <span id="LabelImageHelp" class="help-block sr-only">
-                           le nom doit contenir au minimum 2 caractere.
-                            </span>
+                        {{ form_widget(form.label, {'attr': {'class': 'form-control ','placeholder':'Nom image','minlength':'1'}}) }}
                     </div>
-                    <span class="glyphicon " id="LabelImageAlertIcon"></span>
+                    <span class="glyphicon "></span>
                 </div>
-
-                <div class="form-group containerFile">
+                <div class="form-group">
                     <label  class="col-sm-2 control-label">file :</label>
                     <div class="col-sm-9">
-                        {{ form_widget(form.file, {'attr': {'class': 'form-control fileImage ','placeholder':'file'}}) }}
-
-                        <span id="fileHelp" class="help-block sr-only">
-                          Format d'image invalide! Le format d'image doit être JPG, JPEG, PNG ou GIF.
-                            </span>
-
-                        <span id="fileSize" class="help-block sr-only">
-                           La taille maximale du fichier est de 1 Mo.
-                            </span>
+                        {{ form_widget(form.file, {'attr': {'class': 'form-control','placeholder':'file','accept':'image/*'}}) }}
                     </div>
                     <span class="glyphicon " id="fileAlertIcon"></span>
                 </div>
-
-
-
-
-                <button id="btnAddImage" class="btn btn-warning col-md-offset-9 disabled" type="submit"><span class="fa fa-plus-circle"> </span> Ajouter</button>
-                <a href="{{ path('admin_product_show') }}" class="btn btn-primary " type=><span class="fa fa-check-square-o"> </span> Passer</a>
-
-
-
-
-
+                <button id="btnAddImage" class="btn btn-warning col-md-offset-9" disabled="true" type="submit"><span class="fa fa-plus-circle"> </span> Ajouter</button>
+                <a href="{{ path('admin_product_list') }}" class="btn btn-primary " type=><span class="fa fa-check-square-o"> </span> Passer</a>
                 {{ form_rest(form) }}
                 {{ form_end(form) }}
-
-
-
-
 
             </div>
             {% if app.session.flashBag.has('success') %}
@@ -76,9 +40,7 @@
         </div>
     </div>
 
-    {% block js %}
-        <script src="{{ asset('CoreJs/Product/Product.js') }}"></script>
-    {% endblock %}
+
 
 
 
