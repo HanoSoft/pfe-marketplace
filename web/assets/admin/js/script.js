@@ -39,5 +39,5 @@ $('.form input').on('keyup blur', function () {
 });
 // dataTable
 $(document).ready( function () {
-    $('.dataTable').DataTable();
+    $('.data-table').DataTable();
 } );
