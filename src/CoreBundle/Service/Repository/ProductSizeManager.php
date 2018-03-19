@@ -14,7 +14,7 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 
-class ProductSizeManager implements AbstractRepository
+class ProductSizeManager extends RepositoryManager  implements AbstractRepository
 {
     /**
      * @var EntityRepository
@@ -26,23 +26,12 @@ class ProductSizeManager implements AbstractRepository
      */
     private $productManager;
 
-
     public function __construct(EntityManager $em,ProductManager $productManager)
     {
-        $this->repository=$em->getRepository(ProductSize::class);
+        $repository=$em->getRepository(ProductSize::class);
         $this->em=$em;
         $this->productManager=$productManager;
-    }
-
-    /**
-     * @param $object
-     */
-    protected function save($object){
-        $this->em->persist($object);
-        try {
-            $this->em->flush();
-        } catch (OptimisticLockException $e) {
-        }
+        parent::__construct($em,$repository);
     }
 
     public function addSize($id,$form){
@@ -51,7 +40,6 @@ class ProductSizeManager implements AbstractRepository
         $size = $form->getData();
         $size->setProduct($product);
         $this->save($size);
-        return $product;
     }
     public function edit($from,$id)
     {
@@ -63,7 +51,7 @@ class ProductSizeManager implements AbstractRepository
         // TODO: Implement delete() method.
     }
 
-    public function getAll($value)
+    public function getAll()
     {
         // TODO: Implement getAll() method.
     }

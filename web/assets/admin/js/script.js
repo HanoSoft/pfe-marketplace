@@ -41,3 +41,4 @@ $('.form input').on('keyup blur', function () {
 $(document).ready( function () {
     $('.data-table').DataTable();
 } );
+

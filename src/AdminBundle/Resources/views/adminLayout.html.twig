@@ -1,12 +1,12 @@
 {% extends "AdminBundle:Admin:index.html.twig" %}
 {% block css %}
     {{ parent() }}
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css"/>
 {% endblock  %}
 {% block body %}
     {{ parent() }}
-    <div id="page-wrapper">
-        <div class="main-page">
+    <div id="page-wrapper" style="padding-top: 50px;">
+        <div class="main-page" style="background: #fff; padding-top: 10px;margin-top: 0px">
             {% block content %}
             {% endblock %}
         </div>
@@ -17,5 +17,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/localization/messages_fr.js" ></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+
 {% endblock %}
 {% endblock %}

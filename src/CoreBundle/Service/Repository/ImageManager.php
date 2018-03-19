@@ -8,8 +8,51 @@
 
 namespace CoreBundle\Service\Repository;
 
+use CoreBundle\Entity\Image;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityRepository;
 
-class ImageManager
+class ImageManager extends RepositoryManager implements AbstractRepository
 {
+    /**
+     * @var EntityRepository
+     */
+    private $repository;
+    private $em;
+    /**
+     * @var ProductManager
+     */
+    private $productManager;
 
+    public function __construct(EntityManager $em,ProductManager $productManager)
+    {
+        $repository=$em->getRepository(Image::class);
+        $this->em=$em;
+        $this->productManager=$productManager;
+        parent::__construct($em,$repository);
+    }
+
+    public function addImage($id,$form){
+        $product=$this->productManager->find($id);
+        $image = new Image();
+        $image = $form->getData();
+        $image->setProduct($product);
+        $image->upload();
+        $this->save($image);
+    }
+
+    public function add($form)
+    {
+        // TODO: Implement add() method.
+    }
+
+    public function edit($from)
+    {
+        // TODO: Implement edit() method.
+    }
+
+    public function delete($id)
+    {
+        // TODO: Implement delete() method.
+    }
 }

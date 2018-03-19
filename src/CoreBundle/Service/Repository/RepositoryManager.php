@@ -38,8 +38,10 @@ class RepositoryManager
         } catch (OptimisticLockException $e) {
         }
     }
-
-    public function getAll($value)
+    public function getAll(){
+       return $this->repository->findAll();
+    }
+    public function getDeleted($value)
     {
         $qb = $this->repository->createQueryBuilder('p');
         $qb

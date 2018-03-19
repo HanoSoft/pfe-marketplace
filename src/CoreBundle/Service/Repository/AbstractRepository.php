@@ -12,6 +12,6 @@ Interface AbstractRepository {
     public function add($form);
     public function edit($from,$id);
     public function delete($id);
-    public function getAll($value);
+    public function getAll();
     public function find($id);
 }
