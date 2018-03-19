@@ -16,7 +16,7 @@ class CategoryController extends Controller
         $session=new Session();
         $form   = $this->get('form.factory')->create(CategoryType::class);
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-            $manager = $this->get('core.service.category.manager');
+            $manager = $this->get('core.service.category_manager');
             $manager->add($form);
             $session->getFlashBag()->add('success', 'la Catégorie est bien enregistrée !');
             return $this->redirectToRoute('admin_category_add');
@@ -27,7 +27,7 @@ class CategoryController extends Controller
     }
     public function listAction(Request $request)
     {
-        $manager= $this->get('core.service.category.manager');
+        $manager= $this->get('core.service.category_manager');
         $categories=$manager->getAll(false);
         $formDelete= $this->get('form.factory')->create();
         return $this->render('AdminBundle:Category:index.html.twig', array(
@@ -35,22 +35,19 @@ class CategoryController extends Controller
             'formDelete' => $formDelete->createView(),
         ));
     }
+    public function editAction($id, Request $request)
+    {
+        $manager = $this->get('core.service.category_manager');
+        $category=$manager->find($id);
+        $form = $this->get('form.factory')->create(CategoryEditType::class,$category);
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
 
-
-         public function editAction($id, Request $request)
-  {
-              $em = $this->getDoctrine()->getManager();
-              $category = $em->getRepository('CoreBundle:Category')->find($id);
-              $form = $this->get('form.factory')->create(CategoryEditType::class, $category);
-
-               if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-
-              $em->flush();
-                return $this->redirectToRoute('admin_category_show');}
-                 return $this->render('AdminBundle:Category:edit.html.twig', array(
-                    'category' => $category,
-                    'form'   => $form->createView(),
-    ));
+            $manager->edit($form,$id);
+            return $this->redirectToRoute('admin_category_list');
+        }
+        return $this->render('AdminBundle:Category:edit.html.twig', array(
+            'form' => $form->createView(),
+        ));
   }
         public function deleteAction(Request $request, $id)
   {
