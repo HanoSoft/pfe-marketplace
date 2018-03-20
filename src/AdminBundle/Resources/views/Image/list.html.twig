@@ -23,7 +23,7 @@
 
                 <div  style="border: solid 1px white;border-radius:10px; width:70px;" >
                     <a href="{{ path('admin_product_image_edit',{'idp': idp,'id':image.id}) }}" class="link thumb-link"><em class="fa fa-edit"></em></a>
-                    <a href="#" class="link thumb-link" ><em class="fa fa-trash-o"></em></a>
+                    <a href="#myModal" class="link thumb-link" data-toggle="modal" data-wathever="{{ path('admin_product_image_delete',{'idp': idp,'id':image.id}) }}" ><em class="fa fa-trash-o"></em></a>
                 </div>
             </div>
 
@@ -42,7 +42,7 @@
         </div>
     </div>
 
-
+    {{ include("AdminBundle::delete.html.twig") }}
 
 
 

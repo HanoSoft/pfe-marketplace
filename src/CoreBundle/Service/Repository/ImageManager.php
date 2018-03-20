@@ -63,6 +63,8 @@ class ImageManager extends RepositoryManager implements AbstractRepository
 
     public function delete($id)
     {
-        // TODO: Implement delete() method.
+        $image=$this->find($id);
+        $image->setDeleted(true);
+        $this->save($image);
     }
 }

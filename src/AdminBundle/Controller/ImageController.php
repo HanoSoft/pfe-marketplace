@@ -37,7 +37,7 @@ class ImageController extends Controller
             'idp' =>$id
         ));
     }
-    public function editAction(Request$request ,$idp,$id)
+    public function editAction(Request $request ,$idp,$id)
     {
         $manager = $this->get('core.service.image_manager');
         $image=$manager->find($id);
@@ -50,5 +50,16 @@ class ImageController extends Controller
             'form' => $form->createView(),
         ));
     }
-
+    public function deleteAction(Request $request,$idp,$id)
+    {
+        $formDelete = $this->get('form.factory')->create();
+        if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
+            $manager = $this->get('core.service.image_manager');
+            $manager->delete($id);
+            return $this->redirectToRoute('admin_product_image_list',array('id' => $idp));
+        }
+        return $this->render('AdminBundle::delete.html.twig', array(
+            'formDelete'   => $formDelete->createView(),
+        ));
+    }
 }
