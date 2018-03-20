@@ -40,7 +40,7 @@ class ProductManager extends RepositoryManager implements AbstractRepository
         $this->save($product);
         return $product->getId();
     }
-    public function edit($form)
+    public function edit($form,$id)
     {
         // TODO: Implement edit() method.
     }
