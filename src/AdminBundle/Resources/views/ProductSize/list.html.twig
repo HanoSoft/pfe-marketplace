@@ -16,8 +16,8 @@
                 <div class=" thumb-container thumb-footer" align="center">
 
                     <div  style="border: solid 1px white;border-radius:10px; width:70px;" >
-                        <a href="" class="link thumb-link"><em class="fa fa-edit"></em></a>
-                        <a href="#myModal" class="link thumb-link" data-toggle="modal" data-wathever="" ><em class="fa fa-trash-o"></em></a>
+                        <a href="{{ path('admin_product_size_edit',{'idp': idp,'id':size.id}) }}" class="link thumb-link"><em class="fa fa-edit"></em></a>
+                        <a href="#myModal" class="link thumb-link" data-toggle="modal" data-wathever="{{ path('admin_product_size_delete',{'idp': idp,'id':size.id}) }}" ><em class="fa fa-trash-o"></em></a>
                     </div>
                 </div>
             </div>

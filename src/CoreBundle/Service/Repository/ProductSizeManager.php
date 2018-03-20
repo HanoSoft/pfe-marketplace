@@ -8,11 +8,9 @@
 
 namespace CoreBundle\Service\Repository;
 
-use CoreBundle\Entity\Product;
 use CoreBundle\Entity\ProductSize;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
-use Doctrine\ORM\OptimisticLockException;
 
 class ProductSizeManager extends RepositoryManager  implements AbstractRepository
 {
@@ -43,23 +41,18 @@ class ProductSizeManager extends RepositoryManager  implements AbstractRepositor
     }
     public function edit($from,$id)
     {
-        // TODO: Implement edit() method.
+        $size=$this->find($id);
+        $size=$from->getData();
+        $this->save($size);
     }
 
     public function delete($id)
     {
-        // TODO: Implement delete() method.
+        $size=$this->find($id);
+        $size->setDeleted(true);
+        $this->save($size);
     }
 
-    public function getAll()
-    {
-        // TODO: Implement getAll() method.
-    }
-
-    public function find($id)
-    {
-        // TODO: Implement find() method.
-    }
 
     public function add($form)
     {

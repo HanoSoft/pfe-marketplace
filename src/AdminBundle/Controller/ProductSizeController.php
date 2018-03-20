@@ -2,6 +2,7 @@
 
 namespace AdminBundle\Controller;
 
+use AdminBundle\Form\ProductSizeEditType;
 use AdminBundle\Form\ProductSizeType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,4 +37,29 @@ class ProductSizeController extends Controller
         ));
     }
 
+    public function editAction(Request $request ,$idp,$id)
+    {
+        $manager = $this->get('core.service.product.size_manager');
+        $size=$manager->find($id);
+        $form = $this->get('form.factory')->create(ProductSizeEditType::class,$size);
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+            $manager->edit($form,$id);
+            return $this->redirectToRoute('admin_product_size_list',array('id' => $idp));
+        }
+        return $this->render('AdminBundle:ProductSize:edit.html.twig', array(
+            'form' => $form->createView(),
+        ));
+    }
+    public function deleteAction(Request $request,$idp,$id)
+    {
+        $formDelete = $this->get('form.factory')->create();
+        if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
+            $manager = $this->get('core.service.product.size_manager');
+            $manager->delete($id);
+            return $this->redirectToRoute('admin_product_size_list',array('id' => $idp));
+        }
+        return $this->render('AdminBundle::delete.html.twig', array(
+            'formDelete'   => $formDelete->createView(),
+        ));
+    }
 }

@@ -21,8 +21,7 @@ class ProductSizeType extends AbstractType
                     'Pouce' => 'Pouces',
                     'Centimètres' => 'Centimètres',
                     'Mètre'=>'Mètre',
-                )))
-           ;
+                )));
     }
     /**
      * {@inheritdoc}

@@ -88,7 +88,7 @@ admin_product_image_list:
             requirements:
             id: \d+
 admin_product_size_edit:
-    path:     /admin/product/size/edit/{id}
+    path:     /admin/product/size/edit/{idp}/{id}
     defaults:
             _controller: AdminBundle:ProductSize:edit
             requirements:
@@ -98,6 +98,12 @@ admin_product_size_list:
     path:     /admin/product/size/list/{id}
     defaults:
             _controller: AdminBundle:ProductSize:list
+            requirements:
+            id: \d+
+admin_product_size_delete:
+    path:     /admin/product/size/delete/{idp}/{id}
+    defaults:
+            _controller: AdminBundle:ProductSize:delete
             requirements:
             id: \d+
             idp: \d+

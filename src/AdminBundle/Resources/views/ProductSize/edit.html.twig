@@ -4,7 +4,7 @@
     <div class=" form-grids row form-grids-right">
         <div class="widget-shadow " data-example-id="basic-forms">
             <div class="form-title form-header">
-                <h4>Ajouter la taille de Produit</h4>
+                <h4>Modifier la taille de Produit</h4>
             </div>
 
             <div class="form-body ">
@@ -23,26 +23,16 @@
                         {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
                     </div>
                 </div>
-                    <button  class="btn btn-warning col-md-offset-9" disabled="true" type="submit" ><span class="fa fa-plus-circle"> </span> Ajouter</button>
-                    <a href="{{ path('admin_product_image_add', {'id': id}) }}" class="btn btn-primary " type=><span class="fa fa-check-square-o"> </span> Passer</a>
+                <button  class="btn btn-success col-md-offset-10" disabled="true" type="submit" >
+                    <span class="fa fa-edit"> </span> Modifier</button>
 
                 {{ form_rest(form) }}
                 {{ form_end(form) }}
 
             </div>
 
-            {% if app.session.flashBag.has('success') %}
-                <div class="alert alert-success">
-                    {% for msg in app.session.flashBag.get('success') %}
-                        {{ msg }}
-                    {% endfor %}
-                </div>
-            {% endif %}
 
         </div>
     </div>
-
-
-
 {% endblock %}
 
