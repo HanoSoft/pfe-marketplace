@@ -67,18 +67,20 @@ admin_color_add:
     defaults: { _controller: AdminBundle:Color:add }
 
 admin_product_image_edit:
-    path:     /admin/product/image/edit/{id}
+    path:     /admin/product/image/edit/{idp}/{id}
     defaults:
             _controller: AdminBundle:Image:edit
             requirements:
             id: \d+
+            idp: \d+
             
 admin_product_image_delete:
-    path:     /admin/product/image/delete/{id}
+    path:     /admin/product/image/delete/{idp}/{id}
     defaults:
             _controller: AdminBundle:Image:delete
             requirements:
             id: \d+
+            idp: \d+
 admin_product_image_list:
     path:     /admin/product/image/list/{id}
     defaults:

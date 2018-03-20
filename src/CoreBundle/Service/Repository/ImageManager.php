@@ -56,7 +56,9 @@ class ImageManager extends RepositoryManager implements AbstractRepository
 
     public function edit($from,$id)
     {
-        // TODO: Implement edit() method.
+        $image=$this->find($id);
+        $image=$from->getData();
+        $this->save($image);
     }
 
     public function delete($id)

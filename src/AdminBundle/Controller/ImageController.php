@@ -2,8 +2,10 @@
 
 namespace AdminBundle\Controller;
 
+use AdminBundle\Form\ImageEditType;
 use AdminBundle\Form\ImageType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 
@@ -32,6 +34,20 @@ class ImageController extends Controller
         return $this->render('AdminBundle:Image:list.html.twig', array(
             'images' => $images,
             'formDelete'   => $formDelete->createView(),
+            'idp' =>$id
+        ));
+    }
+    public function editAction(Request$request ,$idp,$id)
+    {
+        $manager = $this->get('core.service.image_manager');
+        $image=$manager->find($id);
+        $form = $this->get('form.factory')->create(ImageEditType::class,$image);
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+            $manager->edit($form,$id);
+            return $this->redirectToRoute('admin_product_image_list',array('id' => $idp));
+        }
+        return $this->render('AdminBundle:Image:edit.html.twig', array(
+            'form' => $form->createView(),
         ));
     }
 

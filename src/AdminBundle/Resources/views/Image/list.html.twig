@@ -6,9 +6,15 @@
     {% for image in images %}
 
         <div class="col-xs-6 col-sm-3">
-            <div class="thumb-container thumb-header">
-                <h3 style="text-align: center;">{{ image.label }}</h3>
+            <div class="thumb-container thumb-header" align="center">
+                <h3 >{{ image.label }}</h3>
+                {% if image.deleted ==false %}
+                    <span style="color:#78D07D;">Activée</span>
+                {% else %}
+                    <span style="color:red;">Désactivée</span>
+                {% endif %}
             </div>
+
 
             <a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox">
                 <img src="{{ asset('uploads/product/'~ image.name ) }}">
@@ -16,7 +22,7 @@
             <div class=" thumb-container thumb-footer" align="center">
 
                 <div  style="border: solid 1px white;border-radius:10px; width:70px;" >
-                    <a href="#" class="link thumb-link"><em class="fa fa-edit"></em></a>
+                    <a href="{{ path('admin_product_image_edit',{'idp': idp,'id':image.id}) }}" class="link thumb-link"><em class="fa fa-edit"></em></a>
                     <a href="#" class="link thumb-link" ><em class="fa fa-trash-o"></em></a>
                 </div>
             </div>

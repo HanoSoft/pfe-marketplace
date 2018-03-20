@@ -5,7 +5,6 @@ namespace AdminBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-
 class ImageEditType extends AbstractType
 {
     /**
@@ -20,6 +19,4 @@ class ImageEditType extends AbstractType
     {
         return ImageType::class;
     }
-
-
 }
