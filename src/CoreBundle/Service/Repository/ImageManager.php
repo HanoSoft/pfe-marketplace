@@ -40,13 +40,21 @@ class ImageManager extends RepositoryManager implements AbstractRepository
         $image->upload();
         $this->save($image);
     }
+    public function findByProduct($id){
+        /**
+         * @var $product\CoreBundle\Entity\Product
+         */
+        $product=$this->productManager->find($id);
+        $images=$product->getImages();
+        return $images;
+    }
 
     public function add($form)
     {
         // TODO: Implement add() method.
     }
 
-    public function edit($from)
+    public function edit($from,$id)
     {
         // TODO: Implement edit() method.
     }

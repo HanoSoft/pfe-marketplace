@@ -24,5 +24,15 @@ class ImageController extends Controller
         ));
     }
 
+    public function listAction($id)
+    {
+        $manager = $this->get('core.service.image_manager');
+        $images=$manager->findByProduct($id);
+        $formDelete = $this->get('form.factory')->create();
+        return $this->render('AdminBundle:Image:list.html.twig', array(
+            'images' => $images,
+            'formDelete'   => $formDelete->createView(),
+        ));
+    }
 
 }

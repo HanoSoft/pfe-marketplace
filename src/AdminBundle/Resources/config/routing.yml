@@ -79,6 +79,12 @@ admin_product_image_delete:
             _controller: AdminBundle:Image:delete
             requirements:
             id: \d+
+admin_product_image_list:
+    path:     /admin/product/image/list/{id}
+    defaults:
+            _controller: AdminBundle:Image:list
+            requirements:
+            id: \d+
 
 
 
