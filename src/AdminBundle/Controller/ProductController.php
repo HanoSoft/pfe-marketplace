@@ -55,26 +55,15 @@ class ProductController extends Controller
 
     public function editAction($id, Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $product = $em->getRepository('CoreBundle:Product')->find($id);
-        $sizes=$product->getSizes();
-        $images=$product->getImages();
-        $form = $this->get('form.factory')->create(ProductEditType::class, $product);
-        $formDelete = $this->get('form.factory')->create();
+        $manager = $this->get('core.service.product_manager');
+        $product=$manager->find($id);
+        $form = $this->get('form.factory')->create(ProductEditType::class,$product);
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-            $em->flush();
-            return $this->redirectToRoute('admin_product_show');
+            $manager->edit($form,$id);
+            return $this->redirectToRoute('admin_product_list');
         }
         return $this->render('AdminBundle:Product:edit.html.twig', array(
-            'product' => $product,
-            'form'   => $form->createView(),
-            'formDelete'   => $formDelete->createView(),
-            'sizes'  => $sizes,
-            'images'  => $images,
-
+            'form' => $form->createView(),
         ));
     }
-
-
 }
