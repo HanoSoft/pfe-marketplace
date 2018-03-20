@@ -65,4 +65,12 @@ class ProductSizeManager extends RepositoryManager  implements AbstractRepositor
     {
         // TODO: Implement add() method.
     }
+    public function findByProduct($id){
+        /**
+         * @var $product\CoreBundle\Entity\Product
+         */
+        $product=$this->productManager->find($id);
+        $sizes=$product->getSizes();
+        return $sizes;
+    }
 }

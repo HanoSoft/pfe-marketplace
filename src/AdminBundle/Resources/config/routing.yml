@@ -94,5 +94,11 @@ admin_product_size_edit:
             requirements:
             id: \d+
             idp: \d+
-
+admin_product_size_list:
+    path:     /admin/product/size/list/{id}
+    defaults:
+            _controller: AdminBundle:ProductSize:list
+            requirements:
+            id: \d+
+            idp: \d+
 

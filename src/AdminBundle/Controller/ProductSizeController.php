@@ -24,6 +24,16 @@ class ProductSizeController extends Controller
             'id'=>$id,
         ));
     }
-
+    public function listAction($id)
+    {
+        $manager = $this->get('core.service.product.size_manager');
+        $sizes=$manager->findByProduct($id);
+        $formDelete = $this->get('form.factory')->create();
+        return $this->render('AdminBundle:ProductSize:list.html.twig', array(
+            'sizes' => $sizes,
+            'formDelete'   => $formDelete->createView(),
+            'idp' =>$id
+        ));
+    }
 
 }
