@@ -2,20 +2,22 @@
 {% block content %}
     {{ parent() }}
 
-
-
-
-
-
-
-
-
     <div class="container">
     {% for image in images %}
+
         <div class="col-xs-6 col-sm-3">
+            <div style="background: #000000; border: 2px black;border-radius: 20px 20px 0 0;color:#f0f0f0;padding: 10px 0;"><h3 style="text-align: center;">{{ image.label }}</h3></div>
             <a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox">
                 <img src="{{ asset('uploads/product/'~ image.name ) }}">
             </a>
+            <div style="background: #000000; border: 2px black;border-radius: 0 0 20px 20px;color:#f0f0f0;padding: 10px 0;">
+
+                <div align="center">
+                <a href="#" class="link thumb-link"><em class="fa fa-edit"></em></a>
+                <a href="#" class="link thumb-link" ><em class="fa fa-trash-o"></em></a>
+                </div>
+            </div>
+
         </div>
     {% endfor %}
     </div>

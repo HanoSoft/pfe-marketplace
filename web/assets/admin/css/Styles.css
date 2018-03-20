@@ -84,3 +84,11 @@
     right: -55px;
     z-index:1032;
 }
+/*thumbnail link*/
+.thumb-link{
+    color: #FFFFFF;
+    margin-right: 5px;
+}
+.thumb-link:hover{
+    color: #E94B4A;
+}
