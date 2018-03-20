@@ -92,3 +92,15 @@
 .thumb-link:hover{
     color: #E94B4A;
 }
+.thumb-container{
+    background: #000000;
+    color:#f0f0f0;
+    padding: 10px 0;
+    border: 2px black;
+}
+.thumb-header{
+   border-radius: 20px 20px 0 0;
+}
+.thumb-footer{
+   border-radius: 0 0 20px 20px;
+}
