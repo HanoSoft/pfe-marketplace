@@ -30,11 +30,13 @@
                             <td class="money">{{ product.quantity }}</td>
                             <td>{{ product.color.colorName }}</td>
                             <td>
+                                <a href="{{ path('admin_product_size_edit', {'id': product.id}) }}" class="link" ><em class="fa fa-edit"></em></a>
+
                                 {% for sizes in product.sizes %}
                                     {{ sizes.size }}
                                 {% endfor %}
                             </td>
-                            <td>
+                            <td align="center">
                                 {% if product.deleted ==false %}
                                 <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
                                 {% else %}

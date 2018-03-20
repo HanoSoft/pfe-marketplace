@@ -25,4 +25,5 @@ class ProductSizeController extends Controller
         ));
     }
 
+
 }
