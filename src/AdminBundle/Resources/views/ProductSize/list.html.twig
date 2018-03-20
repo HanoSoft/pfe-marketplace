@@ -1,7 +1,6 @@
 {% extends "AdminBundle::adminLayout.html.twig" %}
 {% block content %}
     {{ parent() }}
-
     <div class="container">
         {% for size in sizes %}
 
@@ -14,17 +13,14 @@
                         <span style="color:red;">Désactivée</span>
                     {% endif %}
                 </div>
+                <div class=" thumb-container thumb-footer" align="center">
+
+                    <div  style="border: solid 1px white;border-radius:10px; width:70px;" >
+                        <a href="" class="link thumb-link"><em class="fa fa-edit"></em></a>
+                        <a href="#myModal" class="link thumb-link" data-toggle="modal" data-wathever="" ><em class="fa fa-trash-o"></em></a>
+                    </div>
+                </div>
             </div>
-
-
         {% endfor %}
-
     {{ include("AdminBundle::delete.html.twig") }}
-
-
-
-
-
-
-
 {% endblock %}
