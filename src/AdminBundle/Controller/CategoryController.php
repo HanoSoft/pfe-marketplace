@@ -41,7 +41,6 @@ class CategoryController extends Controller
         $category=$manager->find($id);
         $form = $this->get('form.factory')->create(CategoryEditType::class,$category);
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-
             $manager->edit($form,$id);
             return $this->redirectToRoute('admin_category_list');
         }
@@ -49,25 +48,19 @@ class CategoryController extends Controller
             'form' => $form->createView(),
         ));
   }
-        public function deleteAction(Request $request, $id)
+  public function deleteAction(Request $request, $id)
   {
-          $em = $this->getDoctrine()->getManager();
-          $category  = $em->getRepository('AdminBundle:Category')->find($id);
-          $category->setDeleted(true);
-      
-            if (null === $category) {
-              throw new NotFoundHttpException("La categorie  ".$id." n'existe pas.");
-                  }
-            $form = $this->get('form.factory')->create();
-            if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-              $em->flush();
-
-                return $this->redirectToRoute('admin_category_show');
-              }
-            return $this->render('AdminBundle:Category:delete.html.twig', array(
-              'category' => $category,
-              'form'   => $form->createView(),
-        ));
+      $manager = $this->get('core.service.category_manager');
+      $category=$manager->find($id);
+      $formDelete = $this->get('form.factory')->create();
+      if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
+          $manager->delete($id);
+          return $this->redirectToRoute('admin_category_list');
+      }
+      return $this->render('AdminBundle:Category:delete.html.twig', array(
+          'formDelete'   => $formDelete->createView(),
+          'category' => $category,
+      ));
   }
 
 }

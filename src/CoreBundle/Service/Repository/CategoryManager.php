@@ -26,22 +26,30 @@ class CategoryManager extends RepositoryManager implements AbstractRepository
         $this->em=$em;
         parent::__construct($em,$repository);
     }
+    protected function setDeleted($objects)
+    {
+        foreach ($objects as $object) {
+            $object->setDeleted(true);
+        }
+    }
     public function add($form)
     {
         $category=new Category();
         $category=$form->getData();
         $this->save($category);
     }
-
     public function edit($from,$id)
     {
         $category=$this->find($id);
         $category=$from->getData();
         $this->save($category);
     }
-
     public function delete($id)
     {
-        // TODO: Implement delete() method.
+        $category=$this->find($id);
+        $category->setDeleted(true);
+        $product=$category->getProducts();
+        $this->setDeleted($product);
+        $this->save($category);
     }
 }

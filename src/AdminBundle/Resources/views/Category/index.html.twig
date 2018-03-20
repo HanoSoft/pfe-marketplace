@@ -1,54 +1,35 @@
-
-{% extends "AdminBundle::adminLayout.html.twig" %} 
+{% extends "AdminBundle::adminLayout.html.twig" %}
 {% block content %}
     {{ parent() }}
 
-
     <div class="container-fluid">
-        <div class="row">
-            <div class="">
+        <h2>Categorie<a class="col-md-offset-10 btn btn-primary btn-md">
+                <span class="fa fa-plus-circle"> </span></span> Nouvelle categorie </a>
+        </h2>
+        <br>
+        <div class="row dataTables_wrapper form-inline dt-bootstrap no-footer">
+            <table  class="data-table table table-striped table-bordered dataTable no-footer" style="width:100%">
+                <thead>
+                    <tr>
+                        <th class="hidden-xs">ID</th>
+                        <th class="sorting_asc">Category</th>
+                        <th><em class="fa fa-cog"></em></th>
+                    </tr>
+                </thead>
+                <tbody >
+                {% for category in categories %}
+                    <tr>
+                        <td>{{ category.id }}</td>
+                        <td>{{ category.name }}</td>
+                        <td align="center">
+                        <a href="{{ path('admin_category_edit', {'id': category.id}) }}" class="btn btn-warning"><em class="fa fa-edit"></em></a>
+                        <a href="{{ path('admin_category_delete', {'id': category.id}) }}" class="btn btn-danger"><em class="fa fa-trash-o"></em></a>
+                    </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
 
-                <div class="panel panel-primary  panel-table" >
-                    <div class="panel-heading" style="color:#FFFFFF; height: 70px;">
-                        <div class="row" >
-
-                            <div class="col col-xs-6">
-                                <h3 class="panel-title">Consulter Catégorie</h3>
-                            </div>
-
-                            <div class="col col-xs-6 text-right" >
-
-                                    <a href="{{ path('admin_category_add') }}" class="btn btn-success btn-md "><em class="fa fa-plus"></em></a>
-                            </div>
-
-                        </div>  
-                    </div>
-                    <div class="panel-body table-responsive" >
-                        <table class="data-table display" style="width:100%">
-                            <thead>
-                            <tr>
-
-                                <th class="hidden-xs">ID</th>
-                                <th>Category</th>
-                               
-                                <th><em class="fa fa-cog"></em></th>
-                            </tr>
-                            </thead>
-                            <tbody >
-                                {% for category in categories %}
-                                    <tr>
-                                        <td>{{ category.id }}</td>
-                                        <td>{{ category.name }}</td>
-                                        <td align="center">
-                                            <a href="{{ path('admin_category_edit', {'id': category.id}) }}" class="btn btn-warning"><em class="fa fa-edit"></em></a>
-                                            <a href="{{ path('admin_category_delete', {'id': category.id}) }}" class="btn btn-danger"><em class="fa fa-trash-o"></em></a>
-                                        </td>
-
-                                    </tr>
-                                {% endfor %}
-                            </tbody>
-
-                        </table>
+            </table>
 
                     </div>
                     <div class="panel-footer">

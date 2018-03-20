@@ -41,7 +41,7 @@ class ProductSizeManager extends RepositoryManager  implements AbstractRepositor
         $size->setProduct($product);
         $this->save($size);
     }
-    public function edit($from)
+    public function edit($from,$id)
     {
         // TODO: Implement edit() method.
     }
