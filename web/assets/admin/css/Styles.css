@@ -107,7 +107,8 @@
 .form-title.form-header{
     background: #337ab7;
 }
-/*carousel product */
+
+/*carousel product -------------------------------------------------------------------*/
 .carousel-inner {
     position: relative;
     width: 100%;
@@ -126,14 +127,12 @@
     background-image: none !important;
     background-repeat: repeat-x;
 }
-#carousel-example-generic {
 
-}
 
 #carousel-custom {
-    margin: 20px auto;
-    /*width: 400px;*/
 
+  margin: 0;
+ padding: 0;
 }
 #carousel-custom .carousel-indicators {
     margin: 10px 0 0;
@@ -167,8 +166,9 @@
     position: relative;
 }
 .carousel-indicators li img {
-    height: 66px;
-    width: 52px;}
+    height: 30px;
+    width: 30px;
+}
 
 /*carousel new controll*/
 .carousel .carousel-inner .item img {
@@ -285,3 +285,5 @@
         margin-right: -14px;
     }
 }
+
+/*---------------------------------------------------------------------*/
