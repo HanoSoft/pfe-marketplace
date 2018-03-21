@@ -48,11 +48,6 @@ class ProductController extends Controller
             'formDelete'   => $formDelete->createView(),
         ));
     }
-
-
-
-
-
     public function editAction($id, Request $request)
     {
         $manager = $this->get('core.service.product_manager');
@@ -64,6 +59,14 @@ class ProductController extends Controller
         }
         return $this->render('AdminBundle:Product:edit.html.twig', array(
             'form' => $form->createView(),
+        ));
+    }
+    public function showAction($id)
+    {
+        $manager = $this->get('core.service.product_manager');
+        $product=$manager->find($id);
+        return $this->render('AdminBundle:Product:show.html.twig', array(
+            'product' => $product,
         ));
     }
 }
