@@ -1,30 +1,25 @@
 {% extends "AdminBundle::adminLayout.html.twig" %}
 {% block content %}
     {{ parent() }}
-<style>
-
-</style>
-
 
 <div class="container">
     <div class="row">
-        <div class=" col-sm-4 col-xs-4">
 
 
             <div class="container">
-                <div id='carousel-custom' class='carousel slide' data-ride='carousel'>
+                <div id='carousel-custom' class='carousel slide col-md-3' data-ride='carousel'>
                     <div class='carousel-outer'>
                         <!-- me art lab slider -->
-                        <div class='carousel-inner '>
+                        <div class='carousel-inner  '>
                         {% for image in product.images %}
                             {% set counter = ( counter | default(0) ) + 1 %}
                             {% if counter==1 %}
-                            <div class='item active'>
-                                <img src="{{ asset('uploads/product/'~ image.name ) }}"/>
+                            <div class='item active '>
+                                <img class="img-responsive" src="{{ asset('uploads/product/'~ image.name ) }}"/>
                             </div>
                             {% else %}
-                            <div class='item' >
-                                <img src="{{ asset('uploads/product/'~ image.name ) }}" alt=''  />
+                            <div class='item ' >
+                                <img class="img-responsive" src="{{ asset('uploads/product/'~ image.name ) }}" alt=''  />
                             </div>
 
                             {% endif %}
@@ -34,10 +29,10 @@
 
                         <!-- sag sol -->
                         <a class='left carousel-control' href='#carousel-custom' data-slide='prev'>
-                            <span class='glyphicon glyphicon-chevron-left'></span>
+                            <span class='glyphicon glyphicon-menu-left'></span>
                         </a>
                         <a class='right carousel-control' href='#carousel-custom' data-slide='next'>
-                            <span class='glyphicon glyphicon-chevron-right'></span>
+                            <span class='glyphicon glyphicon-menu-right'></span>
                         </a>
                     </div>
 
@@ -46,9 +41,9 @@
     {% for image in product.images %}
         {% set counter = ( counter | default(0) ) + 1 %}
         {% if counter==1 %}
-                        <li data-target='#carousel-custom' data-slide-to='0' class='active'><img src="{{ asset('uploads/product/'~ image.name ) }}" alt='' /></li>
+                        <li data-target='#carousel-custom' data-slide-to='{{ counter-1 }}' class='active'><img src="{{ asset('uploads/product/'~ image.name ) }}" alt='' /></li>
         {% else %}
-            <li data-target='#carousel-custom' data-slide-to='1'><img src="{{ asset('uploads/product/'~ image.name ) }}" alt='' /></li>
+            <li data-target='#carousel-custom' data-slide-to='{{ counter-1 }}'><img src="{{ asset('uploads/product/'~ image.name ) }}" alt='' /></li>
         {% endif %}
     {% endfor %}
                     </ol>
@@ -58,6 +53,6 @@
 
             </div>
         </div>
-    </div>
+
 </div>
 {% endblock %}
