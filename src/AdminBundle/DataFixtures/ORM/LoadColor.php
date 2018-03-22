@@ -1,12 +1,10 @@
 <?php
 
-namespace CoreBundle\DataFixtures\ORM;
+namespace AdminBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use CoreBundle\Entity\Color;
-
-
 
 class LoadColor implements FixtureInterface
 {

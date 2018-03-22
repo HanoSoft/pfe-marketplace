@@ -65,14 +65,14 @@ class Product
 
     /**
      *@ORM\ManyToOne(targetEntity="CoreBundle\Entity\Color",inversedBy="products",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
 
       private $color;
 
     /**
      *@ORM\OneToMany(targetEntity="CoreBundle\Entity\ProductSize",mappedBy="product")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $sizes;
 

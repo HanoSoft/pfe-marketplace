@@ -16,7 +16,7 @@
                     <th>Produit</th>
                     <th>Prix</th>
                     <th>Quantité</th>
-                    <th>Couleur</th>
+                   {# <th>Couleur</th>#}
                     <th> Taille </th>
                     <th> Etat </th>
                     <th><em class="fa fa-cog"></em></th>
@@ -29,7 +29,7 @@
                             <td>{{ product.productName }}</td>
                             <td class="money">{{ product.price }} €</td>
                             <td class="money">{{ product.quantity }}</td>
-                            <td>{{ product.color.colorName }}</td>
+                           {# <td>{{ product.color.colorName }}</td>#}
                             <td>
                                 <a href="{{ path('admin_product_size_list', {'id': product.id}) }}" class="link" ><em class="fa fa-eye"></em></a>
 
