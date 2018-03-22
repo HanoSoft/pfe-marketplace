@@ -65,7 +65,7 @@ class ProductController extends Controller
     {
         $manager = $this->get('core.service.product_manager');
         $product=$manager->find($id);
-        return $this->render('AdminBundle:Product:show.html.twig', array(
+        return $this->render('AdminBundle:Product:show1.html.twig', array(
             'product' => $product,
         ));
     }
