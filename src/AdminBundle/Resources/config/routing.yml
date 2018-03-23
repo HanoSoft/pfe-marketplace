@@ -120,3 +120,6 @@ admin_alert_edit:
             _controller: AdminBundle:Alert:edit
             requirements:
             id: \d+
+admin_promotion_add:
+    path:     /admin/promotion/add
+    defaults: { _controller: AdminBundle:Promotion:add }
