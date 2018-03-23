@@ -35,7 +35,7 @@ class Category
     private $products;
 
     /**
-     *@ORM\ManyToOne(targetEntity="CoreBundle\Entity\brand",inversedBy="categories",cascade={"persist"})
+     *@ORM\ManyToOne(targetEntity="CoreBundle\Entity\Brand",inversedBy="categories",cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $brand;

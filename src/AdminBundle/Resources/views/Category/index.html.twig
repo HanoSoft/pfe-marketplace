@@ -1,18 +1,21 @@
+
 {% extends "AdminBundle::adminLayout.html.twig" %}
 {% block content %}
     {{ parent() }}
 
-    <div class="container-fluid">
+
+    <div class="container fluid">
         <h2>Categorie<a class="col-md-offset-10 btn btn-primary btn-md">
-                <span class="fa fa-plus-circle"> </span></span> Nouvelle categorie </a>
+            <span class="fa fa-plus-circle"> </span></span> Nouvelle categorie </a>
         </h2>
         <br>
         <div class="row dataTables_wrapper form-inline dt-bootstrap no-footer">
             <table  class="data-table table table-striped table-bordered dataTable no-footer" style="width:100%">
                 <thead>
                     <tr>
-                        <th class="hidden-xs">ID</th>
+                        <th>ID</th>
                         <th class="sorting_asc">Category</th>
+                        <th> Etat </th>
                         <th><em class="fa fa-cog"></em></th>
                     </tr>
                 </thead>
@@ -22,41 +25,31 @@
                         <td>{{ category.id }}</td>
                         <td>{{ category.name }}</td>
                         <td align="center">
-                        <a href="{{ path('admin_category_edit', {'id': category.id}) }}" class="btn btn-warning"><em class="fa fa-edit"></em></a>
-                        <a href="{{ path('admin_category_delete', {'id': category.id}) }}" class="btn btn-danger"><em class="fa fa-trash-o"></em></a>
-                    </td>
+                            <a href="{{ path('admin_category_edit', {'id': category.id}) }}" class="btn btn-warning"><em class="fa fa-edit"></em></a>
+                            <a href="{{ path('admin_category_delete', {'id': category.id}) }}" class="btn btn-danger"><em class="fa fa-trash-o"></em></a>
+                        </td>
                     </tr>
                 {% endfor %}
                 </tbody>
 
             </table>
 
+        </div>
+        <div class="panel-footer">
+            <div class="row">
+                <div class="col-md-offset-4">
+                    {# display navigation #}
+                    <div class="navigation">
                     </div>
-                    <div class="panel-footer">
-                        <div class="row">
-
-                            <div class="col-md-offset-4">
-
-                                {# display navigation #}
-                                <div class="navigation">
-
-                                </div>
-
-                                    </div>
-                                    <div class="count">
-
-                                    </div>
-
-
-                        </div>
-                    </div>
-
                 </div>
-
+                <div class="count">
+                </div>
             </div>
         </div>
     </div>
-
+    </div>
+    </div>
+    </div>
 
 {% endblock %}
 
