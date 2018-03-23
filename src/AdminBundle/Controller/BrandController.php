@@ -12,6 +12,9 @@ namespace AdminBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use AdminBundle\Form\BrandType;
+
+
 
 
 class BrandController extends Controller
@@ -20,6 +23,7 @@ class BrandController extends Controller
     {
         return $this->render('AdminBundle:Brand:index.html.twig');
     }
+
     public function addAction(Request $request)
     {
 
