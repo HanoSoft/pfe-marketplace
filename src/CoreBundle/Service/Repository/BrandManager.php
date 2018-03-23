@@ -31,8 +31,9 @@ class BrandManager extends RepositoryManager implements AbstractRepository
     {
         $brand = new Brand();
         $brand = $form->getData();
+        $brand->getLogo()->upload();
+        $brand->getBrandImage()->upload();
         $this->save($brand);
-
     }
     public function edit($from,$id)
     {

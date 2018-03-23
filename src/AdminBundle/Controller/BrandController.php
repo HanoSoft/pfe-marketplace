@@ -8,14 +8,9 @@
 
 namespace AdminBundle\Controller;
 
-
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AdminBundle\Form\BrandType;
-
-
-
 
 class BrandController extends Controller
 {
@@ -31,7 +26,6 @@ class BrandController extends Controller
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $manager = $this->get('core.service.brand_manager');
             $manager->add($form);
-
             return $this->redirectToRoute('admin_brand_add');
         }
         return $this->render('AdminBundle:Brand:add.html.twig', array(
