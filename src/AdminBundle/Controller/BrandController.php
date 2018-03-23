@@ -32,4 +32,14 @@ class BrandController extends Controller
             'form' => $form->createView(),
         ));
     }
+    public function listAction(Request $request)
+    {
+        $manager = $this->get('core.service.brand_manager');
+        $brands=$manager->getAll();
+        $formDelete = $this->get('form.factory')->create();
+        return $this->render('AdminBundle:Brand:index.html.twig', array(
+            'brands' => $brands,
+            'formDelete'   => $formDelete->createView(),
+        ));
+    }
 }
