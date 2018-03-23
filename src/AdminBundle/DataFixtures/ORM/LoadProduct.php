@@ -84,12 +84,9 @@ class LoadProduct implements FixtureInterface
         $product->setCategory($category);
         $product->setProductName('PC portable Lenovo Thinkpad L440 reconditionné - Noir');
         $product->setPrice(159.00);
-        $product->setProductDetails("<pre>
-<span style=\"font-family:Comic Sans MS,cursive\"><span style=\"color:#e67e22\"><u><span style=\"font-size:14px\"><strong>Le Lenovo ThinkPad L440</strong></span></u></span>
-</span><strong><span style=\"font-family:Comic Sans MS,cursive\"> 4Go 500Go </span>
-<span style=\"font-family:Comic Sans MS,cursive\"><strong>b&eacute;n&eacute;ficie d&#39;une Garantie 1 </strong>an
- est &eacute;quip&eacute; d&#39;un processeur Intel Celeron 2950M 2.0GHz et dispose de 4Go (4096Mo) de m&eacute;moire vive.
- Windows 10 Famille 64bits est le syst&egrave;me d&#39;exploitation install&eacute; sur l&#39;appareil.</span></strong></pre> ");
+        $product->setProductDetails("<p><span style=\"color:#1abc9c\"><strong>Le Lenovo ThinkPad L440 4Go 500Go</strong></span></p>
+
+<p><strong>b&eacute;n&eacute;ficie d&#39;une Garantie 1 an est &eacute;quip&eacute; d&#39;un processeur Intel Celeron 2950M 2.0GHz et dispose de 4Go (4096Mo) de m&eacute;moire vive. Windows 10 Famille 64bits est le syst&egrave;me d&#39;exploitation install&eacute; sur l&#39;appareil.</strong></p> ");
         $product->setQuantity(300);
         $image=new Image();
         $image1=new Image();
