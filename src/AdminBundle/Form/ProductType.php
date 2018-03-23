@@ -32,7 +32,8 @@ class ProductType extends AbstractType
                 'multiple'     => false,
             ))
            ;
-    }/**
+    }
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
