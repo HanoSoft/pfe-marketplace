@@ -84,20 +84,12 @@ class LoadProduct implements FixtureInterface
         $product->setCategory($category);
         $product->setProductName('PC portable Lenovo Thinkpad L440 reconditionné - Noir');
         $product->setPrice(159.00);
-        $product->setProductDetails("<p>2 chaises.<br />
-        Assise et dossier en polypropyl&egrave;ne.<br />
-        Pieds en&nbsp;<strong>h&ecirc;tre massif</strong>.<br />
-        Entretoises en acier.<br />
-        <br />
-        <strong>Coloris</strong>&nbsp;: blanc et naturel<br />
-        <strong>Mati&egrave;re</strong>&nbsp;:<br />
-        Assise et dossier : polypropyl&egrave;ne<br />
-        Pieds : h&ecirc;tre massif<br />
-        Entretoises : acier<br />
-        <strong>Dimensions</strong>&nbsp;: L46,5 x P52 x H81,5 cm<br />
-        <strong>Dimensions assise</strong>&nbsp;: P42 x H42 cm<br />
-        <br />
-        <strong>Garantie</strong>&nbsp;: 1 an&nbsp;</p>");
+        $product->setProductDetails("<pre>
+<span style=\"font-family:Comic Sans MS,cursive\"><span style=\"color:#e67e22\"><u><span style=\"font-size:14px\"><strong>Le Lenovo ThinkPad L440</strong></span></u></span>
+</span><strong><span style=\"font-family:Comic Sans MS,cursive\"> 4Go 500Go </span>
+<span style=\"font-family:Comic Sans MS,cursive\"><strong>b&eacute;n&eacute;ficie d&#39;une Garantie 1 </strong>an
+ est &eacute;quip&eacute; d&#39;un processeur Intel Celeron 2950M 2.0GHz et dispose de 4Go (4096Mo) de m&eacute;moire vive.
+ Windows 10 Famille 64bits est le syst&egrave;me d&#39;exploitation install&eacute; sur l&#39;appareil.</span></strong></pre> ");
         $product->setQuantity(300);
         $image=new Image();
         $image1=new Image();
