@@ -27,6 +27,12 @@ class BrandManager extends RepositoryManager implements AbstractRepository
         parent::__construct($em,$repository);
     }
 
+    protected function setDeleted($objects)
+    {
+        foreach ($objects as $object) {
+            $object->setDeleted(true);
+        }
+    }
 
     public function add($form)
     {
@@ -42,6 +48,9 @@ class BrandManager extends RepositoryManager implements AbstractRepository
     }
     public function delete($id)
     {
+        $brand=$this->find($id);
+        $brand->setDeleted(true);
+        $this->save($brand);
 
     }
 

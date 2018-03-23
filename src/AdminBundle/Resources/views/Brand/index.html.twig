@@ -12,10 +12,9 @@
             <table  class="data-table table table-striped table-bordered dataTable no-footer" style="width:100%">
                 <thead>
                 <tr>
-                    <th class="sorting_asc">Description</th>
-                    <th>brand image</th>
+                    <th>Id</th>
                     <th>logo</th>
-
+                    <th class="sorting_asc">Name</th>
                     <th> Etat </th>
                     <th><em class="fa fa-cog"></em></th>
                 </tr>
@@ -23,9 +22,9 @@
                 <tbody>
                 {% for brand in brands %}
                     <tr>
-                        <td>{{ brand.description }}</td>
+                        <td>{{ brand.id }}</td>
                         <td></td>
-                        <td></td>
+                        <td>{{ brand.brandName }}</td>
 
                         <td align="center">
                             {% if brand.deleted ==false %}

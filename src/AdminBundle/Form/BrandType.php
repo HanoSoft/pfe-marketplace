@@ -25,6 +25,7 @@ class BrandType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('description',CKEditorType::class)
+                ->add('brandName')
                 ->add('brandImage', BrandImageType::class)
                 ->add('logo', BrandImageType::class);
     }
