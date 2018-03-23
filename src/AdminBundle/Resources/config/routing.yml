@@ -108,4 +108,6 @@ admin_product_show:
 admin_brand_add:
     path:     /admin/brand/add
     defaults: { _controller: AdminBundle:Brand:add }
-
+admin_alert_add:
+    path:     /admin/alert/add
+    defaults: { _controller: AdminBundle:alert:add }
