@@ -34,6 +34,11 @@ class Category
      */
     private $products;
 
+    /**
+     *@ORM\ManyToOne(targetEntity="CoreBundle\Entity\brand",inversedBy="categories",cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $brand;
 
     /**
      * @var string
@@ -139,5 +144,29 @@ class Category
     public function getDeleted()
     {
         return $this->deleted;
+    }
+
+    /**
+     * Set brand
+     *
+     * @param \CoreBundle\Entity\brand $brand
+     *
+     * @return Category
+     */
+    public function setBrand(\CoreBundle\Entity\brand $brand)
+    {
+        $this->brand = $brand;
+
+        return $this;
+    }
+
+    /**
+     * Get brand
+     *
+     * @return \CoreBundle\Entity\brand
+     */
+    public function getBrand()
+    {
+        return $this->brand;
     }
 }

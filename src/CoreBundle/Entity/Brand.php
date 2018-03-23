@@ -21,12 +21,6 @@ class Brand
      */
     private $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255)
-     */
-    private $name;
 
     /**
      * @var string
@@ -40,7 +34,23 @@ class Brand
      *
      * @ORM\Column(name="deleted", type="boolean")
      */
-    private $deleted;
+    private $deleted=false;
+
+    /**
+     *@ORM\OneToMany(targetEntity="CoreBundle\Entity\Category",mappedBy="brand")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $categories;
+
+    /**
+     *@ORM\OneToOne(targetEntity="CoreBundle\Entity\BrandImage",cascade={"persist","remove"})
+     */
+    private $brandImage;
+
+    /**
+     *@ORM\OneToOne(targetEntity="CoreBundle\Entity\BrandImage",cascade={"persist","remove"})
+     */
+    private $logo;
 
 
     /**
@@ -53,29 +63,6 @@ class Brand
         return $this->id;
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Brand
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
 
     /**
      * Set description
@@ -124,5 +111,93 @@ class Brand
     {
         return $this->deleted;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add category
+     *
+     * @param \CoreBundle\Entity\Category $category
+     *
+     * @return Brand
+     */
+    public function addCategory(\CoreBundle\Entity\Category $category)
+    {
+        $this->categories[] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Remove category
+     *
+     * @param \CoreBundle\Entity\Category $category
+     */
+    public function removeCategory(\CoreBundle\Entity\Category $category)
+    {
+        $this->categories->removeElement($category);
+    }
+
+    /**
+     * Get categories
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
+    /**
+     * Set brandImage
+     *
+     * @param \CoreBundle\Entity\BrandImage $brandImage
+     *
+     * @return Brand
+     */
+    public function setBrandImage(\CoreBundle\Entity\BrandImage $brandImage = null)
+    {
+        $this->brandImage = $brandImage;
+
+        return $this;
+    }
+
+    /**
+     * Get brandImage
+     *
+     * @return \CoreBundle\Entity\BrandImage
+     */
+    public function getBrandImage()
+    {
+        return $this->brandImage;
+    }
+
+    /**
+     * Set logo
+     *
+     * @param \CoreBundle\Entity\BrandImage $logo
+     *
+     * @return Brand
+     */
+    public function setLogo(\CoreBundle\Entity\BrandImage $logo = null)
+    {
+        $this->logo = $logo;
+
+        return $this;
+    }
+
+    /**
+     * Get logo
+     *
+     * @return \CoreBundle\Entity\BrandImage
+     */
+    public function getLogo()
+    {
+        return $this->logo;
+    }
+}

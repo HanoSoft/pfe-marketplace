@@ -113,3 +113,7 @@ admin_product_show:
             _controller: AdminBundle:Product:show
             requirements:
             id: \d+
+admin_brand_add:
+    path:     /admin/brand/add
+    defaults: { _controller: AdminBundle:Brand:add }
+
