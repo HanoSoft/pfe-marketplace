@@ -27,6 +27,7 @@ class BrandManager extends RepositoryManager implements AbstractRepository
         parent::__construct($em,$repository);
     }
 
+
     public function add($form)
     {
         $brand = new Brand();

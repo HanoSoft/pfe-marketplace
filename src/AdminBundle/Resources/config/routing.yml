@@ -119,5 +119,22 @@ admin_brand_list:
 admin_brand_add:
     path:     /admin/brand/add
     defaults: { _controller: AdminBundle:Brand:add }
-
+admin_brand_edit:
+        path:     /admin/brand/edit/{id}
+        defaults:
+                _controller: AdminBundle:Brand:edit
+                requirements:
+                id: \d+
+admin_brand_show:
+    path:     /admin/brand/{id}
+    defaults:
+            _controller: AdminBundle:Brand:show
+            requirements:
+            id: \d+
+admin_brand_delete:
+    path:     /admin/brand/delete/{id}
+    defaults:
+            _controller: AdminBundle:Brand:delete
+            requirements:
+            id: \d+
 
