@@ -21,11 +21,6 @@ class ProductType extends AbstractType
             ->add('price',MoneyType::class,array('currency'=>''))
             ->add('quantity')
             ->add('productDetails',CKEditorType::class)
-            ->add('color',EntityType::class, array(
-                'class'        => 'CoreBundle:Color',
-                'choice_label' => 'colorName',
-                'multiple'     => false,
-            ))
             ->add('category',EntityType::class, array(
                 'class'        => 'CoreBundle:Category',
                 'choice_label' => 'name',

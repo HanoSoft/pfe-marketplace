@@ -5,12 +5,12 @@ namespace CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Color
+ * Alert
  *
- * @ORM\Table(name="color")
- * @ORM\Entity(repositoryClass="AdminBundle\Repository\ColorRepository")
+ * @ORM\Table(name="alert")
+ * @ORM\Entity(repositoryClass="CoreBundle\Repository\AlertRepository")
  */
-class Color
+class Alert
 {
     /**
      * @var int
@@ -22,24 +22,19 @@ class Color
     private $id;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="colorName", type="string", length=255)
+     * @ORM\Column(name="quantity", type="integer")
      */
-    private $colorName;
+    private $quantity;
 
-    
     /**
-     * @var string
+     * @var bool
      *
      * @ORM\Column(name="deleted", type="boolean")
      */
-    private $deleted=false;
+    private $deleted;
 
-    /**
-     *@ORM\OneToMany(targetEntity="CoreBundle\Entity\Product",mappedBy="color")
-     * @ORM\JoinColumn(nullable=false)
-     */
 
     /**
      * Get id
@@ -52,27 +47,27 @@ class Color
     }
 
     /**
-     * Set colorName
+     * Set quantity
      *
-     * @param string $colorName
+     * @param integer $quantity
      *
-     * @return Color
+     * @return Alert
      */
-    public function setColorName($colorName)
+    public function setQuantity($quantity)
     {
-        $this->colorName = $colorName;
+        $this->quantity = $quantity;
 
         return $this;
     }
 
     /**
-     * Get colorName
+     * Get quantity
      *
-     * @return string
+     * @return int
      */
-    public function getColorName()
+    public function getQuantity()
     {
-        return $this->colorName;
+        return $this->quantity;
     }
 
     /**
@@ -80,7 +75,7 @@ class Color
      *
      * @param boolean $deleted
      *
-     * @return Color
+     * @return Alert
      */
     public function setDeleted($deleted)
     {
@@ -92,10 +87,11 @@ class Color
     /**
      * Get deleted
      *
-     * @return boolean
+     * @return bool
      */
     public function getDeleted()
     {
         return $this->deleted;
     }
 }
+

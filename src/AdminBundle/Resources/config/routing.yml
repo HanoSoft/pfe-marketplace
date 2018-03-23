@@ -58,14 +58,6 @@ admin_product_size_add:
             _controller: AdminBundle:ProductSize:add
             requirements:
             id: \d+
-admin_color_show:
-    path:     /admin/color
-    defaults: { _controller: AdminBundle:Color:show }
-
-admin_color_add:
-    path:     /admin/color/add
-    defaults: { _controller: AdminBundle:Color:add }
-
 admin_product_image_edit:
     path:     /admin/product/image/edit/{idp}/{id}
     defaults:
