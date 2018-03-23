@@ -8,7 +8,7 @@
 
 namespace CoreBundle\Service\Repository;
 
-use AdminBundle\Repository\AlertRepository;
+use CoreBundle\Entity\Alert;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 
@@ -22,15 +22,15 @@ class AlertManager extends RepositoryManager  implements AbstractRepository
 
     public function __construct(EntityManager $em)
     {
-        $repository=$em->getRepository(AlertRepository::class);
+        $repository=$em->getRepository(Alert::class);
         $this->em=$em;
         parent::__construct($em,$repository);
     }
 
-    public function edit($from,$id)
+    public function edit($form,$id)
     {
         $alert=$this->find($id);
-        $alert=$from->getData();
+        $alert=$form->getData();
         $this->save($alert);
     }
 
@@ -43,7 +43,11 @@ class AlertManager extends RepositoryManager  implements AbstractRepository
 
     public function add($form)
     {
-        // TODO: Implement add() method.
+        $alert=new Alert();
+        $alert=$form->getData();
+        $this->save($alert);
     }
+
+
 
 }

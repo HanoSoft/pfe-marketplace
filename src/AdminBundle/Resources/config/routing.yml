@@ -110,4 +110,13 @@ admin_brand_add:
     defaults: { _controller: AdminBundle:Brand:add }
 admin_alert_add:
     path:     /admin/alert/add
-    defaults: { _controller: AdminBundle:alert:add }
+    defaults: { _controller: AdminBundle:Alert:add }
+admin_alert_show:
+    path:     /admin/alert/show
+    defaults: { _controller: AdminBundle:Alert:list }
+admin_alert_edit:
+    path:     /admin/alert/edit/{id}
+    defaults:
+            _controller: AdminBundle:Alert:edit
+            requirements:
+            id: \d+

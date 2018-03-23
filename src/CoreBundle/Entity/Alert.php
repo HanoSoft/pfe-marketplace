@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Alert
  *
  * @ORM\Table(name="alert")
- * @ORM\Entity(repositoryClass="CoreBundle\Repository\AlertRepository")
+ * @ORM\Entity(repositoryClass="AdminBundle\Repository\AlertRepository")
  */
 class Alert
 {
@@ -33,7 +33,7 @@ class Alert
      *
      * @ORM\Column(name="deleted", type="boolean")
      */
-    private $deleted;
+    private $deleted=false;
 
 
     /**
