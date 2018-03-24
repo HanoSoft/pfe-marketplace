@@ -44,6 +44,19 @@ class BrandController extends Controller
             'formDelete'   => $formDelete->createView(),
         ));
     }
+    public function editAction($id, Request $request)
+    {
+        $manager = $this->get('core.service.brand_manager');
+        $brand=$manager->find($id);
+        $form = $this->get('form.factory')->create(BrandEditType::class,$brand);
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+            $manager->edit($form,$id);
+            return $this->redirectToRoute('admin_brand_list');
+        }
+        return $this->render('AdminBundle:Brand:edit.html.twig', array(
+            'form' => $form->createView(),
+        ));
+    }
     public function deleteAction(Request $request,$id)
     {
         $formDelete = $this->get('form.factory')->create();
