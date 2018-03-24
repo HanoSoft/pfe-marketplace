@@ -70,4 +70,12 @@ class BrandController extends Controller
             'formDelete'   => $formDelete->createView(),
         ));
     }
+    public function showAction($id)
+    {
+        $manager = $this->get('core.service.brand_manager');
+        $brand=$manager->find($id);
+        return $this->render('AdminBundle:Brand:show.html.twig', array(
+            'brand' => $brand,
+        ));
+    }
 }
