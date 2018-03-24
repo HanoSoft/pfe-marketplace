@@ -11,9 +11,9 @@
                 {{ form_errors(form) }}
 
                 <div class="form-group">
-                    <label  class="col-sm-2 control-label">Nom marque : <span style="color:#C82829;">*</span></label>
+                    <label  class="col-sm-2 control-label">Nom : <span style="color:#C82829;">*</span></label>
                     <div class="col-sm-9" >
-                        {{ form_widget(form.brandName, {'attr': {'class': 'form-control','placeholder':'Nom De Produit','minlength':'2'}}) }}
+                        {{ form_widget(form.brandName, {'attr': {'class': 'form-control','placeholder':'Nom De Marque','minlength':'2'}}) }}
                     </div>
                     <span class="glyphicon "></span>
                 </div>
@@ -24,22 +24,24 @@
                         {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
                     </div>
                 </div>
-                <div class="form-group has-feedback">
-                    <label  class="col-sm-2 control-label">Image marque : *</label>
-                    <div class="col-sm-9">
-                        {{ form_widget(form.brandImage, {'attr': {'class': 'form-control','placeholder':'file','accept':'image/*'}}) }}
-                    </div>
-                    <span class="glyphicon " ></span>
-                </div>
 
                 <div class="form-group has-feedback">
-                    <label  class="col-sm-2 control-label">Logo marque : *</label>
+                    <label  class="col-sm-2 control-label">Logo : *</label>
                     <div class="col-sm-9">
                         {{ form_widget(form.logo, {'attr': {'class': 'form-control','placeholder':'file','accept':'image/*'}}) }}
 
                     </div>
                     <span class="glyphicon " ></span>
                 </div>
+                <div class="form-group has-feedback">
+                    <label  class="col-sm-2 control-label">Image : *</label>
+                    <div class="col-sm-9">
+                        {{ form_widget(form.brandImage, {'attr': {'class': 'form-control','placeholder':'file','accept':'image/*'}}) }}
+                    </div>
+                    <span class="glyphicon " ></span>
+                </div>
+
+
 
             <button class="btn btn-success col-md-offset-10 " disabled="true" type="submit" ><span class="fa fa-edit"> </span> Modifier</button>
             {{ form_rest(form) }}
