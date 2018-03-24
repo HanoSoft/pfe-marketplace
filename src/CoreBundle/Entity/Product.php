@@ -64,13 +64,6 @@ class Product
     private $productDetails;
 
     /**
-     *@ORM\ManyToOne(targetEntity="CoreBundle\Entity\Color",inversedBy="products",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=true)
-     */
-
-      private $color;
-
-    /**
      *@ORM\OneToMany(targetEntity="CoreBundle\Entity\ProductSize",mappedBy="product")
      * @ORM\JoinColumn(nullable=true)
      */
@@ -278,7 +271,6 @@ class Product
     }
 
 
-
     /**
      * Add size
      *
@@ -313,27 +305,5 @@ class Product
         return $this->sizes;
     }
 
-    /**
-     * Set color
-     *
-     * @param \CoreBundle\Entity\Color $color
-     *
-     * @return Product
-     */
-    public function setColor(\CoreBundle\Entity\Color $color)
-    {
-        $this->color = $color;
 
-        return $this;
-    }
-
-    /**
-     * Get color
-     *
-     * @return \CoreBundle\Entity\Color
-     */
-    public function getColor()
-    {
-        return $this->color;
-    }
 }

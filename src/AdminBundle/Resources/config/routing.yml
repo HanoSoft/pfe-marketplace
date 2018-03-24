@@ -58,14 +58,6 @@ admin_product_size_add:
             _controller: AdminBundle:ProductSize:add
             requirements:
             id: \d+
-admin_color_show:
-    path:     /admin/color
-    defaults: { _controller: AdminBundle:Color:show }
-
-admin_color_add:
-    path:     /admin/color/add
-    defaults: { _controller: AdminBundle:Color:add }
-
 admin_product_image_edit:
     path:     /admin/product/image/edit/{idp}/{id}
     defaults:
@@ -119,6 +111,22 @@ admin_brand_list:
 admin_brand_add:
     path:     /admin/brand/add
     defaults: { _controller: AdminBundle:Brand:add }
+
+admin_alert_add:
+    path:     /admin/alert/add
+    defaults: { _controller: AdminBundle:Alert:add }
+admin_alert_show:
+    path:     /admin/alert/show
+    defaults: { _controller: AdminBundle:Alert:list }
+admin_alert_edit:
+    path:     /admin/alert/edit/{id}
+    defaults:
+            _controller: AdminBundle:Alert:edit
+            requirements:
+            id: \d+
+admin_promotion_add:
+    path:     /admin/promotion/add
+    defaults: { _controller: AdminBundle:Promotion:add }
 admin_brand_edit:
         path:     /admin/brand/edit/{id}
         defaults:
@@ -137,4 +145,5 @@ admin_brand_delete:
             _controller: AdminBundle:Brand:delete
             requirements:
             id: \d+
+
 
