@@ -44,7 +44,9 @@ class BrandManager extends RepositoryManager implements AbstractRepository
     }
     public function edit($from,$id)
     {
-
+        $brand=$this->find($id);
+        $brand=$from->getData();
+        $this->save($brand);
     }
     public function delete($id)
     {
