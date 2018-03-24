@@ -7,7 +7,6 @@ use AdminBundle\Form\CategoryType;
 use Symfony\Component\HttpFoundation\Request;
 use AdminBundle\Form\CategoryEditType;
 use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class CategoryController extends Controller
 {

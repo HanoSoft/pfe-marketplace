@@ -30,6 +30,13 @@ class Brand
     private $description;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="brandName", type="string", length=10000)
+     */
+    private $brandName;
+
+    /**
      * @var bool
      *
      * @ORM\Column(name="deleted", type="boolean")
@@ -199,5 +206,29 @@ class Brand
     public function getLogo()
     {
         return $this->logo;
+    }
+
+    /**
+     * Set brandName
+     *
+     * @param string $brandName
+     *
+     * @return Brand
+     */
+    public function setBrandName($brandName)
+    {
+        $this->brandName = $brandName;
+
+        return $this;
+    }
+
+    /**
+     * Get brandName
+     *
+     * @return string
+     */
+    public function getBrandName()
+    {
+        return $this->brandName;
     }
 }

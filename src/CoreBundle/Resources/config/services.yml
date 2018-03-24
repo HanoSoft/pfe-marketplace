@@ -11,9 +11,18 @@ services:
     core.service.category_manager:
                 class: CoreBundle\Service\Repository\CategoryManager
                 arguments: ['@doctrine.orm.entity_manager']
+<<<<<<< HEAD
     core.service.alert_manager:
                     class: CoreBundle\Service\Repository\AlertManager
                     arguments: ['@doctrine.orm.entity_manager']
+=======
+    core.service.brand_manager:
+                class: CoreBundle\Service\Repository\BrandManager
+                arguments: ['@doctrine.orm.entity_manager']
+    core.service.brand.image_manager:
+                class: CoreBundle\Service\Repository\BrandImageManager
+                arguments: ['@doctrine.orm.entity_manager','@core.service.brand_manager']
+>>>>>>> 2ece1a45e961d14b0cda756b99ac30fa83f888ad
 
 
 
