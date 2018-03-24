@@ -11,9 +11,9 @@
                 {{ form_start(form,{'attr': {'class': 'form-horizontal form'}}) }}
                 {{ form_errors(form) }}
             <div class="form-group">
-                    <label  class="col-sm-2 control-label">Marque : *</label>
+                    <label  class="col-sm-2 control-label">Nom : *</label>
                     <div class="col-sm-9">
-                        {{ form_widget(form.brandName, {'attr': {'class': 'form-control','placeholder':'Marque','rows':'10','cols':'100','minlength':'2'}}) }}
+                        {{ form_widget(form.brandName, {'attr': {'class': 'form-control','placeholder':'Nom de marque','rows':'10','cols':'100','minlength':'2'}}) }}
                     </div>
                     <span class="glyphicon "></span>
              </div>
@@ -26,24 +26,24 @@
                 <span class="glyphicon "></span>
             </div>
 
+                <div class="form-group has-feedback">
+                    <label  class="col-sm-2 control-label">Logo : *</label>
+                    <div class="col-sm-9">
+                        {{ form_widget(form.logo, {'attr': {'class': 'form-control','placeholder':'file','accept':'image/*'}}) }}
+
+                    </div>
+                    <span class="glyphicon " ></span>
+                </div>
+
             <div class="form-group has-feedback">
-                    <label  class="col-sm-2 control-label">Image marque : *</label>
+                    <label  class="col-sm-2 control-label">Image : *</label>
                     <div class="col-sm-9">
                         {{ form_widget(form.brandImage, {'attr': {'class': 'form-control','placeholder':'file','accept':'image/*'}}) }}
                     </div>
                     <span class="glyphicon " ></span>
             </div>
 
-                    <div class="form-group has-feedback">
-                        <label  class="col-sm-2 control-label">Logo marque : *</label>
-                        <div class="col-sm-9">
-                            {{ form_widget(form.logo, {'attr': {'class': 'form-control','placeholder':'file','accept':'image/*'}}) }}
 
-                        </div>
-                        <span class="glyphicon " ></span>
-                    </div>
-
-                       {# <button class="btn btn-warning col-md-offset-10 " type="submit" disabled="true" ><span class="fa fa-plus-circle"> </span> Ajouter</button>#}
                 <button id="btnAddImage" class="btn btn-warning col-md-offset-10" disabled="true" type="submit"><span class="fa fa-plus-circle"> </span> Ajouter</button>
             {{ form_rest(form) }}
             {{ form_end(form) }}
@@ -55,12 +55,7 @@
                     {% endfor %}
                 </div>
             {% endif %}
-
-
         </div>
     </div>
-
-
-
 
 {% endblock %}

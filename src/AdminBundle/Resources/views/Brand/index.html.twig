@@ -23,9 +23,8 @@
                 {% for brand in brands %}
                     <tr>
                         <td>{{ brand.id }}</td>
-                        <td></td>
+                        <td align="center"><img src="{{ asset('uploads/brand/'~ brand.logo.name ) }}" style="width: 50px;" /></td>
                         <td>{{ brand.brandName }}</td>
-
                         <td align="center">
                             {% if brand.deleted ==false %}
                                 <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
