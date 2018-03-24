@@ -20,7 +20,6 @@ class BrandController extends Controller
     {
         return $this->render('AdminBundle:Brand:index.html.twig');
     }
-
     public function addAction(Request $request)
     {
         $session = new Session();
