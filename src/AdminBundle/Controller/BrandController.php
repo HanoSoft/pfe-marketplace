@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AdminBundle\Form\BrandType;
 use Symfony\Component\HttpFoundation\Session\Session;
+use AdminBundle\Form\BrandEditType;
 
 class BrandController extends Controller
 {
