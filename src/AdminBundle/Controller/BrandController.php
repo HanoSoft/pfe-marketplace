@@ -11,6 +11,7 @@ namespace AdminBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AdminBundle\Form\BrandType;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class BrandController extends Controller
 {
@@ -21,11 +22,12 @@ class BrandController extends Controller
 
     public function addAction(Request $request)
     {
-
+        $session = new Session();
         $form   = $this->get('form.factory')->create(BrandType::class);
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $manager = $this->get('core.service.brand_manager');
             $manager->add($form);
+            $session->getFlashBag()->add('success', 'la marque est bien enregistrée !');
             return $this->redirectToRoute('admin_brand_add');
         }
         return $this->render('AdminBundle:Brand:add.html.twig', array(
