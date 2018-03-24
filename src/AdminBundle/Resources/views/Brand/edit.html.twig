@@ -9,7 +9,6 @@
             <div class="form-body">
                 {{ form_start(form,{'attr': {'class': 'form-horizontal form'}}) }}
                 {{ form_errors(form) }}
-
                 <div class="form-group">
                     <label  class="col-sm-2 control-label">Nom : <span style="color:#C82829;">*</span></label>
                     <div class="col-sm-9" >
@@ -17,19 +16,16 @@
                     </div>
                     <span class="glyphicon "></span>
                 </div>
-
                 <div class="form-group  has-feedback">
                     <label  class="col-sm-2 control-label">Description: *</label>
                     <div class="col-sm-9">
                         {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
                     </div>
                 </div>
-
                 <div class="form-group has-feedback">
                     <label  class="col-sm-2 control-label">Logo : *</label>
                     <div class="col-sm-9">
                         {{ form_widget(form.logo, {'attr': {'class': 'form-control','placeholder':'file','accept':'image/*'}}) }}
-
                     </div>
                     <span class="glyphicon " ></span>
                 </div>
@@ -40,17 +36,10 @@
                     </div>
                     <span class="glyphicon " ></span>
                 </div>
-
-
-
             <button class="btn btn-success col-md-offset-10 " disabled="true" type="submit" ><span class="fa fa-edit"> </span> Modifier</button>
             {{ form_rest(form) }}
             {{ form_end(form) }}
             </div>
         </div>
     </div>
-
-
-
-
 {% endblock %}
