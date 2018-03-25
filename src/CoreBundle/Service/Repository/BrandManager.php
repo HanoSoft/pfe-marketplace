@@ -18,22 +18,20 @@ class BrandManager extends RepositoryManager implements AbstractRepository
      * @var EntityRepository
      */
     private $repository;
-
     private $em;
+
     public function __construct(EntityManager $em)
     {
         $repository=$em->getRepository(Brand::class);
         $this->em=$em;
         parent::__construct($em,$repository);
     }
-
     protected function setDeleted($objects)
     {
         foreach ($objects as $object) {
             $object->setDeleted(true);
         }
     }
-
     public function add($form)
     {
         $brand = new Brand();
@@ -44,7 +42,9 @@ class BrandManager extends RepositoryManager implements AbstractRepository
     }
     public function edit($from,$id)
     {
-
+        $brand=$this->find($id);
+        $brand=$from->getData();
+        $this->save($brand);
     }
     public function delete($id)
     {

@@ -29,6 +29,13 @@ class BrandImage
      */
     private $name;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="deleted", type="boolean")
+     */
+    private $deleted=false;
+
     private $file;
 
     public function upload()
@@ -97,5 +104,29 @@ class BrandImage
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set deleted
+     *
+     * @param boolean $deleted
+     *
+     * @return BrandImage
+     */
+    public function setDeleted($deleted)
+    {
+        $this->deleted = $deleted;
+
+        return $this;
+    }
+
+    /**
+     * Get deleted
+     *
+     * @return boolean
+     */
+    public function getDeleted()
+    {
+        return $this->deleted;
     }
 }

@@ -20,8 +20,6 @@ class Brand
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-
     /**
      * @var string
      *
@@ -58,8 +56,6 @@ class Brand
      *@ORM\OneToOne(targetEntity="CoreBundle\Entity\BrandImage",cascade={"persist","remove"})
      */
     private $logo;
-
-
     /**
      * Get id
      *
@@ -69,8 +65,6 @@ class Brand
     {
         return $this->id;
     }
-
-
     /**
      * Set description
      *
@@ -197,7 +191,6 @@ class Brand
 
         return $this;
     }
-
     /**
      * Get logo
      *
@@ -207,7 +200,6 @@ class Brand
     {
         return $this->logo;
     }
-
     /**
      * Set brandName
      *
@@ -221,7 +213,6 @@ class Brand
 
         return $this;
     }
-
     /**
      * Get brandName
      *
