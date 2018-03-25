@@ -56,13 +56,6 @@ class Promotion
      */
     private $name;
 
-
-    /**
-     *@ORM\OneToMany(targetEntity="CoreBundle\Entity\Product",mappedBy="promotion")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $products;
-
     /**
      * Get id
      *
@@ -197,40 +190,7 @@ class Promotion
      */
     public function __construct()
     {
-        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
+
     }
 
-    /**
-     * Add product
-     *
-     * @param \CoreBundle\Entity\Product $product
-     *
-     * @return Promotion
-     */
-    public function addProduct(\CoreBundle\Entity\Product $product)
-    {
-        $this->products[] = $product;
-
-        return $this;
-    }
-
-    /**
-     * Remove product
-     *
-     * @param \CoreBundle\Entity\Product $product
-     */
-    public function removeProduct(\CoreBundle\Entity\Product $product)
-    {
-        $this->products->removeElement($product);
-    }
-
-    /**
-     * Get products
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getProducts()
-    {
-        return $this->products;
-    }
 }

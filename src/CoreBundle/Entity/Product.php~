@@ -76,10 +76,9 @@ class Product
     private $category;
 
     /**
-     *@ORM\ManyToOne(targetEntity="CoreBundle\Entity\Promotion",inversedBy="products",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\ManyToMany(targetEntity="AdminBundle\Entity\Promotion", cascade={"persist"})
      */
-    private $promotion;
+    private $promotions;
 
     /**
      * Get id
@@ -310,6 +309,8 @@ class Product
     {
         return $this->sizes;
     }
+
+
 
 
 }

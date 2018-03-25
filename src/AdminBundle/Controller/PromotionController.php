@@ -29,4 +29,15 @@ class PromotionController extends Controller
             'form' => $form->createView(),
         ));
     }
+
+    public function listAction(Request $request)
+    {
+        $manager = $this->get('core.service.promotion_manager');
+        $promotions=$manager->getAll();
+        $formDelete = $this->get('form.factory')->create();
+        return $this->render('AdminBundle:Promotion:list.html.twig', array(
+            'promotions' => $promotions,
+            'formDelete'   => $formDelete->createView(),
+        ));
+    }
 }

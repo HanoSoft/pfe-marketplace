@@ -5,6 +5,19 @@ $('#myModal').on('show.bs.modal', function (event) {
     var modal = $(this);
     modal.find('#form').attr("action",id);
 });
+//modal promotion
+$('#promotion').on('show.bs.modal', function (event) {
+
+
+        var button = $(event.relatedTarget) ;
+        var id= button.data('wathever');
+        var modal = $(this);
+        var href=modal.find('#link').attr("href");
+        var result;
+        result=id+'/'+href;
+        modal.find('#link').attr("href",result);
+    });
+
 // form validation
 
 $.validator.setDefaults({

@@ -28,12 +28,27 @@ class ProductController extends Controller
     }
     public function listAction(Request $request)
     {
+        $promotionManager = $this->get('core.service.promotion_manager');
+        $promotions=$promotionManager->getDeleted(false);
         $manager = $this->get('core.service.product_manager');
         $products=$manager->getAll();
         $formDelete = $this->get('form.factory')->create();
         return $this->render('AdminBundle:Product:index.html.twig', array(
             'products' => $products,
             'formDelete'   => $formDelete->createView(),
+            'promotions' =>$promotions,
+        ));
+    }
+
+    public function promotionAction(Request $request,$id)
+    {
+        if ($request->isMethod('POST') && $formPromotion->handleRequest($request)->isValid()) {
+            $manager = $this->get('core.service.product_manager');
+            $manager->addPromotion($id);
+            return $this->redirectToRoute('admin_product_list');
+        }
+        return $this->render('AdminBundle:Product:promotion.html.twig', array(
+
         ));
     }
     public function deleteAction(Request $request,$id)

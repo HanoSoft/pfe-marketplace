@@ -145,5 +145,18 @@ admin_brand_delete:
             _controller: AdminBundle:Brand:delete
             requirements:
             id: \d+
-
-
+admin_promotion_list:
+    path:     /admin/promotion/list
+    defaults: { _controller: AdminBundle:Promotion:list }
+admin_promotion_edit:
+        path:     /admin/promotion/edit/{id}
+        defaults:
+                _controller: AdminBundle:Promotion:edit
+                requirements:
+                id: \d+
+admin_product_promotion:
+        path:     /admin/product/{id}/promotions
+        defaults:
+                _controller: AdminBundle:Product:promotion
+                requirements:
+                id: \d+

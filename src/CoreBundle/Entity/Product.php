@@ -75,11 +75,7 @@ class Product
      */
     private $category;
 
-    /**
-     *@ORM\ManyToOne(targetEntity="CoreBundle\Entity\Promotion",inversedBy="products",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $promotion;
+
 
     /**
      * Get id
@@ -313,27 +309,8 @@ class Product
 
 
 
-    /**
-     * Set promotion
-     *
-     * @param \CoreBundle\Entity\Promotion $promotion
-     *
-     * @return Product
-     */
-    public function setPromotion(\CoreBundle\Entity\Promotion $promotion = null)
-    {
-        $this->promotion = $promotion;
 
-        return $this;
-    }
 
-    /**
-     * Get promotion
-     *
-     * @return \CoreBundle\Entity\Promotion
-     */
-    public function getPromotion()
-    {
-        return $this->promotion;
-    }
+
+
 }
