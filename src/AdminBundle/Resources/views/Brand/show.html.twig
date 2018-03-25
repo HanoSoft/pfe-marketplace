@@ -4,6 +4,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <script src="{{ asset('assets/jquery.elevatezoom.js') }}" type="text/javascript"></script>
+
     <div class="container" >
         <div class="row" align="center">
             <div class="container col-md-5 col-lg-4 col-lg-offset-1">
@@ -26,8 +27,8 @@
                         </a>
                     </div>
                     <ol class='carousel-indicators mCustomScrollbar meartlab'>
-                        <li data-target='#carousel-custom' data-slide-to='zoom_01' class='active'><img src="{{ asset('uploads/brand/'~ brand.brandImage.name ) }}" alt='' /></li>
-                        <li data-target='#carousel-custom' data-slide-to='zoom_02'><img src="{{ asset('uploads/brand/'~ brand.logo.name ) }}" alt='' /></li>
+                        <li data-target='#carousel-custom' data-slide-to='0' class='active'><img src="{{ asset('uploads/brand/'~ brand.brandImage.name ) }}" alt='' /></li>
+                        <li data-target='#carousel-custom' data-slide-to='1'><img src="{{ asset('uploads/brand/'~ brand.logo.name ) }}" alt='' /></li>
                     </ol>
                 </div>
             </div>

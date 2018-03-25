@@ -3,11 +3,17 @@
     {{ parent() }}
 
 
-    <ol class="breadcrumb container-fluid " style=" background: #FFFFFF;
-    color:#FFFFFF; ">
-        <li class="breadcrumb-item"><a href="#" style="color:#000000">Produit</a></li>
-        <li class="breadcrumb-item active" style="">Ajouter</li>
-    </ol>
+
+
+
+
+    <ul id="breadcrumb">
+        <li><a href="{{ path('admin_homepage') }}"><span class="fa fa-home"> </span></a></li>
+        <li><a href="{{ path('admin_product_list') }}"> Produit</a></li>
+        <li><a > Ajouter</a></li>
+    </ul>
+
+
 
     <div class=" form-grids row form-grids-right">
         <div class="widget-shadow " data-example-id="basic-forms">

@@ -51,7 +51,7 @@
                         {% for image in product.images %}
                             {% set counter = ( counter | default(0) ) + 1 %}
                             {% if counter==1 %}
-                                            <li data-target='#carousel-custom' data-slide-to='{{ counter-1 }}' class='active'><img src="{{ asset('uploads/product/'~ image.name ) }}" alt='' /></li>
+                                <li data-target='#carousel-custom' data-slide-to='{{ counter-1 }}' class='active'><img src="{{ asset('uploads/product/'~ image.name ) }}" alt='' /></li>
                             {% else %}
                                 <li data-target='#carousel-custom' data-slide-to='{{ counter-1 }}'><img src="{{ asset('uploads/product/'~ image.name ) }}" alt='' /></li>
                             {% endif %}
