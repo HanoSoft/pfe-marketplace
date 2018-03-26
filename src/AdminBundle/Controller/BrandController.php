@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Hamdi
+ * User: Nouha
  * Date: 23/03/2018
  * Time: 10:22
  */
@@ -23,7 +23,9 @@ class BrandController extends Controller
     public function addAction(Request $request)
     {
         $session = new Session();
-        $form   = $this->get('form.factory')->create(BrandType::class);
+
+
+        $form = $this->get('form.factory')->create(BrandType::class);
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $manager = $this->get('core.service.brand_manager');
             $manager->add($form);

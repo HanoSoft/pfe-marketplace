@@ -80,3 +80,22 @@ $(document).ready(function() {
         $lightbox.find('.close').removeClass('hidden');
     });
 });
+/*------- image file------*/
+function readURL(input,preview) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $(preview).css('background-image', 'url('+e.target.result +')');
+            $(preview).hide();
+            $(preview).fadeIn(650);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+$("#corebundle_brand_brandImage_file").change(function() {
+    readURL(this,'#imagePreview1');
+});
+
+$("#corebundle_brand_logo_file").change(function() {
+    readURL(this,'#imagePreview');
+});
