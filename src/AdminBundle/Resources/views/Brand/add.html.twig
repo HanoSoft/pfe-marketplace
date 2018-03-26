@@ -1,18 +1,12 @@
 {% extends "AdminBundle::adminLayout.html.twig" %}
 {% block content %}
     {{ parent() }}
-
-
-
-
-
     <div class=" form-grids row form-grids-right">
         <div class="widget-shadow " data-example-id="basic-forms">
             <div class="form-title form-header">
                 <h4>Ajouter Marque</h4>
             </div>
             <div class="form-body">
-
                 {{ form_start(form,{'attr': {'class': 'form-horizontal form'}}) }}
                 {{ form_errors(form) }}
                 <div class="form-group">
@@ -29,15 +23,12 @@
                     </div>
                     <span class="glyphicon "></span>
                 </div>
-
                 <div class="container">
                     <div class="row">
                         <div class="avatar-upload col-md-offset-3 col-md-2 ">
                             <p>Logo :</p>
                             <div class="avatar-edit">
-
                                 {{ form_widget(form.logo.file, {'attr': {'class': 'form-control','placeholder':'file','accept':'image/*'}}) }}
-
                                 <label for="corebundle_brand_logo_file"></label>
                             </div>
                             <div class="avatar-preview">
@@ -45,9 +36,6 @@
                                 </div>
                             </div>
                         </div>
-
-
-
                         <div class="avatar-upload col-md-2 col-md-offset-1">
                             <p>Image :</p>
                             <div class="avatar-edit ">
@@ -63,28 +51,9 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 <button id="btnAddImage" class="btn btn-warning col-md-offset-10" disabled="true" type="submit"><span class="fa fa-plus-circle"> </span> Ajouter</button>
                 {{ form_rest(form) }}
                 {{ form_end(form) }}
-
-
-
             </div>
             {% if app.session.flashBag.has('success') %}
                 <div class="alert alert-success">
@@ -95,11 +64,4 @@
             {% endif %}
         </div>
     </div>
-
-
-
-
-
-
-
 {% endblock %}
