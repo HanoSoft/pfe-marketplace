@@ -59,13 +59,4 @@ class CategoryController extends Controller
             'formDelete'   => $formDelete->createView(),
         ));
     }
-    public function showAction($id)
-    {
-        $manager = $this->get('core.service.category_manager');
-        $category=$manager->find($id);
-        return $this->render('AdminBundle:Category:show.html.twig', array(
-            'category' => $category,
-        ));
-    }
-
 }
