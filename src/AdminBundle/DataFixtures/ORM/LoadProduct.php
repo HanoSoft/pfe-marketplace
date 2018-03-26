@@ -3,6 +3,8 @@
 
 namespace AdminBundle\DataFixtures\ORM;
 
+use CoreBundle\Entity\Brand;
+use CoreBundle\Entity\BrandImage;
 use CoreBundle\Entity\Image;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -16,19 +18,26 @@ class LoadProduct implements FixtureInterface
     {
 
 
-        $names = array(
-            'Vêtements',
-            'Beauté et Parfums',
-            'DVD & Blu-ray',
-            'High-Tech',
-            'Chaussures',
-            'VOYAGES',
-            'Meuble'
-        );
 
+        $brand=new Brand();
+        $brand->setBrandName('Lee');
+        $brand->setDescription('<p>LEE</p>
+
+        <p>A chaque personne son Lee. Sp&eacute;cialiste du jean d&egrave;s ses d&eacute;buts, la marque r&eacute;solument US a su se frayer une place dans le paysage du pr&ecirc;t-&agrave;-porter en d&eacute;clinant des collections ancr&eacute;es dans l&rsquo;esprit de la country, si ch&egrave;re &agrave; son &eacute;tat d&rsquo;origine, le Kansas. Ce n&rsquo;est donc pas si &eacute;tonnant que la griffe Lee ait choisi d&rsquo;habiller des l&eacute;gendes telles que James Dean et Marilyn Monroe. Le jean id&eacute;al qui colle &agrave; la peau, la chemise &agrave; carreaux bien coup&eacute;e&hellip; &agrave; adopter au quotidien, pour homme comme pour femme.</p>');
+        $logo=new BrandImage();
+        $logo->setName('2018-03-26-16-32-35logo_18184.jpg');
+        $brand->setLogo($logo);
+        $brandImage=new BrandImage();
+        $brandImage->setName('2018-03-26-16-32-35generic_v4.jpg');
+        $brand->setBrandImage($brandImage);
+        $manager->persist($brand);
+        $manager->flush();
+
+/*
         $category = new Category();
         $category->setName("Meuble");
         $manager->persist($category);
+
         $product=new Product();
         $product->setCategory($category);
         $product->setProductName('2 chaises Pop - Blanc');
@@ -235,7 +244,7 @@ Bandes GSM 850 MHz, 900 MHz, 1800 MHz, 1900 MHz.<br />
         $manager->flush();
 
 
-
+*/
 
 
 
