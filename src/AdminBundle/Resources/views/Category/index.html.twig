@@ -14,6 +14,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th class="sorting_asc">Marque</th>
                         <th class="sorting_asc">Category</th>
                         <th> Etat </th>
                         <th><em class="fa fa-cog"></em></th>
@@ -23,6 +24,7 @@
                 {% for category in categories %}
                     <tr>
                         <td>{{ category.id }}</td>
+                        <td></td>
                         <td>{{ category.name }}</td>
                         <td align="center">
                             <a href="{{ path('admin_category_edit', {'id': category.id}) }}" class="btn btn-warning"><em class="fa fa-edit"></em></a>
