@@ -47,20 +47,18 @@ class CategoryController extends Controller
             'form' => $form->createView(),
         ));
   }
-  public function deleteAction(Request $request, $id)
-  {
-      $manager = $this->get('core.service.category_manager');
-      $category=$manager->find($id);
-      $formDelete = $this->get('form.factory')->create();
-      if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
-          $manager->delete($id);
-          return $this->redirectToRoute('admin_category_list');
-      }
-      return $this->render('AdminBundle:Category:delete.html.twig', array(
-          'formDelete'   => $formDelete->createView(),
-          'category' => $category,
-      ));
-  }
+    public function deleteAction(Request $request,$id)
+    {
+        $formDelete = $this->get('form.factory')->create();
+        if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
+            $manager = $this->get('core.service.category_manager');
+            $manager->delete($id);
+            return $this->redirectToRoute('admin_category_list');
+        }
+        return $this->render('AdminBundle:Category:delete.html.twig', array(
+            'formDelete'   => $formDelete->createView(),
+        ));
+    }
     public function showAction($id)
     {
         $manager = $this->get('core.service.category_manager');
