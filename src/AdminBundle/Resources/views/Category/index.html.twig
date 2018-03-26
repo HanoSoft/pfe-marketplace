@@ -27,31 +27,26 @@
                         <td></td>
                         <td>{{ category.name }}</td>
                         <td align="center">
-                            <a href="{{ path('admin_category_edit', {'id': category.id}) }}" class="btn btn-warning"><em class="fa fa-edit"></em></a>
-                            <a href="{{ path('admin_category_delete', {'id': category.id}) }}" class="btn btn-danger"><em class="fa fa-trash-o"></em></a>
+                            {% if category.deleted ==false %}
+                                <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
+                            {% else %}
+                                <span class="glyphicon glyphicon-remove " style="color:red;"></span>
+                            {% endif %}
+                        </td>
+                        <td align="center">
+                            <a href="{{ path('admin_category_show',{'id': brand.id}) }}" class="link"><em class="fa fa-eye"></em></a>
+                            <a href="{{ path('admin_category_edit', {'id': brand.id}) }}" class="link" ><em class="fa fa-edit"></em></a>
+                            <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_category_delete', {'id': category.id}) }}" ><em class="fa fa-trash-o"></em></a>
                         </td>
                     </tr>
                 {% endfor %}
                 </tbody>
 
             </table>
+        </div>
+    </div>
 
-        </div>
-        <div class="panel-footer">
-            <div class="row">
-                <div class="col-md-offset-4">
-                    {# display navigation #}
-                    <div class="navigation">
-                    </div>
-                </div>
-                <div class="count">
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    </div>
-    </div>
+    {{ include("AdminBundle::delete.html.twig") }}
 
 {% endblock %}
 
