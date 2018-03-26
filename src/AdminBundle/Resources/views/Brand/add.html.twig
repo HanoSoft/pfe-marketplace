@@ -1,20 +1,11 @@
 {% extends "AdminBundle::adminLayout.html.twig" %}
 {% block content %}
     {{ parent() }}
-<<<<<<< HEAD
 
 
-    {% form_theme form _self %}
-
-    {% block file_widget %}
-
-            {{ block('form_widget_simple') }}
-
-    {% endblock %}
 
 
-=======
->>>>>>> b0d69c51018c05faf3e4694bc210ccaa3e95d306
+
     <div class=" form-grids row form-grids-right">
         <div class="widget-shadow " data-example-id="basic-forms">
             <div class="form-title form-header">
@@ -24,50 +15,73 @@
 
                 {{ form_start(form,{'attr': {'class': 'form-horizontal form'}}) }}
                 {{ form_errors(form) }}
-            <div class="form-group">
+                <div class="form-group">
                     <label  class="col-sm-2 control-label">Nom : *</label>
                     <div class="col-sm-9">
                         {{ form_widget(form.brandName, {'attr': {'class': 'form-control','placeholder':'Nom de marque','rows':'10','cols':'100','minlength':'2'}}) }}
                     </div>
                     <span class="glyphicon "></span>
-             </div>
-            <div class="form-group">
-                <label  class="col-sm-2 control-label">Description : *</label>
-                <div class="col-sm-9">
-                    {{ form_widget(form.description, {'attr': {'class': 'form-control','placeholder':'Description','rows':'10','cols':'100','minlength':'5'}}) }}
                 </div>
-                <span class="glyphicon "></span>
-            </div>
-                <div class="form-group has-feedback">
-                    <label  class="col-sm-2 control-label">Logo : *</label>
+                <div class="form-group">
+                    <label  class="col-sm-2 control-label">Description : *</label>
                     <div class="col-sm-9">
-                        {{ form_widget(form.logo, {'attr': {'class': 'form-control','placeholder':'file','accept':'image/*'}}) }}
+                        {{ form_widget(form.description, {'attr': {'class': 'form-control','placeholder':'Description','rows':'10','cols':'100','minlength':'5'}}) }}
                     </div>
-                    <span class="glyphicon " ></span>
+                    <span class="glyphicon "></span>
                 </div>
-            <div class="form-group has-feedback">
-                    <label  class="col-sm-2 control-label">Image : *</label>
-                    <div class="col-sm-9">
-                        {{ form_widget(form.brandImage, {'attr': {'class': 'form-control','placeholder':'file','accept':'image/*'}}) }}
-                    </div>
-                    <span class="glyphicon " ></span>
-            </div>
 
+                <div class="container">
+                    <div class="row">
+                        <div class="avatar-upload col-md-offset-3 col-md-2 ">
+                            <p>Logo :</p>
+                            <div class="avatar-edit">
 
-                    <div class="form-group has-feedback">
-                        <label  class="col-sm-2 control-label">Logo marque : *</label>
-                        <div class="col-sm-9">
+                                {{ form_widget(form.logo.file, {'attr': {'class': 'form-control','placeholder':'file','accept':'image/*'}}) }}
 
-                            {{ form_widget(form.logo, {'attr': {'class': 'form-control','placeholder':'file','accept':'image/*'}}) }}
-
+                                <label for="corebundle_brand_logo_file"></label>
+                            </div>
+                            <div class="avatar-preview">
+                                <div id="imagePreview" style="background-image: url({{ asset('assets/admin/images/image.png') }});">
+                                </div>
+                            </div>
                         </div>
-                        <span class="glyphicon " ></span>
+
+
+
+                        <div class="avatar-upload col-md-2 col-md-offset-1">
+                            <p>Image :</p>
+                            <div class="avatar-edit ">
+
+                                {{ form_widget(form.brandImage.file, {'attr': {'class': 'form-control','placeholder':'file','accept':'image/*'}}) }}
+
+                                <label for="corebundle_brand_brandImage_file"></label>
+                            </div>
+                            <div class="avatar-preview">
+                                <div id="imagePreview1" style="background-image: url({{ asset('assets/admin/images/image.png') }});">
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                 <button id="btnAddImage" class="btn btn-warning col-md-offset-10" disabled="true" type="submit"><span class="fa fa-plus-circle"> </span> Ajouter</button>
-            {{ form_rest(form) }}
-            {{ form_end(form) }}
+                {{ form_rest(form) }}
+                {{ form_end(form) }}
 
 
 
@@ -81,4 +95,11 @@
             {% endif %}
         </div>
     </div>
+
+
+
+
+
+
+
 {% endblock %}
