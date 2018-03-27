@@ -31,7 +31,42 @@ class LoadProduct implements FixtureInterface
         $brandImage->setName('2018-03-26-16-32-35generic_v4.jpg');
         $brand->setBrandImage($brandImage);
         $manager->persist($brand);
+
+        $category = new Category();
+        $category->setName("Homme");
+        $category->setBrand($brand);
+        $manager->persist($category);
+
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('Jean droit Rider - Bleu');
+        $product->setPrice(39.00);
+        $product->setProductDetails("<p>Jean droit.&nbsp;<br />
+Effet l&eacute;g&egrave;rement d&eacute;lav&eacute;.&nbsp;<br />
+5 poches.&nbsp;<br />
+Passants de ceinture.<br />
+Fermeture zipp&eacute;e et boutonn&eacute;e.&nbsp;<br />
+<br />
+<strong>Coloris</strong>&nbsp;: bleu<br />
+<strong>Mati&egrave;re</strong>&nbsp;: 71% coton et 29% &eacute;lastomultiester<br />
+<strong>Entretien</strong>&nbsp;: lavage &agrave; 30&deg;C</p>");
+        $product->setQuantity(200);
+        $image=new Image();
+        $image1=new Image();
+        $image2=new Image();
+        $image3=new Image();
+        $image->setName("products_9096278_image1_original.jpg");
+        $image->setLabel("jean");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $image1->setName("products_9096278_image4_original.jpg");
+        $image1->setLabel("jean");
+        $image1->setProduct($product);
+        $manager->persist($image1);
         $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
 
 /*
         $category = new Category();

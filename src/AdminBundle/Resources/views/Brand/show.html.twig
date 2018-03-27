@@ -4,36 +4,6 @@
 
 
 
-    <div class="container nav-cat">
-        <div class="row">
-
-            <div class="mhk-box">
-                <div class="box-header">
-                    <span class="caption"><i class="fas fa-bars"></i><span class="mr-1">Categories</span></span>
-                </div><!--.box-header-->
-                <div class="box-body">
-                    <ul class="nav flex-column category">
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="fa fa-caret-right"></i>
-                               categ1
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="fa fa-caret-right "></i>
-                               categ2
-                            </a>
-                        </li>
-
-                    </ul>
-                </div><!--.box-body-->
-            </div>
-
-        </div>
-    </div>
-#}
 
     <style>
         .accueil_vente__liste_arbo a:hover {
@@ -159,6 +129,7 @@
         }
 
        </style>
+
 <div class="container" align="center">
     <div class="pave_940">
         <div class="pave_m">
@@ -170,10 +141,14 @@
                 <div class="accueil_vente__arbo">
                     <ul class="accueil_vente__liste_arbo">
                         <li class="accueil_vente_logo">
-                            <img id="cph_middle_SaleContainer_ctl00_ImgLogo" src="//static.cedex.it.showroomprive.com/v4/marques/logos/logo_23816.jpg" alt="HARIBO">
+                            <img id="cph_middle_SaleContainer_ctl00_ImgLogo" src="{{ asset('uploads/brand/'~ brand.logo.name ) }}" alt="">
                         </li>
-                        <li><a href="/categorie.aspx?categorie=763859">Les bonbons<span>›</span></a></li><li><a href="/categorie.aspx?categorie=763863">Chocolats et biscuits<span>›</span></a></li>
-                        <li id="cph_middle_SaleContainer_ctl00_li_all_products"><a href="tousproduits.aspx?vente=47486" class="tous_produits">Voir tous les produits<span>›</span><span>›</span></a></li>
+                        {%   for category in brand.categories %}
+                        <li><a href="#">{{ category.name }}<span>›</span></a></li>
+
+                        {% endfor %}
+                        <li id="cph_middle_SaleContainer_ctl00_li_all_products"><a href="#" class="tous_produits">Voir tous les produits<span>›</span><span>›</span></a></li>
+
                     </ul>
                 </div>
             </div>
