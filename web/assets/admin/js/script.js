@@ -102,3 +102,9 @@ $("#corebundle_brand_logo_file").change(function() {
 $("#corebundle_image_file").change(function() {
     readURL(this,'#imagePreview');
 });
+$("#brand_edit_logo_file").change(function() {
+    readURL(this,'#imagePreview');
+});
+$("#brand_edit_brandImage_file").change(function() {
+    readURL(this,'#imagePreview1');
+});
