@@ -160,3 +160,6 @@ admin_product_promotion:
                 _controller: AdminBundle:Product:promotion
                 requirements:
                 id: \d+
+admin_user_add:
+    path:     /admin/user/add
+    defaults: { _controller: AdminBundle:User:add }
