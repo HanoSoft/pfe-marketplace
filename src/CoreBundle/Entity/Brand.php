@@ -30,7 +30,7 @@ class Brand
     /**
      * @var string
      *
-     * @ORM\Column(name="brandName", type="string", length=10000)
+     * @ORM\Column(name="brandName", type="string", length=255)
      */
     private $brandName;
 
