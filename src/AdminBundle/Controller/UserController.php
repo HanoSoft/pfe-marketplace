@@ -18,9 +18,11 @@ class UserController extends Controller
     {
         $userManager = $this->get('fos_user.user_manager');
         $user = $userManager->createUser();
+        $role = $request->request->get("role");
         $form = $this->createForm(RegistrationFormType::class);
         $form->setData($user);
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+            $user->addRole($role);
             $userManager->updateUser($user);
             return $this->redirectToRoute('admin_product_list');
         }
