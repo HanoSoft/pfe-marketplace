@@ -605,7 +605,7 @@ main[role="main"] {
     content: "";
     position: absolute;
     top: 0;
-    border: 0 solid #3498db;
+    border: 0 solid #FFFFFF;
     border-width: 20px 10px;
     width: 0;
     height: 0;
@@ -620,14 +620,14 @@ main[role="main"] {
     border-left-color: #FFFFFF;
 }
 #breadcrumb li a:hover {
-    background-color: #FFFFFF;
+    background-color: #0288D1;
 }
 #breadcrumb li a:hover:before {
-    border-color: #FFFFFF;
+    border-color: #0288D1;
     border-left-color: transparent;
 }
 #breadcrumb li a:hover:after {
-    border-left-color: #FFFFFF;
+    border-left-color: #0288D1;
 }
 #breadcrumb li a:active {
     background-color: #FFFFFF;
@@ -819,4 +819,8 @@ div {
     height: 100%;
     box-sizing: border-box;
     top: 0;
+}
+/*+-----------------addon------------------------------------*/
+span.input-group-addon{
+    background:#0288D1;color: #f0f0f0;font-family: 'Open Sans';font-weight: bolder;
 }
