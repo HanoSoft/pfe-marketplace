@@ -9,13 +9,10 @@ use Doctrine\Common\Persistence\ObjectManager;
 use CoreBundle\Entity\Product;
 use CoreBundle\Entity\Category;
 
-
 class LoadProduct implements FixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-
-
         $names = array(
             'Vêtements',
             'Beauté et Parfums',

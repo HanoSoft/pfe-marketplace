@@ -1,5 +1,14 @@
 {% extends "::base.html.twig" %}
 {% block body %}
-    {{ include("AdminBundle:Admin:leftSideNav.html.twig") }}
+
+    {% if is_granted('ROLE_SUPER_ADMIN') %}
+        {{ include("AdminBundle:Admin:leftSideNav.html.twig") }}
+    {% elseif is_granted('ROLE_ADMIN') %}
+        {{ include("AdminBundle:Admin:adminMenu.html.twig") }}
+    {% else %}
+        {{ include("AdminBundle:Admin:partnerMenu.html.twig") }}
+    {% endif %}
+
+
     {{ include("AdminBundle:Admin:header.html.twig") }}
 {% endblock %}

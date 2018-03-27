@@ -30,22 +30,29 @@ class LoadUser implements FixtureInterface,ContainerAwareInterface
         $userManager = $this->container->get('fos_user.user_manager');
 
         $user = $userManager->createUser();
-        $user->setUsername('pophamdi');
-        $user->setEmail('pophamdi@gmail.com');
-        $user->setPlainPassword('pop1993.');
+        $user->setUsername('super');
+        $user->setEmail('super@gmail.com');
+        $user->setPlainPassword('super');
         $user->setEnabled(true);
-        $user->addRole('ROLE_ADMIN');
+        $user->addRole('ROLE_SUPER_ADMIN');
         $manager->persist($user);
 
         $user = $userManager->createUser();
-        $user->setUsername('nouha');
-        $user->setEmail('nouha@gmail.com');
-        $user->setPlainPassword('nhstudio');
+        $user->setUsername('admin');
+        $user->setEmail('admin@gmail.com');
+        $user->setPlainPassword('admin');
         $user->setEnabled(true);
         $user->addRole('ROLE_ADMIN');
         $manager->persist($user);
+        $manager->flush();
 
-
+        $user = $userManager->createUser();
+        $user->setUsername('partner');
+        $user->setEmail('partner@gmail.com');
+        $user->setPlainPassword('partner');
+        $user->setEnabled(true);
+        $user->addRole('ROLE_PARTNER');
+        $manager->persist($user);
         $manager->flush();
     }
 }
