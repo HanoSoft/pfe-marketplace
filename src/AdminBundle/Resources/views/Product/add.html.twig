@@ -14,53 +14,40 @@
                     {{ form_start(form,{'attr': {'class': 'form-horizontal form'}}) }}
                     {{ form_errors(form) }}
                     <div class="form-group">
-                        <div class="col-sm-9 col-sm-offset-2">
-                            <div class="input-group" >
-                                <span class="input-group-addon">Catégorie</span>
-                            {{ form_widget(form.category, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group has-feedback" >
-                        <div class="col-sm-9 col-sm-offset-2" >
-                            <div class="input-group" >
-                                <span class="input-group-addon">Produit</span>
-                            {{ form_widget(form.productName, {'attr': {'class': 'form-control','placeholder':'Nom De Produit','minlength':'2'}}) }}
-                            </div>
+                        <label  class="col-sm-2 control-label">Catégorie : *</label>
+                        <div class="col-sm-9">
+                            {{ form_widget(form.category, {'attr': {'class': 'form-control','placeholder':'','rows':'10','cols':'100'}}) }}
                         </div>
                         <span class="glyphicon "></span>
                     </div>
                     <div class="form-group has-feedback">
-                        <div class="col-sm-9 col-sm-offset-2">
-                            <div class="input-group" >
-                                <span class="input-group-addon">Description</span>
-                            {{ form_widget(form.productDetails, {'attr': {'class': 'form-control','placeholder':'Description','rows':'10','cols':'100','minlength':'5'}}) }}
-                            </div>
+                        <label  class="col-sm-2 control-label">Produit : </label>
+                        <div class="col-sm-9">
+                            {{ form_widget(form.productName, {'attr': {'class': 'form-control','placeholder':'Nom De Produit','rows':'10','cols':'100','minlength':'2'}}) }}
                         </div>
                         <span class="glyphicon "></span>
                     </div>
-
                     <div class="form-group has-feedback">
-
-                        <div class="col-sm-9 col-sm-offset-2">
-                            <div class="input-group" >
-                                <span class="input-group-addon">Quantité</span>
-                                 {{ form_widget(form.quantity, {'attr': {'class': 'form-control','placeholder':'Quantité','minlength':'1'}}) }}
-                            </div>
+                        <label  class="col-sm-2 control-label">Description : </label>
+                        <div class="col-sm-9">
+                            {{ form_widget(form.productDetails, {'attr': {'class': 'form-control','placeholder':'Description','rows':'10','cols':'100','minlength':'2'}}) }}
                         </div>
-                        <span class="glyphicon"></span>
+                        <span class="glyphicon "></span>
                     </div>
                     <div class="form-group has-feedback">
-
-                        <div class="col-sm-9 col-sm-offset-2 ">
-                            <div class="input-group" >
-                                <span class="input-group-addon">Prix €</span>
-                            {{ form_widget(form.price, {'attr': {'class': 'form-control number','placeholder':'Prix','minlength':'1'}}) }}
-                            </div>
+                        <label  class="col-sm-2 control-label">Quantité : </label>
+                        <div class="col-sm-9">
+                            {{ form_widget(form.quantity, {'attr': {'class': 'form-control','placeholder':'Quantité','rows':'10','cols':'100','minlength':'2'}}) }}
                         </div>
-                        <span class="glyphicon " ></span>
+                        <span class="glyphicon "></span>
                     </div>
-
+                    <div class="form-group has-feedback">
+                        <label  class="col-sm-2 control-label">Prix  : </label>
+                        <div class="col-sm-9">
+                            {{ form_widget(form.price, {'attr': {'class': 'form-control','placeholder':'Prix','rows':'10','cols':'100','minlength':'2'}}) }}
+                        </div>
+                        <span class="glyphicon "></span>
+                    </div>
                     <button class="btn btn-warning col-md-offset-10 " type="submit" disabled="true" ><span class="fa fa-plus-circle"> </span> Ajouter</button>
                     {{ form_rest(form) }}
                     {{ form_end(form) }}
