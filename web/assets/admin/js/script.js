@@ -99,3 +99,6 @@ $("#corebundle_brand_brandImage_file").change(function() {
 $("#corebundle_brand_logo_file").change(function() {
     readURL(this,'#imagePreview');
 });
+$("#corebundle_image_file").change(function() {
+    readURL(this,'#imagePreview');
+});

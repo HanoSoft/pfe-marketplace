@@ -2,79 +2,134 @@
 {% block content %}
     {{ parent() }}
 
-    <main role="main">
-        <div class="product">
-            <figure>
+    <script src="{{ asset('assets/admin/js/jquery.elevatezoom.js') }}" type="text/javascript"></script>
+    <div class="container" >
+        <div class="row" align="center">
 
-                    <div id='carousel-custom' class='carousel slide ' data-ride='carousel'>
-                        <div class='carousel-outer'>
-                            <!-- me art lab slider -->
-                            <div class='carousel-inner  '>
-                                {% for image in product.images %}
-                                    {% set counter = ( counter | default(0) ) + 1 %}
-                                    {% if counter==1 %}
-                                        <div class='item active '>
-                                            <img class="img-responsive" src="{{ asset('uploads/product/'~ image.name ) }}"/>
-                                        </div>
-                                    {% else %}
-                                        <div class='item ' >
-                                            <img class="img-responsive" src="{{ asset('uploads/product/'~ image.name ) }}" alt=''  />
-                                        </div>
+            <div class="container col-md-5 col-lg-4 col-lg-offset-1">
+                <div id='carousel-custom' class='carousel slide ' data-ride='carousel'>
+                    <div class='carousel-outer'>
+                        <!-- me art lab slider -->
+                        <div class='carousel-inner '>
+                            {% for image in product.images %}
+                                {% set counter = ( counter | default(0) ) + 1 %}
 
-                                    {% endif %}
-                                {% endfor %}
+                                {% if counter==1 %}
+                                    <div class='item active '>
+
+                                        <img id="zoom_01" src="{{ asset('uploads/product/'~ image.name ) }}" xoriginal="{{ asset('uploads/product/'~ image.name ) }}" width="400" />
+                                    </div>
+                                {% else %}
+                                    <div class='item ' >
+
+                                        <img  id="{{ counter }}"  src="{{ asset('uploads/product/'~ image.name ) }}" data-zoom-image="{{ asset('uploads/product/'~ image.name ) }}"  />
+
+                                    </div>
+
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+
+
+                        <!-- sag sol -->
+                        <a class='left carousel-control' href='#carousel-custom' data-slide='prev'>
+                            <span class='glyphicon glyphicon-menu-left'></span>
+                        </a>
+                        <a class='right carousel-control' href='#carousel-custom' data-slide='next'>
+                            <span class='glyphicon glyphicon-menu-right'></span>
+                        </a>
+                    </div>
+
+                    <!-- thumb -->
+
+                    <ol class='carousel-indicators mCustomScrollbar meartlab'>
+                        {% for image in product.images %}
+                            {% set counter = ( counter | default(0) ) + 1 %}
+                            {% if counter==1 %}
+                                <li data-target='#carousel-custom' data-slide-to='{{ counter-1 }}' class='active'><img src="{{ asset('uploads/product/'~ image.name ) }}" alt='' /></li>
+                            {% else %}
+                                <li data-target='#carousel-custom' data-slide-to='{{ counter-1 }}'><img src="{{ asset('uploads/product/'~ image.name ) }}" alt='' /></li>
+                            {% endif %}
+                        {% endfor %}
+                    </ol>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-4" >
+
+               <h2 class="product-title"> {{ product.productName }} </h2>
+                <br>
+                <div class="prix-montant">
+                    {{ product.price }} €
+                    <div class="prix-decote">-0%</div>
+                </div>
+
+
+
+                <p>{{ product.quantity }} disbonible</p>
+                {% for size in product.sizes %}
+                    <p> {{ size.size }}</p>
+                {% endfor %}
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+    <script>
+        $("#zoom_01").elevateZoom();
+
+        $("#zoom_02").elevateZoom();
+        var i;
+        for(i=0;i<6;i++){
+            $("#"+i).elevateZoom();
+        }
+
+    </script>
+
+
+
+
+
+
+
+    <br>
+    <section class="home-content-top">
+        <div class="container">
+
+            <!--our-quality-shadow-->
+            <div class="clearfix"></div>
+
+
+            <div class="tabbable-panel margin-tops4 ">
+                <div class="tabbable-line">
+                    <ul class="nav nav-tabs tabtop  tabsetting">
+                        <li class="active"> <a href="#tab_default_1" data-toggle="tab"> Description </a> </li>
+
+                    </ul>
+
+                    <div class="tab-content margin-tops">
+
+                        <div class="tab-pane active fade in" id="tab_default_1">
+
+                            <div class="col-md-8">
+                                {{ product.productDetails | raw }}
+
                             </div>
-
-
-                            <!-- sag sol -->
-                            <a class='left carousel-control' href='#carousel-custom' data-slide='prev'>
-                                <span class='glyphicon glyphicon-menu-left'></span>
-                            </a>
-                            <a class='right carousel-control' href='#carousel-custom' data-slide='next'>
-                                <span class='glyphicon glyphicon-menu-right'></span>
-                            </a>
                         </div>
 
 
 
 
                     </div>
-            </figure>
-
-            <div class="product-description">
-
-                <div class="info">
-                    <h1>{{ product.productName }}</h1>
-
-
                 </div>
-
-                <div class="price">
-                    {{ product.price }},00
-                </div>
-            </div>
-
-            <div class="product-sidebar">
-                <button class="buy">
-                    <span>Ajouter</span>
-                </button>
-
-                <button class="info">
-                    <span>Description</span>
-                </button>
-
-                <button class="size">
-                    <span>
-                         XL
-                    </span>
-                </button>
-
-
             </div>
         </div>
-    </main>
-
-
+    </section>
 
 
 

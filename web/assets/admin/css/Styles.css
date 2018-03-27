@@ -556,14 +556,15 @@ main[role="main"] {
 }
 #breadcrumb .icon {
     font-size: 14px;
+    font-family: 'Open Sans'
 }
 #breadcrumb li {
     float: left;
 }
 #breadcrumb li a {
-    color: #FFF;
+    color: #000000;
     display: block;
-    background: #3498db;
+    background: #FFFFFF;
     text-decoration: none;
     position: relative;
     height: 40px;
@@ -573,14 +574,14 @@ main[role="main"] {
     margin-right: 23px;
 }
 #breadcrumb li:nth-child(even) a {
-    background-color: #2980b9;
+    background-color: #FFFFFF;
 }
 #breadcrumb li:nth-child(even) a:before {
-    border-color: #2980b9;
+    border-color: #FFFFFF;
     border-left-color: transparent;
 }
 #breadcrumb li:nth-child(even) a:after {
-    border-left-color: #2980b9;
+    border-left-color: #FFFFFF;
 }
 #breadcrumb li:first-child a {
     padding-left: 15px;
@@ -604,7 +605,7 @@ main[role="main"] {
     content: "";
     position: absolute;
     top: 0;
-    border: 0 solid #3498db;
+    border: 0 solid #FFFFFF;
     border-width: 20px 10px;
     width: 0;
     height: 0;
@@ -616,27 +617,27 @@ main[role="main"] {
 #breadcrumb li a:after {
     left: 100%;
     border-color: transparent;
-    border-left-color: #3498db;
+    border-left-color: #FFFFFF;
 }
 #breadcrumb li a:hover {
-    background-color: #1abc9c;
+    background-color: #0288D1;
 }
 #breadcrumb li a:hover:before {
-    border-color: #1abc9c;
+    border-color: #0288D1;
     border-left-color: transparent;
 }
 #breadcrumb li a:hover:after {
-    border-left-color: #1abc9c;
+    border-left-color: #0288D1;
 }
 #breadcrumb li a:active {
-    background-color: #16a085;
+    background-color: #FFFFFF;
 }
 #breadcrumb li a:active:before {
-    border-color: #16a085;
+    border-color: #FFFFFF;
     border-left-color: transparent;
 }
 #breadcrumb li a:active:after {
-    border-left-color: #16a085;
+    border-left-color: #FFFFFF;
 }
 /*------------image file---------------------------------------------------------------------------*/
 .avatar-upload {
@@ -818,4 +819,8 @@ div {
     height: 100%;
     box-sizing: border-box;
     top: 0;
+}
+/*+-----------------addon------------------------------------*/
+span.input-group-addon{
+    background:#0288D1;color: #f0f0f0;font-family: 'Open Sans';font-weight: bolder;
 }

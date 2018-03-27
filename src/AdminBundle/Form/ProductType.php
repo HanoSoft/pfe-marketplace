@@ -25,8 +25,7 @@ class ProductType extends AbstractType
                 'class'        => 'CoreBundle:Category',
                 'choice_label' => 'name',
                 'multiple'     => false,
-            ))
-           ;
+            ));
     }
     /**
      * {@inheritdoc}
