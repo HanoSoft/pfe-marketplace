@@ -40,17 +40,7 @@ class ProductController extends Controller
         ));
     }
 
-    public function promotionAction(Request $request,$id)
-    {
-        if ($request->isMethod('POST') && $formPromotion->handleRequest($request)->isValid()) {
-            $manager = $this->get('core.service.product_manager');
-            $manager->addPromotion($id);
-            return $this->redirectToRoute('admin_product_list');
-        }
-        return $this->render('AdminBundle:Product:promotion.html.twig', array(
 
-        ));
-    }
     public function deleteAction(Request $request,$id)
     {
         $formDelete = $this->get('form.factory')->create();
@@ -80,7 +70,7 @@ class ProductController extends Controller
     {
         $manager = $this->get('core.service.product_manager');
         $product=$manager->find($id);
-        return $this->render('AdminBundle:Product:show1.html.twig', array(
+        return $this->render('AdminBundle:Product:show.html.twig', array(
             'product' => $product,
         ));
     }
