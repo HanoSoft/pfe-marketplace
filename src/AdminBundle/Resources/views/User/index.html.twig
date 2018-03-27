@@ -1,0 +1,69 @@
+{% extends "AdminBundle::adminLayout.html.twig" %}
+{% block content %}
+    {{ parent() }}
+    <ul id="breadcrumb">
+        <li><a href="{{ path('admin_homepage') }}"><span class="fa fa-home"> </span></a></li>
+        <li><a > Produit</a></li>
+    </ul>
+    <div class="container-fluid" style="background: #FFFFFF;">
+        <br>
+        <a href="{{ path('admin_user_add') }}" class="col-md-offset-10 btn btn-primary btn-md">
+            <span class="fa fa-plus-circle"> </span></span> Nouveau Utilisateur </a>
+        <br>
+        <br>
+        <div class="row dataTables_wrapper form-inline dt-bootstrap no-footer">
+            <table  class="data-table table table-striped table-bordered dataTable no-footer" style="width:100%">
+                <thead>
+                <tr>
+                    <th class="sorting_asc">Prénom</th>
+                    <th>Nom</th>
+                    <th>Nom utilisateur</th>
+                    <th>email</th>
+                    <th> Role </th>
+                    <th> Etat </th>
+                    <th><em class="fa fa-cog"></em></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.name}}</td>
+                        <td>{{ user.familyName }}</td>
+                        <td >{{ user.username }} </td>
+                        <td>{{ user.email }}</td>
+                        <td class="money">
+                            {% for role in user.roles %}
+                                {% if role =="ROLE_SUPER_ADMIN" %}
+                                    Super Admin
+                                {% elseif role =="ROLE_ADMIN" %}
+                                    Admin
+                                {% elseif role =="ROLE_PARTNER" %}
+                                    Partner
+                                {% endif %}
+
+                            {% endfor %}
+                        </td>
+                        <td align="center">
+                            {% if user.enabled ==true %}
+                                <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
+                            {% else %}
+                                <span class="glyphicon glyphicon-remove " style="color:red;"></span>
+                            {% endif %}
+                        </td>
+                        <td align="center">
+                            <a href="#" class="link"><em class="fa fa-eye"></em></a>
+                            <a href="#" class="link" ><em class="fa fa-edit"></em></a>
+                            <a href="#myModal" class="link" data-toggle="modal" data-wathever="#" ><em class="fa fa-trash-o"></em></a>
+                            <a href="#" class="link"><em class="fa fa-picture-o"></em></a>
+                            <a href="#promotion" class="link" data-toggle="modal" data-wathever="#" ><em class="fa fa fa-gift"></em></a>
+
+
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+

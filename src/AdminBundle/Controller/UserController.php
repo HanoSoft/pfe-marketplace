@@ -14,6 +14,16 @@ use Symfony\Component\HttpFoundation\Request;
 
 class UserController extends Controller
 {
+
+    public function indexAction(Request $request)
+    {
+        $userManager = $this->get('fos_user.user_manager');
+        $users = $userManager->findUsers();
+        return $this->render('AdminBundle:User:index.html.twig', array(
+            'users' => $users,
+        ));
+    }
+
     public function addAction(Request $request)
     {
         $userManager = $this->get('fos_user.user_manager');
@@ -23,7 +33,9 @@ class UserController extends Controller
         $form->setData($user);
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $user->addRole($role);
+            $user->setEnabled(true);
             $userManager->updateUser($user);
+
             return $this->redirectToRoute('admin_product_list');
         }
         return $this->render('AdminBundle:User:add.html.twig', array(

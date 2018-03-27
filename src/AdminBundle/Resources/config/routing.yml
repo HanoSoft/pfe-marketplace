@@ -163,3 +163,6 @@ admin_product_promotion:
 admin_user_add:
     path:     /admin/user/add
     defaults: { _controller: AdminBundle:User:add }
+admin_user_list:
+    path:     /admin/user/list
+    defaults: { _controller: AdminBundle:User:index }
