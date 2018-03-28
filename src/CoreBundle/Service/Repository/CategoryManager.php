@@ -26,10 +26,9 @@ class CategoryManager extends RepositoryManager implements AbstractRepository
         $this->em=$em;
         parent::__construct($em,$repository);
     }
-    protected function setDeleted($objects)
-    {
-        foreach ($objects as $object) {
-            $object->setDeleted(true);
+    protected function setDeleted($objects,$value){
+        foreach ( $objects as $object){
+            $object->setDeleted($value);
         }
     }
     public function add($form)
@@ -47,9 +46,24 @@ class CategoryManager extends RepositoryManager implements AbstractRepository
     public function delete($id)
     {
         $category=$this->find($id);
+        if (null === $category) {
+            throw new NotFoundHttpException("la categorie de l'".$id." n'existe pas.");
+        }
+        $category=$this->find($id);
         $category->setDeleted(true);
         $product=$category->getProducts();
         $this->setDeleted($product);
+        $this->save($category);
+    }
+    public function enable($id)
+    {
+        $category=$this->find($id);
+        if (null === $category) {
+            throw new NotFoundHttpException("la catégorie de l'".$id." n'existe pas.");
+        }
+        $category->setDeleted(true);
+        $product=$category->getProducts();
+        $this->setDeleted($product,false);
         $this->save($category);
     }
 }
