@@ -184,3 +184,9 @@ admin_user_enable:
                 _controller: AdminBundle:User:enable
                 requirements:
                 id: \d+
+admin_product_enable:
+        path:     /admin/product/enable/{id}
+        defaults:
+                _controller: AdminBundle:Product:enable
+                requirements:
+                id: \d+
