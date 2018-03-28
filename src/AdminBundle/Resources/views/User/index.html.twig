@@ -21,7 +21,9 @@
                     <th>email</th>
                     <th> Role </th>
                     <th> Etat </th>
+                    {% if is_granted('ROLE_SUPER_ADMIN') %}
                     <th><em class="fa fa-cog"></em></th>
+                    {% endif %}
                 </tr>
                 </thead>
                 <tbody>
@@ -50,11 +52,13 @@
                                 <span class="glyphicon glyphicon-remove " style="color:red;"></span>
                             {% endif %}
                         </td>
+                        {% if is_granted('ROLE_SUPER_ADMIN') %}
                         <td align="center">
                             <a href="{{ path('admin_user_edit', {'id': user.id}) }}" class="link" ><em class="fa fa-edit"></em></a>
                             <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_user_delete', {'id': user.id}) }}" ><em class="fa fa-trash-o"></em></a>
                             <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_user_enable', {'id': user.id}) }}" ><em class="fa fa-refresh"></em></a>
                         </td>
+                        {% endif %}
                     </tr>
                 {% endfor %}
                 </tbody>
