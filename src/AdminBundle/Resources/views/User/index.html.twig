@@ -28,38 +28,64 @@
                 </thead>
                 <tbody>
                 {% for user in users %}
-                    <tr>
-                        <td>{{ user.name}}</td>
-                        <td>{{ user.familyName }}</td>
-                        <td >{{ user.username }} </td>
-                        <td>{{ user.email }}</td>
-                        <td class="money">
-                            {% for role in user.roles %}
-                                {% if role =="ROLE_SUPER_ADMIN" %}
-                                    Super Admin
-                                {% elseif role =="ROLE_ADMIN" %}
-                                    Admin
-                                {% elseif role =="ROLE_PARTNER" %}
-                                    Partner
-                                {% endif %}
+                    {% if is_granted('ROLE_SUPER_ADMIN') %}
+                        <tr>
+                            <td>{{ user.name}}</td>
+                            <td>{{ user.familyName }}</td>
+                            <td >{{ user.username }} </td>
+                            <td>{{ user.email }}</td>
+                            <td class="money">
+                                {% for role in user.roles %}
+                                    {% if role =="ROLE_SUPER_ADMIN" %}
+                                        Super Admin
+                                    {% elseif role =="ROLE_ADMIN" %}
+                                        Admin
+                                    {% elseif role =="ROLE_PARTNER" %}
+                                        Partner
+                                    {% endif %}
 
-                            {% endfor %}
-                        </td>
-                        <td align="center">
-                            {% if user.enabled ==true %}
-                                <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
-                            {% else %}
-                                <span class="glyphicon glyphicon-remove " style="color:red;"></span>
+                                {% endfor %}
+                            </td>
+                            <td align="center">
+                                {% if user.enabled ==true %}
+                                    <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
+                                {% else %}
+                                    <span class="glyphicon glyphicon-remove " style="color:red;"></span>
+                                {% endif %}
+                            </td>
+                            <td align="center">
+                                <a href="{{ path('admin_user_edit', {'id': user.id}) }}" class="link" ><em class="fa fa-edit"></em></a>
+                                <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_user_delete', {'id': user.id}) }}" ><em class="fa fa-trash-o"></em></a>
+                                <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_user_enable', {'id': user.id}) }}" ><em class="fa fa-refresh"></em></a>
+                            </td>
+                        </tr>
+                        {% else %}
+                            {% if  "ROLE_SUPER_ADMIN" not in user.roles %}
+                                <tr>
+                                <td>{{ user.name}}</td>
+                                <td>{{ user.familyName }}</td>
+                                <td >{{ user.username }} </td>
+                                <td>{{ user.email }}</td>
+                                <td class="money">
+                                    {% for role in user.roles %}
+                                        {% if role =="ROLE_ADMIN" %}
+
+                                            Admin
+                                        {% elseif role =="ROLE_PARTNER" %}
+                                            Partner
+                                        {% endif %}
+
+                                    {% endfor %}
+                                </td>
+                                <td align="center">
+                                    {% if user.enabled ==true %}
+                                        <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
+                                    {% else %}
+                                        <span class="glyphicon glyphicon-remove " style="color:red;"></span>
+                                    {% endif %}
+                                </td>
                             {% endif %}
-                        </td>
-                        {% if is_granted('ROLE_SUPER_ADMIN') %}
-                        <td align="center">
-                            <a href="{{ path('admin_user_edit', {'id': user.id}) }}" class="link" ><em class="fa fa-edit"></em></a>
-                            <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_user_delete', {'id': user.id}) }}" ><em class="fa fa-trash-o"></em></a>
-                            <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_user_enable', {'id': user.id}) }}" ><em class="fa fa-refresh"></em></a>
-                        </td>
-                        {% endif %}
-                    </tr>
+                    {% endif %}
                 {% endfor %}
                 </tbody>
             </table>
