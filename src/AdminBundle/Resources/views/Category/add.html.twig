@@ -1,11 +1,15 @@
 {% extends "AdminBundle::adminLayout.html.twig" %}
 {% block content %}
     {{ parent() }}
-  <div class=" form-grids row form-grids-right">
-      <div class="widget-shadow " data-example-id="basic-forms">
-          <div class="form-title form-header">
-              <h4>Ajouter Catégorie</h4>
-          </div>
+
+    <ul id="breadcrumb">
+        <li><a href="{{ path('admin_homepage') }}"><span class="fa fa-home"> </span></a></li>
+        <li><a href="{{ path('admin_category_list') }}"> Catégorie</a></li>
+        <li><a > Ajouter</a></li>
+    </ul>
+
+     <div class=" form-grids row form-grids-right">
+        <div class="widget-shadow " data-example-id="basic-forms">
                 <div class="form-body">
                     {{ form_start(form,{'attr': {'class': 'form-horizontal form'}}) }}
                     {{ form_errors(form) }}

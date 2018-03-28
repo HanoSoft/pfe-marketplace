@@ -1,11 +1,15 @@
 {% extends "AdminBundle::adminLayout.html.twig" %}
 {% block content %}
     {{ parent() }}
-    <div class="container-fluid">
-        <h2>Catégories
+    <ul id="breadcrumb">
+        <li><a href="{{ path('admin_homepage') }}"><span class="fa fa-home"> </span></a></li>
+        <li><a > Catégories</a></li>
+    </ul>
+    <div class="container-fluid" style="background: #FFFFFF;">
+        <br>
             <a href="{{ path('admin_category_add') }}" class="col-md-offset-10 btn btn-primary btn-md">
                 <span class="fa fa-plus-circle"> </span></span> Nouvelle Catégorie </a>
-        </h2>
+        <br>
         <br>
         <div class="row dataTables_wrapper form-inline dt-bootstrap no-footer">
             <table  class="data-table table table-striped table-bordered dataTable no-footer" style="width:100%">

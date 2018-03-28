@@ -232,11 +232,5 @@ Bandes GSM 850 MHz, 900 MHz, 1800 MHz, 1900 MHz.<br />
         $manager->flush();
 
 
-
-
-
-
-
-
     }
 }
