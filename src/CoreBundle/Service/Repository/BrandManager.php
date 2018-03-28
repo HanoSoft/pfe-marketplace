@@ -63,7 +63,7 @@ class BrandManager extends RepositoryManager implements AbstractRepository
         if (null === $brand) {
             throw new NotFoundHttpException("la marque de l'".$id." n'existe pas.");
         }
-        $$brand->setDeleted(false);
+        $brand->setDeleted(false);
         $this->setDeleted($brand,false);
         $this->save($brand);
     }

@@ -115,9 +115,17 @@ admin_product_show:
 admin_brand_list:
     path:     /admin/brand
     defaults: { _controller: AdminBundle:Brand:list }
+
 admin_brand_add:
     path:     /admin/brand/add
     defaults: { _controller: AdminBundle:Brand:add }
+
+admin_brand_enable:
+        path:     /admin/brand/enable/{id}
+        defaults:
+                _controller: AdminBundle:Brand:enable
+                requirements:
+                id: \d+
 
 admin_alert_add:
     path:     /admin/alert/add
