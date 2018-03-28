@@ -11,6 +11,8 @@ namespace CoreBundle\Service\Repository;
 use CoreBundle\Entity\Category;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 
 class CategoryManager extends RepositoryManager implements AbstractRepository
 {
