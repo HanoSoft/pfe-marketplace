@@ -7,20 +7,20 @@
     </ul>
     <div class="container-fluid" style="background: #FFFFFF;">
         <br>
-            <a href="{{ path('admin_category_add') }}" class="col-md-offset-10 btn btn-primary btn-md">
-                <span class="fa fa-plus-circle"> </span></span> Nouvelle Catégorie </a>
+        <a href="{{ path('admin_category_add') }}" class="col-md-offset-10 btn btn-primary btn-md">
+            <span class="fa fa-plus-circle"> </span></span> Nouvelle Catégorie </a>
         <br>
         <br>
         <div class="row dataTables_wrapper form-inline dt-bootstrap no-footer">
             <table  class="data-table table table-striped table-bordered dataTable no-footer" style="width:100%">
                 <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th class="sorting_asc">Marque</th>
-                        <th class="sorting_asc">Category</th>
-                        <th> Etat </th>
-                        <th><em class="fa fa-cog"></em></th>
-                    </tr>
+                <tr>
+                    <th>ID</th>
+                    <th class="sorting_asc">Marque</th>
+                    <th class="sorting_asc">Category</th>
+                    <th> Etat </th>
+                    <th><em class="fa fa-cog"></em></th>
+                </tr>
                 </thead>
                 <tbody >
                 {% for category in categories %}
@@ -39,31 +39,37 @@
                             <td align="center">
                                 <a href="{{ path('admin_category_edit', {'id': category.id}) }}" class="link" ><em class="fa fa-edit"></em></a>
                                 <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_category_delete', {'id': category.id}) }}" ><em class="fa fa-trash-o"></em></a>
+                               {% if  category.brand.deleted ==false  %}
+                                <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_category_enable', {'id': category.id}) }}" ><em class="fa fa-refresh"></em></a>
+                                {% endif %}
                             </td>
                         </tr>
-                        {% else %}
-                            {% if category.brand.user.username==app.user.username %}
-                                <tr>
-                                    <td>{{ category.id }}</td>
-                                    <td>{{ category.brand.brandName }}</td>
-                                    <td>{{ category.name }}</td>
-                                    <td align="center">
-                                        {% if category.deleted ==false %}
-                                            <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
-                                        {% else %}
-                                            <span class="glyphicon glyphicon-remove " style="color:red;"></span>
-                                        {% endif %}
-                                    </td>
-                                    <td align="center">
-                                        <a href="{{ path('admin_category_edit', {'id': category.id}) }}" class="link" ><em class="fa fa-edit"></em></a>
-                                        <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_category_delete', {'id': category.id}) }}" ><em class="fa fa-trash-o"></em></a>
+                    {% else %}
+                        {% if category.brand.user.username==app.user.username %}
+                            <tr>
+                                <td>{{ category.id }}</td>
+                                <td>{{ category.brand.brandName }}</td>
+                                <td>{{ category.name }}</td>
+                                <td align="center">
+                                    {% if category.deleted ==false %}
+                                        <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
+                                    {% else %}
+                                        <span class="glyphicon glyphicon-remove " style="color:red;"></span>
+                                    {% endif %}
+                                </td>
+                                <td align="center">
+                                    <a href="{{ path('admin_category_edit', {'id': category.id}) }}" class="link" ><em class="fa fa-edit"></em></a>
+                                    <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_category_delete', {'id': category.id}) }}" ><em class="fa fa-trash-o"></em></a>
+                                    {% if  category.brand.deleted ==false  %}
                                         <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_category_enable', {'id': category.id}) }}" ><em class="fa fa-refresh"></em></a>
-                                    </td>
-                                </tr>
-                             {% endif %}
-                         {% endif %}
-                    {% endfor %}
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
                 </tbody>
+
             </table>
         </div>
     </div>
