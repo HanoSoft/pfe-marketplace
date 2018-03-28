@@ -53,7 +53,7 @@
                         <td align="center">
                             <a href="{{ path('admin_user_edit', {'id': user.id}) }}" class="link" ><em class="fa fa-edit"></em></a>
                             <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_user_delete', {'id': user.id}) }}" ><em class="fa fa-trash-o"></em></a>
-                            <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_user_enable', {'id': user.id}) }}" ><em class="fa fa-trash"></em></a>
+                            <a href="#enable" class="link" data-toggle="modal" data-wathever="{{ path('admin_user_enable', {'id': user.id}) }}" ><em class="fa fa-refresh"></em></a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -62,5 +62,6 @@
         </div>
     </div>
     {{ include("AdminBundle::delete.html.twig") }}
+    {{ include("AdminBundle::enable.html.twig") }}
 {% endblock %}
 
