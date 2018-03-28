@@ -178,3 +178,9 @@ admin_user_delete:
                 _controller: AdminBundle:User:delete
                 requirements:
                 id: \d+
+admin_user_enable:
+        path:     /admin/user/enable/{id}
+        defaults:
+                _controller: AdminBundle:User:enable
+                requirements:
+                id: \d+

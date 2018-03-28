@@ -72,4 +72,19 @@ class UserController extends Controller
             'form' => $form->createView(),
         ));
     }
+
+    public function enableAction(Request $request,$id)
+    {
+        $formDelete = $this->get('form.factory')->create();
+        if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
+            $userManager = $this->get('fos_user.user_manager');
+            $user = $userManager->findUserBy(array('id'=>$id));
+            $user->setEnabled(true);
+            $userManager->updateUser($user);
+            return $this->redirectToRoute('admin_user_list');
+        }
+        return $this->render('AdminBundle::delete.html.twig', array(
+            'formDelete'   => $formDelete->createView(),
+        ));
+    }
 }
