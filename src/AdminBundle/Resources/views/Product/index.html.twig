@@ -3,7 +3,7 @@
     {{ parent() }}
     <ul id="breadcrumb">
         <li><a href="{{ path('admin_homepage') }}"><span class="fa fa-home"> </span></a></li>
-        <li><a > Produit</a></li>
+        <li><a > Produit </a></li>
     </ul>
     <div class="container-fluid" style="background: #FFFFFF;">
         <br>
@@ -35,7 +35,6 @@
                            {# <td>{{ product.color.colorName }}</td>#}
                             <td>
                                 <a href="{{ path('admin_product_size_list', {'id': product.id}) }}" class="link" ><em class="fa fa-eye"></em></a>
-
                                 {% for sizes in product.sizes %}
                                     {{ sizes.size }}
                                 {% endfor %}
@@ -52,7 +51,6 @@
                                 <a href="{{ path('admin_product_edit', {'id': product.id}) }}" class="link" ><em class="fa fa-edit"></em></a>
                                 <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_product_delete', {'id': product.id}) }}" ><em class="fa fa-trash-o"></em></a>
                                 <a href="{{ path('admin_product_image_list',{'id': product.id}) }}" class="link"><em class="fa fa-picture-o"></em></a>
-
                             </td>
                         </tr>
                     {% endfor %}
