@@ -11,6 +11,8 @@ namespace CoreBundle\Service\Repository;
 use CoreBundle\Entity\Brand;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 
 class BrandManager extends RepositoryManager implements AbstractRepository
 {
@@ -49,6 +51,9 @@ class BrandManager extends RepositoryManager implements AbstractRepository
     public function delete($id)
     {
         $brand=$this->find($id);
+        if (null === $brand) {
+            throw new NotFoundHttpException("la marque de l'".$id." n'existe pas.");
+        }
         $brand->setDeleted(true);
         $this->save($brand);
 
