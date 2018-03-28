@@ -39,8 +39,6 @@ class ProductController extends Controller
             'promotions' =>$promotions,
         ));
     }
-
-
     public function deleteAction(Request $request,$id)
     {
         $formDelete = $this->get('form.factory')->create();

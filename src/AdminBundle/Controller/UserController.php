@@ -42,7 +42,18 @@ class UserController extends Controller
             'form' => $form->createView(),
         ));
     }
-
-
-
+    public function editAction(Request $request,$id)
+    {
+        $userManager = $this->get('fos_user.user_manager');
+        $user = $userManager->findUserBy(array('id'=>$id));
+        $form = $this->get('form.factory')->create(RegistrationFormType::class);
+        $form->setData($user);
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+            $userManager->updateUser($user);
+            return $this->redirectToRoute('admin_user_list');
+        }
+        return $this->render('AdminBundle:User:edit.html.twig', array(
+            'form' => $form->createView(),
+        ));
+    }
 }

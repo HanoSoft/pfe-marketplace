@@ -51,10 +51,8 @@
                             {% endif %}
                         </td>
                         <td align="center">
-                            <a href="#" class="link"><em class="fa fa-eye"></em></a>
-                            <a href="#" class="link" ><em class="fa fa-edit"></em></a>
+                            <a href="{{ path('admin_user_edit', {'id': user.id}) }}" class="link" ><em class="fa fa-edit"></em></a>
                             <a href="#myModal" class="link" data-toggle="modal" data-wathever="#" ><em class="fa fa-trash-o"></em></a>
-                            <a href="#" class="link"><em class="fa fa-picture-o"></em></a>
                         </td>
                     </tr>
                 {% endfor %}

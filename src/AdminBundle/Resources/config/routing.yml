@@ -166,3 +166,9 @@ admin_user_add:
 admin_user_list:
     path:     /admin/user/list
     defaults: { _controller: AdminBundle:User:index }
+admin_user_edit:
+        path:     /admin/user/edit/{id}
+        defaults:
+                _controller: AdminBundle:User:edit
+                requirements:
+                id: \d+
