@@ -3,7 +3,6 @@
     {{ parent() }}
 
 
-
 <div class="container" align="center">
     <div class="pave_940">
         <div class="pave_m">
@@ -17,10 +16,11 @@
                         <li class="accueil_vente_logo">
                             <img id="cph_middle_SaleContainer_ctl00_ImgLogo" src="{{ asset('uploads/brand/'~ brand.logo.name ) }}" alt="">
                         </li>
-                        <li><a href="#">Les bonbons<span>›</span></a></li>
-                        <li><a href="#">Chocolats et biscuits<span>›</span></a></li>
-                        <li id="cph_middle_SaleContainer_ctl00_li_all_products"><a href="#" class="tous_produits">Voir tous les produits<span>›</span><span>›</span></a></li>
-                    </ul>
+                        {% for category in brand.categories %}
+                        <li><a href="#">{{ category.name }}<span>›</span></a></li>
+
+                        {% endfor %}
+                     </ul>
                 </div>
             </div>
         </div>

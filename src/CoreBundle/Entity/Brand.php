@@ -23,7 +23,7 @@ class Brand
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=10000)
+     * @ORM\Column(name="description", type="string", length=10000,nullable=true)
      */
     private $description;
 

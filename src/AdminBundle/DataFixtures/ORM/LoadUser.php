@@ -34,6 +34,8 @@ class LoadUser implements FixtureInterface,ContainerAwareInterface
         $user->setEmail('super@gmail.com');
         $user->setPlainPassword('super');
         $user->setEnabled(true);
+        $user->setName('super');
+        $user->setfamilyName('super');
         $user->addRole('ROLE_SUPER_ADMIN');
         $manager->persist($user);
 
@@ -43,6 +45,8 @@ class LoadUser implements FixtureInterface,ContainerAwareInterface
         $user->setPlainPassword('admin');
         $user->setEnabled(true);
         $user->addRole('ROLE_ADMIN');
+        $user->setName('admin');
+        $user->setfamilyName('admin');
         $manager->persist($user);
         $manager->flush();
 
@@ -52,6 +56,8 @@ class LoadUser implements FixtureInterface,ContainerAwareInterface
         $user->setPlainPassword('partner');
         $user->setEnabled(true);
         $user->addRole('ROLE_PARTNER');
+        $user->setName('partner');
+        $user->setfamilyName('partner');
         $manager->persist($user);
         $manager->flush();
     }
