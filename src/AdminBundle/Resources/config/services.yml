@@ -1,8 +1,6 @@
 services:
     AdminBundle\DataFixtures\ORM\LoadUser:
         tags: [doctrine.fixture.orm]
-    AdminBundle\DataFixtures\ORM\LoadProduct:
-            tags: [doctrine.fixture.orm]
     admin.form.registration:
         class: AdminBundle\Form\RegistrationFormType
         tags:
