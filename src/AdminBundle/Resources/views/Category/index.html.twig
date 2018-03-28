@@ -24,31 +24,50 @@
                 </thead>
                 <tbody >
                 {% for category in categories %}
-                    <tr>
-                        <td>{{ category.id }}</td>
-                        <td>{{ category.brand.brandName }}</td>
-                        <td>{{ category.name }}</td>
-                        <td align="center">
-                            {% if category.deleted ==false %}
-                                <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
-                            {% else %}
-                                <span class="glyphicon glyphicon-remove " style="color:red;"></span>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <tr>
+                            <td>{{ category.id }}</td>
+                            <td>{{ category.brand.brandName }}</td>
+                            <td>{{ category.name }}</td>
+                            <td align="center">
+                                {% if category.deleted ==false %}
+                                    <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
+                                {% else %}
+                                    <span class="glyphicon glyphicon-remove " style="color:red;"></span>
+                                {% endif %}
+                            </td>
+                            <td align="center">
+                                <a href="{{ path('admin_category_edit', {'id': category.id}) }}" class="link" ><em class="fa fa-edit"></em></a>
+                                <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_category_delete', {'id': category.id}) }}" ><em class="fa fa-trash-o"></em></a>
+                            </td>
+                        </tr>
+                        {% else %}
+                            {% if category.brand.user.username==app.user.username %}
+                                <tr>
+                                    <td>{{ category.id }}</td>
+                                    <td>{{ category.brand.brandName }}</td>
+                                    <td>{{ category.name }}</td>
+                                    <td align="center">
+                                        {% if category.deleted ==false %}
+                                            <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
+                                        {% else %}
+                                            <span class="glyphicon glyphicon-remove " style="color:red;"></span>
+                                        {% endif %}
+                                    </td>
+                                    <td align="center">
+                                        <a href="{{ path('admin_category_edit', {'id': category.id}) }}" class="link" ><em class="fa fa-edit"></em></a>
+                                        <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_category_delete', {'id': category.id}) }}" ><em class="fa fa-trash-o"></em></a>
+                                    </td>
+                                </tr>
                             {% endif %}
-                        </td>
-                        <td align="center">
-                            <a href="{{ path('admin_category_edit', {'id': category.id}) }}" class="link" ><em class="fa fa-edit"></em></a>
-                            <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_category_delete', {'id': category.id}) }}" ><em class="fa fa-trash-o"></em></a>
-                        </td>
-                    </tr>
+                    {% endif %}
                 {% endfor %}
                 </tbody>
 
             </table>
         </div>
     </div>
-
     {{ include("AdminBundle::delete.html.twig") }}
-
 {% endblock %}
 
 
