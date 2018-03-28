@@ -49,12 +49,12 @@ class CategoryManager extends RepositoryManager implements AbstractRepository
     {
         $category=$this->find($id);
         if (null === $category) {
-            throw new NotFoundHttpException("la categorie de l'".$id." n'existe pas.");
-        }
+        throw new NotFoundHttpException("la categorie de l'".$id." n'existe pas.");
+    }
         $category=$this->find($id);
         $category->setDeleted(true);
         $product=$category->getProducts();
-        $this->setDeleted($product);
+        $this->setDeleted($product,true);
         $this->save($category);
     }
     public function enable($id)
@@ -63,7 +63,7 @@ class CategoryManager extends RepositoryManager implements AbstractRepository
         if (null === $category) {
             throw new NotFoundHttpException("la catégorie de l'".$id." n'existe pas.");
         }
-        $category->setDeleted(true);
+        $category->setDeleted(false);
         $product=$category->getProducts();
         $this->setDeleted($product,false);
         $this->save($category);

@@ -23,7 +23,14 @@ admin_category_delete:
     defaults:
             _controller: AdminBundle:Category:delete
             requirements:
-            id: \d+
+            id:
+
+admin_category_enable:
+        path:     /admin/category/enable/{id}
+        defaults:
+                _controller: AdminBundle:Category:enable
+                requirements:
+                id: \d+
 
 admin_product_list:
     path:     /admin/products
