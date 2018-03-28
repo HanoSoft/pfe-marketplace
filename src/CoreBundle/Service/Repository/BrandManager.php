@@ -28,10 +28,9 @@ class BrandManager extends RepositoryManager implements AbstractRepository
         $this->em=$em;
         parent::__construct($em,$repository);
     }
-    protected function setDeleted($objects)
-    {
-        foreach ($objects as $object) {
-            $object->setDeleted(true);
+    protected function setDeleted($objects,$value){
+        foreach ( $objects as $object){
+            $object->setDeleted($value);
         }
     }
     public function add($form)
@@ -57,6 +56,16 @@ class BrandManager extends RepositoryManager implements AbstractRepository
         $brand->setDeleted(true);
         $this->save($brand);
 
+    }
+    public function enable($id)
+    {
+        $brand=$this->find($id);
+        if (null === $brand) {
+            throw new NotFoundHttpException("la marque de l'".$id." n'existe pas.");
+        }
+        $$brand->setDeleted(false);
+        $this->setDeleted($brand,false);
+        $this->save($brand);
     }
 
 

@@ -41,6 +41,7 @@ class RepositoryManager
     public function getAll(){
        return $this->repository->findAll();
     }
+
     public function getDeleted($value)
     {
         $qb = $this->repository->createQueryBuilder('p');
