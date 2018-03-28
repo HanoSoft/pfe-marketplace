@@ -27,7 +27,7 @@ admin_category_delete:
 
 admin_product_list:
     path:     /admin/products
-    defaults: { _controller: AdminBundle:Product:list }
+    defaults: { _controller: AdminBundle:Product:index }
 
 admin_product_add:
     path:     /admin/product/add
@@ -170,5 +170,11 @@ admin_user_edit:
         path:     /admin/user/edit/{id}
         defaults:
                 _controller: AdminBundle:User:edit
+                requirements:
+                id: \d+
+admin_user_delete:
+        path:     /admin/user/delete/{id}
+        defaults:
+                _controller: AdminBundle:User:delete
                 requirements:
                 id: \d+

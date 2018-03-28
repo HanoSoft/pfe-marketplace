@@ -3,7 +3,7 @@
     {{ parent() }}
     <ul id="breadcrumb">
         <li><a href="{{ path('admin_homepage') }}"><span class="fa fa-home"> </span></a></li>
-        <li><a > Produit</a></li>
+        <li><a > Utilisateurs</a></li>
     </ul>
     <div class="container-fluid" style="background: #FFFFFF;">
         <br>
@@ -52,7 +52,7 @@
                         </td>
                         <td align="center">
                             <a href="{{ path('admin_user_edit', {'id': user.id}) }}" class="link" ><em class="fa fa-edit"></em></a>
-                            <a href="#myModal" class="link" data-toggle="modal" data-wathever="#" ><em class="fa fa-trash-o"></em></a>
+                            <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_user_delete', {'id': user.id}) }}" ><em class="fa fa-trash-o"></em></a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -60,5 +60,6 @@
             </table>
         </div>
     </div>
+    {{ include("AdminBundle::delete.html.twig") }}
 {% endblock %}
 

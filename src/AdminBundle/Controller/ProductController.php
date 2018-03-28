@@ -9,11 +9,6 @@ use AdminBundle\Form\ProductType;
 
 class ProductController extends Controller
 {
-    public function indexAction()
-    {
-        return $this->render('AdminBundle:Product:index.html.twig');
-    }
-
     public function addAction(Request $request)
     {
         $form = $this->createForm(ProductType::class);
@@ -26,17 +21,14 @@ class ProductController extends Controller
             'form' => $form->createView(),
         ));
     }
-    public function listAction(Request $request)
+    public function indexAction(Request $request)
     {
-        $promotionManager = $this->get('core.service.promotion_manager');
-        $promotions=$promotionManager->getDeleted(false);
         $manager = $this->get('core.service.product_manager');
         $products=$manager->getAll();
         $formDelete = $this->get('form.factory')->create();
         return $this->render('AdminBundle:Product:index.html.twig', array(
             'products' => $products,
             'formDelete'   => $formDelete->createView(),
-            'promotions' =>$promotions,
         ));
     }
     public function deleteAction(Request $request,$id)
