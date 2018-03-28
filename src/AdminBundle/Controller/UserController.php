@@ -11,12 +11,16 @@ namespace AdminBundle\Controller;
 use AdminBundle\Form\RegistrationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class UserController extends Controller
 {
 
     public function indexAction(Request $request)
     {
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('admin_access_denied');
+        }
         $userManager = $this->get('fos_user.user_manager');
         $users = $userManager->findUsers();
         $formDelete = $this->get('form.factory')->create();
@@ -28,6 +32,12 @@ class UserController extends Controller
 
     public function addAction(Request $request)
     {
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+            return $this->redirectToRoute('admin_access_denied');
+        }
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+            return $this->redirectToRoute('admin_access_denied');
+        }
         $userManager = $this->get('fos_user.user_manager');
         $user = $userManager->createUser();
         $role = $request->request->get("role");
@@ -37,7 +47,6 @@ class UserController extends Controller
             $user->addRole($role);
             $user->setEnabled(true);
             $userManager->updateUser($user);
-
             return $this->redirectToRoute('admin_user_list');
         }
         return $this->render('AdminBundle:User:add.html.twig', array(
@@ -46,6 +55,9 @@ class UserController extends Controller
     }
     public function deleteAction(Request $request,$id)
     {
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+            return $this->redirectToRoute('admin_access_denied');
+        }
         $formDelete = $this->get('form.factory')->create();
         if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
             $userManager = $this->get('fos_user.user_manager');
@@ -60,6 +72,9 @@ class UserController extends Controller
     }
     public function editAction(Request $request,$id)
     {
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+            return $this->redirectToRoute('admin_access_denied');
+        }
         $userManager = $this->get('fos_user.user_manager');
         $user = $userManager->findUserBy(array('id'=>$id));
         $form = $this->get('form.factory')->create(RegistrationFormType::class);
@@ -75,6 +90,9 @@ class UserController extends Controller
 
     public function enableAction(Request $request,$id)
     {
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+            return $this->redirectToRoute('admin_access_denied');
+        }
         $formDelete = $this->get('form.factory')->create();
         if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
             $userManager = $this->get('fos_user.user_manager');

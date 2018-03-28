@@ -190,3 +190,6 @@ admin_product_enable:
                 _controller: AdminBundle:Product:enable
                 requirements:
                 id: \d+
+admin_access_denied:
+    path:     /admin/access_denied
+    defaults: { _controller: AdminBundle:Admin:accessDenied }

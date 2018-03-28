@@ -9,5 +9,9 @@ class AdminController extends Controller
     {
         return $this->render('AdminBundle:Admin:index.html.twig');
     }
-   
+
+    public function accessDeniedAction()
+    {
+        return $this->render('AdminBundle:Admin:accessDenied.html.twig');
+    }
 }
