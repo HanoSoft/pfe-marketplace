@@ -38,7 +38,7 @@ class UserController extends Controller
             $user->setEnabled(true);
             $userManager->updateUser($user);
 
-            return $this->redirectToRoute('admin_product_list');
+            return $this->redirectToRoute('admin_user_list');
         }
         return $this->render('AdminBundle:User:add.html.twig', array(
             'form' => $form->createView(),

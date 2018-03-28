@@ -11,19 +11,22 @@ namespace CoreBundle\Service\Repository;
 use CoreBundle\Entity\Brand;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
+use FOS\UserBundle\Model\UserManager;
 
-class BrandManager extends RepositoryManager implements AbstractRepository
+class BrandManager extends RepositoryManager
 {
     /**
      * @var EntityRepository
      */
     private $repository;
     private $em;
+    private $user;
 
-    public function __construct(EntityManager $em)
+    public function __construct(EntityManager $em,UserManager $user)
     {
         $repository=$em->getRepository(Brand::class);
         $this->em=$em;
+        $this->user=$user;
         parent::__construct($em,$repository);
     }
     protected function setDeleted($objects)
@@ -32,12 +35,15 @@ class BrandManager extends RepositoryManager implements AbstractRepository
             $object->setDeleted(true);
         }
     }
-    public function add($form)
+    public function addBrand($form,$id)
     {
+
+        $user=$this->user->findUserBy(array('id'=>$id));
         $brand = new Brand();
         $brand = $form->getData();
         $brand->getLogo()->upload();
         $brand->getBrandImage()->upload();
+        $brand->setUser($user);
         $this->save($brand);
     }
     public function edit($from,$id)
