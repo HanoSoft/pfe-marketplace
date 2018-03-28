@@ -23,12 +23,11 @@ class BrandController extends Controller
     public function addAction(Request $request)
     {
         $session = new Session();
-
-
+        $id = $request->request->get("user");
         $form = $this->get('form.factory')->create(BrandType::class);
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $manager = $this->get('core.service.brand_manager');
-            $manager->add($form);
+            $manager->addBrand($form,$id);
             $session->getFlashBag()->add('success', 'la marque est bien enregistrée !');
             return $this->redirectToRoute('admin_brand_add');
         }

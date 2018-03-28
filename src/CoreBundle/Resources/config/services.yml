@@ -16,7 +16,7 @@ services:
                     arguments: ['@doctrine.orm.entity_manager']
     core.service.brand_manager:
                 class: CoreBundle\Service\Repository\BrandManager
-                arguments: ['@doctrine.orm.entity_manager']
+                arguments: ['@doctrine.orm.entity_manager','@fos_user.user_manager']
     core.service.promotion_manager:
                     class: CoreBundle\Service\Repository\PromotionManager
                     arguments: ['@doctrine.orm.entity_manager']

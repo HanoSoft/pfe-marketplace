@@ -57,6 +57,27 @@ class Brand
      */
     private $logo;
     /**
+     *@ORM\ManyToOne(targetEntity="AdminBundle\Entity\User",inversedBy="brands",cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+    /**
      * Get id
      *
      * @return int

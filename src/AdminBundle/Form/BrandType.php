@@ -5,18 +5,13 @@
  * Date: 23/03/2018
  * Time: 15:09
  */
-
 namespace AdminBundle\Form;
-
 
 use AdminBundle\Form\BrandImageType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
-
-
 
 class BrandType extends AbstractType
 {

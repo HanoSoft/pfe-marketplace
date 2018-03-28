@@ -24,6 +24,7 @@
                 </thead>
                 <tbody>
                 {% for brand in brands %}
+                {% if is_granted('ROLE_ADMIN') %}
                     <tr>
                         <td>{{ brand.id }}</td>
                         <td align="center"><img src="{{ asset('uploads/brand/'~ brand.logo.name ) }}" style="width: 50px;" /></td>
@@ -42,6 +43,27 @@
                             <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_brand_enable', {'id': brand.id}) }}" ><em class="fa fa-refresh"></em></a>
                         </td>
                     </tr>
+                    {% else %}
+                        {% if brand.user.username==app.user.username %}
+                            <tr>
+                                <td>{{ brand.id }}</td>
+                                <td align="center"><img src="{{ asset('uploads/brand/'~ brand.logo.name ) }}" style="width: 50px;" /></td>
+                                <td>{{ brand.brandName }}</td>
+                                <td align="center">
+                                    {% if brand.deleted ==false %}
+                                        <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
+                                    {% else %}
+                                        <span class="glyphicon glyphicon-remove " style="color:red;"></span>
+                                    {% endif %}
+                                </td>
+                                <td align="center">
+                                    <a href="{{ path('admin_brand_show',{'id': brand.id}) }}" class="link"><em class="fa fa-eye"></em></a>
+                                    <a href="{{ path('admin_brand_edit', {'id': brand.id}) }}" class="link" ><em class="fa fa-edit"></em></a>
+                                    <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_brand_delete', {'id': brand.id}) }}" ><em class="fa fa-trash-o"></em></a>
+                                </td>
+                            </tr>
+                        {% endif  %}
+                    {% endif  %}
                 {% endfor %}
                 </tbody>
             </table>

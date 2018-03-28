@@ -35,7 +35,27 @@ class User extends BaseUser
      * @ORM\Column(name="family_name", type="string", length=255)
      */
     private $familyName;
+    /**
+     *@ORM\OneToMany(targetEntity="CoreBundle\Entity\Brand",mappedBy="user")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $brands;
 
+    /**
+     * @return mixed
+     */
+    public function getBrands()
+    {
+        return $this->brands;
+    }
+
+    /**
+     * @param mixed $brands
+     */
+    public function setBrands($brands)
+    {
+        $this->brands = $brands;
+    }
     public function __construct()
     {
         parent::__construct();

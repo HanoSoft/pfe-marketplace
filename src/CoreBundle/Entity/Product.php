@@ -75,8 +75,6 @@ class Product
      */
     private $category;
 
-
-
     /**
      * Get id
      *
