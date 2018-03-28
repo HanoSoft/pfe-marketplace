@@ -83,7 +83,7 @@ class UserController extends Controller
             $userManager->updateUser($user);
             return $this->redirectToRoute('admin_user_list');
         }
-        return $this->render('AdminBundle::enable.html.twig', array(
+        return $this->render('AdminBundle::delete.html.twig', array(
             'formDelete'   => $formDelete->createView(),
         ));
     }
