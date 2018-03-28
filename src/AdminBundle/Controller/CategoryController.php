@@ -67,7 +67,7 @@ class CategoryController extends Controller
             $manager->delete($id);
             return $this->redirectToRoute('admin_category_list');
         }
-        return $this->render('AdminBundle:Category:delete.html.twig', array(
+        return $this->render('AdminBundle::delete.html.twig', array(
             'formDelete'   => $formDelete->createView(),
         ));
     }
