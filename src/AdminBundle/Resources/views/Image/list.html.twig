@@ -1,10 +1,13 @@
 {% extends "AdminBundle::adminLayout.html.twig" %}
 {% block content %}
     {{ parent() }}
-
+    <ul id="breadcrumb">
+        <li><a href="{{ path('admin_homepage') }}"><span class="fa fa-home"> </span></a></li>
+        <li><a href="{{ path('admin_product_list') }}"> Produit</a></li>
+        <li><a> Image</a></li>
+    </ul>
     <div class="container">
     {% for image in images %}
-
         <div class="col-xs-6 col-sm-3">
             <div class="thumb-container thumb-header" align="center">
                 <h3 >{{ image.label }}</h3>
@@ -14,23 +17,18 @@
                     <span style="color:red;">Désactivée</span>
                 {% endif %}
             </div>
-
-
             <a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox">
                 <img src="{{ asset('uploads/product/'~ image.name ) }}">
             </a>
             <div class=" thumb-container thumb-footer" align="center">
-
                 <div  style="border: solid 1px white;border-radius:10px; width:70px;" >
                     <a href="{{ path('admin_product_image_edit',{'idp': idp,'id':image.id}) }}" class="link thumb-link"><em class="fa fa-edit"></em></a>
                     <a href="#myModal" class="link thumb-link" data-toggle="modal" data-wathever="{{ path('admin_product_image_delete',{'idp': idp,'id':image.id}) }}" ><em class="fa fa-trash-o"></em></a>
                 </div>
             </div>
-
         </div>
     {% endfor %}
     </div>
-
     <div id="lightbox" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <button type="button" class="close hidden" data-dismiss="modal" aria-hidden="true">×</button>
@@ -41,13 +39,5 @@
             </div>
         </div>
     </div>
-
     {{ include("AdminBundle::delete.html.twig") }}
-
-
-
-
-
-
-
 {% endblock %}
