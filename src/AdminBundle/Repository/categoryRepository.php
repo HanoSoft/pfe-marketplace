@@ -11,12 +11,4 @@ namespace AdminBundle\Repository;
 
 	class categoryRepository extends \Doctrine\ORM\EntityRepository
 {
-		public function getAllCategories($value){
-
-	        $qb = $this->createQueryBuilder('c');
-	        $qb
-	            ->where('c.deleted = :deleted')
-	            ->setParameter('deleted', $value) ;
-	        return $qb;
-	}
 }
