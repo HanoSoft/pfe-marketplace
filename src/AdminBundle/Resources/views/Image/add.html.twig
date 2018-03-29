@@ -1,13 +1,14 @@
 {% extends "AdminBundle::adminLayout.html.twig" %}
 {% block content %}
     {{ parent() }}
-
-
+    <ul id="breadcrumb">
+        <li><a href="{{ path('admin_homepage') }}"><span class="fa fa-home"> </span></a></li>
+        <li><a href="{{ path('admin_product_list') }}"> Produit</a></li>
+        <li><a href="{{ path('admin_product_list') }}"> Image</a></li>
+        <li><a> Ajouter</a></li>
+    </ul>
     <div class=" form-grids row form-grids-right">
         <div class="widget-shadow " data-example-id="basic-forms">
-            <div class="form-title form-header">
-                <h3>Ajouter Image</h3>
-            </div>
             <div class="form-body">
                 {{ form_start(form,{'attr': {'class': 'form-horizontal form'}}) }}
                 {{ form_errors(form) }}
@@ -18,26 +19,18 @@
                     </div>
                     <span class="glyphicon "></span>
                 </div>
-
-
                 <div class="container" align="center">
-                        <div class="avatar-upload ">
-                            <div class="avatar-edit">
-                                {{ form_widget(form.file, {'attr': {'class': 'form-control','placeholder':'file','accept':'image/*'}}) }}
-                                <label for="corebundle_image_file"></label>
-                            </div>
-                            <div class="avatar-preview">
-                                <div id="imagePreview" style="background-image: url({{ asset('assets/admin/images/image.png') }});">
-                                </div>
+                    <div class="avatar-upload ">
+                        <div class="avatar-edit">
+                            {{ form_widget(form.file, {'attr': {'class': 'form-control','placeholder':'file','accept':'image/*'}}) }}
+                            <label for="corebundle_image_file"></label>
+                        </div>
+                        <div class="avatar-preview">
+                            <div id="imagePreview" style="background-image: url({{ asset('assets/admin/images/image.png') }});">
                             </div>
                         </div>
+                    </div>
                 </div>
-
-
-
-
-
-
                 <button  class="btn btn-warning col-md-offset-9" disabled="true" type="submit"><span class="fa fa-plus-circle"> </span> Ajouter</button>
                 <a href="{{ path('admin_product_list') }}" class="btn btn-primary " type=><span class="fa fa-check-square-o"> </span> Passer</a>
                 {{ form_rest(form) }}

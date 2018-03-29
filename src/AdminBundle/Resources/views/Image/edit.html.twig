@@ -1,11 +1,14 @@
 {% extends "AdminBundle::adminLayout.html.twig" %}
 {% block content %}
     {{ parent() }}
+    <ul id="breadcrumb">
+        <li><a href="{{ path('admin_homepage') }}"><span class="fa fa-home"> </span></a></li>
+        <li><a href="{{ path('admin_product_list') }}"> Produit</a></li>
+        <li><a> Image</a></li>
+        <li><a> Modifier</a></li>
+    </ul>
     <div class=" form-grids row form-grids-right">
         <div class="widget-shadow " data-example-id="basic-forms">
-            <div class="form-title form-header">
-                <h3>Modifier Image</h3>
-            </div>
             <div class="form-body">
                 {{ form_start(form,{'attr': {'class': 'form-horizontal form'}}) }}
                 {{ form_errors(form) }}
@@ -16,10 +19,8 @@
                     </div>
                     <span class="glyphicon "></span>
                 </div>
-                <button class="btn btn-success col-md-offset-10 " disabled="true" type="submit" disabled="true"><span class="fa fa-edit"> </span> Modifier</button>
-
+                <button class="btn btn-success col-md-offset-9 " disabled="true" type="submit" disabled="true"><span class="fa fa-edit"> </span> Modifier</button>
                 <a href="{{ path('admin_product_list') }}" class="btn btn-primary " type=><span class="fa fa-check-square-o"> </span> Passer</a>
-
                 {{ form_rest(form) }}
                 {{ form_end(form) }}
             </div>
@@ -33,4 +34,3 @@
         </div>
     </div>
 {% endblock %}
-
