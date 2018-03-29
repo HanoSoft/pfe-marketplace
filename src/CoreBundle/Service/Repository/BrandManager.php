@@ -73,14 +73,14 @@ class BrandManager extends RepositoryManager
             throw new NotFoundHttpException("la marque de l'".$id." n'existe pas.");
         }
         $brand->setDeleted(false);
-        $this->setDeleted($brand,false);
+        $categories=$brand->getCategories();
+        $this->setDeleted($categories,false);
+        foreach ( $categories as $category){
+            $products=$category->getProducts();
+            $this->setDeleted($products,false);
+        }
         $this->save($brand);
     }
-
-
-
-
-
 
 
 }
