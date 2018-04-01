@@ -21,7 +21,7 @@ class ProductController extends Controller
             'form' => $form->createView(),
         ));
     }
-    public function indexAction(Request $request)
+    public function indexAction()
     {
         $manager = $this->get('core.service.product_manager');
         $products=$manager->getAll();
@@ -56,7 +56,6 @@ class ProductController extends Controller
             'form' => $form->createView(),
         ));
     }
-
     public function enableAction(Request $request,$id)
     {
         $formDelete = $this->get('form.factory')->create();
