@@ -83,4 +83,14 @@ fos_user:
     registration:
             form:
                 type: AdminBundle\Form\RegistrationFormType
-
+fos_rest:
+    body_converter:
+        enabled: true
+    view:
+        formats: { json: true, xml: false, rss: false }
+        view_response_listener: true
+    serializer:
+        serialize_null: true
+   # format_listener:
+      #  rules:
+       #     - { path: '^/', priorities: ['json'], fallback_format: 'json' }

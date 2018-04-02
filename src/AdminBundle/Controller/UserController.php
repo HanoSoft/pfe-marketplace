@@ -14,7 +14,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 class UserController extends Controller
 {
-
     public function indexAction(Request $request)
     {
         if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
