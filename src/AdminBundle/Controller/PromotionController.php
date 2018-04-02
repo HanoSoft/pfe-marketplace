@@ -29,7 +29,6 @@ class PromotionController extends Controller
             'form' => $form->createView(),
         ));
     }
-
     public function listAction(Request $request)
     {
         $manager = $this->get('core.service.promotion_manager');

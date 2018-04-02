@@ -11,11 +11,9 @@ namespace AdminBundle\Controller;
 use AdminBundle\Form\RegistrationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class UserController extends Controller
 {
-
     public function indexAction(Request $request)
     {
         if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
@@ -29,7 +27,6 @@ class UserController extends Controller
             'formDelete'   => $formDelete->createView(),
         ));
     }
-
     public function addAction(Request $request)
     {
         if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
@@ -87,7 +84,6 @@ class UserController extends Controller
             'form' => $form->createView(),
         ));
     }
-
     public function enableAction(Request $request,$id)
     {
         if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {

@@ -36,7 +36,6 @@ class ProductSizeController extends Controller
             'idp' =>$id
         ));
     }
-
     public function editAction(Request $request ,$idp,$id)
     {
         $manager = $this->get('core.service.product.size_manager');

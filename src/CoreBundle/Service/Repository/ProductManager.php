@@ -13,7 +13,7 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class ProductManager extends RepositoryManager implements AbstractRepository
+class ProductManager extends RepositoryManager
 {
     /**
      * @var EntityRepository
