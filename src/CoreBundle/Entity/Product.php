@@ -5,10 +5,10 @@ namespace CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Product
+ * ProductService
  *
  * @ORM\Table(name="product")
- * @ORM\Entity(repositoryClass="AdminBundle\Repository\ProductRepository")
+ * @ORM\Entity(repositoryClass="CoreBundle\Repository\ProductRepository")
  */
 class Product
 {

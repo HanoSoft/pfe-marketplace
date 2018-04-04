@@ -1,6 +1,6 @@
 <?php
 
-namespace AdminBundle\Repository;
+namespace CoreBundle\Repository;
 
 /**
  * BrandRepository

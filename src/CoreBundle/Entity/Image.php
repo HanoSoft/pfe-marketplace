@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  * Image
  *
  * @ORM\Table(name="image")
- * @ORM\Entity(repositoryClass="AdminBundle\Repository\ImageRepository")
+ * @ORM\Entity(repositoryClass="CoreBundle\Repository\ImageRepository")
  */
 class Image
 {

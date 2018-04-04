@@ -3,6 +3,7 @@
 namespace AdminBundle\Controller;
 
 use AdminBundle\Form\ProductEditType;
+use CoreBundle\Entity\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AdminBundle\Form\ProductType;
@@ -11,13 +12,38 @@ class ProductController extends Controller
 {
     public function addAction(Request $request)
     {
-        $form = $this->createForm(ProductType::class);
+        $product=new Product();
+        $form = $this->createForm(ProductType::class,$product);
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-            $manager = $this->get('core.service.product_manager');
-            $id=$manager->add($form);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($product);
+            $id=$product->getId();
+            $em->flush();
             return $this->redirectToRoute('admin_product_size_add',array('id' => $id));
         }
         return $this->render('AdminBundle:Product:add.html.twig', array(
+            'form' => $form->createView(),
+        ));
+    }
+
+
+
+
+
+/*
+
+ public function editAction($id, Request $request)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $product=$manager->find($id);
+        $form = $this->get('form.factory')->create(ProductEditType::class,$product);
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+            $manager->edit($form,$id);
+            return $this->redirectToRoute('admin_product_list');
+        }
+        return $this->render('AdminBundle:Product:edit.html.twig', array(
             'form' => $form->createView(),
         ));
     }
@@ -43,19 +69,7 @@ class ProductController extends Controller
             'formDelete'   => $formDelete->createView(),
         ));
     }
-    public function editAction($id, Request $request)
-    {
-        $manager = $this->get('core.service.product_manager');
-        $product=$manager->find($id);
-        $form = $this->get('form.factory')->create(ProductEditType::class,$product);
-        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-            $manager->edit($form,$id);
-            return $this->redirectToRoute('admin_product_list');
-        }
-        return $this->render('AdminBundle:Product:edit.html.twig', array(
-            'form' => $form->createView(),
-        ));
-    }
+
     public function enableAction(Request $request,$id)
     {
         $formDelete = $this->get('form.factory')->create();
@@ -76,4 +90,6 @@ class ProductController extends Controller
             'product' => $product,
         ));
     }
+*/
+
 }
