@@ -64,7 +64,14 @@
     font-weight: bold;
 }
 .link{
-    color: #25B9D7;
+    width: 80px;
+    padding: 3px;
+}
+.link-danger{
+    color:red;
+}
+.link-success{
+    color:#469F46;
 }
 /*thumbnail*/
 #lightbox .modal-content {
