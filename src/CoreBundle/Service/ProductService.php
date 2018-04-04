@@ -35,14 +35,14 @@ class ProductService
         }
     }
     /**
-     * Retourner la liste  des produist
+     * Retourner la liste  des produits
      * return array
      */
     public function getProducts(){
         return $this->repository->findAll();
     }
     /**
-     * Retourner la liste  des produist actives
+     * Retourner la liste  des produits actives
      * return array
      */
     public function getActiveProducts(){
