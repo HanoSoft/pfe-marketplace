@@ -7,6 +7,7 @@ use CoreBundle\Entity\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AdminBundle\Form\ProductType;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ProductController extends Controller
 {
@@ -85,26 +86,29 @@ class ProductController extends Controller
             'formDelete' => $formDelete->createView(),
         ));
     }
-
-/*
-
-
-
-
-
-    public function enableAction(Request $request,$id)
-    {
+    public function deleteAction(Request $request,$id){
+        $em=$this->getDoctrine()->getManager();
+        $serviceProduct=$this->get('core.service.product');
+        $product=$serviceProduct->getProduct($id);
+        if (null === $product) {
+            throw new NotFoundHttpException("Le produit de l'id ".$id." n'existe pas.");
+        }
         $formDelete = $this->get('form.factory')->create();
         if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
-            $manager = $this->get('core.service.product_manager');
-            $manager->enable($id);
+            $images=$product->getImages();
+            $sizes=$product->getSizes();
+            foreach ($images as $image){
+                $em->remove($image);
+            }
+            foreach ($sizes as $size){
+                $em->remove($size);
+            }
+            $em->remove($product);
+            $em->flush();
             return $this->redirectToRoute('admin_product_list');
         }
         return $this->render('AdminBundle::delete.html.twig', array(
-            'formDelete'   => $formDelete->createView(),
+            'formDelete' => $formDelete->createView(),
         ));
     }
-
-*/
-
 }

@@ -60,7 +60,7 @@ admin_product_enable:
                 requirements:
                 id: \d+
 admin_product_delete:
-    path:     /admin/product/disable/{id}
+    path:     /admin/product/delete/{id}
     defaults:
             _controller: AdminBundle:Product:delete
             requirements:

@@ -11,7 +11,7 @@ namespace CoreBundle\Repository;
 class ProductRepository extends \Doctrine\ORM\EntityRepository
 {
     /**
-     * Retourner la liste  des produist actives
+     * Retourner la liste  des produits actives
      * return array
      */
     public function getActiveProducts()

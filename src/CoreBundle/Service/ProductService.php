@@ -25,7 +25,7 @@ class ProductService
         $this->repository=$em->getRepository(Product::class);
     }
     /**
-     * permet de parcourir un tableau d'objets et changer l'etat pour chaque elemnt
+     * permet de parcourir un tableau d'objets et changer l'etat pour chaque element
      * selon la valeur de $value true/false
      */
     private function setStatus($objects,$value)
