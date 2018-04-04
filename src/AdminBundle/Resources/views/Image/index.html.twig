@@ -12,9 +12,14 @@
             <div class="thumb-container thumb-header" align="center">
                 <h3 >{{ image.label }}</h3>
                 {% if image.deleted ==false %}
-                    <span style="color:#78D07D;">Activée</span>
+                    <a href="#myModal" class="link thumb-link" data-toggle="modal" data-wathever="{{ path('admin_product_image_disable',{'idp': idp,'id':image.id}) }}" >
+                        <span style="color:#78D07D;">Activée</span>
+                      </a>
                 {% else %}
-                    <span style="color:red;">Désactivée</span>
+                    <a href="#myModal" class="link thumb-link" data-toggle="modal" data-wathever="{{ path('admin_product_image_enable',{'idp': idp,'id':image.id}) }}" >
+                        <span style="color:red;">Désactivée</span>
+                    </a>
+
                 {% endif %}
             </div>
             <a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox">

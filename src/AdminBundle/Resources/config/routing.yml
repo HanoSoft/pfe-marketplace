@@ -98,6 +98,20 @@ admin_product_image_delete:
             requirements:
             id: \d+
             idp: \d+
+admin_product_image_disable:
+    path:     /admin/product/image/disable/{idp}/{id}
+    defaults:
+            _controller: AdminBundle:Image:disable
+            requirements:
+            id: \d+
+            idp: \d+
+admin_product_image_enable:
+    path:     /admin/product/image/enable/{idp}/{id}
+    defaults:
+            _controller: AdminBundle:Image:enable
+            requirements:
+            id: \d+
+            idp: \d+
 admin_product_image_list:
     path:     /admin/product/image/list/{id}
     defaults:
