@@ -10,5 +10,16 @@ namespace CoreBundle\Repository;
  */
 class ProductRepository extends \Doctrine\ORM\EntityRepository
 {
-   
+    /**
+     * Retourner la liste  des produist actives
+     * return array
+     */
+    public function getActiveProducts()
+    {
+        $qb = $this->createQueryBuilder('p');
+        $qb
+            ->where('p.deleted =false');
+        return $qb->getQuery()
+            ->getResult();
+    }
 }
