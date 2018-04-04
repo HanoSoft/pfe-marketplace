@@ -107,20 +107,34 @@ admin_product_image_list:
 admin_product_size_edit:
     path:     /admin/product/size/edit/{idp}/{id}
     defaults:
-            _controller: AdminBundle:ProductSize:edit
+            _controller: AdminBundle:Size:edit
             requirements:
             id: \d+
             idp: \d+
 admin_product_size_list:
     path:     /admin/product/size/list/{id}
     defaults:
-            _controller: AdminBundle:ProductSize:list
+            _controller: AdminBundle:Size:index
             requirements:
             id: \d+
+admin_product_size_disable:
+    path:     /admin/product/size/disable/{idp}/{id}
+    defaults:
+            _controller: AdminBundle:Size:disable
+            requirements:
+            id: \d+
+            idp: \d+
+admin_product_size_enable:
+    path:     /admin/product/size/enable/{idp}/{id}
+    defaults:
+            _controller: AdminBundle:Size:enable
+            requirements:
+            id: \d+
+            idp: \d+
 admin_product_size_delete:
     path:     /admin/product/size/delete/{idp}/{id}
     defaults:
-            _controller: AdminBundle:ProductSize:delete
+            _controller: AdminBundle:Size:delete
             requirements:
             id: \d+
             idp: \d+

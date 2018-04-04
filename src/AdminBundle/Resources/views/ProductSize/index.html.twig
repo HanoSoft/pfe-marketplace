@@ -12,9 +12,13 @@
                 <div class="thumb-container thumb-header" align="center">
                     <h3 >{{ size.size }}</h3>
                     {% if size.deleted ==false %}
-                        <span style="color:#78D07D;">Activée</span>
+                        <a href="#myModal" class="link thumb-link" data-toggle="modal" data-wathever="{{ path('admin_product_size_disable',{'idp': idp,'id':size.id}) }}" >
+                            <span style="color:#78D07D;">Activée</span>
+                        </a>
                     {% else %}
-                        <span style="color:red;">Désactivée</span>
+                        <a href="#myModal" class="link thumb-link" data-toggle="modal" data-wathever="{{ path('admin_product_size_enable',{'idp': idp,'id':size.id}) }}" >
+                            <span style="color:red;">Désactivée</span>
+                        </a>
                     {% endif %}
                 </div>
                 <div class=" thumb-container thumb-footer" align="center">

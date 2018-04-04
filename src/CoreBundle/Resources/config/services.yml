@@ -2,7 +2,9 @@ services:
     core.service.product:
         class: CoreBundle\Service\ProductService
         arguments: ['@doctrine.orm.entity_manager']
-
+    core.service.size:
+            class: CoreBundle\Service\SizeService
+            arguments: ['@doctrine.orm.entity_manager']
 
 
 

@@ -32,13 +32,6 @@ class SizeService
         return $this->repository->findAll();
     }
     /**
-     * Retourner la liste  des tailles actives
-     * return array
-     */
-    public function getActiveProducts(){
-        return $this->repository->getActiveSizes();
-    }
-    /**
      * Retourner un seul taille selon l'id
      *
      */

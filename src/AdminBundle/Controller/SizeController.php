@@ -8,6 +8,7 @@ use CoreBundle\Entity\ProductSize;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class SizeController extends Controller
 {
@@ -31,33 +32,13 @@ class SizeController extends Controller
             'id'=>$id,
         ));
     }
-
-
-
-
-    /*
-
-     public function addAction($id, Request $request)
+    public function indexAction($id)
     {
-        $session = new Session();
-        $form = $this->get('form.factory')->create(ProductSizeType::class);
-        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-            $manager=$this->get('core.service.product.size_manager');
-            $manager->addSize($id,$form);
-            $session->getFlashBag()->add('success', 'la taille est bien enregistrée !');
-            return $this->redirectToRoute('admin_product_size_add',array('id' => $id));
-        }
-        return $this->render('AdminBundle:ProductSize:add.html.twig', array(
-            'form' => $form->createView(),
-            'id'=>$id,
-        ));
-    }
-    public function listAction($id)
-    {
-        $manager = $this->get('core.service.product.size_manager');
-        $sizes=$manager->findByProduct($id);
+        $serviceProduct = $this->get('core.service.product');
+        $product=$serviceProduct->getProduct($id);
+        $sizes=$product->getSizes();
         $formDelete = $this->get('form.factory')->create();
-        return $this->render('AdminBundle:ProductSize:list.html.twig', array(
+        return $this->render('AdminBundle:ProductSize:index.html.twig', array(
             'sizes' => $sizes,
             'formDelete'   => $formDelete->createView(),
             'idp' =>$id
@@ -65,27 +46,63 @@ class SizeController extends Controller
     }
     public function editAction(Request $request ,$idp,$id)
     {
-        $manager = $this->get('core.service.product.size_manager');
-        $size=$manager->find($id);
+        $em = $this->getDoctrine()->getManager();
+        $serviceSize = $this->get('core.service.size');
+        $size=$serviceSize->getSize($id);
         $form = $this->get('form.factory')->create(ProductSizeEditType::class,$size);
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-            $manager->edit($form,$id);
+            $em->flush();
             return $this->redirectToRoute('admin_product_size_list',array('id' => $idp));
         }
         return $this->render('AdminBundle:ProductSize:edit.html.twig', array(
             'form' => $form->createView(),
         ));
     }
-    public function deleteAction(Request $request,$idp,$id)
+    public function disableAction(Request $request,$idp,$id)
     {
         $formDelete = $this->get('form.factory')->create();
         if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
-            $manager = $this->get('core.service.product.size_manager');
-            $manager->delete($id);
+            $serviceSize = $this->get('core.service.size');
+            $em = $this->getDoctrine()->getManager();
+            $size=$serviceSize->getSize($id);
+            $size->setDeleted(true);
+            $em->flush();
             return $this->redirectToRoute('admin_product_size_list',array('id' => $idp));
         }
         return $this->render('AdminBundle::delete.html.twig', array(
             'formDelete'   => $formDelete->createView(),
         ));
-    }*/
+    }
+    public function enableAction(Request $request,$idp,$id)
+    {
+        $formDelete = $this->get('form.factory')->create();
+        if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
+            $serviceSize = $this->get('core.service.size');
+            $em = $this->getDoctrine()->getManager();
+            $size=$serviceSize->getSize($id);
+            $size->setDeleted(false);
+            $em->flush();
+            return $this->redirectToRoute('admin_product_size_list',array('id' => $idp));
+        }
+        return $this->render('AdminBundle::delete.html.twig', array(
+            'formDelete'   => $formDelete->createView(),
+        ));
+    }
+    public function deleteAction(Request $request,$idp,$id){
+        $em=$this->getDoctrine()->getManager();
+        $serviceSize=$this->get('core.service.size');
+        $size=$serviceSize->getSize($id);
+        if (null === $size) {
+            throw new NotFoundHttpException("La taille  de l'id ".$id." n'existe pas.");
+        }
+        $formDelete = $this->get('form.factory')->create();
+        if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
+            $em->remove($size);
+            $em->flush();
+            return $this->redirectToRoute('admin_product_size_list',array('id' => $idp));
+        }
+        return $this->render('AdminBundle::delete.html.twig', array(
+            'formDelete' => $formDelete->createView(),
+        ));
+    }
 }
