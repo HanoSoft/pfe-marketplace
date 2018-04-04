@@ -4,13 +4,40 @@ namespace AdminBundle\Controller;
 
 use AdminBundle\Form\ProductSizeEditType;
 use AdminBundle\Form\ProductSizeType;
+use CoreBundle\Entity\ProductSize;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 
-class ProductSizeController extends Controller
+class SizeController extends Controller
 {
     public function addAction($id, Request $request)
+    {
+        $size=new ProductSize();
+        $session = new Session();
+        $form = $this->get('form.factory')->create(ProductSizeType::class,$size);
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+            $serviceProduct = $this->get('core.service.product');
+            $product=$serviceProduct->getProduct($id);
+            $em = $this->getDoctrine()->getManager();
+            $size->setProduct($product);
+            $em->persist($size);
+            $em->flush();
+            $session->getFlashBag()->add('success', 'la taille est bien enregistrée !');
+            return $this->redirectToRoute('admin_product_size_add',array('id' => $id));
+        }
+        return $this->render('AdminBundle:ProductSize:add.html.twig', array(
+            'form' => $form->createView(),
+            'id'=>$id,
+        ));
+    }
+
+
+
+
+    /*
+
+     public function addAction($id, Request $request)
     {
         $session = new Session();
         $form = $this->get('form.factory')->create(ProductSizeType::class);
@@ -60,5 +87,5 @@ class ProductSizeController extends Controller
         return $this->render('AdminBundle::delete.html.twig', array(
             'formDelete'   => $formDelete->createView(),
         ));
-    }
+    }*/
 }

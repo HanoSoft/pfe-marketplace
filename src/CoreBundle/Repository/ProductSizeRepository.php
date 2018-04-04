@@ -10,4 +10,16 @@ namespace CoreBundle\Repository;
  */
 class ProductSizeRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * Retourner la liste  des tailles actives
+     * return array
+     */
+    public function getActiveSizes()
+    {
+        $qb = $this->createQueryBuilder('s');
+        $qb
+            ->where('s.deleted =false');
+        return $qb->getQuery()
+            ->getResult();
+    }
 }

@@ -80,7 +80,7 @@ admin_product_image_add:
 admin_product_size_add:
     path:     /admin/product/size/add/{id}
     defaults:
-            _controller: AdminBundle:ProductSize:add
+            _controller: AdminBundle:Size:add
             requirements:
             id: \d+
 admin_product_image_edit:

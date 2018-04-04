@@ -28,8 +28,8 @@ class ProductController extends Controller
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
-            $id=$product->getId();
             $em->flush();
+            $id=$product->getId();
             return $this->redirectToRoute('admin_product_size_add',array('id' => $id));
         }
         return $this->render('AdminBundle:Product:add.html.twig', array(
