@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Alert
  *
  * @ORM\Table(name="alert")
- * @ORM\Entity(repositoryClass="AdminBundle\Repository\AlertRepository")
+ * @ORM\Entity(repositoryClass="CoreBundle\Repository\AlertRepository")
  */
 class Alert
 {

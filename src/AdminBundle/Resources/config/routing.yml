@@ -47,8 +47,20 @@ admin_product_edit:
             requirements:
             id: \d+
 
+admin_product_disable:
+    path:     /admin/product/disable/{id}
+    defaults:
+            _controller: AdminBundle:Product:disable
+            requirements:
+            id: \d+
+admin_product_enable:
+        path:     /admin/product/enable/{id}
+        defaults:
+                _controller: AdminBundle:Product:enable
+                requirements:
+                id: \d+
 admin_product_delete:
-    path:     /admin/product/delete/{id}
+    path:     /admin/product/disable/{id}
     defaults:
             _controller: AdminBundle:Product:delete
             requirements:
@@ -109,7 +121,7 @@ admin_product_size_delete:
 admin_product_show:
     path:     /admin/product/{id}
     defaults:
-            _controller: AdminBundle:Product:show
+            _controller: AdminBundle:ProductService:show
             requirements:
             id: \d+
 admin_brand_list:
@@ -172,7 +184,7 @@ admin_promotion_edit:
 admin_product_promotion:
         path:     /admin/product/{id}/promotions
         defaults:
-                _controller: AdminBundle:Product:promotion
+                _controller: AdminBundle:ProductService:promotion
                 requirements:
                 id: \d+
 admin_user_add:
@@ -197,12 +209,6 @@ admin_user_enable:
         path:     /admin/user/enable/{id}
         defaults:
                 _controller: AdminBundle:User:enable
-                requirements:
-                id: \d+
-admin_product_enable:
-        path:     /admin/product/enable/{id}
-        defaults:
-                _controller: AdminBundle:Product:enable
                 requirements:
                 id: \d+
 admin_access_denied:

@@ -1,25 +1,26 @@
 services:
-    core.service.product_manager:
-        class: CoreBundle\Service\Repository\ProductManager
+    core.service.product:
+        class: CoreBundle\Service\ProductService
         arguments: ['@doctrine.orm.entity_manager']
-    core.service.product.size_manager:
-            class: CoreBundle\Service\Repository\ProductSizeManager
-            arguments: ['@doctrine.orm.entity_manager', '@core.service.product_manager']
-    core.service.image_manager:
-                class: CoreBundle\Service\Repository\ImageManager
-                arguments: ['@doctrine.orm.entity_manager', '@core.service.product_manager']
-    core.service.category_manager:
-                class: CoreBundle\Service\Repository\CategoryManager
-                arguments: ['@doctrine.orm.entity_manager']
-    core.service.alert_manager:
-                    class: CoreBundle\Service\Repository\AlertManager
-                    arguments: ['@doctrine.orm.entity_manager']
-    core.service.brand_manager:
-                class: CoreBundle\Service\Repository\BrandManager
-                arguments: ['@doctrine.orm.entity_manager','@fos_user.user_manager']
-    core.service.promotion_manager:
-                    class: CoreBundle\Service\Repository\PromotionManager
-                    arguments: ['@doctrine.orm.entity_manager']
+
+    #core.service.product.size_manager:
+     #       class: CoreBundle\Service\Repository\ProductSizeManager
+          #  arguments: ['@doctrine.orm.entity_manager', '@core.service.product_manager']
+    #core.service.image_manager:
+     #           class: CoreBundle\Service\Repository\ImageManager
+      #          arguments: ['@doctrine.orm.entity_manager', '@core.service.product_manager']
+    #core.service.category_manager:
+     #           class: CoreBundle\Service\Repository\CategoryManager
+      #          arguments: ['@doctrine.orm.entity_manager']
+    #core.service.alert_manager:
+     #               class: CoreBundle\Service\Repository\AlertManager
+      #              arguments: ['@doctrine.orm.entity_manager']
+    #core.service.brand_manager:
+     #           class: CoreBundle\Service\Repository\BrandManager
+               # arguments: ['@doctrine.orm.entity_manager','@fos_user.user_manager']
+    #core.service.promotion_manager:
+     #               class: CoreBundle\Service\Repository\PromotionManager
+      #              arguments: ['@doctrine.orm.entity_manager']
 
 
 

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Promotion
  *
  * @ORM\Table(name="promotion")
- * @ORM\Entity(repositoryClass="AdminBundle\Repository\PromotionRepository")
+ * @ORM\Entity(repositoryClass="CoreBundle\Repository\PromotionRepository")
  */
 class Promotion
 {

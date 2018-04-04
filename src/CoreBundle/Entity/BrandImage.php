@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  * BrandImage
  *
  * @ORM\Table(name="brand_image")
- * @ORM\Entity(repositoryClass="AdminBundle\Repository\BrandImageRepository")
+ * @ORM\Entity(repositoryClass="CoreBundle\Repository\BrandImageRepository")
  */
 class BrandImage
 {
