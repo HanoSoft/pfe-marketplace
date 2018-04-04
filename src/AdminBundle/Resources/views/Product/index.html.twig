@@ -34,7 +34,6 @@
                                 <td class="money">{{ product.quantity }}</td>
                                 <td>
                                     <a href="{{ path('admin_product_size_list', {'id': product.id}) }}" class="link" ><em class="fa fa-eye"></em></a>
-
                                     {% for sizes in product.sizes %}
                                         {{ sizes.size }}
                                     {% endfor %}
