@@ -17,9 +17,7 @@ $('#promotion').on('show.bs.modal', function (event) {
         result=id+'/'+href;
         modal.find('#link').attr("href",result);
     });
-
 // form validation
-
 $.validator.setDefaults({
     highlight: function(element) {
         $(element).closest('.form-group').removeClass('has-success').addClass('has-warning');
@@ -52,7 +50,16 @@ $('.form input').on('keyup blur', function () {
 });
 // dataTable
 $(document).ready( function () {
-    $('.data-table').DataTable();
+    $('.data-table').DataTable({
+        aoColumnDefs: [
+            {"aTargets": [0], "bSortable": true},
+            {"aTargets": [2], "asSorting": ["asc"], "bSortable": true},
+        ],
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/French.json"
+        }
+
+    });
 } );
 /*thumbnail with modal*/
 $(document).ready(function() {
