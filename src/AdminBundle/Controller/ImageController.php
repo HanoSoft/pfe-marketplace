@@ -4,20 +4,38 @@ namespace AdminBundle\Controller;
 
 use AdminBundle\Form\ImageEditType;
 use AdminBundle\Form\ImageType;
+use CoreBundle\Entity\Image;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 class ImageController extends Controller
 {
+    public function indexAction($id)
+    {
+        $serviceProduct = $this->get('core.service.product');
+        $product=$serviceProduct->getProduct($id);
+        $images=$product->getImages();
+        $formDelete = $this->get('form.factory')->create();
+        return $this->render('AdminBundle:Image:index.html.twig', array(
+            'images' => $images,
+            'formDelete'   => $formDelete->createView(),
+            'idp' =>$id
+        ));
+    }
     public function addAction($id,Request $request)
     {
+        $image=new Image();
         $session = new Session();
-        $form = $this->get('form.factory')->create(ImageType::class);
+        $form = $this->get('form.factory')->create(ImageType::class,$image);
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-            $manager=$this->get('core.service.image_manager');
-            $manager->addImage($id,$form);
+            $serviceProduct = $this->get('core.service.product');
+            $product=$serviceProduct->getProduct($id);
+            $em = $this->getDoctrine()->getManager();
+            $image->setProduct($product);
+            $image->upload();
+            $em->persist($image);
+            $em->flush();
             $session->getFlashBag()->add('success', "L'image est bien enregistrée !");
             return $this->redirectToRoute('admin_product_image_add',array('id' => $id));
         }
@@ -26,17 +44,11 @@ class ImageController extends Controller
         ));
     }
 
-    public function listAction($id)
-    {
-        $manager = $this->get('core.service.image_manager');
-        $images=$manager->findByProduct($id);
-        $formDelete = $this->get('form.factory')->create();
-        return $this->render('AdminBundle:Image:list.html.twig', array(
-            'images' => $images,
-            'formDelete'   => $formDelete->createView(),
-            'idp' =>$id
-        ));
-    }
+
+    /*
+     *
+
+
     public function editAction(Request $request ,$idp,$id)
     {
         $manager = $this->get('core.service.image_manager');
@@ -61,5 +73,5 @@ class ImageController extends Controller
         return $this->render('AdminBundle::delete.html.twig', array(
             'formDelete'   => $formDelete->createView(),
         ));
-    }
+    }*/
 }

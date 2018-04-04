@@ -101,7 +101,7 @@ admin_product_image_delete:
 admin_product_image_list:
     path:     /admin/product/image/list/{id}
     defaults:
-            _controller: AdminBundle:Image:list
+            _controller: AdminBundle:Image:index
             requirements:
             id: \d+
 admin_product_size_edit:
