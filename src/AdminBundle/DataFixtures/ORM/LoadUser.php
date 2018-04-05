@@ -25,11 +25,9 @@ class LoadUser implements FixtureInterface,ContainerAwareInterface
     public function setContainer(ContainerInterface $container = null) {
         $this->container = $container;
     }
-
     public function load(ObjectManager $manager)
     {
         $userManager = $this->container->get('fos_user.user_manager');
-
         $user = $userManager->createUser();
         $user->setUsername('super');
         $user->setEmail('super@gmail.com');
@@ -62,6 +60,7 @@ class LoadUser implements FixtureInterface,ContainerAwareInterface
         $product->setCategory($category);
         $product->setProductName('PC portable TH14-N4.128Y10 - Noir');
         $product->setPrice(529.00);
+        $product->setStatus('En Stock');
         $product->setProductDetails("<p><span style=\"font-size:16px\"><span style=\"font-family:Comic Sans MS,cursive\"><span style=\"color:#e74c3c\"><strong>G&eacute;n&eacute;ral</strong></span></span></span><span style=\"font-size:20px\"><span style=\"font-family:Comic Sans MS,cursive\"><span style=\"color:#e74c3c\"><strong> :</strong></span></span></span><br />
 <strong>Type de produit&nbsp;</strong>: PC portable TH14-N4.128Y10<br />
 <strong>Syst&egrave;me d&#39;exploitation&nbsp;</strong>: Windows 10<br />
