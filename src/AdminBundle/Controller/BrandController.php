@@ -63,9 +63,18 @@ class BrandController extends Controller
         $formDelete = $this->get('form.factory')->create();
         if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
             $serviceBrand = $this->get('core.service.brand');
+            $serviceProduct = $this->get('core.service.product');
             $em = $this->getDoctrine()->getManager();
             $brand=$serviceBrand->getBrand($id);
             $brand->setDeleted(true);
+            $categories=$brand->getCategories();
+            foreach ($categories as $category){
+                $category->setDeleted(true);
+                $products=$category->getProducts();
+                foreach ($products as $product){
+                    $serviceProduct->disableProduct($product->getId());
+                }
+            }
             $em->flush();
             return $this->redirectToRoute('admin_brand_list');
         }
@@ -78,9 +87,18 @@ class BrandController extends Controller
         $formDelete = $this->get('form.factory')->create();
         if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
             $serviceBrand = $this->get('core.service.brand');
+            $serviceProduct = $this->get('core.service.product');
             $em = $this->getDoctrine()->getManager();
             $brand=$serviceBrand->getBrand($id);
             $brand->setDeleted(false);
+            $categories=$brand->getCategories();
+            foreach ($categories as $category){
+                $category->setDeleted(false);
+                $products=$category->getProducts();
+                foreach ($products as $product){
+                    $serviceProduct->enableProduct($product->getId());
+                }
+            }
             $em->flush();
             return $this->redirectToRoute('admin_brand_list');
         }
@@ -100,6 +118,40 @@ class BrandController extends Controller
         }
         return $this->render('AdminBundle:Brand:edit.html.twig', array(
             'form' => $form->createView(),
+        ));
+    }
+    public function deleteAction(Request $request,$id)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $serviceBrand = $this->get('core.service.brand');
+        $serviceProduct=$this->get('core.service.product');
+        $brand=$serviceBrand->getBrand($id);
+        if (null === $brand) {
+            throw new NotFoundHttpException("La marque de l'id ".$id." n'existe pas.");
+        }
+        $formDelete = $this->get('form.factory')->create();
+        if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
+
+            $categories=$brand->getCategories();
+            foreach ($categories as $category) {
+                $products=$category->getProducts();
+                foreach ($products as $product){
+                    foreach ($product->getImages() as $image){
+                        $em->remove($image);
+                    }
+                    foreach ($product->getSizes() as $size){
+                        $em->remove($size);
+                    }
+                    $em->remove($product);
+                }
+                $em->remove($category);
+            }
+            $em->remove($brand);
+            $em->flush();
+            return $this->redirectToRoute('admin_brand_list');
+        }
+        return $this->render('AdminBundle::delete.html.twig', array(
+            'formDelete'   => $formDelete->createView(),
         ));
     }
 }
