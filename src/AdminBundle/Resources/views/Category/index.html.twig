@@ -16,8 +16,9 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th class="sorting_asc">Marque</th>
                     <th class="sorting_asc">Category</th>
+
+                    <th class="sorting_asc">Marque</th>
                     <th> Etat </th>
                     <th><em class="fa fa-cog"></em></th>
                 </tr>
@@ -27,8 +28,8 @@
                     {% if is_granted('ROLE_ADMIN') %}
                         <tr>
                             <td>{{ category.id }}</td>
-                            <td>{{ category.brand.brandName }}</td>
                             <td>{{ category.name }}</td>
+                            <td>{{ category.brand.brandName }}</td>
                             <td align="center">
                                 {% if category.deleted ==false %}
                                     <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
