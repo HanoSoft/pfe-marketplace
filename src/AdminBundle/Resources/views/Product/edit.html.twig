@@ -45,6 +45,13 @@
                     </div>
                     <span class="glyphicon " ></span>
                 </div>
+                <div class="form-group has-feedback">
+                    <label  class="col-sm-2 control-label">Etat :</label>
+                    <div class="col-sm-9">
+                        {{ form_widget(form.status, {'attr': {'class': 'form-control ','minlength':'1'}}) }}
+                    </div>
+                    <span class="glyphicon " ></span>
+                </div>
                 <button class="btn btn-success col-md-offset-10 " disabled="true" type="submit" ><span class="fa fa-edit"> </span> Modifier</button>
                 {{ form_rest(form) }}
                 {{ form_end(form) }}
