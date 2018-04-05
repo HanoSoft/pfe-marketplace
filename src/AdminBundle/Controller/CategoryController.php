@@ -7,6 +7,7 @@ use CoreBundle\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AdminBundle\Form\CategoryEditType;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 
 class CategoryController extends Controller
@@ -24,12 +25,14 @@ class CategoryController extends Controller
     public function addAction(Request $request)
     {
         $category=new Category();
+        $session = new Session();
         $form = $this->createForm(CategoryType::class,$category);
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($category);
             $em->flush();
             $id=$category->getId();
+            $session->getFlashBag()->add('success', 'la categorie est bien enregistrée !');
             return $this->redirectToRoute('admin_category_add',array('id' => $id));
         }
         return $this->render('AdminBundle:Category:add.html.twig', array(
