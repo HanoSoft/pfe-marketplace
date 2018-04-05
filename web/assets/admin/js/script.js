@@ -38,7 +38,15 @@ $.validator.setDefaults({
             }
         }
     });
-$(".form").validate();
+$(".form").validate({
+        rules: {
+            fos_user_change_password_form_plainPassword_first: "required",
+            fos_user_change_password_form_plainPassword_second: {
+                equalTo: "#fos_user_change_password_form_plainPassword_first"
+            }
+        }
+    }
+    );
 
 $('.form input').on('keyup blur', function () {
     if ($('.form').valid()) {

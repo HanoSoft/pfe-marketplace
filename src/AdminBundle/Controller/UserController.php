@@ -13,6 +13,7 @@ use AdminBundle\Form\UserEditType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
+
 class UserController extends Controller
 {
     public function indexAction(Request $request)
@@ -102,4 +103,5 @@ class UserController extends Controller
             'formDelete'   => $formDelete->createView(),
         ));
     }
+
 }

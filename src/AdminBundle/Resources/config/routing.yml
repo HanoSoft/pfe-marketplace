@@ -225,6 +225,10 @@ admin_product_promotion:
 admin_user_add:
     path:     /admin/user/add
     defaults: { _controller: AdminBundle:User:add }
+admin_user_change_password:
+    path:     /admin/user/change-password
+    defaults: { _controller: AdminBundle:User:changePassword }
+
 admin_user_list:
     path:     /admin/users
     defaults: { _controller: AdminBundle:User:index }
