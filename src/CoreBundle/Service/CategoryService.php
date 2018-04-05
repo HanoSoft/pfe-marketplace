@@ -11,7 +11,6 @@ namespace CoreBundle\Service;
 use CoreBundle\Entity\Category;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class CategoryService
 {
