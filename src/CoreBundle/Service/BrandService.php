@@ -25,16 +25,6 @@ class BrandService
         $this->repository=$em->getRepository(Brand::class);
     }
     /**
-     * permet de parcourir un tableau d'objets et changer l'etat pour chaque element
-     * selon la valeur de $value true/false
-     */
-    private function setStatus($objects,$value)
-    {
-        foreach ($objects as $object) {
-            $object->setDeleted($value);
-        }
-    }
-    /**
      * Retourner la liste  des marques
      * return array
      */
@@ -55,5 +45,4 @@ class BrandService
     public function getBrand($id){
         return $this->repository->find($id);
     }
-
 }
