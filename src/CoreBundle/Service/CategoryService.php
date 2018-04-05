@@ -69,6 +69,20 @@ class CategoryService
         $product=$category->getProduct();
         $this->setStatus($product,true);
     }
+    /**
+     * permet d'activer une categorie
+     *
+     */
+    public function enableCategory($id){
+        $category=$this->getCategory($id);
+        if (null === $category) {
+            throw new NotFoundHttpException("la categorie de l'".$id." n'existe pas.");
+        }
+            $category->setDeleted(false);
+            $product=$category->getProduct();
+            $this->setStatus($product,false);
+
+    }
 
 
 
