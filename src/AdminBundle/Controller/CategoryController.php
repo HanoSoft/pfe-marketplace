@@ -10,6 +10,16 @@ use Symfony\Component\HttpFoundation\Session\Session;
 
 class CategoryController extends Controller
 {
+    public function indexAction()
+    {
+        $serviceCategory = $this->get('core.service.category');
+        $categories=$serviceCategory->getCategories();
+        $formDelete = $this->get('form.factory')->create();
+        return $this->render('AdminBundle:Category:index.html.twig', array(
+            'category' => $categories,
+            'formDelete'   => $formDelete->createView(),
+        ));
+    }
 
 
 
