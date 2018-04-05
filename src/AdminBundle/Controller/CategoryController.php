@@ -2,11 +2,13 @@
 
 namespace AdminBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AdminBundle\Form\CategoryType;
+use CoreBundle\Entity\Category;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use AdminBundle\Form\CategoryEditType;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
+
 
 class CategoryController extends Controller
 {
@@ -18,6 +20,21 @@ class CategoryController extends Controller
         return $this->render('AdminBundle:Category:index.html.twig', array(
             'category' => $categories,
             'formDelete'   => $formDelete->createView(),
+        ));
+    }
+    public function addAction(Request $request)
+    {
+        $category=new Category();
+        $form = $this->createForm(CategoryType::class,$category);
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($category);
+            $em->flush();
+            $id=$category->getId();
+            return $this->redirectToRoute('admin_category_add',array('id' => $id));
+        }
+        return $this->render('AdminBundle:Category:add.html.twig', array(
+            'form' => $form->createView(),
         ));
     }
 
