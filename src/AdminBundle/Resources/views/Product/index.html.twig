@@ -22,6 +22,7 @@
                     <th>Quantité</th>
                     <th> Taille </th>
                     <th> Status </th>
+                    <th> Etat </th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -37,11 +38,10 @@
                                 <td>{{ product.category.name }}</td>
                                 <td class="money">{{ product.price }} €</td>
                                 <td class="money">{{ product.quantity }}</td>
-                                <td>
-                                    <a href="{{ path('admin_product_size_list', {'id': product.id}) }}" class="link" ><em class="fa fa-eye"></em></a>
-                                    {% for sizes in product.sizes %}
-                                        {{ sizes.size }}
-                                    {% endfor %}
+                                <td align="center">
+                                    <a href="{{ path('admin_product_size_list', {'id': product.id}) }}" class="link link-success" >
+                                        Afficher</a>
+
                                 </td>
                                 <td align="center">
                                     {% if product.deleted ==false %}
@@ -58,6 +58,7 @@
                                         {% endif %}
                                     {% endif %}
                                 </td>
+                                <td>{{ product.status }}</td>
                                 <td align="center">
                                     <a href="{{ path('admin_product_edit', {'id': product.id}) }}" class="link link-success" ><em class="fa fa-edit"></em></a>
                                     <a href="#myModal" class="link link-danger" data-toggle="modal" data-wathever="{{ path('admin_product_delete', {'id': product.id}) }}" ><em class="fa fa-trash-o"></em></a>
