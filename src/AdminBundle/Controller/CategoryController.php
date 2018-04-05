@@ -39,7 +39,6 @@ class CategoryController extends Controller
             'form' => $form->createView(),
         ));
     }
-
    public function editAction($id, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
