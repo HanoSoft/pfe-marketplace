@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AdminBundle\Form\CategoryEditType;
 use Symfony\Component\HttpFoundation\Session\Session;
-
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class CategoryController extends Controller
 {
@@ -93,5 +93,32 @@ class CategoryController extends Controller
             'formDelete' => $formDelete->createView(),
         ));
     }
+    public function deleteAction(Request $request,$id){
+        $em=$this->getDoctrine()->getManager();
+        $serviceProduct=$this->get('core.service.product');
+        $serviceCategory=$this->get('core.service.category');
+        $category=$serviceCategory->getCategory($id);
+        if (null === $category) {
+            throw new NotFoundHttpException("Le produit de l'id ".$id." n'existe pas.");
+        }
+        $formDelete = $this->get('form.factory')->create();
+        if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
 
+            foreach ($category->getProducts() as $product) {
+                foreach ($product->getImages() as $image){
+                    $em->remove($image);
+                }
+                foreach ($product->getSizes() as $size){
+                    $em->remove($size);
+                }
+               $em->remove($product);
+            }
+            $em->remove($category);
+            $em->flush();
+            return $this->redirectToRoute('admin_category_list');
+        }
+        return $this->render('AdminBundle::delete.html.twig', array(
+            'formDelete' => $formDelete->createView(),
+        ));
+    }
 }
