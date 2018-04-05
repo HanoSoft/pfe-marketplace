@@ -40,7 +40,7 @@ class CategoryController extends Controller
         ));
     }
 
-  /*  public function editAction($id, Request $request)
+   public function editAction($id, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $serviceCategory = $this->get('core.service.category');
@@ -54,7 +54,8 @@ class CategoryController extends Controller
             'form' => $form->createView(),
         ));
     }
-    public function disableAction(Request $request,$id)
+
+   /* public function disableAction(Request $request,$id)
     {
         $formDelete = $this->get('form.factory')->create();
         if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
