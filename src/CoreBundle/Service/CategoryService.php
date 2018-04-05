@@ -11,6 +11,7 @@ namespace CoreBundle\Service;
 use CoreBundle\Entity\Category;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 
 class CategoryService
@@ -55,8 +56,20 @@ class CategoryService
     public function getCategory($id){
         return $this->repository->find($id);
     }
+    /**
+     * permet de désactiver une catégorie
+     *
+     */
+    public function disableCategory($id){
+        $category=$this->getCategory($id);
+        if (null === $category){
+            throw new NotFoundHttpException("la categorie de l'".$id." n'existe pas.");
+        }
+        $category->setDeleted(true);
+        $product=$category->getProduct();
+        $this->setStatus($product,true);
+    }
 
-/** prublic function desactiver une categorie  */
 
 
 }
