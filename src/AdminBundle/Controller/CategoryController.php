@@ -10,7 +10,26 @@ use Symfony\Component\HttpFoundation\Session\Session;
 
 class CategoryController extends Controller
 {
-    public function addAction(Request $request)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*public function addAction(Request $request)
     {
         $session=new Session();
         $form   = $this->get('form.factory')->create(CategoryType::class);
@@ -70,5 +89,5 @@ class CategoryController extends Controller
         return $this->render('AdminBundle::delete.html.twig', array(
             'formDelete'   => $formDelete->createView(),
         ));
-    }
+    }*/
 }
