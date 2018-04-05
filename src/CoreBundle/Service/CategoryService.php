@@ -13,7 +13,6 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-
 class CategoryService
 {
     /**
@@ -81,9 +80,5 @@ class CategoryService
             $category->setDeleted(false);
             $product=$category->getProduct();
             $this->setStatus($product,false);
-
     }
-
-
-
 }
