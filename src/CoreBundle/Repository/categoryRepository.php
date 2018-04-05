@@ -11,4 +11,16 @@ namespace CoreBundle\Repository;
 
 	class categoryRepository extends \Doctrine\ORM\EntityRepository
 {
+        /**
+         * Retourner la liste  des categories actives
+         * return array
+         */
+        public function getActiveCategories()
+        {
+            $qb = $this->createQueryBuilder('c');
+            $qb
+                ->where('c.deleted =false');
+            return $qb->getQuery()
+                ->getResult();
+        }
 }

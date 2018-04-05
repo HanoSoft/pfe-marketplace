@@ -25,17 +25,7 @@ class CategoryService
         $this->repository=$em->getRepository(Category::class);
     }
     /**
-     * permet de parcourir un tableau d'objets et changer l'etat pour chaque element
-     * selon la valeur de $value true/false
-     */
-    private function setStatus($objects,$value)
-    {
-        foreach ($objects as $object) {
-            $object->setDeleted($value);
-        }
-    }
-    /**
-     * Retourner la liste  des produits
+     * Retourner la liste  des caegories
      * return array
      */
     public function getCategories(){
@@ -55,30 +45,5 @@ class CategoryService
     public function getCategory($id){
         return $this->repository->find($id);
     }
-    /**
-     * permet de désactiver une catégorie
-     *
-     */
-    public function disableCategory($id){
-        $category=$this->getCategory($id);
-        if (null === $category){
-            throw new NotFoundHttpException("la categorie de l'".$id." n'existe pas.");
-        }
-        $category->setDeleted(true);
-        $product=$category->getProduct();
-        $this->setStatus($product,true);
-    }
-    /**
-     * permet d'activer une categorie
-     *
-     */
-    public function enableCategory($id){
-        $category=$this->getCategory($id);
-        if (null === $category) {
-            throw new NotFoundHttpException("la categorie de l'".$id." n'existe pas.");
-        }
-            $category->setDeleted(false);
-            $product=$category->getProduct();
-            $this->setStatus($product,false);
-    }
+
 }

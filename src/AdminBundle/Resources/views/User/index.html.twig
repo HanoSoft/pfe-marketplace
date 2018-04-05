@@ -3,7 +3,7 @@
     {{ parent() }}
     <ul id="breadcrumb">
         <li><a href="{{ path('admin_homepage') }}"><span class="fa fa-home"> </span></a></li>
-        <li><a > Utilisateurs</a></li>
+        <li><a >Utilisateurs</a></li>
     </ul>
     <div class="container-fluid" style="background: #FFFFFF;">
         <br>
@@ -15,14 +15,15 @@
             <table  class="data-table table table-striped table-bordered dataTable no-footer" style="width:100%">
                 <thead>
                 <tr>
-                    <th class="sorting_asc">Prénom</th>
+                    <th class="sorting_asc">Id</th>
+                    <th>Prénom</th>
                     <th>Nom</th>
                     <th>Nom utilisateur</th>
                     <th>email</th>
                     <th> Role </th>
-                    <th> Etat </th>
+                    <th> Status </th>
                     {% if is_granted('ROLE_SUPER_ADMIN') %}
-                    <th><em class="fa fa-cog"></em></th>
+                    <th>Action</th>
                     {% endif %}
                 </tr>
                 </thead>
@@ -30,6 +31,7 @@
                 {% for user in users %}
                     {% if is_granted('ROLE_SUPER_ADMIN') %}
                         <tr>
+                            <td>{{ user.id}}</td>
                             <td>{{ user.name}}</td>
                             <td>{{ user.familyName }}</td>
                             <td >{{ user.username }} </td>
@@ -43,20 +45,22 @@
                                     {% elseif role =="ROLE_PARTNER" %}
                                         Partner
                                     {% endif %}
-
                                 {% endfor %}
                             </td>
                             <td align="center">
                                 {% if user.enabled ==true %}
-                                    <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
+                                    <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_user_disable', {'id': user.id}) }}" >
+                                        <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
+                                    </a>
                                 {% else %}
-                                    <span class="glyphicon glyphicon-remove " style="color:red;"></span>
+                                    <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_user_enable', {'id': user.id}) }}" >
+                                        <span class="glyphicon glyphicon-remove " style="color:red;"></span>
+                                    </a>
                                 {% endif %}
                             </td>
                             <td align="center">
-                                <a href="{{ path('admin_user_edit', {'id': user.id}) }}" class="link" ><em class="fa fa-edit"></em></a>
-                                <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_user_delete', {'id': user.id}) }}" ><em class="fa fa-trash-o"></em></a>
-                                <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_user_enable', {'id': user.id}) }}" ><em class="fa fa-refresh"></em></a>
+                                <a href="{{ path('admin_user_edit', {'id': user.id}) }}" class="link link-success" ><em class="fa fa-edit"></em></a>
+                                <a href="#myModal" class="link link-danger" data-toggle="modal" data-wathever="{{ path('admin_user_delete', {'id': user.id}) }}" ><em class="fa fa-trash-o"></em></a>
                             </td>
                         </tr>
                         {% else %}
@@ -69,19 +73,21 @@
                                 <td class="money">
                                     {% for role in user.roles %}
                                         {% if role =="ROLE_ADMIN" %}
-
                                             Admin
                                         {% elseif role =="ROLE_PARTNER" %}
                                             Partner
                                         {% endif %}
-
                                     {% endfor %}
                                 </td>
                                 <td align="center">
                                     {% if user.enabled ==true %}
-                                        <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
+                                        <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_user_disable', {'id': user.id}) }}" >
+                                            <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
+                                        </a>
                                     {% else %}
-                                        <span class="glyphicon glyphicon-remove " style="color:red;"></span>
+                                        <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_user_enable', {'id': user.id}) }}" >
+                                            <span class="glyphicon glyphicon-remove " style="color:red;"></span>
+                                        </a>
                                     {% endif %}
                                 </td>
                             {% endif %}

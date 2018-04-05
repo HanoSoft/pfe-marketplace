@@ -10,4 +10,16 @@ namespace CoreBundle\Repository;
  */
 class BrandRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * Retourner la liste  des marques actives
+     * return array
+     */
+    public function getActiveBrands()
+    {
+        $qb = $this->createQueryBuilder('b');
+        $qb
+            ->where('b.deleted =false');
+        return $qb->getQuery()
+            ->getResult();
+    }
 }

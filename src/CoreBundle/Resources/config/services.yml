@@ -5,10 +5,15 @@ services:
     core.service.size:
             class: CoreBundle\Service\SizeService
             arguments: ['@doctrine.orm.entity_manager']
+
     core.service.category:
             class: CoreBundle\Service\CategoryService
             arguments: ['@doctrine.orm.entity_manager']
-
-
+    core.service.image:
+                class: CoreBundle\Service\ImageService
+                arguments: ['@doctrine.orm.entity_manager']
+    core.service.brand:
+                    class: CoreBundle\Service\BrandService
+                    arguments: ['@doctrine.orm.entity_manager']
 
 

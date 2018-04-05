@@ -9,8 +9,10 @@
 namespace AdminBundle\Controller;
 
 use AdminBundle\Form\RegistrationFormType;
+use AdminBundle\Form\UserEditType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+
 
 class UserController extends Controller
 {
@@ -50,7 +52,7 @@ class UserController extends Controller
             'form' => $form->createView(),
         ));
     }
-    public function deleteAction(Request $request,$id)
+    public function disableAction(Request $request,$id)
     {
         if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
             return $this->redirectToRoute('admin_access_denied');
@@ -74,7 +76,7 @@ class UserController extends Controller
         }
         $userManager = $this->get('fos_user.user_manager');
         $user = $userManager->findUserBy(array('id'=>$id));
-        $form = $this->get('form.factory')->create(RegistrationFormType::class);
+        $form = $this->get('form.factory')->create(UserEditType::class);
         $form->setData($user);
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $userManager->updateUser($user);
@@ -101,4 +103,5 @@ class UserController extends Controller
             'formDelete'   => $formDelete->createView(),
         ));
     }
+
 }

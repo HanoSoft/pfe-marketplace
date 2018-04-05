@@ -6,10 +6,8 @@
         <li><a href="{{ path('admin_user_list') }}">Utilisateur</a></li>
         <li><a > Ajouter</a></li>
     </ul>
-
     <div class=" form-grids row form-grids-right">
         <div class="widget-shadow " data-example-id="basic-forms">
-
             <div class="form-body">
                 {{ form_start(form,{'attr': {'class': 'form-horizontal form'}}) }}
                 {{ form_errors(form) }}
@@ -17,7 +15,6 @@
                     <label  class="col-sm-2 control-label">Role :</label>
                     <div class="col-sm-9">
                         <select class="form-control" id="role" name="role">
-                            <option value="ROLE_SUPER_ADMIN">Super Admin</option>
                             <option value="ROLE_ADMIN">Admin</option>
                             <option value="ROLE_PARTNER">Partnaire</option>
                         </select>

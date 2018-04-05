@@ -98,10 +98,24 @@ admin_product_image_delete:
             requirements:
             id: \d+
             idp: \d+
+admin_product_image_disable:
+    path:     /admin/product/image/disable/{idp}/{id}
+    defaults:
+            _controller: AdminBundle:Image:disable
+            requirements:
+            id: \d+
+            idp: \d+
+admin_product_image_enable:
+    path:     /admin/product/image/enable/{idp}/{id}
+    defaults:
+            _controller: AdminBundle:Image:enable
+            requirements:
+            id: \d+
+            idp: \d+
 admin_product_image_list:
     path:     /admin/product/image/list/{id}
     defaults:
-            _controller: AdminBundle:Image:list
+            _controller: AdminBundle:Image:index
             requirements:
             id: \d+
 admin_product_size_edit:
@@ -140,8 +154,8 @@ admin_product_size_delete:
             idp: \d+
 
 admin_brand_list:
-    path:     /admin/brand
-    defaults: { _controller: AdminBundle:Brand:list }
+    path:     /admin/brands
+    defaults: { _controller: AdminBundle:Brand:index }
 
 admin_brand_add:
     path:     /admin/brand/add
@@ -153,22 +167,6 @@ admin_brand_enable:
                 _controller: AdminBundle:Brand:enable
                 requirements:
                 id: \d+
-
-admin_alert_add:
-    path:     /admin/alert/add
-    defaults: { _controller: AdminBundle:Alert:add }
-admin_alert_show:
-    path:     /admin/alert/show
-    defaults: { _controller: AdminBundle:Alert:list }
-admin_alert_edit:
-    path:     /admin/alert/edit/{id}
-    defaults:
-            _controller: AdminBundle:Alert:edit
-            requirements:
-            id: \d+
-admin_promotion_add:
-    path:     /admin/promotion/add
-    defaults: { _controller: AdminBundle:Promotion:add }
 admin_brand_edit:
         path:     /admin/brand/edit/{id}
         defaults:
@@ -187,6 +185,28 @@ admin_brand_delete:
             _controller: AdminBundle:Brand:delete
             requirements:
             id: \d+
+admin_brand_disable:
+    path:     /admin/brand/disable/{id}
+    defaults:
+            _controller: AdminBundle:Brand:disable
+            requirements:
+            id: \d+
+
+admin_alert_add:
+    path:     /admin/alert/add
+    defaults: { _controller: AdminBundle:Alert:add }
+admin_alert_show:
+    path:     /admin/alert/show
+    defaults: { _controller: AdminBundle:Alert:list }
+admin_alert_edit:
+    path:     /admin/alert/edit/{id}
+    defaults:
+            _controller: AdminBundle:Alert:edit
+            requirements:
+            id: \d+
+admin_promotion_add:
+    path:     /admin/promotion/add
+    defaults: { _controller: AdminBundle:Promotion:add }
 admin_promotion_list:
     path:     /admin/promotion/list
     defaults: { _controller: AdminBundle:Promotion:list }
@@ -205,6 +225,10 @@ admin_product_promotion:
 admin_user_add:
     path:     /admin/user/add
     defaults: { _controller: AdminBundle:User:add }
+admin_user_change_password:
+    path:     /admin/user/change-password
+    defaults: { _controller: AdminBundle:User:changePassword }
+
 admin_user_list:
     path:     /admin/users
     defaults: { _controller: AdminBundle:User:index }
@@ -218,6 +242,12 @@ admin_user_delete:
         path:     /admin/user/delete/{id}
         defaults:
                 _controller: AdminBundle:User:delete
+                requirements:
+                id: \d+
+admin_user_disable:
+        path:     /admin/user/disable/{id}
+        defaults:
+                _controller: AdminBundle:User:disable
                 requirements:
                 id: \d+
 admin_user_enable:
