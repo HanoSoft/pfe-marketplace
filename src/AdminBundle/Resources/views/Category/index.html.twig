@@ -26,8 +26,7 @@
                 {% for category in categories %}
                     {% if is_granted('ROLE_ADMIN') %}
                         <tr>
-                            <td>
-                                <a href="{{ path('admin_category_product_list',{'id': category.id}) }}" class="link">
+                            <td><a href="{{ path('admin_category_product_list',{'id': category.id}) }}" class="link">
                                     {{ category.id }}</a></td>
                             <td>{{ category.name }}</td>
                             <td>{{ category.brand.brandName }}</td>
