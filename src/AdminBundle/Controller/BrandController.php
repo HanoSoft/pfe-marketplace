@@ -8,26 +8,41 @@
 
 namespace AdminBundle\Controller;
 
+use CoreBundle\Entity\Brand;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AdminBundle\Form\BrandType;
 use Symfony\Component\HttpFoundation\Session\Session;
 use AdminBundle\Form\BrandEditType;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class BrandController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('AdminBundle:Brand:index.html.twig');
+        $serviceBrand = $this->get('core.service.brand');
+        $brands=$serviceBrand->getBrands();
+        $formDelete = $this->get('form.factory')->create();
+        return $this->render('AdminBundle:Brand:index.html.twig', array(
+            'brands' => $brands,
+            'formDelete'   => $formDelete->createView(),
+        ));
     }
     public function addAction(Request $request)
     {
+        $brand=new Brand();
         $session = new Session();
         $id = $request->request->get("user");
-        $form = $this->get('form.factory')->create(BrandType::class);
+        $form = $this->get('form.factory')->create(BrandType::class,$brand);
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-            $manager = $this->get('core.service.brand_manager');
-            $manager->addBrand($form,$id);
+            $em = $this->getDoctrine()->getManager();
+            $brand->getLogo()->upload();
+            $brand->getBrandImage()->upload();
+            $serviceUser = $this->get('fos_user.user_manager');
+            $user = $serviceUser->findUserBy(array('id'=>$id));
+            $brand->setUser($user);
+            $em->persist($brand);
+            $em->flush();
             $session->getFlashBag()->add('success', 'la marque est bien enregistrée !');
             return $this->redirectToRoute('admin_brand_add');
         }
@@ -35,35 +50,23 @@ class BrandController extends Controller
             'form' => $form->createView(),
         ));
     }
-    public function listAction(Request $request)
+    public function showAction($id)
     {
-        $manager = $this->get('core.service.brand_manager');
-        $brands=$manager->getAll();
-        $formDelete = $this->get('form.factory')->create();
-        return $this->render('AdminBundle:Brand:index.html.twig', array(
-            'brands' => $brands,
-            'formDelete'   => $formDelete->createView(),
+        $serviceBrand = $this->get('core.service.brand');
+        $brand = $serviceBrand->getBrand($id);
+        return $this->render('AdminBundle:Brand:show.html.twig', array(
+            'brand' => $brand,
         ));
     }
-    public function editAction($id, Request $request)
-    {
-        $manager = $this->get('core.service.brand_manager');
-        $brand=$manager->find($id);
-        $form = $this->get('form.factory')->create(BrandEditType::class,$brand);
-        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-            $manager->edit($form,$id);
-            return $this->redirectToRoute('admin_brand_list');
-        }
-        return $this->render('AdminBundle:Brand:edit.html.twig', array(
-            'form' => $form->createView(),
-        ));
-    }
-    public function deleteAction(Request $request,$id)
+    public function disableAction(Request $request,$id)
     {
         $formDelete = $this->get('form.factory')->create();
         if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
-            $manager = $this->get('core.service.brand_manager');
-            $manager->delete($id);
+            $serviceBrand = $this->get('core.service.brand');
+            $em = $this->getDoctrine()->getManager();
+            $brand=$serviceBrand->getBrand($id);
+            $brand->setDeleted(true);
+            $em->flush();
             return $this->redirectToRoute('admin_brand_list');
         }
         return $this->render('AdminBundle::delete.html.twig', array(
@@ -74,20 +77,29 @@ class BrandController extends Controller
     {
         $formDelete = $this->get('form.factory')->create();
         if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
-            $manager = $this->get('core.service.brand_manager');
-            $manager->enable($id);
+            $serviceBrand = $this->get('core.service.brand');
+            $em = $this->getDoctrine()->getManager();
+            $brand=$serviceBrand->getBrand($id);
+            $brand->setDeleted(false);
+            $em->flush();
             return $this->redirectToRoute('admin_brand_list');
         }
         return $this->render('AdminBundle::delete.html.twig', array(
             'formDelete'   => $formDelete->createView(),
         ));
     }
-    public function showAction($id)
+    public function editAction($id, Request $request)
     {
-        $manager = $this->get('core.service.brand_manager');
-        $brand=$manager->find($id);
-        return $this->render('AdminBundle:Brand:show.html.twig', array(
-            'brand' => $brand,
+        $em = $this->getDoctrine()->getManager();
+        $serviceBrand = $this->get('core.service.brand');
+        $brand=$serviceBrand->getBrand($id);
+        $form = $this->get('form.factory')->create(BrandEditType::class,$brand);
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+            $em->flush();
+            return $this->redirectToRoute('admin_brand_list');
+        }
+        return $this->render('AdminBundle:Brand:edit.html.twig', array(
+            'form' => $form->createView(),
         ));
     }
 }

@@ -154,8 +154,8 @@ admin_product_size_delete:
             idp: \d+
 
 admin_brand_list:
-    path:     /admin/brand
-    defaults: { _controller: AdminBundle:Brand:list }
+    path:     /admin/brands
+    defaults: { _controller: AdminBundle:Brand:index }
 
 admin_brand_add:
     path:     /admin/brand/add
@@ -167,22 +167,6 @@ admin_brand_enable:
                 _controller: AdminBundle:Brand:enable
                 requirements:
                 id: \d+
-
-admin_alert_add:
-    path:     /admin/alert/add
-    defaults: { _controller: AdminBundle:Alert:add }
-admin_alert_show:
-    path:     /admin/alert/show
-    defaults: { _controller: AdminBundle:Alert:list }
-admin_alert_edit:
-    path:     /admin/alert/edit/{id}
-    defaults:
-            _controller: AdminBundle:Alert:edit
-            requirements:
-            id: \d+
-admin_promotion_add:
-    path:     /admin/promotion/add
-    defaults: { _controller: AdminBundle:Promotion:add }
 admin_brand_edit:
         path:     /admin/brand/edit/{id}
         defaults:
@@ -201,6 +185,28 @@ admin_brand_delete:
             _controller: AdminBundle:Brand:delete
             requirements:
             id: \d+
+admin_brand_disable:
+    path:     /admin/brand/disable/{id}
+    defaults:
+            _controller: AdminBundle:Brand:disable
+            requirements:
+            id: \d+
+
+admin_alert_add:
+    path:     /admin/alert/add
+    defaults: { _controller: AdminBundle:Alert:add }
+admin_alert_show:
+    path:     /admin/alert/show
+    defaults: { _controller: AdminBundle:Alert:list }
+admin_alert_edit:
+    path:     /admin/alert/edit/{id}
+    defaults:
+            _controller: AdminBundle:Alert:edit
+            requirements:
+            id: \d+
+admin_promotion_add:
+    path:     /admin/promotion/add
+    defaults: { _controller: AdminBundle:Promotion:add }
 admin_promotion_list:
     path:     /admin/promotion/list
     defaults: { _controller: AdminBundle:Promotion:list }
@@ -232,6 +238,12 @@ admin_user_delete:
         path:     /admin/user/delete/{id}
         defaults:
                 _controller: AdminBundle:User:delete
+                requirements:
+                id: \d+
+admin_user_disable:
+        path:     /admin/user/disable/{id}
+        defaults:
+                _controller: AdminBundle:User:disable
                 requirements:
                 id: \d+
 admin_user_enable:
