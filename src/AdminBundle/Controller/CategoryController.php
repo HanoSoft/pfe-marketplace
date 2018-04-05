@@ -6,8 +6,7 @@ use AdminBundle\Form\CategoryType;
 use CoreBundle\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-
+use AdminBundle\Form\CategoryEditType;
 
 
 class CategoryController extends Controller
@@ -37,6 +36,35 @@ class CategoryController extends Controller
             'form' => $form->createView(),
         ));
     }
+    public function editAction($id, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $serviceCategory = $this->get('core.service.category');
+        $category=$serviceCategory->getCategory($id);
+        $form = $this->get('form.factory')->create(CategoryEditType::class,$category);
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+            $em->flush();
+            return $this->redirectToRoute('admin_category_list');
+        }
+        return $this->render('AdminBundle:Category:edit.html.twig', array(
+            'form' => $form->createView(),
+        ));
+    }
+    public function disableAction(Request $request,$id)
+    {
+        $formDelete = $this->get('form.factory')->create();
+        if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
+            $serviceCategory = $this->get('core.service.category');
+            $em = $this->getDoctrine()->getManager();
+            $serviceCategory->disableCategory($id);
+            $em->flush();
+            return $this->redirectToRoute('admin_category_list');
+        }
+        return $this->render('AdminBundle::delete.html.twig', array(
+            'formDelete' => $formDelete->createView(),
+        ));
+    }
+
 
 
 
