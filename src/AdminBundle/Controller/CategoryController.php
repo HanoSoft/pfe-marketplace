@@ -53,28 +53,45 @@ class CategoryController extends Controller
             'form' => $form->createView(),
         ));
     }
-
-   /* public function disableAction(Request $request,$id)
+    public function disableAction(Request $request,$id)
     {
         $formDelete = $this->get('form.factory')->create();
         if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
             $serviceCategory = $this->get('core.service.category');
+            $serviceProduct = $this->get('core.service.product');
+            $category=$serviceCategory->getCategory($id);
+            $category->setDeleted(true);
             $em = $this->getDoctrine()->getManager();
-            $serviceCategory->disableCategory($id);
+            $products=$category->getProducts();
+            foreach ($products as $product){
+                $serviceProduct->disableProduct($product->getId());
+            }
             $em->flush();
             return $this->redirectToRoute('admin_category_list');
         }
         return $this->render('AdminBundle::delete.html.twig', array(
             'formDelete' => $formDelete->createView(),
         ));
-    }*/
-
-
-
-
-
-
-
-
+    }
+    public function enableAction(Request $request,$id)
+    {
+        $formDelete = $this->get('form.factory')->create();
+        if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
+            $serviceCategory = $this->get('core.service.category');
+            $serviceProduct = $this->get('core.service.product');
+            $category=$serviceCategory->getCategory($id);
+            $category->setDeleted(false);
+            $em = $this->getDoctrine()->getManager();
+            $products=$category->getProducts();
+            foreach ($products as $product){
+                $serviceProduct->disableProduct($product->getId());
+            }
+            $em->flush();
+            return $this->redirectToRoute('admin_category_list');
+        }
+        return $this->render('AdminBundle::delete.html.twig', array(
+            'formDelete' => $formDelete->createView(),
+        ));
+    }
 
 }

@@ -24,6 +24,12 @@ admin_category_delete:
             _controller: AdminBundle:Category:delete
             requirements:
             id:
+admin_category_disable:
+    path:     /admin/category/disable/{id}
+    defaults:
+            _controller: AdminBundle:Category:disable
+            requirements:
+            id:
 
 admin_category_enable:
         path:     /admin/category/enable/{id}

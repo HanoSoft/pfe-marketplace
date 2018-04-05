@@ -44,5 +44,4 @@ class CategoryService
     public function getCategory($id){
         return $this->repository->find($id);
     }
-
 }
