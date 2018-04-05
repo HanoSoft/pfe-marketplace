@@ -37,6 +37,9 @@ admin_category_enable:
                 _controller: AdminBundle:Category:enable
                 requirements:
                 id: \d+
+admin_category_product_list:
+    path:     /admin/category/{id}/products
+    defaults: { _controller: AdminBundle:Category:getProducts }
 
 admin_product_list:
     path:     /admin/products

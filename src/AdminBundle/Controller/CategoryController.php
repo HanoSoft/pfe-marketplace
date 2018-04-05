@@ -95,7 +95,6 @@ class CategoryController extends Controller
     }
     public function deleteAction(Request $request,$id){
         $em=$this->getDoctrine()->getManager();
-        $serviceProduct=$this->get('core.service.product');
         $serviceCategory=$this->get('core.service.category');
         $category=$serviceCategory->getCategory($id);
         if (null === $category) {
@@ -103,7 +102,6 @@ class CategoryController extends Controller
         }
         $formDelete = $this->get('form.factory')->create();
         if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
-
             foreach ($category->getProducts() as $product) {
                 foreach ($product->getImages() as $image){
                     $em->remove($image);
@@ -121,4 +119,16 @@ class CategoryController extends Controller
             'formDelete' => $formDelete->createView(),
         ));
     }
+        public function getProductsAction(Request $request,$id)
+        {
+           $serviceCategory=$this->get('core.service.category');
+           $category=$serviceCategory->getCategory($id);
+           $formDelete = $this->get('form.factory')->create();
+           $products=$category->getProducts();
+            return $this->render('AdminBundle:Category:products.html.twig', array(
+                'products' => $products,
+                'formDelete'=> $formDelete->createView(),
+            ));
+        }
+
 }
