@@ -991,6 +991,95 @@ Col en V.&nbsp;<br />
         $manager->persist($product);
         $manager->flush();
 
+
+        $user = $userManager->createUser();
+        $user->setUsername('admin');
+        $user->setEmail('admin@gmail.com');
+        $user->setPlainPassword('admin');
+        $user->setEnabled(true);
+        $user->addRole('ROLE_ADMIN');
+        $user->setName('admin');
+        $user->setfamilyName('admin');
+        $manager->persist($user);
+        $manager->flush();
+
+        $tag=new Tag();
+        $tag->setName('Beauté et Parfum');
+
+        $logo=new BrandImage();
+        $logo->setName('47803_logo_V4.jpg');
+        $brandImage=new BrandImage();
+        $brandImage->setName('scha.jpg');
+        $manager->persist($logo);
+        $manager->persist($brandImage);
+        $brand=new Brand();
+        $brand->setBrandName('DIADERMINE ET SCHWARZKOPF');
+        $brand->setDescription("DIADERMINE ET SCHWARZKOPF");
+        $brand->setLogo($logo);
+        $brand->setUser($user);
+        $brand->setBrandImage($brandImage);
+        $brand->setTag($tag);
+        $manager->persist($brand);
+
+        $category = new Category();
+        $category->setBrand($brand);
+        $category->setName("DIADERMINE");
+        $manager->persist($category);
+
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('2 eaux démaquillantes Diadermine Express 3 en 1 - 2 x 200 ml');
+        $product->setPrice(5.00);
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p><span style=\"font-size:18px\"><span style=\"color:#27ae60\"><strong>2 eaux d&eacute;maquillantes Express 3 en 1 Diadermine.</strong></span></span><br />
+Conviennent &agrave; tout type de peau.<br />
+A la&nbsp;provitamine B5.<br />
+D&eacute;maquillent en un seul geste le visage, les yeux et les l&egrave;vres.<br />
+Purifient et hydratent.<br />
+Pour un teint frais et lumineux.<br />
+<br />
+<strong>Conseils d&#39;application</strong>&nbsp;: appliquer matin et soir &agrave; l&#39;aide d&#39;un coton ou directement sur le visage.&nbsp;<br />
+<br />
+<strong>Contenance</strong>&nbsp;: 2 flacons sprays de 200 ml<br />
+<strong>P&eacute;riode de conservation apr&egrave;s ouverture</strong>&nbsp;: 12 mois</p>");
+        $product->setQuantity(200);
+        $image=new Image();
+        $image1=new Image();
+        $image->setName("products_9163786_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('2 lotions micellaires Diadermine Apaisantes - 2 x 400 ml');
+        $product->setPrice(7.00);
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p><strong>2 lotions micellaires apaisantes Diadermine.</strong><br />
+Conviennent aux peaux s&egrave;ches et sensibles.<br />
+Contiennent des micelles, particules qui capturent instantan&eacute;ment le maquillage, le s&eacute;bum et les d&eacute;p&ocirc;ts de poussi&egrave;res.<br />
+Leur formule enrichie en&nbsp;huile d&#39;amande douce&nbsp;d&eacute;maquille efficacement et en un seul geste le visage, les yeux et les l&egrave;vres.<br />
+Gr&acirc;ce &agrave; leur formule douce &agrave; l&#39;extrait de fleur de cerisier, la peau est plus souple et confortable.<br />
+<br />
+<strong>Conseils d&#39;application</strong>&nbsp;: appliquer l&#39;eau micellaire sur les yeux et le visage matin et soir &agrave; l&rsquo;aide d&rsquo;un coton. Inutile de rincer ou de frotter.&nbsp;<br />
+<br />
+<strong>Contenance</strong>&nbsp;: 2 flacons de 400 ml<br />
+<strong>P&eacute;riode de conservation apr&egrave;s ouverture</strong>&nbsp;: 12 mois</p>");
+        $product->setQuantity(200);
+        $image=new Image();
+        $image1=new Image();
+        $image->setName("products_9163782_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+
         /*
         $product=new Product();
         $product->setCategory($category);
@@ -1025,31 +1114,5 @@ Col en V.&nbsp;<br />
         $manager->persist($product);
         $manager->flush();
         */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        $user = $userManager->createUser();
-        $user->setUsername('admin');
-        $user->setEmail('admin@gmail.com');
-        $user->setPlainPassword('admin');
-        $user->setEnabled(true);
-        $user->addRole('ROLE_ADMIN');
-        $user->setName('admin');
-        $user->setfamilyName('admin');
-        $manager->persist($user);
-        $manager->flush();
-
-
     }
 }
