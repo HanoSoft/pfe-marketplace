@@ -71,6 +71,22 @@ class Brand
     /**
      * @return mixed
      */
+    public function getTag()
+    {
+        return $this->tag;
+    }
+
+    /**
+     * @param mixed $tag
+     */
+    public function setTag($tag)
+    {
+        $this->tag = $tag;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getUser()
     {
         return $this->user;

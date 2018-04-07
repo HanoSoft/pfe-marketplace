@@ -8,7 +8,7 @@
     <div class="container-fluid " style="background: #FFFFFF;">
         <br>
             <a href="{{ path('admin_brand_add') }}" class="col-md-offset-10 btn btn-primary btn-md">
-                <span class="fa fa-plus-circle"> </span></span> Nouvelle Marque </a>
+                <span class="fa fa-plus-circle"> </span> Nouvelle Marque </a>
         <br>
         <br>
         <div class="row dataTables_wrapper form-inline dt-bootstrap no-footer">
@@ -18,6 +18,7 @@
                     <th>Id</th>
                     <th>logo</th>
                     <th class="sorting_asc">Name</th>
+                    <th> Etiquette </th>
                     <th> Status </th>
                     <th>Action</th>
                 </tr>
@@ -25,13 +26,14 @@
                 <tbody>
                 {% for brand in brands %}
                 {% if is_granted('ROLE_ADMIN') %}
-                    <tr>
-                        <td> <a href="{{ path('admin_brand_show',{'id': brand.id}) }}" class="link">
+                        <td>
+                            <a href="{{ path('admin_brand_show',{'id': brand.id}) }}" class="link">
                                 {{ brand.id }}
                             </a>
                         </td>
                         <td align="center"><img src="{{ asset('uploads/brand/'~ brand.logo.name ) }}" style="width: 50px;" /></td>
                         <td>{{ brand.brandName }}</td>
+                        <td>{{ brand.tag.name }}</td>
                         <td align="center">
                             {% if brand.deleted ==false %}
                                 <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_brand_disable', {'id': brand.id}) }}" >
@@ -57,6 +59,7 @@
                                 </td>
                                 <td align="center"><img src="{{ asset('uploads/brand/'~ brand.logo.name ) }}" style="width: 50px;" /></td>
                                 <td>{{ brand.brandName }}</td>
+                                <td>{{ brand.tag.name }}</td>
                                 <td align="center">
                                     {% if brand.deleted ==false %}
                                         <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_brand_disable', {'id': brand.id}) }}" >

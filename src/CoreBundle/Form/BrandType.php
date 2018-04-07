@@ -8,6 +8,7 @@
 namespace CoreBundle\Form;
 
 use CoreBundle\Form\BrandImageType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
@@ -23,7 +24,12 @@ class BrandType extends AbstractType
         $builder->add('description',CKEditorType::class)
                 ->add('brandName')
                 ->add('brandImage', BrandImageType::class)
-                ->add('logo', BrandImageType::class);
+                ->add('logo', BrandImageType::class)
+            ->add('tag',EntityType::class, array(
+                'class'        => 'CoreBundle:Tag',
+                'choice_label' => 'name',
+                'multiple'     => false,
+            ));;
     }
     /**
      * {@inheritdoc}

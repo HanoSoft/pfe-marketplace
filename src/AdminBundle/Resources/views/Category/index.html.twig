@@ -26,8 +26,11 @@
                 {% for category in categories %}
                     {% if is_granted('ROLE_ADMIN') %}
                         <tr>
-                            <td><a href="{{ path('admin_category_product_list',{'id': category.id}) }}" class="link">
-                                    {{ category.id }}</a></td>
+                            <td>
+                                <a href="{{ path('admin_category_product_list',{'id': category.id}) }}" class="link">
+                                    {{ category.id }}
+                                </a>
+                            </td>
                             <td>{{ category.name }}</td>
                             <td>{{ category.brand.brandName }}</td>
                             <td align="center">
@@ -53,7 +56,9 @@
                     {% else %}
                         {% if category.brand.user.username==app.user.username %}
                             <tr>
-                                <td>{{ category.id }}</td>
+                                <a href="{{ path('admin_category_product_list',{'id': category.id}) }}" class="link">
+                                    {{ category.id }}
+                                </a>
                                 <td>{{ category.name }}</td>
                                 <td>{{ category.brand.brandName }}</td>
                                 <td align="center">
