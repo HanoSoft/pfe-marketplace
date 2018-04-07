@@ -2,8 +2,8 @@
 
 namespace AdminBundle\Controller;
 
-use AdminBundle\Form\ImageEditType;
-use AdminBundle\Form\ImageType;
+use CoreBundle\Form\ImageEditType;
+use CoreBundle\Form\ImageType;
 use CoreBundle\Entity\Image;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;

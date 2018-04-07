@@ -2,11 +2,11 @@
 
 namespace AdminBundle\Controller;
 
-use AdminBundle\Form\ProductEditType;
+use CoreBundle\Form\ProductEditType;
 use CoreBundle\Entity\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use AdminBundle\Form\ProductType;
+use CoreBundle\Form\ProductType;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ProductController extends Controller

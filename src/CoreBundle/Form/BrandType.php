@@ -1,33 +1,37 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: nouha
+ * Date: 23/03/2018
+ * Time: 15:09
+ */
+namespace CoreBundle\Form;
 
-namespace AdminBundle\Form;
-
+use CoreBundle\Form\BrandImageType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-class CategoryType extends AbstractType
+
+class BrandType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')
-                ->add('brand',EntityType::class, array(
-                'class'        => 'CoreBundle:Brand',
-                'choice_label' => 'BrandName',
-                'multiple'     => false,
-            ));
+        $builder->add('description',CKEditorType::class)
+                ->add('brandName')
+                ->add('brandImage', BrandImageType::class)
+                ->add('logo', BrandImageType::class);
     }
-    
     /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'CoreBundle\Entity\Category'
+            'data_class' => 'CoreBundle\Entity\Brand'
         ));
     }
 
@@ -36,7 +40,7 @@ class CategoryType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'CoreBundle_category';
+        return 'corebundle_brand';
     }
 
 

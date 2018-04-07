@@ -1,16 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: nouha
- * Date: 24/03/2018
- * Time: 12:39
- */
-namespace AdminBundle\Form;
+
+namespace CoreBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-class BrandEditType extends AbstractType
+class ProductEditType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -19,10 +14,10 @@ class BrandEditType extends AbstractType
     {
 
     }
-
     public function getParent()
     {
-        return BrandType::class;
+        return ProductType::class;
     }
+
 
 }

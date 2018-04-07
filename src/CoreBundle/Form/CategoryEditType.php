@@ -1,23 +1,24 @@
 <?php
 
-namespace AdminBundle\Form;
+namespace CoreBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-class ProductEditType extends AbstractType
+
+class CategoryEditType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-
-    }
-    public function getParent()
-    {
-        return ProductType::class;
+          
     }
 
+   public function getParent()
+  {
+    return CategoryType::class;
+}
 
 }

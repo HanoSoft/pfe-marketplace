@@ -2,8 +2,8 @@
 
 namespace AdminBundle\Controller;
 
-use AdminBundle\Form\ProductSizeEditType;
-use AdminBundle\Form\ProductSizeType;
+use CoreBundle\Form\ProductSizeEditType;
+use CoreBundle\Form\ProductSizeType;
 use CoreBundle\Entity\ProductSize;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;

@@ -2,11 +2,11 @@
 
 namespace AdminBundle\Controller;
 
-use AdminBundle\Form\CategoryType;
+use CoreBundle\Form\CategoryType;
 use CoreBundle\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use AdminBundle\Form\CategoryEditType;
+use CoreBundle\Form\CategoryEditType;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 

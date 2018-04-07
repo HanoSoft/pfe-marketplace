@@ -1,6 +1,6 @@
 api_rest:
-    resource: "@ApiRestBundle/Resources/config/routing.yml"
-    prefix:   /
+    resource: "@ApiRestBundle/Controller"
+    type: annotation
 
 core:
     resource: "@CoreBundle/Controller"

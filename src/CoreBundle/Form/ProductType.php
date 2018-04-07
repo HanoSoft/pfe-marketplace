@@ -1,6 +1,6 @@
 <?php
 
-namespace AdminBundle\Form;
+namespace CoreBundle\Form;
 
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;

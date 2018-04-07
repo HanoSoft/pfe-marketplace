@@ -63,6 +63,12 @@ class Brand
     private $user;
 
     /**
+     *@ORM\ManyToOne(targetEntity="CoreBundle\Entity\Tag",inversedBy="brands",cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $tag;
+
+    /**
      * @return mixed
      */
     public function getUser()

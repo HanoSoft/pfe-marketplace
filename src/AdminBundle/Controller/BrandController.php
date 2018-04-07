@@ -11,9 +11,9 @@ namespace AdminBundle\Controller;
 use CoreBundle\Entity\Brand;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use AdminBundle\Form\BrandType;
+use CoreBundle\Form\BrandType;
 use Symfony\Component\HttpFoundation\Session\Session;
-use AdminBundle\Form\BrandEditType;
+use CoreBundle\Form\BrandEditType;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class BrandController extends Controller

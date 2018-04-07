@@ -1,6 +1,6 @@
 <?php
 
-namespace AdminBundle\Form;
+namespace CoreBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -18,8 +18,6 @@ class PromotionType extends AbstractType
             ->add('name')
             ->add('startDate',TextType::class )
             ->add('endDate',TextType::class);
-
-
     }
     /**
      * {@inheritdoc}

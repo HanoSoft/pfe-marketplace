@@ -1,11 +1,11 @@
 <?php
 
-namespace AdminBundle\Form;
+namespace CoreBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-class ProductSizeEditType extends AbstractType
+class AlertEditType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -16,6 +16,6 @@ class ProductSizeEditType extends AbstractType
     }
     public function getParent()
     {
-        return ProductSizeType::class;
+        return AlertType::class;
     }
 }
