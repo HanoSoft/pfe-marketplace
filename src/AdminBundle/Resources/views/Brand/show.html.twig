@@ -1,16 +1,11 @@
 {% extends "AdminBundle::adminLayout.html.twig" %}
 {% block content %}
     {{ parent() }}
-
-
 <div class="container" align="center">
     <div class="pave_940">
         <div class="pave_m">
-
-
             <div class="accueil_vente__bloc_visuel" style="background-image: url({{ asset('uploads/brand/'~ brand.brandImage.name ) }});">
                 <a class="accueil_vente_picture" href="#"></a>
-
                 <div class="accueil_vente__arbo">
                     <ul class="accueil_vente__liste_arbo">
                         <li class="accueil_vente_logo">
@@ -18,7 +13,6 @@
                         </li>
                         {% for category in brand.categories %}
                         <li><a href="#">{{ category.name }}<span>›</span></a></li>
-
                         {% endfor %}
                      </ul>
                 </div>
@@ -26,6 +20,4 @@
         </div>
     </div>
 </div>
-
-
 {% endblock %}

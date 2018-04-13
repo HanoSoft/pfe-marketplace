@@ -1079,6 +1079,229 @@ Gr&acirc;ce &agrave; leur formule douce &agrave; l&#39;extrait de fleur de ceris
         $manager->persist($product);
         $manager->flush();
 
+        $tag=new Tag();
+        $tag->setName('High-Tec');
+
+        $logo=new BrandImage();
+        $logo->setName('logo_18208_0.jpg');
+        $brandImage=new BrandImage();
+        $brandImage->setName('iphone.jpg');
+        $manager->persist($logo);
+        $manager->persist($brandImage);
+        $brand=new Brand();
+        $brand->setBrandName('IPHONE RECONDITIONNÉS');
+        $brand->setDescription("<p><strong>Moyen de paiement, appareil photo, logiciel de retouche, ordinateur, compagnon de jeu, GPS&hellip; Autrefois, seule Mary Poppins aurait pu transporter tout cela dans son sac &agrave; main. Maintenant, il y a l&rsquo;iPhone.</strong></p>");
+        $brand->setLogo($logo);
+        $brand->setUser($user);
+        $brand->setBrandImage($brandImage);
+        $brand->setTag($tag);
+        $manager->persist($brand);
+
+        $category = new Category();
+        $category->setBrand($brand);
+        $category->setName("IPHONE RECONDITIONNÉS - GRADE A+");
+        $manager->persist($category);
+
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('iPhone 7 Plus reconditionné - 32 GB - Doré - Grade A+');
+        $product->setPrice(579.00);
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p><strong>G&eacute;n&eacute;ral</strong><br />
+<strong>Type de produit</strong>&nbsp;: iPhone 7 Plus reconditionn&eacute;<br />
+<strong>Capacit&eacute;</strong>&nbsp;: 32 GB<br />
+<strong>Couverture</strong>&nbsp;: 4G<br />
+<strong>Syst&egrave;me d&#39;exploitation</strong>&nbsp;: iOS 10<br />
+<strong>Processeur</strong>&nbsp;: puce A10 avec architecture 64 bits<br />
+<strong>Co-processeur</strong>&nbsp;: co-processeur de mouvement M10 int&eacute;gr&eacute;<br />
+<strong>Grade de reconditionnement</strong>&nbsp;: A+<br />
+Le grade A+ correspond au plus haut niveau de reconditionnement. Le produit ne pr&eacute;sente aucune trace d&#39;utilisation hormis quelques micro-rayures &eacute;ventuelles sur la face arri&egrave;re et sur la tranche. L&#39;appareil est 100% fonctionnel, test&eacute;, contr&ocirc;l&eacute;, nettoy&eacute; par des experts et livr&eacute; avec des accessoires neufs.<br />
+<br />
+<strong>Prix neuf</strong>&nbsp;: 779 &euro;<br />
+<br />
+<strong>Affichage</strong><br />
+<strong>Type</strong>&nbsp;: &eacute;cran Retina HD r&eacute;tro&eacute;clair&eacute; par LED<br />
+<strong>Taille</strong>&nbsp;: 5,5&quot;<br />
+<strong>R&eacute;solution</strong>&nbsp;: 1920 x 1080 px &agrave; 401 ppp<br />
+<strong>Contraste</strong>&nbsp;: 1300:1<br />
+<strong>Caract&eacute;ristiques compl&eacute;mentaires</strong>&nbsp;: luminosit&eacute; maximale de 625 cd/m&sup2;, pixels &agrave; double transistor, rev&ecirc;tement ol&eacute;ophobe, affichage simultan&eacute; de langues et de jeux de caract&egrave;res multiples, zoom de l&#39;&eacute;cran et acc&egrave;s facile.<br />
+<br />
+<strong>Audio et vid&eacute;o</strong><br />
+<strong>Cam&eacute;ra</strong>&nbsp;: double capteur photo 12 MP &agrave; l&#39;arri&egrave;re avec mise au point automatique avec Focus Pixels et True Tone Flash et cam&eacute;ra FaceTime HD 7 MP &agrave; l&#39;avant<br />
+<strong>Modes</strong>&nbsp;: portrait, panoramique, rafale, retardateur, d&eacute;tection des visages<br />
+<strong>Vid&eacute;o</strong>&nbsp;: 4K &agrave; 30 images/s &agrave; l&#39;arri&egrave;re avec mise au point continue et True Tone Flash et vid&eacute;o HD 1080 p &agrave; 30 ou 60 i/s et 720 p &agrave; 30 i/s &agrave; l&#39;avant<br />
+<strong>Son</strong>&nbsp;: haut-parleurs et microphone int&eacute;gr&eacute;s<br />
+<br />
+<strong>Connectivit&eacute; et navigation</strong><br />
+<strong>SIM</strong>&nbsp;: Nano SIM<br />
+<strong>Connectivit&eacute; sans fil</strong>&nbsp;: Wi-Fi 802.11 b/g/n/ac, Bluetooth 4.2 et NFC<br />
+<strong>Connectivit&eacute; cellulaire</strong>&nbsp;: GSM/EDGE/3G/4G LTE<br />
+<strong>G&eacute;olocalisation</strong>&nbsp;: GPS et GLONASS assist&eacute;s, boussole num&eacute;rique, microlocalisation iBeacon<br />
+<strong>Capteurs</strong>&nbsp;: capteur d&#39;empreintes digitales Touch ID, barom&egrave;tre, acc&eacute;l&eacute;rom&egrave;tre, gyroscope 3 axes, d&eacute;tecteur de proximit&eacute;, capteur de luminosit&eacute; ambiante<br />
+<br />
+<strong>Bureau</strong><br />
+Clavier tactile.<br />
+Fonctions SMS, MMS, e-mail.<br />
+Visualisation documents (Excel, Word, etc.).<br />
+<br />
+<strong>Batterie</strong><br />
+<strong>Technologie</strong>&nbsp;: Li-ion rechargeable int&eacute;gr&eacute;e<br />
+<strong>Autonomie&nbsp;</strong>: 16 jours en veille<br />
+<strong>Coloris</strong>&nbsp;: dor&eacute;<br />
+<strong>Poids</strong>&nbsp;: 188 g<br />
+<strong>Dimensions</strong>&nbsp;: 15,8 x 7,7 x 0,73 cm<br />
+<br />
+Chargeur et kit mains libres inclus.&nbsp;<br />
+<br />
+<em>Ce produit est soumis &agrave; la garantie du fournisseur.</em>&nbsp;<br />
+&nbsp;</p>");
+        $product->setQuantity(200);
+        $manager->persist($size);
+        $image=new Image();
+        $image->setName("products_9160521_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('iPhone 7 reconditionné - 32 GB - Noir - Grade A+');
+        $product->setPrice(439.00);
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p><strong>G&eacute;n&eacute;ral</strong><br />
+<strong>Type de produit</strong>&nbsp;: iPhone 7 reconditionn&eacute;<br />
+<strong>Capacit&eacute;</strong>&nbsp;: 32 GB<br />
+<strong>Couverture</strong>&nbsp;: 4G<br />
+<strong>Syst&egrave;me d&#39;exploitation</strong>&nbsp;: iOS 10<br />
+<strong>Processeur</strong>&nbsp;: puce A10 avec architecture 64 bits<br />
+<strong>Co-processeur</strong>&nbsp;: co-processeur de mouvement M10 int&eacute;gr&eacute;<br />
+<strong>Grade de reconditionnement</strong>&nbsp;: A+<br />
+Le grade A+ correspond au plus haut niveau de reconditionnement. Le produit ne pr&eacute;sente aucune trace d&#39;utilisation hormis quelques micro-rayures &eacute;ventuelles sur la face arri&egrave;re et sur la tranche. L&#39;appareil est 100% fonctionnel, test&eacute;, contr&ocirc;l&eacute;, nettoy&eacute; par des experts et livr&eacute; avec des accessoires neufs.<br />
+<br />
+<strong>Prix neuf</strong>&nbsp;: 639 &euro;<br />
+<br />
+<strong>Affichage</strong><br />
+<strong>Type</strong>&nbsp;: &eacute;cran Retina HD r&eacute;tro&eacute;clair&eacute; par LED<br />
+<strong>Taille</strong>&nbsp;: 4,7&quot;<br />
+<strong>R&eacute;solution</strong>&nbsp;: 1334 &times; 750 px &agrave; 326 ppp<br />
+<strong>Contraste</strong>&nbsp;: 1400:1<br />
+<strong>Caract&eacute;ristiques compl&eacute;mentaires</strong>&nbsp;: luminosit&eacute; maximale de 625 cd/m&sup2;, pixels &agrave; double transistor, rev&ecirc;tement ol&eacute;ophobe, affichage simultan&eacute; de langues et de jeux de caract&egrave;res multiples, zoom de l&#39;&eacute;cran et acc&egrave;s facile.<br />
+<br />
+<strong>Audio et vid&eacute;o</strong><br />
+<strong>Cam&eacute;ra</strong>&nbsp;: cam&eacute;ra iSight 12 MP &agrave; l&#39;arri&egrave;re avec mise au point automatique avec Focus Pixels et True Tone Flash et cam&eacute;ra FaceTime HD 7 MP &agrave; l&#39;avant<br />
+<strong>Modes</strong>&nbsp;: panoramique, rafale, retardateur, d&eacute;tection des visages<br />
+<strong>Vid&eacute;o</strong>&nbsp;: 4K &agrave; 30 images/s &agrave; l&#39;arri&egrave;re avec mise au point continue et True Tone Flash et vid&eacute;o HD 1080 p &agrave; 30 ou 60 i/s et 720 p &agrave; 30 i/s &agrave; l&#39;avant<br />
+<strong>Son</strong>&nbsp;: haut-parleurs et microphone int&eacute;gr&eacute;s<br />
+<br />
+<strong>Connectivit&eacute; et navigation</strong><br />
+<strong>SIM</strong>&nbsp;: Nano SIM<br />
+<strong>Connectivit&eacute; sans fil</strong>&nbsp;: Wi-Fi 802.11 b/g/n/ac, Bluetooth 4.2 et NFC<br />
+<strong>Connectivit&eacute; cellulaire</strong>&nbsp;: GSM/EDGE/3G/4G LTE<br />
+<strong>G&eacute;olocalisation</strong>&nbsp;: GPS et GLONASS assist&eacute;s, boussole num&eacute;rique, microlocalisation iBeacon<br />
+<strong>Capteurs</strong>&nbsp;: capteur d&#39;empreintes digitales Touch ID, barom&egrave;tre, acc&eacute;l&eacute;rom&egrave;tre, gyroscope 3 axes, d&eacute;tecteur de proximit&eacute;, capteur de luminosit&eacute; ambiante<br />
+<br />
+<strong>Bureau</strong><br />
+Clavier tactile.<br />
+Fonctions SMS, MMS, e-mail.<br />
+Visualisation documents (Excel, Word, etc.).<br />
+<br />
+<strong>Batterie</strong><br />
+<strong>Technologie</strong>&nbsp;: Li-ion rechargeable int&eacute;gr&eacute;e<br />
+<strong>Autonomie&nbsp;</strong>: 10 jours en veille<br />
+<strong>Coloris</strong>&nbsp;: noir<br />
+<strong>Poids</strong>&nbsp;: 138 g<br />
+<strong>Dimensions</strong>&nbsp;: 13,8 x 6,7 x 0,71 cm<br />
+<br />
+Chargeur et kit mains libres inclus.<br />
+<br />
+<em>Ce produit est soumis &agrave; la garantie du fournisseur.</em>&nbsp;</p>");
+        $product->setQuantity(200);
+        $image=new Image();
+        $image->setName("products_9160461_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+
+
+
+        $category = new Category();
+        $category->setBrand($brand);
+        $category->setName("IPHONE RECONDITIONNÉS - GRADE A");
+        $manager->persist($category);
+
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('iPhone 6s Plus reconditionné - 16 GB - Gris sidéral - Grade A');
+        $product->setPrice(359.00);
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p><strong>G&eacute;n&eacute;ral</strong><br />
+<strong>Type de produit</strong>&nbsp;: iPhone 6s Plus reconditionn&eacute;<br />
+<strong>Capacit&eacute;</strong>&nbsp;: 16 GB<br />
+<strong>Couverture</strong>&nbsp;: 4G<br />
+<strong>Syst&egrave;me d&#39;exploitation</strong>&nbsp;: iOS 10<br />
+<strong>Processeur</strong>&nbsp;: coprocesseur M9<br />
+<strong>Grade de reconditionnement</strong>&nbsp;: A<br />
+Le grade A correspond &agrave; un produit 100% fonctionnel, test&eacute;, nettoy&eacute; et v&eacute;rifi&eacute; sur 30 points de contr&ocirc;le. Peut pr&eacute;senter des d&eacute;fauts esth&eacute;tiques mineurs.<br />
+<br />
+<strong>Affichage</strong><br />
+<strong>Type</strong>&nbsp;: &eacute;cran tactile Retina HD avec 3D Touch<br />
+<strong>Taille</strong>&nbsp;: 5,5&quot;<br />
+<strong>R&eacute;solution</strong>&nbsp;: 1920 &times; 1080 px<br />
+<br />
+<strong>Audio et vid&eacute;o</strong><br />
+<strong>Cam&eacute;ra</strong>&nbsp;: appareil photo iSight 12 MP &agrave; l&rsquo;arri&egrave;re avec autofocus et flash LED et cam&eacute;ra FaceTime 5 MP &agrave; l&#39;avant<br />
+<strong>Vid&eacute;o</strong>&nbsp;: enregistrement vid&eacute;o HD<br />
+<strong>Lecteur</strong>&nbsp;: MP3 et vid&eacute;o<br />
+<br />
+<strong>Connectivit&eacute; et navigation</strong><br />
+Nano SIM.<br />
+Fr&eacute;quences 850-900/1800-1900 MHz.<br />
+GSM, EDGE, UMTS(3G), HSDPA(3G+), Wi-Fi, UPnP 802.11a/b/g/n/ac avec MIMO.<br />
+Bluetooth 4.2.<br />
+Stockage de masse USB 2.0.<br />
+Prise jack 3,5 mm.<br />
+Connecteur lightning.<br />
+Puce GPS int&eacute;gr&eacute;e : A-GPS et GLONASS.<br />
+<br />
+<strong>Multim&eacute;dia</strong><br />
+Microphone interne.<br />
+Fonction mains libres.<br />
+Lecteur MP3, AAC MP3, AAC.<br />
+Sonneries polyphoniques.<br />
+Compatible Java.<br />
+<br />
+<strong>Bureau</strong><br />
+Clavier tactile.<br />
+Fonctions SMS, MMS, e-mail.<br />
+Visualisation documents (Excel, Word, etc.).<br />
+<br />
+<strong>Batterie</strong><br />
+<strong>Technologie</strong>&nbsp;: Li-ion<br />
+<strong>Autonomie :</strong>&nbsp;15 jours en veille et 24 h en communication<br />
+<strong>Coloris :</strong>&nbsp;gris sid&eacute;ral<br />
+<strong>Poids :</strong>&nbsp;192 g<br />
+<strong>Dimensions :</strong>&nbsp;158,2 x 77,9 x 7,3 mm<br />
+<br />
+Chargeur et kit mains libres inclus.&nbsp;<br />
+<br />
+<em>Ce produit est soumis &agrave; la garantie du fournisseur.</em>&nbsp;</p>");
+        $product->setQuantity(200);
+        $image=new Image();
+        $image->setName("products_9160506_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
 
         /*
         $product=new Product();
