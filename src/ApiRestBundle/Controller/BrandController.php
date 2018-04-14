@@ -25,7 +25,7 @@ class BrandController extends FOSRestController
     public function indexAction()
     {
         $brandService=$this->get('core.service.brand');
-        $brands=$brandService->getActiveBrands();
+        $brands=$brandService->getActiveBrands(false);
         return $brands;
     }
 

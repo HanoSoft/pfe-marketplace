@@ -32,11 +32,12 @@ class BrandService
         return $this->repository->findAll();
     }
     /**
-     * Retourner la liste  des marques actives
+     * Retourner la liste  des marques selon la variable $active
+     * $active prend 2 valeurs true ou false
      * return array
      */
-    public function getActiveBrands(){
-        return $this->repository->getActiveBrands();
+    public function getActiveBrands($active){
+        return $this->repository->getActiveBrands($active);
     }
     /**
      * Retourner un seul marque selon l'id
