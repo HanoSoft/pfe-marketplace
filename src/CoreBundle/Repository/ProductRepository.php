@@ -11,14 +11,17 @@ namespace CoreBundle\Repository;
 class ProductRepository extends \Doctrine\ORM\EntityRepository
 {
     /**
-     * Retourner la liste  des produits actives
+     * Retourner la liste  des produits selon la variable $active
+     * $active contenir 2 valeur true ou false
      * return array
      */
-    public function getActiveProducts()
+    public function getActiveProducts($active)
     {
         $qb = $this->createQueryBuilder('p');
         $qb
-            ->where('p.deleted =false');
+            ->where('p.deleted =:active')
+            ->setParameter('active', $active)
+    ;
         return $qb->getQuery()
             ->getResult();
     }

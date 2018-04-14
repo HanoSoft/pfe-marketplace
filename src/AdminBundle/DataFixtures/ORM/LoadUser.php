@@ -1302,8 +1302,121 @@ Chargeur et kit mains libres inclus.&nbsp;<br />
         $manager->persist($product);
         $manager->flush();
 
+        $tag=new Tag();
+        $tag->setName('Bijoux');
+        $logo=new BrandImage();
+        $logo->setName('logo_18634.jpg');
+
+        $brandImage=new BrandImage();
+        $brandImage->setName('bijoux.jpg');
+        $manager->persist($logo);
+        $manager->persist($brandImage);
+
+        $brand=new Brand();
+        $brand->setBrandName('JEREMIE SION');
+        $brand->setDescription('JEREMIE SION');
+        $brand->setLogo($logo);
+        $brand->setUser($user);
+        $brand->setBrandImage($brandImage);
+        $brand->setTag($tag);
+        $manager->persist($brand);
+
+        $category = new Category();
+        $category->setBrand($brand);
+        $category->setName("BAGUES");
+        $manager->persist($category);
+
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('2 bagues dorées à l\'or jaune et cristaux Swarovski®');
+        $product->setPrice(11.00);
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p>2 bagues&nbsp;<strong>dor&eacute;es &agrave; l&#39;or jaune</strong>&nbsp;orn&eacute;es de&nbsp;<strong>cristaux Swarovski&reg;</strong>.<br />
+<br />
+<em>Chaque bijou est accompagn&eacute; de son pochon.</em>&nbsp;<br />
+<br />
+<strong>Coloris cristaux</strong>&nbsp;: blanc<br />
+<strong>Mati&egrave;re</strong>&nbsp;: m&eacute;tal dor&eacute; &agrave; l&#39;or jaune 18 carats et cristaux Swarovski&reg;</p>");
+        $product->setQuantity(200);
+
+        $size=new ProductSize();
+        $size->setProduct($product);
+        $size->setSize("50-52");
+        $manager->persist($size);
+        $size1=new ProductSize();
+        $size1->setProduct($product);
+        $size1->setSize("53-55");
+        $manager->persist($size1);
+        $size=new ProductSize();
+        $size->setProduct($product);
+        $size->setSize("56-58");
+        $manager->persist($size);
+
+        $image=new Image();
+        $image1=new Image();
+        $image->setName("products_9232463_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $image1->setName("products_9232463_image2_original.jpg");
+        $image1->setLabel("g");
+        $image1->setProduct($product);
+        $manager->persist($image1);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         /*
+         // pour ajouter tag
+        $tag=new Tag();
+        $tag->setName('Vêtements');
+
+        // ajouter brand
+        $logo=new BrandImage();
+        $logo->setName('logo_34294.jpg');
+
+        $brandImage=new BrandImage();
+        $brandImage->setName('generic_v4.jpg');
+
+        $manager->persist($logo);
+        $manager->persist($brandImage);
+        $brand=new Brand();
+        $brand->setBrandName('Unkut Paris');
+        $brand->setDescription('');
+        $brand->setLogo($logo);
+        $brand->setUser($user);
+        $brand->setBrandImage($brandImage);
+        $brand->setTag($tag);
+        $manager->persist($brand);
+// ajouter categ
+        $category = new Category();
+        $category->setBrand($brand);
+        $category->setName("T-shirts et polos");
+        $manager->persist($category);
+       // ajouter product
         $product=new Product();
         $product->setCategory($category);
         $product->setProductName('Sweat - Noir');
