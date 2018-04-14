@@ -29,4 +29,5 @@ class BrandController extends FOSRestController
         return $brands;
     }
 
+
 }
