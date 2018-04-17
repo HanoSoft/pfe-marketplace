@@ -1302,13 +1302,10 @@ Chargeur et kit mains libres inclus.&nbsp;<br />
         $manager->persist($product);
         $manager->flush();
 
-
-
         /*--------*/
         $tag=new Tag();
         $tag->setName('Bijoux');
-
-
+        
         $logo=new BrandImage();
         $logo->setName('logo_18634.jpg');
 
@@ -1331,9 +1328,6 @@ Chargeur et kit mains libres inclus.&nbsp;<br />
         $category->setName("BAGUES");
         $manager->persist($category);
 
-
-
-        //prod number 1
         $product=new Product();
         $product->setCategory($category);
         $product->setProductName('2 bagues dorées à l\'or jaune et cristaux Swarovski®');
@@ -1374,26 +1368,6 @@ Chargeur et kit mains libres inclus.&nbsp;<br />
         $manager->persist($product);
         $manager->flush();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//prod number 2
         $product=new Product();
         $product->setCategory($category);
         $product->setProductName('2 bagues dorées à l\'or blanc et cristaux Swarovski®');
@@ -1435,8 +1409,6 @@ Chargeur et kit mains libres inclus.&nbsp;<br />
         $manager->persist($product);
         $manager->flush();
 
-
-        //prod num 3
         $product=new Product();
         $product->setCategory($category);
         $product->setProductName('Bague dorée à l\'or blanc et cristaux Swarovski®');
@@ -1475,8 +1447,6 @@ Orn&eacute;e de&nbsp;<strong>cristaux Swarovski&reg;</strong>.<br />
         $manager->flush();
         $manager->persist($product);
         $manager->flush();
-
-//prod num4
 
         $product=new Product();
         $product->setCategory($category);
@@ -1521,14 +1491,11 @@ Orn&eacute;e de&nbsp;<strong>cristaux Swarovski&reg;</strong>.<br />
         $manager->persist($product);
         $manager->flush();
 
-
-//new categ:braclet
         $category = new Category();
         $category->setBrand($brand);
         $category->setName("Bracelets");
         $manager->persist($category);
 
-        //prod num 1
         $product=new Product();
         $product->setCategory($category);
         $product->setProductName('Bracelet doré à l\'or blanc et cristaux Swarovski®');
@@ -1545,14 +1512,6 @@ Fermoir mousqueton.<br />
 <strong>Longueur</strong>&nbsp;: 17,5 &agrave; 21 cm</p>");
 
         $product->setQuantity(200);
-
-        /*$size=new ProductSize();
-        $size->setProduct($product);
-        $size->setSize("50-52");
-        $manager->persist($size);*/
-
-
-
         $image=new Image();
         $image1=new Image();
         $image->setName("products_9232434_image1_original.jpg");
@@ -1567,7 +1526,6 @@ Fermoir mousqueton.<br />
         $manager->persist($product);
         $manager->flush();
 
-//prod num 2
         $product=new Product();
         $product->setCategory($category);
         $product->setProductName('Jonc doré à l\'or jaune et cristaux Swarovski®');
@@ -1584,13 +1542,6 @@ Fermoir clip.<br />
 
         $product->setQuantity(200);
 
-        /*$size=new ProductSize();
-        $size->setProduct($product);
-        $size->setSize("50-52");
-        $manager->persist($size);*/
-
-
-
         $image=new Image();
         $image1=new Image();
         $image->setName("products_9191070_image1_original.jpg");
@@ -1604,8 +1555,6 @@ Fermoir clip.<br />
         $manager->flush();
         $manager->persist($product);
         $manager->flush();
-
-//prod num 3
 
         $product=new Product();
         $product->setCategory($category);
@@ -1622,13 +1571,6 @@ Fermoir clip.<br />
 
         $product->setQuantity(200);
 
-        /*$size=new ProductSize();
-        $size->setProduct($product);
-        $size->setSize("50-52");
-        $manager->persist($size);*/
-
-
-
         $image=new Image();
         $image1=new Image();
         $image->setName("products_9191068_image1_original.jpg");
@@ -1643,7 +1585,6 @@ Fermoir clip.<br />
         $manager->persist($product);
         $manager->flush();
 
-//prod num 4
         $product=new Product();
         $product->setCategory($category);
         $product->setProductName('Jonc doré à l\'or rose et cristaux Swarovski®');
@@ -1661,13 +1602,6 @@ Fermoir pivotant.&nbsp;<br />
 
         $product->setQuantity(200);
 
-        /*$size=new ProductSize();
-        $size->setProduct($product);
-        $size->setSize("50-52");
-        $manager->persist($size);*/
-
-
-
         $image=new Image();
         $image1=new Image();
         $image->setName("products_9191022_image1_original.jpg");
@@ -1682,13 +1616,11 @@ Fermoir pivotant.&nbsp;<br />
         $manager->persist($product);
         $manager->flush();
 
-        //categ: Colliers et pendentifs
         $category = new Category();
         $category->setBrand($brand);
         $category->setName("Colliers et pendentifs");
         $manager->persist($category);
 
-        //prod num 1
         $product=new Product();
         $product->setCategory($category);
         $product->setProductName('Collier doré à l\'or blanc et cristaux Swarovski®');
@@ -1707,13 +1639,6 @@ Fermoir mousqueton.<br />
 
         $product->setQuantity(200);
 
-        /*$size=new ProductSize();
-        $size->setProduct($product);
-        $size->setSize("50-52");
-        $manager->persist($size);*/
-
-
-
         $image=new Image();
         $image1=new Image();
         $image->setName("products_9232454_image1_original.jpg");
@@ -1728,7 +1653,6 @@ Fermoir mousqueton.<br />
         $manager->persist($product);
         $manager->flush();
 
-        //prod num 2
         $product=new Product();
         $product->setCategory($category);
         $product->setProductName('Collier doré à l\'or blanc et cristaux Swarovski®');
@@ -1748,13 +1672,6 @@ Fermoir mousqueton.<br />
 
         $product->setQuantity(200);
 
-        /*$size=new ProductSize();
-        $size->setProduct($product);
-        $size->setSize("50-52");
-        $manager->persist($size);*/
-
-
-
         $image=new Image();
         $image1=new Image();
         $image->setName("products_9191083_image1_original.jpg");
@@ -1769,7 +1686,6 @@ Fermoir mousqueton.<br />
         $manager->persist($product);
         $manager->flush();
 
-        //prod num 3
         $product=new Product();
         $product->setCategory($category);
         $product->setProductName('Pendentif doré à l\'or blanc et cristal Swarovski®');
@@ -1789,13 +1705,6 @@ Orn&eacute; d&#39;un&nbsp;<strong>cristal Swarovski&reg;</strong>.&nbsp;<br />
 
         $product->setQuantity(200);
 
-        /*$size=new ProductSize();
-        $size->setProduct($product);
-        $size->setSize("50-52");
-        $manager->persist($size);*/
-
-
-
         $image=new Image();
         $image1=new Image();
         $image->setName("products_9191055_image1_original.jpg");
@@ -1810,13 +1719,11 @@ Orn&eacute; d&#39;un&nbsp;<strong>cristal Swarovski&reg;</strong>.&nbsp;<br />
         $manager->persist($product);
         $manager->flush();
 
-        //categ : MONTRES
         $category = new Category();
         $category->setBrand($brand);
         $category->setName("MONTRES");
         $manager->persist($category);
 
-        //prod num 1
         $product=new Product();
         $product->setCategory($category);
         $product->setProductName('Montre à quartz en métal et cristaux Swarovski® - Argenté et doré');
@@ -1842,13 +1749,6 @@ Cristaux Swarovski&reg;<br />
 
         $product->setQuantity(200);
 
-        /*$size=new ProductSize();
-        $size->setProduct($product);
-        $size->setSize("50-52");
-        $manager->persist($size);*/
-
-
-
         $image=new Image();
         $image1=new Image();
         $image->setName("products_9191189_image1_original.jpg");
@@ -1863,7 +1763,6 @@ Cristaux Swarovski&reg;<br />
         $manager->persist($product);
         $manager->flush();
 
-         //prod num 2
         $product=new Product();
         $product->setCategory($category);
         $product->setProductName('Montre à quartz en métal doré à l\'or jaune et cristaux Swarovski® - Doré et blanc');
@@ -1889,13 +1788,6 @@ Cristaux Swarovski&reg;<br />
 
         $product->setQuantity(200);
 
-        /*$size=new ProductSize();
-        $size->setProduct($product);
-        $size->setSize("50-52");
-        $manager->persist($size);*/
-
-
-
         $image=new Image();
         $image1=new Image();
         $image->setName("products_9191188_image1_original.jpg");
@@ -1910,7 +1802,6 @@ Cristaux Swarovski&reg;<br />
         $manager->persist($product);
         $manager->flush();
 
-        //prod num 3
         $product=new Product();
         $product->setCategory($category);
         $product->setProductName('Montre à quartz dorée à l\'or blanc - Argenté');
@@ -1935,13 +1826,6 @@ Bo&icirc;tier et bracelet dor&eacute;s &agrave; l&#39;or blanc 18 carats&nbsp;<b
 
         $product->setQuantity(200);
 
-        /*$size=new ProductSize();
-        $size->setProduct($product);
-        $size->setSize("50-52");
-        $manager->persist($size);*/
-
-
-
         $image=new Image();
         $image1=new Image();
         $image->setName("products_9191179_image1_original.jpg");
@@ -1957,7 +1841,6 @@ Bo&icirc;tier et bracelet dor&eacute;s &agrave; l&#39;or blanc 18 carats&nbsp;<b
         $manager->flush();
 
 
-        //new brand :CLIO BLUE
         $logo=new BrandImage();
         $logo->setName('logo_24915.jpg');
 
@@ -1975,13 +1858,11 @@ Bo&icirc;tier et bracelet dor&eacute;s &agrave; l&#39;or blanc 18 carats&nbsp;<b
         $brand->setTag($tag);
         $manager->persist($brand);
 
-        //categ bagues
         $category = new Category();
         $category->setBrand($brand);
         $category->setName("BAGUES");
         $manager->persist($category);
 
-        //prod num 1
         $product=new Product();
         $product->setCategory($category);
         $product->setProductName('Bague - Argent');
@@ -2018,7 +1899,6 @@ Bo&icirc;tier et bracelet dor&eacute;s &agrave; l&#39;or blanc 18 carats&nbsp;<b
         $size3->setSize("56");
         $manager->persist($size3);
 
-
         $image=new Image();
         $image1=new Image();
         $image->setName("products_9149799_image1_original.jpg");
@@ -2033,7 +1913,6 @@ Bo&icirc;tier et bracelet dor&eacute;s &agrave; l&#39;or blanc 18 carats&nbsp;<b
         $manager->persist($product);
         $manager->flush();
 
-        //prod num 2
         $product=new Product();
         $product->setCategory($category);
         $product->setProductName('Bague - Argent');
@@ -2051,8 +1930,6 @@ Bo&icirc;tier et bracelet dor&eacute;s &agrave; l&#39;or blanc 18 carats&nbsp;<b
 
         $product->setQuantity(200);
 
-
-
         $size1=new ProductSize();
         $size1->setProduct($product);
         $size1->setSize("52");
@@ -2068,7 +1945,6 @@ Bo&icirc;tier et bracelet dor&eacute;s &agrave; l&#39;or blanc 18 carats&nbsp;<b
         $size3->setSize("58");
         $manager->persist($size3);
 
-
         $image=new Image();
         $image1=new Image();
         $image->setName("products_9150936_image1_original.jpg");
@@ -2083,7 +1959,6 @@ Bo&icirc;tier et bracelet dor&eacute;s &agrave; l&#39;or blanc 18 carats&nbsp;<b
         $manager->persist($product);
         $manager->flush();
 
-        //prod num 3
         $product=new Product();
         $product->setCategory($category);
         $product->setProductName('Set de 3 bagues - Argent doré à l\'or rose et céramique');
@@ -2107,7 +1982,6 @@ Bo&icirc;tier et bracelet dor&eacute;s &agrave; l&#39;or blanc 18 carats&nbsp;<b
 
         $product->setQuantity(200);
 
-
         $size1=new ProductSize();
         $size1->setProduct($product);
         $size1->setSize("50");
@@ -2123,7 +1997,6 @@ Bo&icirc;tier et bracelet dor&eacute;s &agrave; l&#39;or blanc 18 carats&nbsp;<b
         $size3->setSize("54");
         $manager->persist($size3);
 
-
         $image=new Image();
         $image1=new Image();
         $image->setName("products_9150929_image1_original.jpg");
@@ -2138,8 +2011,6 @@ Bo&icirc;tier et bracelet dor&eacute;s &agrave; l&#39;or blanc 18 carats&nbsp;<b
         $manager->persist($product);
         $manager->flush();
 
-
-        //prod num 4
         $product=new Product();
         $product->setCategory($category);
         $product->setProductName('Bague - Argent et céramique');
@@ -2157,7 +2028,6 @@ Bo&icirc;tier et bracelet dor&eacute;s &agrave; l&#39;or blanc 18 carats&nbsp;<b
 <p><em>Du fait de l&#39;unicit&eacute; de chaque bijou, le grammage, la taille et le caratage des mat&eacute;riaux sont donn&eacute;s &agrave; titre indicatif. Ils peuvent varier l&eacute;g&egrave;rement d&#39;une pierre &agrave; l&#39;autre et d&#39;une mesure &agrave; une autre.</em></p>");
 
         $product->setQuantity(200);
-
 
         $size1=new ProductSize();
         $size1->setProduct($product);
@@ -2189,13 +2059,11 @@ Bo&icirc;tier et bracelet dor&eacute;s &agrave; l&#39;or blanc 18 carats&nbsp;<b
         $manager->persist($product);
         $manager->flush();
 
-        // new categ : braclet
         $category = new Category();
         $category->setBrand($brand);
         $category->setName("Bracelets");
         $manager->persist($category);
 
-        //prod num 1
         $product=new Product();
         $product->setCategory($category);
         $product->setProductName('Bracelet - Argent');
@@ -2215,9 +2083,6 @@ Fermoir mousqueton.<br />
 
         $product->setQuantity(200);
 
-
-
-
         $image=new Image();
         $image1=new Image();
         $image->setName("products_9149867_image1_original.jpg");
@@ -2232,7 +2097,6 @@ Fermoir mousqueton.<br />
         $manager->persist($product);
         $manager->flush();
 
-        //prod num 2
         $product=new Product();
         $product->setCategory($category);
         $product->setProductName('Bracelet - Argent');
@@ -2250,9 +2114,6 @@ Fermoir mousqueton.<br />
 
         $product->setQuantity(200);
 
-
-
-
         $image=new Image();
         $image1=new Image();
         $image->setName("products_9149897_image1_original.jpg");
@@ -2267,7 +2128,6 @@ Fermoir mousqueton.<br />
         $manager->persist($product);
         $manager->flush();
 
-        //prod num 3
         $product=new Product();
         $product->setCategory($category);
         $product->setProductName('Bracelet - Argent et quartz jaune');
@@ -2300,13 +2160,11 @@ Fermoir mousqueton.<br />
         $manager->persist($product);
         $manager->flush();
 
-        // new categ : Boucles d'oreilles
         $category = new Category();
         $category->setBrand($brand);
         $category->setName("Boucles d'oreilles");
         $manager->persist($category);
 
-        //prod num 1
         $product=new Product();
         $product->setCategory($category);
         $product->setProductName('Boucles d\'oreilles - Argent et quartz rose');
@@ -2340,7 +2198,6 @@ Fermoir crochet.<br />
         $manager->persist($product);
         $manager->flush();
 
-        //prod num 2
         $product=new Product();
         $product->setCategory($category);
         $product->setProductName('Boucles d\'oreilles - Argent et obsidienne');
@@ -2374,7 +2231,6 @@ Fermoir crochet.<br />
         $manager->persist($product);
         $manager->flush();
 
-        //prod num 3
         $product=new Product();
         $product->setCategory($category);
         $product->setProductName('Boucles d\'oreilles - Argent et nacre');
@@ -2409,8 +2265,6 @@ Fermoir crochet.<br />
         $manager->persist($product);
         $manager->flush();
 
-
-        // new brand :L'ATELIER PARISIEN
         $logo=new BrandImage();
         $logo->setName('logo_25518.jpg');
 
@@ -2428,13 +2282,11 @@ Fermoir crochet.<br />
         $brand->setTag($tag);
         $manager->persist($brand);
 
-        //categ bagues
         $category = new Category();
         $category->setBrand($brand);
         $category->setName("BAGUES");
         $manager->persist($category);
 
-        //prod num 1
         $product=new Product();
         $product->setCategory($category);
         $product->setProductName('Bague Juliette - Argent');
@@ -2498,7 +2350,6 @@ Fermoir crochet.<br />
         $manager->persist($product);
         $manager->flush();
 
-        //prod num 2
         $product=new Product();
         $product->setCategory($category);
         $product->setProductName('Bague Sophie - Argent');
@@ -2562,7 +2413,6 @@ Fermoir crochet.<br />
         $manager->persist($product);
         $manager->flush();
 
-        //prod num 3
         $product=new Product();
         $product->setCategory($category);
         $product->setProductName('Bague - Argent');
@@ -2625,13 +2475,11 @@ Fermoir crochet.<br />
         $manager->persist($product);
         $manager->flush();
 
-        // new categ : Colliers et pendentifs
         $category = new Category();
         $category->setBrand($brand);
         $category->setName("Colliers et pendentifs");
         $manager->persist($category);
 
-        //prod num 1
         $product=new Product();
         $product->setCategory($category);
         $product->setProductName('Collier Helena - Argent');
@@ -2666,8 +2514,6 @@ Fermoir mousqueton.<br />
         $manager->persist($product);
         $manager->flush();
 
-
-        //prod num 2
         $product=new Product();
         $product->setCategory($category);
         $product->setProductName('Collier - Argent');
@@ -2703,7 +2549,6 @@ Fermoir mousqueton.<br />
         $manager->persist($product);
         $manager->flush();
 
-        //prod num 3
         $product=new Product();
         $product->setCategory($category);
         $product->setProductName('Collier - Argent');
@@ -2737,14 +2582,11 @@ Fermoir mousqueton.<br />
         $manager->persist($product);
         $manager->flush();
 
-
-        // new categ : Bracelets et joncs
         $category = new Category();
         $category->setBrand($brand);
         $category->setName("Bracelets et joncs");
         $manager->persist($category);
 
-        //prod num 1
         $product=new Product();
         $product->setCategory($category);
         $product->setProductName('Jonc Emma - Argent');
@@ -2776,7 +2618,6 @@ Fermoir mousqueton.<br />
         $manager->persist($product);
         $manager->flush();
 
-        //prod num 2
         $product=new Product();
         $product->setCategory($category);
         $product->setProductName('Jonc Helena - Argent');
@@ -2808,7 +2649,6 @@ Fermoir mousqueton.<br />
         $manager->persist($product);
         $manager->flush();
 
-        //prod num 3
         $product=new Product();
         $product->setCategory($category);
         $product->setProductName('Bracelet Angel - Argent');
