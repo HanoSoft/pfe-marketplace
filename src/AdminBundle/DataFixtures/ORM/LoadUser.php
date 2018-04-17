@@ -1302,8 +1302,13 @@ Chargeur et kit mains libres inclus.&nbsp;<br />
         $manager->persist($product);
         $manager->flush();
 
+
+
+        /*--------*/
         $tag=new Tag();
         $tag->setName('Bijoux');
+
+
         $logo=new BrandImage();
         $logo->setName('logo_18634.jpg');
 
@@ -1326,6 +1331,9 @@ Chargeur et kit mains libres inclus.&nbsp;<br />
         $category->setName("BAGUES");
         $manager->persist($category);
 
+
+
+        //prod number 1
         $product=new Product();
         $product->setCategory($category);
         $product->setProductName('2 bagues dorées à l\'or jaune et cristaux Swarovski®');
@@ -1385,70 +1393,1457 @@ Chargeur et kit mains libres inclus.&nbsp;<br />
 
 
 
-
-
-
-
-        /*
-         // pour ajouter tag
-        $tag=new Tag();
-        $tag->setName('Vêtements');
-
-        // ajouter brand
-        $logo=new BrandImage();
-        $logo->setName('logo_34294.jpg');
-
-        $brandImage=new BrandImage();
-        $brandImage->setName('generic_v4.jpg');
-
-        $manager->persist($logo);
-        $manager->persist($brandImage);
-        $brand=new Brand();
-        $brand->setBrandName('Unkut Paris');
-        $brand->setDescription('');
-        $brand->setLogo($logo);
-        $brand->setUser($user);
-        $brand->setBrandImage($brandImage);
-        $brand->setTag($tag);
-        $manager->persist($brand);
-// ajouter categ
-        $category = new Category();
-        $category->setBrand($brand);
-        $category->setName("T-shirts et polos");
-        $manager->persist($category);
-       // ajouter product
+//prod number 2
         $product=new Product();
         $product->setCategory($category);
-        $product->setProductName('Sweat - Noir');
-        $product->setPrice(43.00);
+        $product->setProductName('2 bagues dorées à l\'or blanc et cristaux Swarovski®');
+        $product->setPrice(11.00);
         $product->setStatus('En Stock');
-        $product->setProductDetails("");
+        $product->setProductDetails("<p>2 bagues&nbsp;<strong>dor&eacute;es &agrave; l&#39;or blanc</strong>&nbsp;orn&eacute;es de&nbsp;<strong>cristaux Swarovski&reg;</strong>.<br />
+<br />
+<em>Chaque bijou est accompagn&eacute; de son pochon.</em>&nbsp;<br />
+<br />
+<strong>Coloris cristaux</strong>&nbsp;: blanc<br />
+<strong>Mati&egrave;re</strong>&nbsp;: m&eacute;tal dor&eacute; &agrave; l&#39;or blanc 18 carats et cristaux Swarovski&reg;</p>");
+
         $product->setQuantity(200);
+
         $size=new ProductSize();
         $size->setProduct($product);
-        $size->setSize("XS");
+        $size->setSize("50-52");
         $manager->persist($size);
         $size1=new ProductSize();
         $size1->setProduct($product);
-        $size1->setSize("S");
+        $size1->setSize("53-55");
         $manager->persist($size1);
         $size=new ProductSize();
         $size->setProduct($product);
-        $size->setSize("M");
+        $size->setSize("56-58");
         $manager->persist($size);
+
         $image=new Image();
         $image1=new Image();
-        $image->setName("products_9176940_image1_original.jpg");
+        $image->setName("products_9232460_image1_original.jpg");
         $image->setLabel("g");
         $image->setProduct($product);
         $manager->persist($image);
-        $image1->setName("products_9176940_image2_original.jpg");
+        $image1->setName("products_9232460_image2_original.jpg");
         $image1->setLabel("g");
         $image1->setProduct($product);
         $manager->persist($image1);
         $manager->flush();
         $manager->persist($product);
         $manager->flush();
-        */
+
+
+        //prod num 3
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('Bague dorée à l\'or blanc et cristaux Swarovski®');
+        $product->setPrice(8.50 );
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p>Bague&nbsp;<strong>dor&eacute;e &agrave; l&#39;or blanc</strong>.<br />
+Orn&eacute;e de&nbsp;<strong>cristaux Swarovski&reg;</strong>.<br />
+<br />
+<em>Chaque bijou est accompagn&eacute; de son pochon.</em>&nbsp;<br />
+<br />
+<strong>Coloris cristaux</strong>&nbsp;: blanc&nbsp;<br />
+<strong>Mati&egrave;re</strong>&nbsp;: m&eacute;tal dor&eacute; &agrave; l&#39;or blanc 18 carats et cristaux Swarovski&reg;</p>");
+
+        $product->setQuantity(200);
+
+        $size=new ProductSize();
+        $size->setProduct($product);
+        $size->setSize("50-52");
+        $manager->persist($size);
+
+        $size1=new ProductSize();
+        $size1->setProduct($product);
+        $size1->setSize("53-55");
+        $manager->persist($size1);
+
+        $image=new Image();
+        $image1=new Image();
+        $image->setName("products_9191058_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $image1->setName("products_9191058_image2_original.jpg");
+        $image1->setLabel("g");
+        $image1->setProduct($product);
+        $manager->persist($image1);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+//prod num4
+
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('Bague dorée à l\'or blanc et cristaux Swarovski®');
+        $product->setPrice(15.00 );
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p>Bague&nbsp;<strong>dor&eacute;e &agrave; l&#39;or blanc</strong>&nbsp;orn&eacute;e de&nbsp;<strong>cristaux Swarovski&reg;</strong>.&nbsp;<br />
+<br />
+<em>Chaque bijou est accompagn&eacute; de son pochon.&nbsp;</em><br />
+<br />
+<strong>Coloris cristaux</strong>&nbsp;: blanc, bleu et turquoise&nbsp;<br />
+<strong>Mati&egrave;re</strong>&nbsp;: m&eacute;tal dor&eacute; &agrave; l&#39;or blanc 18 carats et cristaux Swarovski&reg;&nbsp;</p>");
+
+        $product->setQuantity(200);
+
+        $size=new ProductSize();
+        $size->setProduct($product);
+        $size->setSize("50-52");
+        $manager->persist($size);
+
+        $size1=new ProductSize();
+        $size1->setProduct($product);
+        $size1->setSize("53-55");
+        $manager->persist($size1);
+
+        $size2=new ProductSize();
+        $size2->setProduct($product);
+        $size2->setSize("56-58");
+        $manager->persist($size2);
+
+        $image=new Image();
+        $image1=new Image();
+        $image->setName("products_9191152_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $image1->setName("products_9191152_image2_original.jpg");
+        $image1->setLabel("g");
+        $image1->setProduct($product);
+        $manager->persist($image1);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+
+//new categ:braclet
+        $category = new Category();
+        $category->setBrand($brand);
+        $category->setName("Bracelets");
+        $manager->persist($category);
+
+        //prod num 1
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('Bracelet doré à l\'or blanc et cristaux Swarovski®');
+        $product->setPrice(10.50 );
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p>Bracelet&nbsp;<strong>dor&eacute; &agrave; l&#39;or blanc</strong>&nbsp;orn&eacute; de&nbsp;<strong>cristaux Swarovski&reg;</strong>.<br />
+Longueur r&eacute;glable.<br />
+Fermoir mousqueton.<br />
+<br />
+<em>Chaque bijou est accompagn&eacute; de son pochon.</em>&nbsp;<br />
+<br />
+<strong>Coloris cristaux</strong>&nbsp;: blanc<br />
+<strong>Mati&egrave;re</strong>&nbsp;: m&eacute;tal dor&eacute; &agrave; l&#39;or blanc 18 carats et cristaux Swarovski&reg;<br />
+<strong>Longueur</strong>&nbsp;: 17,5 &agrave; 21 cm</p>");
+
+        $product->setQuantity(200);
+
+        /*$size=new ProductSize();
+        $size->setProduct($product);
+        $size->setSize("50-52");
+        $manager->persist($size);*/
+
+
+
+        $image=new Image();
+        $image1=new Image();
+        $image->setName("products_9232434_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $image1->setName("products_9232434_image2_original.jpg");
+        $image1->setLabel("g");
+        $image1->setProduct($product);
+        $manager->persist($image1);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+//prod num 2
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('Jonc doré à l\'or jaune et cristaux Swarovski®');
+        $product->setPrice(14.00 );
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p>Jonc&nbsp;<strong>dor&eacute; &agrave; l&#39;or jaune</strong>&nbsp;orn&eacute; de&nbsp;<strong>cristaux Swarovski&reg;</strong>.<br />
+Fermoir clip.<br />
+<br />
+<em>Chaque bijou est accompagn&eacute; de son pochon.</em>&nbsp;<br />
+<br />
+<strong>Coloris cristaux</strong>&nbsp;: blanc<br />
+<strong>Mati&egrave;re</strong>&nbsp;: m&eacute;tal dor&eacute; &agrave; l&#39;or jaune 18 carats et cristaux Swarovski&reg;&nbsp;<br />
+<strong>Diam&egrave;tre&nbsp;</strong>: 6 cm</p>");
+
+        $product->setQuantity(200);
+
+        /*$size=new ProductSize();
+        $size->setProduct($product);
+        $size->setSize("50-52");
+        $manager->persist($size);*/
+
+
+
+        $image=new Image();
+        $image1=new Image();
+        $image->setName("products_9191070_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $image1->setName("products_9191070_image2_original.jpg");
+        $image1->setLabel("g");
+        $image1->setProduct($product);
+        $manager->persist($image1);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+//prod num 3
+
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('Manchette dorée à l\'or jaune et cristaux Swarovski®');
+        $product->setPrice(32.00 );
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p>Manchette dor&eacute;e &agrave; l&#39;<strong>or jaune</strong>&nbsp;orn&eacute;e de&nbsp;<strong>cristaux Swarovski&reg;</strong>.<br />
+<br />
+<em>Chaque bijou est accompagn&eacute; de son pochon.</em>&nbsp;<br />
+<br />
+<strong>Coloris cristaux</strong>&nbsp;: blanc<br />
+<strong>Mati&egrave;re</strong>&nbsp;: m&eacute;tal dor&eacute; &agrave; l&#39;or jaune et cristaux Swarovski&reg;<br />
+<strong>Diam&egrave;tre</strong>&nbsp;: 6 cm</p>");
+
+        $product->setQuantity(200);
+
+        /*$size=new ProductSize();
+        $size->setProduct($product);
+        $size->setSize("50-52");
+        $manager->persist($size);*/
+
+
+
+        $image=new Image();
+        $image1=new Image();
+        $image->setName("products_9191068_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $image1->setName("products_9191068_image2_original.jpg");
+        $image1->setLabel("g");
+        $image1->setProduct($product);
+        $manager->persist($image1);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+//prod num 4
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('Jonc doré à l\'or rose et cristaux Swarovski®');
+        $product->setPrice(32.00 );
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p>Jonc&nbsp;<strong>dor&eacute; &agrave; l&#39;or rose</strong>.&nbsp;<br />
+Orn&eacute; de&nbsp;<strong>cristaux Swarovski&reg;</strong>.&nbsp;<br />
+Fermoir pivotant.&nbsp;<br />
+<br />
+<em>Chaque bijou est accompagn&eacute; de son pochon.&nbsp;</em><br />
+<br />
+<strong>Coloris cristaux</strong>&nbsp;: blanc&nbsp;<br />
+<strong>Mati&egrave;re</strong>&nbsp;: m&eacute;tal dor&eacute; &agrave; l&#39;or rose et cristaux Swarovski&reg;&nbsp;<br />
+<strong>Diam&egrave;tre</strong>&nbsp;: 6 cm</p>");
+
+        $product->setQuantity(200);
+
+        /*$size=new ProductSize();
+        $size->setProduct($product);
+        $size->setSize("50-52");
+        $manager->persist($size);*/
+
+
+
+        $image=new Image();
+        $image1=new Image();
+        $image->setName("products_9191022_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $image1->setName("products_9191022_image2_original.jpg");
+        $image1->setLabel("g");
+        $image1->setProduct($product);
+        $manager->persist($image1);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+        //categ: Colliers et pendentifs
+        $category = new Category();
+        $category->setBrand($brand);
+        $category->setName("Colliers et pendentifs");
+        $manager->persist($category);
+
+        //prod num 1
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('Collier doré à l\'or blanc et cristaux Swarovski®');
+        $product->setPrice(13.50 );
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p>Collier&nbsp;<strong>dor&eacute; &agrave; l&#39;or blanc</strong>.<br />
+Pendentif orn&eacute; de&nbsp;<strong>cristaux Swarovski&reg;</strong>.<br />
+Longueur r&eacute;glable.<br />
+Fermoir mousqueton.<br />
+<br />
+<em>Chaque bijou est accompagn&eacute; de son pochon.</em>&nbsp;<br />
+<br />
+<strong>Coloris cristaux</strong>&nbsp;: blanc&nbsp;<br />
+<strong>Mati&egrave;re</strong>&nbsp;: m&eacute;tal dor&eacute; &agrave; l&#39;or blanc 18 carats et cristaux Swarovski&reg;<br />
+<strong>Longueur</strong>&nbsp;: 40,5 &agrave; 42,5 cm</p>");
+
+        $product->setQuantity(200);
+
+        /*$size=new ProductSize();
+        $size->setProduct($product);
+        $size->setSize("50-52");
+        $manager->persist($size);*/
+
+
+
+        $image=new Image();
+        $image1=new Image();
+        $image->setName("products_9232454_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $image1->setName("products_9232454_image2_original.jpg");
+        $image1->setLabel("g");
+        $image1->setProduct($product);
+        $manager->persist($image1);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+        //prod num 2
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('Collier doré à l\'or blanc et cristaux Swarovski®');
+        $product->setPrice(9.50 );
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p>Collier&nbsp;<strong>dor&eacute; &agrave; l&#39;or blanc</strong>.<br />
+Pendentif orn&eacute; de&nbsp;<strong>cristaux Swarovski&reg;</strong>.<br />
+Longueur r&eacute;glable.<br />
+Fermoir mousqueton.<br />
+<br />
+<em>Chaque bijou est accompagn&eacute; de son pochon.</em>&nbsp;<br />
+<br />
+<strong>Coloris cristaux</strong>&nbsp;: blanc<br />
+<strong>Mati&egrave;re</strong>&nbsp;: m&eacute;tal dor&eacute; &agrave; l&#39;or blanc 18 carats et cristaux Swarovski&reg;<br />
+<strong>Dimensions pendentif</strong>&nbsp;: 2,2 x 0,9 cm<br />
+<strong>Longueur</strong>&nbsp;: 41 &agrave; 44,5 cm</p>");
+
+        $product->setQuantity(200);
+
+        /*$size=new ProductSize();
+        $size->setProduct($product);
+        $size->setSize("50-52");
+        $manager->persist($size);*/
+
+
+
+        $image=new Image();
+        $image1=new Image();
+        $image->setName("products_9191083_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $image1->setName("products_9191083_image2_original.jpg");
+        $image1->setLabel("g");
+        $image1->setProduct($product);
+        $manager->persist($image1);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+        //prod num 3
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('Pendentif doré à l\'or blanc et cristal Swarovski®');
+        $product->setPrice(10.50 );
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p>Pendentif&nbsp;<strong>dor&eacute; &agrave; l&#39;or blanc</strong>.&nbsp;<br />
+Orn&eacute; d&#39;un&nbsp;<strong>cristal Swarovski&reg;</strong>.&nbsp;<br />
+<br />
+<strong>Une cha&icirc;ne dor&eacute;e &agrave; l&rsquo;or blanc vous sera gracieusement offerte avec votre pendentif.&nbsp;</strong><br />
+<br />
+<em>Chaque bijou est accompagn&eacute; de son pochon.&nbsp;</em><br />
+<br />
+<strong>Coloris cristal</strong>&nbsp;: noir&nbsp;<br />
+<strong>Mati&egrave;re</strong>&nbsp;: m&eacute;tal dor&eacute; &agrave; l&#39;or blanc et cristal Swarovski&reg;&nbsp;<br />
+<strong>Longueur cha&icirc;ne</strong>&nbsp;: 20 &agrave; 26 cm<br />
+<strong>Longueur pendentif</strong>&nbsp;: 3 x 1,5 cm&nbsp;</p>");
+
+        $product->setQuantity(200);
+
+        /*$size=new ProductSize();
+        $size->setProduct($product);
+        $size->setSize("50-52");
+        $manager->persist($size);*/
+
+
+
+        $image=new Image();
+        $image1=new Image();
+        $image->setName("products_9191055_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $image1->setName("products_9191055_image2_original.jpg");
+        $image1->setLabel("g");
+        $image1->setProduct($product);
+        $manager->persist($image1);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+        //categ : MONTRES
+        $category = new Category();
+        $category->setBrand($brand);
+        $category->setName("MONTRES");
+        $manager->persist($category);
+
+        //prod num 1
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('Montre à quartz en métal et cristaux Swarovski® - Argenté et doré');
+        $product->setPrice(55.00 );
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p>Montre &agrave; quartz.<br />
+Cadran et lunette orn&eacute;s de&nbsp;<strong>cristaux Swarovski&reg;</strong>.<br />
+Bracelet &agrave; maillons.<br />
+Fermeture par boucle d&eacute;ployante.<br />
+R&eacute;sistance &agrave; l&#39;eau : 30 m.<br />
+<br />
+<em>Chaque montre est accompagn&eacute;e de son coffret.</em>&nbsp;<br />
+<br />
+<strong>Mat&eacute;riaux</strong><br />
+Verre min&eacute;ral<br />
+Bo&icirc;tier et bracelet en m&eacute;tal.<br />
+Cristaux Swarovski&reg;<br />
+<br />
+<strong>Coloris&nbsp;</strong>: argent&eacute; et dor&eacute;<br />
+<br />
+<strong>Dimensions bo&icirc;tier</strong>&nbsp;: 33 x 33 x 5 mm<br />
+<strong>Largeur bracelet</strong>&nbsp;: 16 mm&nbsp;</p>");
+
+        $product->setQuantity(200);
+
+        /*$size=new ProductSize();
+        $size->setProduct($product);
+        $size->setSize("50-52");
+        $manager->persist($size);*/
+
+
+
+        $image=new Image();
+        $image1=new Image();
+        $image->setName("products_9191189_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $image1->setName("products_9191189_image2_original.jpg");
+        $image1->setLabel("g");
+        $image1->setProduct($product);
+        $manager->persist($image1);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+         //prod num 2
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('Montre à quartz en métal doré à l\'or jaune et cristaux Swarovski® - Doré et blanc');
+        $product->setPrice(23.00 );
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p>Montre &agrave; quartz.&nbsp;<br />
+Cadran, lunette crant&eacute;e et bracelet orn&eacute;s de&nbsp;<strong>cristaux Swarovski&reg;</strong>.<br />
+Bracelet &agrave; maillons.<br />
+Fermeture par clip.<br />
+R&eacute;sistance &agrave; l&#39;eau : 30 m.<br />
+<br />
+<em>Chaque montre est accompagn&eacute;e de son coffret.</em>&nbsp;<br />
+<br />
+<strong>Mat&eacute;riaux</strong><br />
+Verre min&eacute;ral&nbsp;<br />
+Bo&icirc;tier et bracelet en m&eacute;tal&nbsp;<br />
+Cristaux Swarovski&reg;<br />
+<br />
+<strong>Coloris</strong>&nbsp;: dor&eacute; et blanc<br />
+<br />
+<strong>Dimensions bo&icirc;tier</strong>&nbsp;: 38 x 38 x 7 mm<br />
+<strong>Largeur bracelet</strong>&nbsp;: 17 mm</p>");
+
+        $product->setQuantity(200);
+
+        /*$size=new ProductSize();
+        $size->setProduct($product);
+        $size->setSize("50-52");
+        $manager->persist($size);*/
+
+
+
+        $image=new Image();
+        $image1=new Image();
+        $image->setName("products_9191188_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $image1->setName("products_9191188_image2_original.jpg");
+        $image1->setLabel("g");
+        $image1->setProduct($product);
+        $manager->persist($image1);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+        //prod num 3
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('Montre à quartz dorée à l\'or blanc - Argenté');
+        $product->setPrice(24.00 );
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p>Montre &agrave; quartz&nbsp;<strong>dor&eacute;e &agrave; l&#39;or blanc</strong>.<br />
+Cadran et lunette crant&eacute;e sertis de cristaux.<br />
+Bracelet &agrave; maillons.<br />
+Fermeture par boucle d&eacute;ployante.<br />
+R&eacute;sistance &agrave; l&#39;eau : 30 m.<br />
+<br />
+<em>Chaque montre est accompagn&eacute;e de son coffret.</em>&nbsp;<br />
+<br />
+<strong>Mat&eacute;riaux</strong><br />
+Verre min&eacute;ral<br />
+Bo&icirc;tier et bracelet dor&eacute;s &agrave; l&#39;or blanc 18 carats&nbsp;<br />
+<br />
+<strong>Coloris&nbsp;</strong>: argent&eacute;<br />
+<br />
+<strong>Dimensions bo&icirc;tier</strong>&nbsp;: 30 x 10 mm<br />
+<strong>Largeur bracelet</strong>&nbsp;: 18 mm&nbsp;</p>");
+
+        $product->setQuantity(200);
+
+        /*$size=new ProductSize();
+        $size->setProduct($product);
+        $size->setSize("50-52");
+        $manager->persist($size);*/
+
+
+
+        $image=new Image();
+        $image1=new Image();
+        $image->setName("products_9191179_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $image1->setName("products_9191179_image2_original.jpg");
+        $image1->setLabel("g");
+        $image1->setProduct($product);
+        $manager->persist($image1);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+
+        //new brand :CLIO BLUE
+        $logo=new BrandImage();
+        $logo->setName('logo_24915.jpg');
+
+        $brandImage=new BrandImage();
+        $brandImage->setName('bijoux1.jpg');
+        $manager->persist($logo);
+        $manager->persist($brandImage);
+
+        $brand=new Brand();
+        $brand->setBrandName('CLIO BLUE');
+        $brand->setDescription('<p>Depuis 30 ans,&nbsp;<strong>Clio Blue</strong>, la marque aux deux poissons, positionn&eacute;e fantaisie haut de gamme, cr&eacute;e des bijoux pour tous les styles. Des bijoux comme des valeurs s&ucirc;res que les clientes suivent de g&eacute;n&eacute;ration en g&eacute;n&eacute;ration&hellip;</p>');
+        $brand->setLogo($logo);
+        $brand->setUser($user);
+        $brand->setBrandImage($brandImage);
+        $brand->setTag($tag);
+        $manager->persist($brand);
+
+        //categ bagues
+        $category = new Category();
+        $category->setBrand($brand);
+        $category->setName("BAGUES");
+        $manager->persist($category);
+
+        //prod num 1
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('Bague - Argent');
+        $product->setPrice(57.00 );
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p>Bague en&nbsp;<strong>argent</strong>.<br />
+<br />
+<em>Chaque bijou est accompagn&eacute; de sa pochette.</em>&nbsp;<br />
+<br />
+<strong>Mati&egrave;re</strong>&nbsp;: argent 925/1000<br />
+<strong>Poids de l&#39;argent</strong>&nbsp;: 14,4 g&nbsp;</p>
+
+<p><em>Du fait de l&#39;unicit&eacute; de chaque bijou, le grammage, la taille et le caratage des mat&eacute;riaux sont donn&eacute;s &agrave; titre indicatif. Ils peuvent varier l&eacute;g&egrave;rement d&#39;une pierre &agrave; l&#39;autre et d&#39;une mesure &agrave; une autre.</em></p>");
+
+        $product->setQuantity(200);
+
+        $size=new ProductSize();
+        $size->setProduct($product);
+        $size->setSize("50");
+        $manager->persist($size);
+
+        $size1=new ProductSize();
+        $size1->setProduct($product);
+        $size1->setSize("52");
+        $manager->persist($size1);
+
+        $size2=new ProductSize();
+        $size2->setProduct($product);
+        $size2->setSize("54");
+        $manager->persist($size2);
+
+        $size3=new ProductSize();
+        $size3->setProduct($product);
+        $size3->setSize("56");
+        $manager->persist($size3);
+
+
+        $image=new Image();
+        $image1=new Image();
+        $image->setName("products_9149799_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $image1->setName("products_9149799_image3_original.jpg");
+        $image1->setLabel("g");
+        $image1->setProduct($product);
+        $manager->persist($image1);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+        //prod num 2
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('Bague - Argent');
+        $product->setPrice(79.00 );
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p>Bague en&nbsp;<strong>argent</strong>&nbsp;sertie d&#39;un zirconium.<br />
+<br />
+<em>Chaque bijou est accompagn&eacute; de sa pochette.</em>&nbsp;<br />
+<br />
+<strong>Coloris zirconium</strong>&nbsp;: blanc<br />
+<strong>Mati&egrave;re</strong>&nbsp;: argent<br />
+<strong>Poids de l&#39;argent</strong>&nbsp;: 10,5 g</p>
+
+<p><em>Du fait de l&#39;unicit&eacute; de chaque bijou, le grammage, la taille et le caratage des mat&eacute;riaux sont donn&eacute;s &agrave; titre indicatif. Ils peuvent varier l&eacute;g&egrave;rement d&#39;une pierre &agrave; l&#39;autre et d&#39;une mesure &agrave; une autre.</em></p>");
+
+        $product->setQuantity(200);
+
+
+
+        $size1=new ProductSize();
+        $size1->setProduct($product);
+        $size1->setSize("52");
+        $manager->persist($size1);
+
+        $size2=new ProductSize();
+        $size2->setProduct($product);
+        $size2->setSize("56");
+        $manager->persist($size2);
+
+        $size3=new ProductSize();
+        $size3->setProduct($product);
+        $size3->setSize("58");
+        $manager->persist($size3);
+
+
+        $image=new Image();
+        $image1=new Image();
+        $image->setName("products_9150936_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $image1->setName("products_9150936_image3_original.jpg");
+        $image1->setLabel("g");
+        $image1->setProduct($product);
+        $manager->persist($image1);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+        //prod num 3
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('Set de 3 bagues - Argent doré à l\'or rose et céramique');
+        $product->setPrice(42.00 );
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p>Set comprenant :</p>
+
+<ul>
+	<li>1 bague en&nbsp;<strong>argent</strong>&nbsp;sertie de zirconiums</li>
+	<li>2 bagues en&nbsp;<strong>c&eacute;ramique</strong></li>
+</ul>
+
+<p><em>Chaque bijou est accompagn&eacute; de sa pochette.</em>&nbsp;<br />
+<br />
+<strong>Coloris c&eacute;ramique</strong>&nbsp;: blanc<br />
+<strong>Coloris zirconiums</strong>&nbsp;: blanc<br />
+<strong>Mati&egrave;re</strong>&nbsp;: argent dor&eacute; &agrave; l&#39;or rose, c&eacute;ramique et zirconiums<br />
+<strong>Poids de l&#39;argent</strong>&nbsp;: 6,7 g</p>
+
+<p><em>Du fait de l&#39;unicit&eacute; de chaque bijou, le grammage, la taille et le caratage des mat&eacute;riaux sont donn&eacute;s &agrave; titre indicatif. Ils peuvent varier l&eacute;g&egrave;rement d&#39;une pierre &agrave; l&#39;autre et d&#39;une mesure &agrave; une autre.</em></p>");
+
+        $product->setQuantity(200);
+
+
+        $size1=new ProductSize();
+        $size1->setProduct($product);
+        $size1->setSize("50");
+        $manager->persist($size1);
+
+        $size2=new ProductSize();
+        $size2->setProduct($product);
+        $size2->setSize("52");
+        $manager->persist($size2);
+
+        $size3=new ProductSize();
+        $size3->setProduct($product);
+        $size3->setSize("54");
+        $manager->persist($size3);
+
+
+        $image=new Image();
+        $image1=new Image();
+        $image->setName("products_9150929_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $image1->setName("products_9150929_image3_original.jpg");
+        $image1->setLabel("g");
+        $image1->setProduct($product);
+        $manager->persist($image1);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+
+        //prod num 4
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('Bague - Argent et céramique');
+        $product->setPrice(42.00 );
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p>Bague en&nbsp;<strong>argent</strong>&nbsp;et&nbsp;<strong>c&eacute;ramique</strong>&nbsp;sertie de zirconiums.<br />
+<br />
+<em>Chaque bijou est accompagn&eacute; de sa pochette.</em>&nbsp;<br />
+<br />
+<strong>Coloris c&eacute;ramique</strong>&nbsp;: noir<br />
+<strong>Coloris zirconiums</strong>&nbsp;: blanc<br />
+<strong>Mati&egrave;re</strong>&nbsp;: argent, c&eacute;ramique et zirconiums<br />
+<strong>Poids de l&#39;argent</strong>&nbsp;: 3,3 g</p>
+
+<p><em>Du fait de l&#39;unicit&eacute; de chaque bijou, le grammage, la taille et le caratage des mat&eacute;riaux sont donn&eacute;s &agrave; titre indicatif. Ils peuvent varier l&eacute;g&egrave;rement d&#39;une pierre &agrave; l&#39;autre et d&#39;une mesure &agrave; une autre.</em></p>");
+
+        $product->setQuantity(200);
+
+
+        $size1=new ProductSize();
+        $size1->setProduct($product);
+        $size1->setSize("50");
+        $manager->persist($size1);
+
+        $size2=new ProductSize();
+        $size2->setProduct($product);
+        $size2->setSize("52");
+        $manager->persist($size2);
+
+        $size3=new ProductSize();
+        $size3->setProduct($product);
+        $size3->setSize("54");
+        $manager->persist($size3);
+
+
+        $image=new Image();
+        $image1=new Image();
+        $image->setName("products_9150928_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $image1->setName("products_9150928_image3_original.jpg");
+        $image1->setLabel("g");
+        $image1->setProduct($product);
+        $manager->persist($image1);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+        // new categ : braclet
+        $category = new Category();
+        $category->setBrand($brand);
+        $category->setName("Bracelets");
+        $manager->persist($category);
+
+        //prod num 1
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('Bracelet - Argent');
+        $product->setPrice(14.50 );
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p>Bracelet en&nbsp;<strong>argent</strong>.<br />
+Longueur r&eacute;glable.<br />
+Fermoir mousqueton.<br />
+<br />
+<em>Chaque bijou est accompagn&eacute; de sa pochette.</em>&nbsp;<br />
+<br />
+<strong>Mati&egrave;re</strong>&nbsp;: argent<br />
+<strong>Poids de l&#39;argent</strong>&nbsp;: 1,8 g<br />
+<strong>Longueurs</strong>&nbsp;: 16 et 18 cm&nbsp;<br />
+<br />
+<em>Du fait de l&#39;unicit&eacute; de chaque bijou, le grammage, la taille et le caratage des mat&eacute;riaux sont donn&eacute;s &agrave; titre indicatif. Ils peuvent varier l&eacute;g&egrave;rement d&#39;une pierre &agrave; l&#39;autre et d&#39;une mesure &agrave; une autre.</em></p>");
+
+        $product->setQuantity(200);
+
+
+
+
+        $image=new Image();
+        $image1=new Image();
+        $image->setName("products_9149867_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $image1->setName("products_9149867_image3_original.jpg");
+        $image1->setLabel("g");
+        $image1->setProduct($product);
+        $manager->persist($image1);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+        //prod num 2
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('Bracelet - Argent');
+        $product->setPrice(27.00 );
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p>Bracelet en&nbsp;<strong>argent</strong>.<br />
+<br />
+<em>Chaque bijou est accompagn&eacute; de sa pochette</em>.&nbsp;<br />
+<br />
+<strong>Mati&egrave;re</strong>&nbsp;: argent&nbsp;<br />
+<strong>Poids de l&#39;argent</strong>&nbsp;: 8,4 g<br />
+<strong>Longueur</strong>&nbsp;: 18 cm&nbsp;<br />
+<br />
+<em>Du fait de l&#39;unicit&eacute; de chaque bijou, le grammage, la taille et le caratage des mat&eacute;riaux sont donn&eacute;s &agrave; titre indicatif. Ils peuvent varier l&eacute;g&egrave;rement d&#39;une pierre &agrave; l&#39;autre et d&#39;une mesure &agrave; une autre.</em></p>");
+
+        $product->setQuantity(200);
+
+
+
+
+        $image=new Image();
+        $image1=new Image();
+        $image->setName("products_9149897_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $image1->setName("products_9149897_image2_original.jpg");
+        $image1->setLabel("g");
+        $image1->setProduct($product);
+        $manager->persist($image1);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+        //prod num 3
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('Bracelet - Argent et quartz jaune');
+        $product->setPrice(20.00 );
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p>Bracelet en&nbsp;<strong>argent</strong>,&nbsp;<strong>quartz</strong>&nbsp;et calcite.<br />
+<br />
+<em>Chaque bijou est accompagn&eacute; de sa pochette.</em>&nbsp;<br />
+<br />
+<strong>Coloris quartz</strong>&nbsp;: jaune<br />
+<strong>Mati&egrave;re</strong>&nbsp;: argent, quartz et calcite<br />
+<strong>Poids argent</strong>&nbsp;: 1,8 g</p>");
+
+        $product->setQuantity(200);
+
+
+
+
+        $image=new Image();
+        $image1=new Image();
+        $image->setName("products_9150973_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $image1->setName("products_9150973_image2_original.jpg");
+        $image1->setLabel("g");
+        $image1->setProduct($product);
+        $manager->persist($image1);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+        // new categ : Boucles d'oreilles
+        $category = new Category();
+        $category->setBrand($brand);
+        $category->setName("Boucles d'oreilles");
+        $manager->persist($category);
+
+        //prod num 1
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('Boucles d\'oreilles - Argent et quartz rose');
+        $product->setPrice(25.00 );
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p>Boucles d&#39;oreilles en&nbsp;<strong>argent</strong>&nbsp;et quartz facett&eacute;.<br />
+Fermoir crochet.<br />
+<br />
+<em>Chaque bijou est accompagn&eacute; de sa pochette.</em>&nbsp;<br />
+<br />
+<strong>Coloris quartz</strong>&nbsp;: rose<br />
+<strong>Mati&egrave;re</strong>&nbsp;: argent et quartz facett&eacute;<br />
+<strong>Poids de l&#39;argent</strong>&nbsp;: 1 g<br />
+<br />
+<em>Du fait de l&#39;unicit&eacute; de chaque bijou, le grammage, la taille et le caratage des mat&eacute;riaux sont donn&eacute;s &agrave; titre indicatif. Ils peuvent varier l&eacute;g&egrave;rement d&#39;une pierre &agrave; l&#39;autre et d&#39;une mesure &agrave; une autre.</em></p>");
+
+        $product->setQuantity(200);
+
+
+        $image=new Image();
+        $image1=new Image();
+        $image->setName("products_9150940_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $image1->setName("products_9150940_image2_original.jpg");
+        $image1->setLabel("g");
+        $image1->setProduct($product);
+        $manager->persist($image1);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+        //prod num 2
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('Boucles d\'oreilles - Argent et obsidienne');
+        $product->setPrice(25.00 );
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p>Boucles d&#39;oreilles en&nbsp;<strong>argent</strong>&nbsp;et&nbsp;<strong>obsidienne</strong>.<br />
+Fermoir crochet.<br />
+<br />
+<em>Chaque bijou est accompagn&eacute; de sa pochette.</em>&nbsp;<br />
+<br />
+<strong>Coloris pierre</strong>&nbsp;: noir<br />
+<strong>Mati&egrave;re</strong>&nbsp;: argent et obsedienne<br />
+<strong>Poids de l&#39;argent</strong>&nbsp;: 1 g<br />
+<br />
+<em>Du fait de l&#39;unicit&eacute; de chaque bijou, le grammage, la taille et le caratage des mat&eacute;riaux sont donn&eacute;s &agrave; titre indicatif. Ils peuvent varier l&eacute;g&egrave;rement d&#39;une pierre &agrave; l&#39;autre et d&#39;une mesure &agrave; une autre.</em></p>");
+
+        $product->setQuantity(200);
+
+
+        $image=new Image();
+        $image1=new Image();
+        $image->setName("products_9150939_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $image1->setName("products_9150939_image3_original.jpg");
+        $image1->setLabel("g");
+        $image1->setProduct($product);
+        $manager->persist($image1);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+        //prod num 3
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('Boucles d\'oreilles - Argent et nacre');
+        $product->setPrice(22.00 );
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p>Boucles d&#39;oreilles pendantes en&nbsp;<strong>argent</strong>&nbsp;et en&nbsp;<strong>nacre</strong>.<br />
+Fermoir crochet.<br />
+<br />
+<em>Chaque bijou est accompagn&eacute; de sa pochette</em>.&nbsp;<br />
+<br />
+<strong>Coloris nacre</strong>&nbsp;: blanc<br />
+<strong>Mati&egrave;re</strong>&nbsp;: argent 925/1000 et nacre<br />
+<strong>Poids de l&#39;argent</strong>&nbsp;: 1 g<br />
+<strong>Dimensions</strong>&nbsp;: 1,5 x 3,5 cm&nbsp;<br />
+<br />
+<em>Du fait de l&#39;unicit&eacute; de chaque bijou, le grammage, la taille et le caratage des mat&eacute;riaux sont donn&eacute;s &agrave; titre indicatif. Ils peuvent varier l&eacute;g&egrave;rement d&#39;une pierre &agrave; l&#39;autre et d&#39;une mesure &agrave; une autre.</em></p>");
+
+        $product->setQuantity(200);
+
+
+        $image=new Image();
+        $image1=new Image();
+        $image->setName("products_9149895_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $image1->setName("products_9149895_image2_original.jpg");
+        $image1->setLabel("g");
+        $image1->setProduct($product);
+        $manager->persist($image1);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+
+        // new brand :L'ATELIER PARISIEN
+        $logo=new BrandImage();
+        $logo->setName('logo_25518.jpg');
+
+        $brandImage=new BrandImage();
+        $brandImage->setName('bijoux2.jpg');
+        $manager->persist($logo);
+        $manager->persist($brandImage);
+
+        $brand=new Brand();
+        $brand->setBrandName('L\'ATELIER PARISIEN');
+        $brand->setDescription('L\'ATELIER PARISIEN');
+        $brand->setLogo($logo);
+        $brand->setUser($user);
+        $brand->setBrandImage($brandImage);
+        $brand->setTag($tag);
+        $manager->persist($brand);
+
+        //categ bagues
+        $category = new Category();
+        $category->setBrand($brand);
+        $category->setName("BAGUES");
+        $manager->persist($category);
+
+        //prod num 1
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('Bague Juliette - Argent');
+        $product->setPrice(43.00 );
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p>Bague en&nbsp;<strong>argent</strong>.<br />
+<br />
+<em>Chaque bijou est accompagn&eacute; de son pochon.</em>&nbsp;<br />
+<br />
+<strong>Mati&egrave;re</strong>&nbsp;: argent 925/1000&nbsp;<br />
+<strong>Poids de l&#39;argent</strong>&nbsp;: 11,8 g<br />
+<br />
+<br />
+<em>Du fait de l&#39;unicit&eacute; de chaque bijou, le grammage, la taille et le caratage des mat&eacute;riaux sont donn&eacute;s &agrave; titre indicatif. Ils peuvent varier l&eacute;g&egrave;rement d&#39;une pierre &agrave; l&#39;autre et d&#39;une mesure &agrave; une autre.</em></p>");
+
+        $product->setQuantity(200);
+
+
+        $size1=new ProductSize();
+        $size1->setProduct($product);
+        $size1->setSize("50");
+        $manager->persist($size1);
+
+        $size2=new ProductSize();
+        $size2->setProduct($product);
+        $size2->setSize("52");
+        $manager->persist($size2);
+
+        $size3=new ProductSize();
+        $size3->setProduct($product);
+        $size3->setSize("54");
+        $manager->persist($size3);
+
+        $size3=new ProductSize();
+        $size3->setProduct($product);
+        $size3->setSize("56");
+        $manager->persist($size3);
+
+        $size3=new ProductSize();
+        $size3->setProduct($product);
+        $size3->setSize("58");
+        $manager->persist($size3);
+
+        $size3=new ProductSize();
+        $size3->setProduct($product);
+        $size3->setSize("60");
+        $manager->persist($size3);
+
+
+        $image=new Image();
+        $image1=new Image();
+        $image->setName("products_9208682_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $image1->setName("products_9208682_image2_original.jpg");
+        $image1->setLabel("g");
+        $image1->setProduct($product);
+        $manager->persist($image1);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+        //prod num 2
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('Bague Sophie - Argent');
+        $product->setPrice(36.00 );
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p>Bague en&nbsp;<strong>argent</strong>&nbsp;sertie de zirconiums.<br />
+<br />
+<em>Chaque bijou est accompagn&eacute; de son pochon.</em>&nbsp;<br />
+<br />
+<strong>Coloris zirconiums</strong>&nbsp;: blanc<br />
+<strong>Mati&egrave;re</strong>&nbsp;: argent 925/1000 et zirconiums<br />
+<strong>Poids de l&#39;argent</strong>&nbsp;: 6,35 g<br />
+<br />
+<em>Du fait de l&#39;unicit&eacute; de chaque bijou, le grammage, la taille et le caratage des mat&eacute;riaux sont donn&eacute;s &agrave; titre indicatif. Ils peuvent varier l&eacute;g&egrave;rement d&#39;une pierre &agrave; l&#39;autre et d&#39;une mesure &agrave; une autre.</em></p>");
+
+        $product->setQuantity(200);
+
+
+        $size1=new ProductSize();
+        $size1->setProduct($product);
+        $size1->setSize("50");
+        $manager->persist($size1);
+
+        $size2=new ProductSize();
+        $size2->setProduct($product);
+        $size2->setSize("52");
+        $manager->persist($size2);
+
+        $size3=new ProductSize();
+        $size3->setProduct($product);
+        $size3->setSize("54");
+        $manager->persist($size3);
+
+        $size3=new ProductSize();
+        $size3->setProduct($product);
+        $size3->setSize("56");
+        $manager->persist($size3);
+
+        $size3=new ProductSize();
+        $size3->setProduct($product);
+        $size3->setSize("58");
+        $manager->persist($size3);
+
+        $size3=new ProductSize();
+        $size3->setProduct($product);
+        $size3->setSize("60");
+        $manager->persist($size3);
+
+
+        $image=new Image();
+        $image1=new Image();
+        $image->setName("products_9208683_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $image1->setName("products_9208683_image2_original.jpg");
+        $image1->setLabel("g");
+        $image1->setProduct($product);
+        $manager->persist($image1);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+        //prod num 3
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('Bague - Argent');
+        $product->setPrice(18.00 );
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p>Bague en&nbsp;<strong>argent</strong>.&nbsp;<br />
+<br />
+<em>Chaque bijou est accompagn&eacute; de son pochon.</em>&nbsp;<br />
+<br />
+<strong>Mati&egrave;re</strong>&nbsp;: argent 925/1000<br />
+<strong>Poids de l&#39;argent</strong>&nbsp;: 2,8 g<br />
+<br />
+<em>Du fait de l&#39;unicit&eacute; de chaque bijou, le grammage, la taille et le caratage des mat&eacute;riaux sont donn&eacute;s &agrave; titre indicatif. Ils peuvent varier l&eacute;g&egrave;rement d&#39;une pierre &agrave; l&#39;autre et d&#39;une mesure &agrave; une autre.</em></p>");
+
+        $product->setQuantity(200);
+
+
+        $size1=new ProductSize();
+        $size1->setProduct($product);
+        $size1->setSize("50");
+        $manager->persist($size1);
+
+        $size2=new ProductSize();
+        $size2->setProduct($product);
+        $size2->setSize("52");
+        $manager->persist($size2);
+
+        $size3=new ProductSize();
+        $size3->setProduct($product);
+        $size3->setSize("54");
+        $manager->persist($size3);
+
+        $size3=new ProductSize();
+        $size3->setProduct($product);
+        $size3->setSize("56");
+        $manager->persist($size3);
+
+        $size3=new ProductSize();
+        $size3->setProduct($product);
+        $size3->setSize("58");
+        $manager->persist($size3);
+
+        $size3=new ProductSize();
+        $size3->setProduct($product);
+        $size3->setSize("60");
+        $manager->persist($size3);
+
+
+        $image=new Image();
+        $image1=new Image();
+        $image->setName("products_9208716_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $image1->setName("products_9208716_image4_original.jpg");
+        $image1->setLabel("g");
+        $image1->setProduct($product);
+        $manager->persist($image1);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+        // new categ : Colliers et pendentifs
+        $category = new Category();
+        $category->setBrand($brand);
+        $category->setName("Colliers et pendentifs");
+        $manager->persist($category);
+
+        //prod num 1
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('Collier Helena - Argent');
+        $product->setPrice(33.00 );
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p>Collier en&nbsp;<strong>argent</strong>.<br />
+Longueur r&eacute;glable.<br />
+Fermoir mousqueton.<br />
+<br />
+<em>Chaque bijou est accompagn&eacute; de son pochon.</em>&nbsp;<br />
+<br />
+<strong>Mati&egrave;re</strong>&nbsp;: argent 925/1000&nbsp;<br />
+<strong>Poids de l&#39;argent</strong>&nbsp;: 4,29 g<br />
+<strong>Longueur pendentif</strong>&nbsp;: 2,5 cm<br />
+<strong>Longueur</strong>&nbsp;: 42 &agrave; 45 cm<br />
+<br />
+<em>Du fait de l&#39;unicit&eacute; de chaque bijou, le grammage, la taille et le caratage des mat&eacute;riaux sont donn&eacute;s &agrave; titre indicatif. Ils peuvent varier l&eacute;g&egrave;rement d&#39;une pierre &agrave; l&#39;autre et d&#39;une mesure &agrave; une autre.</em></p>");
+
+        $product->setQuantity(200);
+
+        $image=new Image();
+        $image1=new Image();
+        $image->setName("products_9208684_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $image1->setName("products_9208684_image2_original.jpg");
+        $image1->setLabel("g");
+        $image1->setProduct($product);
+        $manager->persist($image1);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+
+        //prod num 2
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('Collier - Argent');
+        $product->setPrice(45.00 );
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p>Collier en&nbsp;<strong>argent</strong>.<br />
+Pendentif serti de zirconiums.<br />
+Longueur r&eacute;glable.<br />
+Fermoir mousqueton.<br />
+<br />
+<em>Chaque bijou est accompagn&eacute; de son pochon.</em>&nbsp;<br />
+<br />
+<strong>Coloris zirconium</strong>&nbsp;: blanc<br />
+<strong>Mati&egrave;re</strong>&nbsp;: argent 925/1000 et zirconiums<br />
+<strong>Poids de l&#39;argent</strong>&nbsp;: 3,47 g<br />
+<strong>Longueur</strong>&nbsp;: 45 cm&nbsp;<br />
+<br />
+<em>Du fait de l&#39;unicit&eacute; de chaque bijou, le grammage, la taille et le caratage des mat&eacute;riaux sont donn&eacute;s &agrave; titre indicatif. Ils peuvent varier l&eacute;g&egrave;rement d&#39;une pierre &agrave; l&#39;autre et d&#39;une mesure &agrave; une autre.</em></p>");
+
+        $product->setQuantity(200);
+
+        $image=new Image();
+        $image1=new Image();
+        $image->setName("products_9209390_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $image1->setName("products_9209390_image2_original.jpg");
+        $image1->setLabel("g");
+        $image1->setProduct($product);
+        $manager->persist($image1);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+        //prod num 3
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('Collier - Argent');
+        $product->setPrice(31.00 );
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p>Collier en&nbsp;<strong>argent</strong>.<br />
+Longueur r&eacute;glable.<br />
+Fermoir mousqueton.<br />
+<br />
+<em>Chaque bijou est accompagn&eacute; de son pochon.</em>&nbsp;<br />
+<br />
+<strong>Mati&egrave;re</strong>&nbsp;: argent 925/1000<br />
+<strong>Poids de l&#39;argent</strong>&nbsp;: 2,83 g<br />
+<strong>Longueur</strong>&nbsp;: 45 cm<br />
+<br />
+<em>Du fait de l&#39;unicit&eacute; de chaque bijou, le grammage, la taille et le caratage des mat&eacute;riaux sont donn&eacute;s &agrave; titre indicatif. Ils peuvent varier l&eacute;g&egrave;rement d&#39;une pierre &agrave; l&#39;autre et d&#39;une mesure &agrave; une autre.</em></p>");
+
+        $product->setQuantity(200);
+
+        $image=new Image();
+        $image1=new Image();
+        $image->setName("products_9209392_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $image1->setName("products_9209392_image2_original.jpg");
+        $image1->setLabel("g");
+        $image1->setProduct($product);
+        $manager->persist($image1);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+
+        // new categ : Bracelets et joncs
+        $category = new Category();
+        $category->setBrand($brand);
+        $category->setName("Bracelets et joncs");
+        $manager->persist($category);
+
+        //prod num 1
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('Jonc Emma - Argent');
+        $product->setPrice(42.00 );
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p>Jonc en&nbsp;<strong>argent</strong>.<br />
+<br />
+<em>Chaque bijou est accompagn&eacute; de son pochon.</em>&nbsp;<br />
+<br />
+<strong>Mati&egrave;re</strong>&nbsp;: argent 925/1000<br />
+<strong>Poids de l&#39;argent</strong>&nbsp;: 10,8 g<br />
+<strong>Longueurs</strong>&nbsp;: 5,6 cm<br />
+<br />
+<em>Du fait de l&#39;unicit&eacute; de chaque bijou, le grammage, la taille et le caratage des mat&eacute;riaux sont donn&eacute;s &agrave; titre indicatif. Ils peuvent varier l&eacute;g&egrave;rement d&#39;une pierre &agrave; l&#39;autre et d&#39;une mesure &agrave; une autre.</em></p>");
+
+        $product->setQuantity(200);
+
+        $image=new Image();
+        $image1=new Image();
+        $image->setName("products_9208680_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $image1->setName("products_9208680_image2_original.jpg");
+        $image1->setLabel("g");
+        $image1->setProduct($product);
+        $manager->persist($image1);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+        //prod num 2
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('Jonc Helena - Argent');
+        $product->setPrice(72.00 );
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p>Jonc en&nbsp;<strong>argent</strong>.<br />
+<br />
+<em>Chaque bijou est accompagn&eacute; de son pochon.</em>&nbsp;<br />
+<br />
+<strong>Mati&egrave;re</strong>&nbsp;: argent 925/1000<br />
+<strong>Poids de l&#39;argent</strong>&nbsp;: 14,58 g<br />
+<strong>Diam&egrave;tre</strong>&nbsp;: 5,8 cm<br />
+<br />
+<em>Du fait de l&#39;unicit&eacute; de chaque bijou, le grammage, la taille et le caratage des mat&eacute;riaux sont donn&eacute;s &agrave; titre indicatif. Ils peuvent varier l&eacute;g&egrave;rement d&#39;une pierre &agrave; l&#39;autre et d&#39;une mesure &agrave; une autre.</em></p>");
+
+        $product->setQuantity(200);
+
+        $image=new Image();
+        $image1=new Image();
+        $image->setName("products_9208686_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $image1->setName("products_9208686_image2_original.jpg");
+        $image1->setLabel("g");
+        $image1->setProduct($product);
+        $manager->persist($image1);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+        //prod num 3
+        $product=new Product();
+        $product->setCategory($category);
+        $product->setProductName('Bracelet Angel - Argent');
+        $product->setPrice(25.00 );
+        $product->setStatus('En Stock');
+        $product->setProductDetails("<p>Bracelet en&nbsp;<strong>argent</strong>&nbsp;serti d&#39;une pierre d&#39;imitation.<br />
+Longueur r&eacute;glable.<br />
+Fermoir mousqueton.<br />
+<br />
+<em>Chaque bijou est accompagn&eacute; de son pochon.</em>&nbsp;<br />
+<br />
+<strong>Coloris pierre</strong>&nbsp;: bleu<br />
+<strong>Mati&egrave;re</strong>&nbsp;: argent 925/1000, pierre d&#39;imitation et coton<br />
+<strong>Poids de l&#39;argent</strong>&nbsp;: 1,99 g<br />
+<strong>Longueur</strong>&nbsp;: 16 et 18 cm<br />
+<br />
+<em>Du fait de l&#39;unicit&eacute; de chaque bijou, le grammage, la taille et le caratage des mat&eacute;riaux sont donn&eacute;s &agrave; titre indicatif. Ils peuvent varier l&eacute;g&egrave;rement d&#39;une pierre &agrave; l&#39;autre et d&#39;une mesure &agrave; une autre.</em></p>");
+
+        $product->setQuantity(200);
+
+        $image=new Image();
+        $image1=new Image();
+        $image->setName("products_9208681_image1_original.jpg");
+        $image->setLabel("g");
+        $image->setProduct($product);
+        $manager->persist($image);
+        $image1->setName("products_9208681_image2_original.jpg");
+        $image1->setLabel("g");
+        $image1->setProduct($product);
+        $manager->persist($image1);
+        $manager->flush();
+        $manager->persist($product);
+        $manager->flush();
+
+
+
     }
 }
