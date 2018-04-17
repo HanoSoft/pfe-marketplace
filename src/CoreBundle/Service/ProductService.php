@@ -42,11 +42,12 @@ class ProductService
         return $this->repository->findAll();
     }
     /**
-     * Retourner la liste  des produits actives
+     * Retourner la liste  des produits selon la variable $active
+     * $active prend 2 valeur true ou false
      * return array
      */
-    public function getActiveProducts(){
-        return $this->repository->getActiveProducts();
+    public function getActiveProducts($active){
+        return $this->repository->getActiveProducts($active);
     }
     /**
      * Retourner un seul produit selon l'id
