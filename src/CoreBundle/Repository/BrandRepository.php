@@ -21,6 +21,7 @@ class BrandRepository extends \Doctrine\ORM\EntityRepository
         $qb
             ->where('b.deleted =:active')
             ->setParameter('active', $active)
+            ->orderBy('b.id', 'DESC');
         ;
         return $qb->getQuery()
             ->getResult();
