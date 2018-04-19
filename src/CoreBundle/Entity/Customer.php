@@ -31,28 +31,28 @@ class Customer
     /**
      * @var string
      *
-     * @ORM\Column(name="familyName", type="string", length=255)
+     * @ORM\Column(name="familyName", type="string", length=255,nullable=true)
      */
     private $familyName;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="birthDate", type="date")
+     * @ORM\Column(name="birthDate", type="date",nullable=true)
      */
     private $birthDate;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="sex", type="string", length=255)
+     * @ORM\Column(name="sex", type="string", length=255,nullable=true)
      */
     private $sex;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=255)
+     * @ORM\Column(name="email", type="string", length=255,nullable=true)
      */
     private $email;
 
@@ -66,14 +66,14 @@ class Customer
     /**
      * @var string
      *
-     * @ORM\Column(name="sponsorshipCode", type="string", length=255)
+     * @ORM\Column(name="sponsorshipCode", type="string", length=255,nullable=true)
      */
     private $sponsorshipCode;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="sponsorCode", type="string", length=255)
+     * @ORM\Column(name="sponsorCode", type="string", length=255,nullable=true)
      */
     private $sponsorCode;
 
