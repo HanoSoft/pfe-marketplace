@@ -9,7 +9,9 @@
 namespace CoreBundle\Form;
 
 
-class CustomerType
+use Symfony\Component\Form\AbstractType;
+
+class CustomerType extends AbstractType
 {
 
 }

@@ -268,3 +268,7 @@ admin_user_enable:
 admin_access_denied:
     path:     /admin/access_denied
     defaults: { _controller: AdminBundle:Admin:accessDenied }
+
+admin_customer_list:
+    path:     /admin/customers
+    defaults: { _controller: AdminBundle:Customer:index }
