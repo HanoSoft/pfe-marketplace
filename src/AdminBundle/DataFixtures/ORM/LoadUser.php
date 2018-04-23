@@ -1305,7 +1305,7 @@ Chargeur et kit mains libres inclus.&nbsp;<br />
         /*--------*/
         $tag=new Tag();
         $tag->setName('Bijoux');
-        
+
         $logo=new BrandImage();
         $logo->setName('logo_18634.jpg');
 
