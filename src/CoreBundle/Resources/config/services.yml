@@ -15,5 +15,8 @@ services:
     core.service.brand:
                     class: CoreBundle\Service\BrandService
                     arguments: ['@doctrine.orm.entity_manager']
+    core.service.customer:
+                        class: CoreBundle\Service\CustomerService
+                        arguments: ['@doctrine.orm.entity_manager']
 
 

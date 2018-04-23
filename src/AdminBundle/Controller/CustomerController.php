@@ -8,14 +8,20 @@
 
 namespace AdminBundle\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
-
-class CustomerController
+class CustomerController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('AdminBundle:Customer:index.html.twig');
+        $serviceCustomer = $this->get('core.service.customer');
+        $customers=$serviceCustomer->getCustomers();
+        $formDelete = $this->get('form.factory')->create();
+        return $this->render('AdminBundle:Customer:index.html.twig', array(
+            'customers' => $customers,
+            'formDelete'   => $formDelete->createView(),
+        ));
     }
 
 }
