@@ -37,8 +37,8 @@ class CustomerService
      * Retourner la liste  des client actives
      * return array
      */
-    public function getActiveCustomers(){
-        return $this->repository->getActiveCustomers();
+    public function getActiveCustomers($active){
+        return $this->repository->getActiveCustomers($active);
     }
     /**
      * Retourner un seul client selon l'id

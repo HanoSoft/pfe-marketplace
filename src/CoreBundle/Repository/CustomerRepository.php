@@ -10,4 +10,20 @@ namespace CoreBundle\Repository;
  */
 class CustomerRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * Retourner la liste  des clients selon la variable $active
+     * $active contenir 2 valeur true ou false
+     * return array
+     */
+    public function getActiveCustomers($active)
+    {
+        $qb = $this->createQueryBuilder('c');
+        $qb
+            ->where('c.deleted =:active')
+            ->setParameter('active', $active)
+            ->orderBy('c.id', 'DESC');
+        ;
+        return $qb->getQuery()
+            ->getResult();
+    }
 }
