@@ -21,12 +21,15 @@
                     <th class="sorting_asc">Sexe</th>
                     <th class="sorting_asc">Email</th>
                     <th class="sorting_asc">Télephone</th>
+                    <th class="sorting_asc">Code de parrainage</th>
+                    <th class="sorting_asc">Code parrain</th>
+
                     <th> Status </th>
-                    <th>Action</th>
+
                 </tr>
                 </thead>
                 <tbody >
-                {% for category in categories %}
+                {% for customer in customers %}
                     {% if is_granted('ROLE_ADMIN') %}
                         <tr>
                             <td>
@@ -36,57 +39,27 @@
                             </td>
                             <td>{{ customer.name }}</td>
                             <td>{{ customer.familyName }}</td>
+                            <td>{{ customer.birthDate }}</td>
+                            <td>{{ customer.sex }}</td>
+                            <td>{{ customer.email }}</td>
+                            <td>{{ customer.phoneNumber }}</td>
+                            <td>{{ customer.sponsorshipCode }}</td>
+                            <td>{{ customer.sponsorCode }}</td>
                             <td align="center">
-                                {% if category.deleted ==false %}
+                                {% if customer.deleted ==false %}
                                     <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_customer_disable', {'id':customer.id}) }}" >
                                         <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
                                     </a>
-                                {% else %}
-                                    {% if category.brand.deleted==false %}
-                                        <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_category_enable', {'id': customer.id}) }}" >
-                                            <span class="glyphicon glyphicon-remove " style="color:red;"></span>
-                                        </a>
+
                                     {% else %}
                                         <span class="glyphicon glyphicon-remove " style="color:red;"></span>
-                                    {% endif %}
+
                                 {% endif %}
                             </td>
-                            <td align="center">
-                                <a href="{{ path('admin_category_edit', {'id': category.id}) }}" class="link link-success" ><em class="fa fa-edit"></em></a>
-                                <a href="#myModal" class="link link-danger" data-toggle="modal" data-wathever="{{ path('admin_category_delete', {'id': category.id}) }}" ><em class="fa fa-trash-o"></em></a>
-                            </td>
-                        </tr>
-                    {% else %}
-                        {% if category.brand.user.username==app.user.username %}
-                            <tr>
-                                <a href="{{ path('admin_category_product_list',{'id': category.id}) }}" class="link">
-                                    {{ category.id }}
-                                </a>
-                                <td>{{ category.name }}</td>
-                                <td>{{ category.brand.brandName }}</td>
-                                <td align="center">
-                                    {% if category.deleted ==false %}
-                                        <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_category_disable', {'id':category.id}) }}" >
-                                            <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
-                                        </a>
-                                    {% else %}
-                                        {% if category.brand.deleted==false %}
-                                            <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_category_enable', {'id': category.id}) }}" >
-                                                <span class="glyphicon glyphicon-remove " style="color:red;"></span>
-                                            </a>
-                                        {% else %}
-                                            <span class="glyphicon glyphicon-remove " style="color:red;"></span>
-                                        {% endif %}
-                                    {% endif %}
-                                </td>
-                                <td align="center">
-                                    <a href="{{ path('admin_category_edit', {'id': category.id}) }}" class="link link-success" ><em class="fa fa-edit"></em></a>
-                                    <a href="#myModal" class="link link-danger" data-toggle="modal" data-wathever="{{ path('admin_category_delete', {'id': category.id}) }}" ><em class="fa fa-trash-o"></em></a>
 
-                                </td>
-                            </tr>
+                        </tr>
+
                         {% endif %}
-                    {% endif %}
                 {% endfor %}
                 </tbody>
 
@@ -95,6 +68,6 @@
     </div>
 
 
-
+    {{ include("AdminBundle::delete.html.twig") }}
 
 {% endblock %}

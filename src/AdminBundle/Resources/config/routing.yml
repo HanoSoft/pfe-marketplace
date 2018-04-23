@@ -272,3 +272,10 @@ admin_access_denied:
 admin_customer_list:
     path:     /admin/customers
     defaults: { _controller: AdminBundle:Customer:index }
+
+admin_customer_disable:
+        path:     /admin/customer/disable/{id}
+        defaults:
+                _controller: AdminBundle:Customer:disable
+                requirements:
+                id: \d+
