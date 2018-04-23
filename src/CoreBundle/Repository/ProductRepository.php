@@ -21,7 +21,7 @@ class ProductRepository extends \Doctrine\ORM\EntityRepository
         $qb
             ->where('p.deleted =:active')
             ->setParameter('active', $active)
-    ;
+        ;
         return $qb->getQuery()
             ->getResult();
     }
