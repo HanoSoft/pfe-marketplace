@@ -63,6 +63,9 @@ class Customer
      */
     private $pwd;
 
+
+
+
     /**
      * @var string
      *
@@ -77,6 +80,7 @@ class Customer
      */
     private $sponsorCode;
 
+
     /**
      * @var int
      *
@@ -84,13 +88,13 @@ class Customer
      */
     private $phoneNumber;
 
-
     /**
      * @var bool
      *
      * @ORM\Column(name="deleted", type="boolean")
      */
     private $deleted=false;
+
 
 
     /**
@@ -294,6 +298,9 @@ class Customer
     {
         return $this->sponsorCode;
     }
+
+
+
 
     /**
      * Set phoneNumber
