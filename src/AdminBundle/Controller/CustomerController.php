@@ -9,7 +9,13 @@
 namespace AdminBundle\Controller;
 
 
+
+
 class CustomerController
 {
+    public function indexAction()
+    {
+        return $this->render('AdminBundle:Customer:index.html.twig');
+    }
 
 }
