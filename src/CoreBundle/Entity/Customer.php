@@ -77,6 +77,21 @@ class Customer
      */
     private $sponsorCode;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="phoneNumber", type="integer")
+     */
+    private $phoneNumber;
+
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="deleted", type="boolean")
+     */
+    private $deleted=false;
+
 
     /**
      * Get id
@@ -279,5 +294,52 @@ class Customer
     {
         return $this->sponsorCode;
     }
-}
 
+    /**
+     * Set phoneNumber
+     *
+     * @param integer $phoneNumber
+     *
+     * @return Customer
+     */
+    public function setPhoneNumber($phoneNumber)
+    {
+        $this->phoneNumber = $phoneNumber;
+
+        return $this;
+    }
+
+    /**
+     * Get phoneNumber
+     *
+     * @return integer
+     */
+    public function getPhoneNumber()
+    {
+        return $this->phoneNumber;
+    }
+
+    /**
+     * Set deleted
+     *
+     * @param boolean $deleted
+     *
+     * @return Customer
+     */
+    public function setDeleted($deleted)
+    {
+        $this->deleted = $deleted;
+
+        return $this;
+    }
+
+    /**
+     * Get deleted
+     *
+     * @return boolean
+     */
+    public function getDeleted()
+    {
+        return $this->deleted;
+    }
+}
