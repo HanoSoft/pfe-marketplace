@@ -36,11 +36,27 @@ class Customer
     private $familyName;
 
     /**
-     * @var \DateTime
+     * @var string
      *
      * @ORM\Column(name="birthDate", type="string",length=255,nullable=true)
      */
     private $birthDate;
+
+    /**
+     * @return string
+     */
+    public function getBirthDate()
+    {
+        return $this->birthDate;
+    }
+
+    /**
+     * @param string $birthDate
+     */
+    public function setBirthDate($birthDate)
+    {
+        $this->birthDate = $birthDate;
+    }
 
     /**
      * @var string
@@ -84,7 +100,7 @@ class Customer
     /**
      * @var int
      *
-     * @ORM\Column(name="phoneNumber", type="integer")
+     * @ORM\Column(name="phoneNumber", type="integer", nullable=true)
      */
     private $phoneNumber;
 
@@ -155,29 +171,6 @@ class Customer
         return $this->familyName;
     }
 
-    /**
-     * Set birthDate
-     *
-     * @param \DateTime $birthDate
-     *
-     * @return Customer
-     */
-    public function setBirthDate($birthDate)
-    {
-        $this->birthDate = $birthDate;
-
-        return $this;
-    }
-
-    /**
-     * Get birthDate
-     *
-     * @return \DateTime
-     */
-    public function getBirthDate()
-    {
-        return $this->birthDate;
-    }
 
     /**
      * Set sex
