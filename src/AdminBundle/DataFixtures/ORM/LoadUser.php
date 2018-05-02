@@ -2683,7 +2683,5 @@ Fermoir mousqueton.<br />
         $manager->persist($product);
         $manager->flush();
 
-
-
     }
 }
