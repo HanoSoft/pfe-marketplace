@@ -13,8 +13,6 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-
-
 class CustomerService
 {
     /**

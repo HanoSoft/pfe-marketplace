@@ -75,9 +75,31 @@ class Customer
 
     /**
      *@ORM\OneToMany(targetEntity="CoreBundle\Entity\Address",mappedBy="customer")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
-    private $address;
+    private $addresses;
+    /**
+     *@ORM\OneToMany(targetEntity="CoreBundle\Entity\Orders",mappedBy="customer")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $orders;
+
+    /**
+     * @return mixed
+     */
+    public function getAddresses()
+    {
+        return $this->addresses;
+    }
+
+    /**
+     * @param mixed $addresses
+     */
+    public function setAddresses($addresses)
+    {
+        $this->addresses = $addresses;
+    }
+
 
 
     /**

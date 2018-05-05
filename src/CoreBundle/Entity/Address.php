@@ -24,9 +24,25 @@ class Address
     /**
      * @var string
      *
-     * @ORM\Column(name="pays", type="string", length=255)
+     * @ORM\Column(name="country", type="string", length=255)
      */
-    private $pays;
+    private $country;
+
+    /**
+     * @return string
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param string $country
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+    }
 
     /**
      * @var string
@@ -57,10 +73,12 @@ class Address
     private $postalCode;
 
     /**
-     *@ORM\ManyToOne(targetEntity="CoreBundle\Entity\Customer",inversedBy="address",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+
+     *@ORM\ManyToOne(targetEntity="CoreBundle\Entity\Customer",inversedBy="addresses",cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
      */
     private $customer;
+
 
 
     /**
@@ -73,29 +91,6 @@ class Address
         return $this->id;
     }
 
-    /**
-     * Set pays
-     *
-     * @param string $pays
-     *
-     * @return Address
-     */
-    public function setPays($pays)
-    {
-        $this->pays = $pays;
-
-        return $this;
-    }
-
-    /**
-     * Get pays
-     *
-     * @return string
-     */
-    public function getPays()
-    {
-        return $this->pays;
-    }
 
     /**
      * Set city

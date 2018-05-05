@@ -22,9 +22,9 @@ class Orders
     private $id;
 
     /**
-     * @var \DateTime
+     * @var \string
      *
-     * @ORM\Column(name="orderDate", type="date")
+     * @ORM\Column(name="orderDate", type="string", length=255)
      */
     private $orderDate;
 
@@ -41,20 +41,100 @@ class Orders
      * @ORM\Column(name="status", type="string", length=255)
      */
     private $status;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="deliveryDate", type="date")
-     */
-    private $deliveryDate;
-
     /**
      * @var string
      *
-     * @ORM\Column(name="adresse", type="string", length=255)
+     * @ORM\Column(name="address", type="string", length=255)
      */
-    private $adresse;
+    private $address;
+
+    /**
+     * @return string
+     */
+    public function getOrderDate()
+    {
+        return $this->orderDate;
+    }
+
+    /**
+     * @param string $orderDate
+     */
+    public function setOrderDate($orderDate)
+    {
+        $this->orderDate = $orderDate;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param string $address
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDeliveryDate()
+    {
+        return $this->deliveryDate;
+    }
+
+    /**
+     * @param string $deliveryDate
+     */
+    public function setDeliveryDate($deliveryDate)
+    {
+        $this->deliveryDate = $deliveryDate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
+    }
+
+    /**
+     * @param mixed $customer
+     */
+    public function setCustomer($customer)
+    {
+        $this->customer = $customer;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getItems()
+    {
+        return $this->items;
+    }
+
+    /**
+     * @param mixed $items
+     */
+    public function setItems($items)
+    {
+        $this->items = $items;
+    }
+
+    /**
+     * @var \string
+     *
+     * @ORM\Column(name="deliveryDate", type="string", length=255)
+     */
+    private $deliveryDate;
+
 
     /**
      * @var bool
@@ -63,7 +143,17 @@ class Orders
      */
     private $deleted;
 
+    /**
+     *@ORM\ManyToOne(targetEntity="CoreBundle\Entity\Customer",inversedBy="orders",cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $customer;
 
+    /**
+     *@ORM\OneToMany(targetEntity="CoreBundle\Entity\Item",mappedBy="order")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $items;
     /**
      * Get id
      *
@@ -74,29 +164,6 @@ class Orders
         return $this->id;
     }
 
-    /**
-     * Set orderDate
-     *
-     * @param \DateTime $orderDate
-     *
-     * @return Orders
-     */
-    public function setOrderDate($orderDate)
-    {
-        $this->orderDate = $orderDate;
-
-        return $this;
-    }
-
-    /**
-     * Get orderDate
-     *
-     * @return \DateTime
-     */
-    public function getOrderDate()
-    {
-        return $this->orderDate;
-    }
 
     /**
      * Set amount
@@ -146,53 +213,8 @@ class Orders
         return $this->status;
     }
 
-    /**
-     * Set deliveryDate
-     *
-     * @param \DateTime $deliveryDate
-     *
-     * @return Orders
-     */
-    public function setDeliveryDate($deliveryDate)
-    {
-        $this->deliveryDate = $deliveryDate;
 
-        return $this;
-    }
 
-    /**
-     * Get deliveryDate
-     *
-     * @return \DateTime
-     */
-    public function getDeliveryDate()
-    {
-        return $this->deliveryDate;
-    }
-
-    /**
-     * Set adresse
-     *
-     * @param string $adresse
-     *
-     * @return Orders
-     */
-    public function setAdresse($adresse)
-    {
-        $this->adresse = $adresse;
-
-        return $this;
-    }
-
-    /**
-     * Get adresse
-     *
-     * @return string
-     */
-    public function getAdresse()
-    {
-        return $this->adresse;
-    }
 
     /**
      * Set deleted
