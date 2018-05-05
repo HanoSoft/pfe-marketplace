@@ -70,6 +70,11 @@ class Orders
     private $customer;
 
     /**
+     *@ORM\OneToMany(targetEntity="CoreBundle\Entity\Item",mappedBy="order")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $items;
+    /**
      * Get id
      *
      * @return int
