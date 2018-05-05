@@ -56,6 +56,12 @@ class Address
      */
     private $postalCode;
 
+    /**
+     *@ORM\ManyToOne(targetEntity="CoreBundle\Entity\Customer",inversedBy="address",cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $customer;
+
 
     /**
      * Get id
@@ -186,5 +192,28 @@ class Address
     {
         return $this->postalCode;
     }
-}
 
+    /**
+     * Set customer
+     *
+     * @param \CoreBundle\Entity\Customer $customer
+     *
+     * @return Address
+     */
+    public function setCustomer(\CoreBundle\Entity\Customer $customer)
+    {
+        $this->customer = $customer;
+
+        return $this;
+    }
+
+    /**
+     * Get customer
+     *
+     * @return \CoreBundle\Entity\Customer
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
+    }
+}

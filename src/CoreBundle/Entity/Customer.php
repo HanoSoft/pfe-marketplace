@@ -73,7 +73,11 @@ class Customer
      */
     private $pwd;
 
-
+    /**
+     *@ORM\OneToMany(targetEntity="CoreBundle\Entity\Address",mappedBy="customer")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $address;
 
 
     /**
@@ -310,5 +314,46 @@ class Customer
     public function getDeleted()
     {
         return $this->deleted;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->address = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add address
+     *
+     * @param \CoreBundle\Entity\Address $address
+     *
+     * @return Customer
+     */
+    public function addAddress(\CoreBundle\Entity\Address $address)
+    {
+        $this->address[] = $address;
+
+        return $this;
+    }
+
+    /**
+     * Remove address
+     *
+     * @param \CoreBundle\Entity\Address $address
+     */
+    public function removeAddress(\CoreBundle\Entity\Address $address)
+    {
+        $this->address->removeElement($address);
+    }
+
+    /**
+     * Get address
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAddress()
+    {
+        return $this->address;
     }
 }
