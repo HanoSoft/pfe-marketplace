@@ -58,12 +58,6 @@ class Customer
         $this->birthDate = $birthDate;
     }
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="sex", type="string", length=255,nullable=true)
-     */
-    private $sex;
 
     /**
      * @var string
@@ -169,31 +163,6 @@ class Customer
     public function getFamilyName()
     {
         return $this->familyName;
-    }
-
-
-    /**
-     * Set sex
-     *
-     * @param string $sex
-     *
-     * @return Customer
-     */
-    public function setSex($sex)
-    {
-        $this->sex = $sex;
-
-        return $this;
-    }
-
-    /**
-     * Get sex
-     *
-     * @return string
-     */
-    public function getSex()
-    {
-        return $this->sex;
     }
 
     /**

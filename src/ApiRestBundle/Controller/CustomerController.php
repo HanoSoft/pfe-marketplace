@@ -68,10 +68,42 @@ class CustomerController extends FOSRestController
         $customer=$serviceCustomer->getCustomer($customerApi->getId());
         $customer->setName($customerApi->getName());
         $customer->setFamilyName($customerApi->getfamilyName());
-        $customer->setEmail($customerApi->getEmail());
         $customer->setBirthDate($customerApi->getBirthDate());
         $customer->setPhoneNumber($customerApi->getPhoneNumber());
-        $customer->setSex($customerApi->getSex());
+        $em->flush();
+    }
+    /**
+     * @Put(
+     *    path = "api/customers/edit/email",
+     *    name = "api_customer_edit_email",
+     * )
+     * @View(StatusCode = 200 )
+     * @ParamConverter("customerApi", converter="fos_rest.request_body")
+     *
+     */
+    public function editEmailAction(Customer $customerApi)
+    {
+        $serviceCustomer=$this->get('core.service.customer');
+        $em = $this->getDoctrine()->getManager();
+        $customer=$serviceCustomer->getCustomer($customerApi->getId());
+        $customer->setEmail($customerApi->getEmail());
+        $em->flush();
+    }
+    /**
+     * @Put(
+     *    path = "api/customers/edit/pwd",
+     *    name = "api_customer_edit_pwd",
+     * )
+     * @View(StatusCode = 200 )
+     * @ParamConverter("customerApi", converter="fos_rest.request_body")
+     *
+     */
+    public function editPasswordAction(Customer $customerApi)
+    {
+        $serviceCustomer=$this->get('core.service.customer');
+        $em = $this->getDoctrine()->getManager();
+        $customer=$serviceCustomer->getCustomer($customerApi->getId());
+        $customer->setPwd($customerApi->getPwd());
         $em->flush();
     }
 }
