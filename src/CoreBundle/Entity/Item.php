@@ -36,13 +36,6 @@ class Item
     private $quantity;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="adrress", type="integer")
-     */
-    private $adrress;
-
-    /**
      *@ORM\ManyToOne(targetEntity="CoreBundle\Entity\Orders",inversedBy="items",cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
@@ -103,30 +96,6 @@ class Item
     public function getQuantity()
     {
         return $this->quantity;
-    }
-
-    /**
-     * Set adrress
-     *
-     * @param integer $adrress
-     *
-     * @return Item
-     */
-    public function setAdrress($adrress)
-    {
-        $this->adrress = $adrress;
-
-        return $this;
-    }
-
-    /**
-     * Get adrress
-     *
-     * @return int
-     */
-    public function getAdrress()
-    {
-        return $this->adrress;
     }
 }
 

@@ -12,6 +12,10 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Orders
 {
+    public function __construct()
+    {
+        $this->orderDate = new \Datetime();
+    }
     /**
      * @var int
      *
@@ -24,7 +28,7 @@ class Orders
     /**
      * @var \string
      *
-     * @ORM\Column(name="orderDate", type="string", length=255)
+     * @ORM\Column(name="orderDate", type="string", length=255,nullable=true)
      */
     private $orderDate;
 
@@ -38,15 +42,9 @@ class Orders
     /**
      * @var string
      *
-     * @ORM\Column(name="status", type="string", length=255)
+     * @ORM\Column(name="status", type="string", length=255,nullable=true)
      */
     private $status;
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="address", type="string", length=255)
-     */
-    private $address;
 
     /**
      * @return string
@@ -131,7 +129,7 @@ class Orders
     /**
      * @var \string
      *
-     * @ORM\Column(name="deliveryDate", type="string", length=255)
+     * @ORM\Column(name="deliveryDate", type="string", length=255,nullable=true)
      */
     private $deliveryDate;
 
@@ -141,7 +139,7 @@ class Orders
      *
      * @ORM\Column(name="deleted", type="boolean")
      */
-    private $deleted;
+    private $deleted = false;
 
     /**
      *@ORM\ManyToOne(targetEntity="CoreBundle\Entity\Customer",inversedBy="orders",cascade={"persist"})
