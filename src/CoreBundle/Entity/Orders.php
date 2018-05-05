@@ -63,6 +63,11 @@ class Orders
      */
     private $deleted;
 
+    /**
+     *@ORM\ManyToOne(targetEntity="CoreBundle\Entity\Customer",inversedBy="orders",cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $customer;
 
     /**
      * Get id
