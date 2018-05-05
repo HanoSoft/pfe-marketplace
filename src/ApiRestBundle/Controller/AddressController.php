@@ -18,16 +18,19 @@ class AddressController extends FOSRestController
 {
     /**
      * @Rest\Post(
-     *    path = "api/customers/addresses",
+     *    path = "api/customers/addresses/{id}",
      *    name = "api_address_create",
      * )
      * @View(StatusCode = 201)
      * @ParamConverter("address", converter="fos_rest.request_body")
      *
      */
-    public function createAction(Address $address)
+    public function createAction($id,Address $address)
     {
+        $serviceCustomer=$this->get('core.service.customer');
         $em = $this->getDoctrine()->getManager();
+        $customer=$serviceCustomer->getCustomer($id);
+        $address->setCustomer($customer);
         $em->persist($address);
         $em->flush();
     }
