@@ -279,3 +279,6 @@ admin_customer_disable:
                 _controller: AdminBundle:Customer:disable
                 requirements:
                 id: \d+
+admin_order_list:
+    path:     /admin/orders
+    defaults: { _controller: AdminBundle:Order:index }

@@ -45,6 +45,12 @@ class Orders
      * @ORM\Column(name="status", type="string", length=255,nullable=true)
      */
     private $status;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="address", type="string", length=255,nullable=true)
+     */
+    private $address;
 
     /**
      * @return string

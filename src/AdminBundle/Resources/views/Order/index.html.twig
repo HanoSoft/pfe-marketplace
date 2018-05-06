@@ -1,0 +1,66 @@
+{% extends "AdminBundle::adminLayout.html.twig" %}
+{% block content %}
+    {{ parent() }}
+
+    <ul id="breadcrumb">
+        <li><a href="{{ path('admin_homepage') }}"><span class="fa fa-home"> </span></a></li>
+        <li><a>Commandes</a></li>
+    </ul>
+    <div class="container-fluid" style="background: #FFFFFF;">
+        <br>
+
+        <br>
+        <div class="row dataTables_wrapper form-inline dt-bootstrap no-footer">
+            <table  class="data-table table table-striped table-bordered dataTable no-footer" style="width:100%">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th class="sorting_asc">Date de commande</th>
+                    <th >Montant</th>
+                    <th >Etat</th>
+                    <th >Date de livraison</th>
+                    <th >Adresse</th>
+                    <th> Status </th>
+
+                </tr>
+                </thead>
+                <tbody >
+                {% for order in orders %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <tr>
+                            <td>
+                                <a href="{{ path('admin_order_list',{'id': order.id}) }}" class="link">
+                                    {{ order.id }}
+                                </a>
+                            </td>
+                            <td>{{ order.orderDate  }}</td>
+                            <td>{{ order.amount }}</td>
+                            <td>{{ order.status }}</td>
+                            <td>{{ order.deliveryDate }}</td>
+                            <td>{{ order.address }}</td>
+                            <td align="center">
+                                {% if order.deleted ==false %}
+                                    <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_order_list', {'id':order.id}) }}" >
+                                        <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
+                                    </a>
+
+                                {% else %}
+                                    <span class="glyphicon glyphicon-remove " style="color:red;"></span>
+
+                                {% endif %}
+                            </td>
+
+                        </tr>
+
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+
+    {{ include("AdminBundle::delete.html.twig") }}
+
+{% endblock %}
