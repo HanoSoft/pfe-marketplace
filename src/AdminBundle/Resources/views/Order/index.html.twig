@@ -20,9 +20,7 @@
                     <th >Client</th>
                     <th >Etat</th>
                     <th >Date de livraison</th>
-
                     <th> Status </th>
-
                 </tr>
                 </thead>
                 <tbody >
@@ -39,21 +37,16 @@
                             <td>{{ order.customer.name }}</td>
                             <td>{{ order.status }}  <a href="{{ path('admin_order_edit',{'id': order.id}) }}" class="link link-success" ><em class="fa fa-edit"></em></a></td>
                             <td>{{ order.deliveryDate }}</td>
-
                             <td align="center">
                                 {% if order.deleted ==false %}
                                     <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_order_disable', {'id':order.id}) }}" >
                                         <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
                                     </a>
-
                                 {% else %}
                                     <span class="glyphicon glyphicon-remove " style="color:red;"></span>
-
                                 {% endif %}
                             </td>
-
                         </tr>
-
                     {% endif %}
                 {% endfor %}
                 </tbody>
