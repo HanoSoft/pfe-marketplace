@@ -11,16 +11,18 @@ namespace CoreBundle\Repository;
 class OrdersRepository extends \Doctrine\ORM\EntityRepository
 {
     /**
-     * Retourner la liste  des marques selon la variable $active
+     * Retourner la liste  des commandes selon la variable $active
      * $active contenir 2 valeur true ou false
      * return array
      */
-    public function getActiveOrders($active)
+    public function getActiveOrders($active,$id)
     {
         $qb = $this->createQueryBuilder('o');
         $qb
-            ->where('o.deleted =:active')
+            ->andWhere('o.deleted =:active')
+            ->andWhere('o.customer =:id')
             ->setParameter('active', $active)
+            ->setParameter('id', $id)
             ->orderBy('o.id', 'DESC');
         ;
         return $qb->getQuery()

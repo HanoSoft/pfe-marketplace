@@ -37,16 +37,16 @@ class OrderController extends FOSRestController
     }
     /**
      * @Get(
-     *     path = "/api/orders",
+     *     path = "/api/orders/{id}",
      *     name = "api_order_list",
      *
      * )
      * @View
      */
-    public function indexAction()
+    public function indexAction($id)
     {
-        $serviceOrder=$this->get('core.service.customer');
-        $customers=$serviceCustomer->getActiveCustomers(false);
-        return $customers;
+        $serviceOrder=$this->get('core.service.order');
+        $orders=$serviceOrder->getActiveOrders(false,$id);
+        return $orders;
     }
 }

@@ -38,8 +38,8 @@ class OrderService
      * $active prend 2 valeur true ou false
      * return array
      */
-    public function getActiveOrders($active){
-        return $this->repository->getActiveOrders($active);
+    public function getActiveOrders($active,$id){
+        return $this->repository->getActiveOrders($active,$id);
     }
     /**
      * Retourner une seule commande selon l'id
