@@ -12,10 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Orders
 {
-    public function __construct()
-    {
-        $this->orderDate = new \Datetime();
-    }
     /**
      * @var int
      *

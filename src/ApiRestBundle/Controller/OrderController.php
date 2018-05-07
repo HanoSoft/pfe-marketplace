@@ -9,6 +9,7 @@
 namespace ApiRestBundle\Controller;
 
 use CoreBundle\Entity\Orders;
+use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\Controller\Annotations\View;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
@@ -33,5 +34,19 @@ class OrderController extends FOSRestController
         $order->setCustomer($customer);
         $em->persist($order);
         $em->flush();
+    }
+    /**
+     * @Get(
+     *     path = "/api/orders",
+     *     name = "api_order_list",
+     *
+     * )
+     * @View
+     */
+    public function indexAction()
+    {
+        $serviceOrder=$this->get('core.service.customer');
+        $customers=$serviceCustomer->getActiveCustomers(false);
+        return $customers;
     }
 }
