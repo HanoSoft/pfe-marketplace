@@ -42,13 +42,6 @@ class Orders
      */
     private $status;
     /**
-     * @var string
-     *
-     * @ORM\Column(name="address", type="string", length=255,nullable=true)
-     */
-    private $address;
-
-    /**
      * @return string
      */
     public function getOrderDate()
@@ -64,21 +57,6 @@ class Orders
         $this->orderDate = $orderDate;
     }
 
-    /**
-     * @return string
-     */
-    public function getAddress()
-    {
-        return $this->address;
-    }
-
-    /**
-     * @param string $address
-     */
-    public function setAddress($address)
-    {
-        $this->address = $address;
-    }
 
     /**
      * @return string
