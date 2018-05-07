@@ -243,5 +243,28 @@ class Orders
     {
         return $this->deleted;
     }
-}
 
+    /**
+     * Add item
+     *
+     * @param \CoreBundle\Entity\Item $item
+     *
+     * @return Orders
+     */
+    public function addItem(\CoreBundle\Entity\Item $item)
+    {
+        $this->items[] = $item;
+
+        return $this;
+    }
+
+    /**
+     * Remove item
+     *
+     * @param \CoreBundle\Entity\Item $item
+     */
+    public function removeItem(\CoreBundle\Entity\Item $item)
+    {
+        $this->items->removeElement($item);
+    }
+}

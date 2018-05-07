@@ -11,7 +11,6 @@ namespace CoreBundle\Service;
 use CoreBundle\Entity\Orders;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 
 class OrderService
@@ -26,16 +25,7 @@ class OrderService
     {
         $this->repository=$em->getRepository(Orders::class);
     }
-    /**
-     * permet de parcourir un tableau d'objets et changer l'etat pour chaque element
-     * selon la valeur de $value true/false
-     */
-    private function setStatus($objects,$value)
-    {
-        foreach ($objects as $object) {
-            $object->setDeleted($value);
-        }
-    }
+
     /**
      * Retourner la liste  des commandes
      * return array
@@ -58,5 +48,6 @@ class OrderService
     public function getOrder($id){
         return $this->repository->find($id);
     }
+
 
 }

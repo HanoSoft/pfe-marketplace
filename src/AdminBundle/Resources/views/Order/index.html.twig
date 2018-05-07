@@ -17,6 +17,7 @@
                     <th>ID</th>
                     <th class="sorting_asc">Date de commande</th>
                     <th >Montant</th>
+                    <th >Client</th>
                     <th >Etat</th>
                     <th >Date de livraison</th>
                     <th >Adresse</th>
@@ -35,12 +36,13 @@
                             </td>
                             <td>{{ order.orderDate  }}</td>
                             <td>{{ order.amount }}</td>
+                            <td>{{ order.customer.name }}</td>
                             <td>{{ order.status }}</td>
                             <td>{{ order.deliveryDate }}</td>
                             <td>{{ order.address }}</td>
                             <td align="center">
                                 {% if order.deleted ==false %}
-                                    <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_order_list', {'id':order.id}) }}" >
+                                    <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_order_disable', {'id':order.id}) }}" >
                                         <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
                                     </a>
 
