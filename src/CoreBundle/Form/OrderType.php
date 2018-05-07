@@ -21,10 +21,7 @@ class OrderType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('amount')
-            ->add('status')
-            ->add('deliveryDate',TextType::class )
-            ->add('orderDate',TextType::class);
+
     }
     /**
      * {@inheritdoc}

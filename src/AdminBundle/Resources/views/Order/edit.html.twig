@@ -1,0 +1,27 @@
+{% extends "AdminBundle::adminLayout.html.twig" %}
+{% block content %}
+    {{ parent() }}
+    <ul id="breadcrumb">
+        <li><a href="{{ path('admin_homepage') }}"><span class="fa fa-home"> </span></a></li>
+        <li><a href="{{ path('admin_order_list') }}">Commandes</a></li>
+        <li><a>Modifier</a></li>
+    </ul>
+    <div class=" form-grids row form-grids-right">
+        <div class="widget-shadow " data-example-id="basic-forms">
+            <div class="form-body">
+                {{ form_start(form,{'attr': {'class': 'form-horizontal form'}}) }}
+                {{ form_errors(form) }}
+                <div class="form-group has-feedback">
+                    <label  class="col-sm-2 control-label">Etat :</label>
+                    <div class="col-sm-9">
+                        {{ form_widget(form.status, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <span class="glyphicon " ></span>
+                </div>
+                <button class="btn btn-success col-md-offset-10 "  type="submit" ><span class="fa fa-edit"> </span> Mise à jour l'etat</button>
+                {{ form_rest(form) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

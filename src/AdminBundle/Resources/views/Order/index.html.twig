@@ -37,7 +37,7 @@
                             <td>{{ order.orderDate  }}</td>
                             <td>{{ order.amount }}</td>
                             <td>{{ order.customer.name }}</td>
-                            <td>{{ order.status }}  <a href="#" class="link link-success" ><em class="fa fa-edit"></em></a></td>
+                            <td>{{ order.status }}  <a href="{{ path('admin_order_edit',{'id': order.id}) }}" class="link link-success" ><em class="fa fa-edit"></em></a></td>
                             <td>{{ order.deliveryDate }}</td>
 
                             <td align="center">

@@ -288,3 +288,9 @@ admin_order_disable:
                 _controller: AdminBundle:Order:disable
                 requirements:
                 id: \d+
+admin_order_edit:
+        path:     /admin/order/edit/{id}
+        defaults:
+                _controller: AdminBundle:Order:edit
+                requirements:
+                id: \d+
