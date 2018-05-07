@@ -18,17 +18,20 @@ class ItemController extends FOSRestController
 {
     /**
      * @Rest\Post(
-     *    path = "api/items",
+     *    path = "api/items/{id}",
      *    name = "api_item_create",
      * )
      * @View(StatusCode = 201)
-     * @ParamConverter("items", converter="fos_rest.request_body")
+     * @ParamConverter("item", converter="fos_rest.request_body")
      *
      */
-    public function createAction(Item $items)
+    public function createAction($id,Item $item)
     {
+        $serviceOrder=$this->get('core.service.order');
+        $order =$serviceOrder->getOrder($id);
         $em = $this->getDoctrine()->getManager();
-        $em->persist($items);
+        $item->setOrder($order);
+        $em->persist($item);
         $em->flush();
     }
 }

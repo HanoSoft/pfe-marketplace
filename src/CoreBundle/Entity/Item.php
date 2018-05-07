@@ -40,6 +40,22 @@ class Item
      * @ORM\JoinColumn(nullable=true)
      */
     private $order;
+
+    /**
+     * @return mixed
+     */
+    public function getOrder()
+    {
+        return $this->order;
+    }
+
+    /**
+     * @param mixed $order
+     */
+    public function setOrder($order)
+    {
+        $this->order = $order;
+    }
     /**
      * Get id
      *
