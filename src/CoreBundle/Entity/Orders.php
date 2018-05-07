@@ -41,6 +41,12 @@ class Orders
      * @ORM\Column(name="status", type="string", length=255,nullable=true)
      */
     private $status;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="address", type="string", length=255,nullable=true)
+     */
+    private $address;
 
     /**
      * @return string
@@ -233,5 +239,28 @@ class Orders
     {
         return $this->deleted;
     }
-}
 
+    /**
+     * Add item
+     *
+     * @param \CoreBundle\Entity\Item $item
+     *
+     * @return Orders
+     */
+    public function addItem(\CoreBundle\Entity\Item $item)
+    {
+        $this->items[] = $item;
+
+        return $this;
+    }
+
+    /**
+     * Remove item
+     *
+     * @param \CoreBundle\Entity\Item $item
+     */
+    public function removeItem(\CoreBundle\Entity\Item $item)
+    {
+        $this->items->removeElement($item);
+    }
+}

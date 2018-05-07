@@ -18,5 +18,8 @@ services:
     core.service.customer:
                         class: CoreBundle\Service\CustomerService
                         arguments: ['@doctrine.orm.entity_manager']
+    core.service.order:
+                            class: CoreBundle\Service\OrderService
+                            arguments: ['@doctrine.orm.entity_manager']
 
 

@@ -10,4 +10,21 @@ namespace CoreBundle\Repository;
  */
 class OrdersRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * Retourner la liste  des marques selon la variable $active
+     * $active contenir 2 valeur true ou false
+     * return array
+     */
+    public function getActiveOrders($active)
+    {
+        $qb = $this->createQueryBuilder('o');
+        $qb
+            ->where('o.deleted =:active')
+            ->setParameter('active', $active)
+            ->orderBy('o.id', 'DESC');
+        ;
+        return $qb->getQuery()
+            ->getResult();
+    }
+
 }
