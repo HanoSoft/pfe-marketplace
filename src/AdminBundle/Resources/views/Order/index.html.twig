@@ -20,7 +20,7 @@
                     <th >Client</th>
                     <th >Etat</th>
                     <th >Date de livraison</th>
-                    <th >Adresse</th>
+
                     <th> Status </th>
 
                 </tr>
@@ -39,7 +39,7 @@
                             <td>{{ order.customer.name }}</td>
                             <td>{{ order.status }}</td>
                             <td>{{ order.deliveryDate }}</td>
-                            <td>{{ order.address }}</td>
+
                             <td align="center">
                                 {% if order.deleted ==false %}
                                     <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_order_disable', {'id':order.id}) }}" >

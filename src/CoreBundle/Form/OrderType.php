@@ -23,7 +23,6 @@ class OrderType extends AbstractType
     {
         $builder->add('amount')
             ->add('status')
-            ->add('address')
             ->add('deliveryDate',TextType::class )
             ->add('orderDate',TextType::class);
     }
