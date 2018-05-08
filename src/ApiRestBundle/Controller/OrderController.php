@@ -32,6 +32,8 @@ class OrderController extends FOSRestController
         $em = $this->getDoctrine()->getManager();
         $customer=$serviceCustomer->getCustomer($id);
         $order->setCustomer($customer);
+        $order->setOrderDate(new \DateTime());
+        $order->setDeliveryDate(new \DateTime('14 days'));
         $em->persist($order);
         foreach ($order->getItems() as $item) {
             $item->setOrder($order);
