@@ -9,7 +9,19 @@
 namespace AdminBundle\Controller;
 
 
-class ItemController
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+class ItemController extends Controller
 {
+    public function indexAction()
+    {
+        $serviceItem= $this->get('core.service.item');
+        $items=$serviceItem->getItems();
+        $formDelete = $this->get('form.factory')->create();
+        return $this->render('AdminBundle:Order:item.html.twig', array(
+            'items' => $items,
+            'formDelete'   => $formDelete->createView(),
+        ));
+    }
 
 }
