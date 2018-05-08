@@ -294,3 +294,6 @@ admin_order_edit:
                 _controller: AdminBundle:Order:edit
                 requirements:
                 id: \d+
+admin_item_list:
+    path:     /admin/items
+    defaults: { _controller: AdminBundle:Item:index }

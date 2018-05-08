@@ -1,0 +1,52 @@
+{% extends "AdminBundle::adminLayout.html.twig" %}
+{% block content %}
+    {{ parent() }}
+
+    <ul id="breadcrumb">
+        <li><a href="{{ path('admin_homepage') }}"><span class="fa fa-home"> </span></a></li>
+        <li><a>Articles</a></li>
+    </ul>
+    <div class="container-fluid" style="background: #FFFFFF;">
+        <br>
+
+        <br>
+        <div class="row dataTables_wrapper form-inline dt-bootstrap no-footer">
+            <table  class="data-table table table-striped table-bordered dataTable no-footer" style="width:100%">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th class="sorting_asc">Nom de produit</th>
+                    <th >Prix unitaire</th>
+                    <th >Quantité</th>
+                    <th >Taille</th>
+
+                </tr>
+                </thead>
+                <tbody >
+                {% for item in items %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <tr>
+                            <td>
+                                <a href="{{ path('admin_item_list',{'id': item.id}) }}" class="link">
+                                    {{ item.id }}
+                                </a>
+                            </td>
+
+
+                            <td class="money">{{ item.quantity  }}</td>
+                            <td>{{ item.size  }}</td>
+
+
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

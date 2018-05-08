@@ -26,10 +26,10 @@ class ItemService
     }
 
     /**
-     * Retourner la liste  des article
+     * Retourner la liste  des articles
      * return array
      */
-    public function getOrders(){
+    public function getItems(){
         return $this->repository->findAll();
     }
     /**
@@ -44,7 +44,7 @@ class ItemService
      * Retourner un seul article selon l'id
      *
      */
-    public function getOrder($id){
+    public function getItem($id){
         return $this->repository->find($id);
     }
 
