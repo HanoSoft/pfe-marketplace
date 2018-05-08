@@ -21,5 +21,8 @@ services:
     core.service.order:
                             class: CoreBundle\Service\OrderService
                             arguments: ['@doctrine.orm.entity_manager']
+    core.service.item:
+                                class: CoreBundle\Service\ItemService
+                                arguments: ['@doctrine.orm.entity_manager']
 
 
