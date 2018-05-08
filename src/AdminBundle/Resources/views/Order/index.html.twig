@@ -20,6 +20,7 @@
                     <th >Client</th>
                     <th >Etat</th>
                     <th >Date de livraison</th>
+                    <th >Article</th>
                     <th>Status</th>
                 </tr>
                 </thead>
@@ -32,11 +33,12 @@
                                     {{ order.id }}
                                 </a>
                             </td>
-                            <td>{{ order.orderDate  }}</td>
+                            <td>{{ order.orderDate|date('Y-m-d') }}</td>
                             <td>{{ order.amount }}</td>
                             <td>{{ order.customer.name }}</td>
                             <td>{{ order.status }}  <a href="{{ path('admin_order_edit',{'id': order.id}) }}" class="link link-success" ><em class="fa fa-edit"></em></a></td>
-                            <td>{{ order.deliveryDate }}</td>
+                            <td>{{ order.deliveryDate|date('Y-m-d') }}</td>
+                            <td><a href="#" class="link link-success" >Afficher</a></td>
                             <td align="center">
                                 {% if order.deleted ==false %}
                                     <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_order_disable', {'id':order.id}) }}" >
