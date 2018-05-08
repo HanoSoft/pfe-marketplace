@@ -9,6 +9,7 @@
 namespace ApiRestBundle\Controller;
 
 use CoreBundle\Entity\Item;
+use CoreBundle\Entity\Orders;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\Annotations\View;
@@ -18,18 +19,19 @@ class ItemController extends FOSRestController
 {
     /**
      * @Rest\Post(
-     *    path = "api/items/{id}",
+     *    path = "api/items",
      *    name = "api_item_create",
      * )
      * @View(StatusCode = 201)
      * @ParamConverter("item", converter="fos_rest.request_body")
      *
      */
-    public function createAction($id,Item $item)
+    public function createAction(Item $item)
     {
-        $serviceOrder=$this->get('core.service.order');
-        $order =$serviceOrder->getOrder($id);
         $em = $this->getDoctrine()->getManager();
+        $order = new Orders();
+        $order = $item->getOrder();
+        $em->persist($order);
         $item->setOrder($order);
         $em->persist($item);
         $em->flush();

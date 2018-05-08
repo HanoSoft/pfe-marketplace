@@ -27,6 +27,28 @@ class Item
      * @ORM\Column(name="product", type="integer")
      */
     private $product;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="size", type="string", length=255)
+     */
+    private $size;
+
+    /**
+     * @return string
+     */
+    public function getSize()
+    {
+        return $this->size;
+    }
+
+    /**
+     * @param string $size
+     */
+    public function setSize($size)
+    {
+        $this->size = $size;
+    }
 
     /**
      * @var int

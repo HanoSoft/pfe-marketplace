@@ -33,6 +33,10 @@ class OrderController extends FOSRestController
         $customer=$serviceCustomer->getCustomer($id);
         $order->setCustomer($customer);
         $em->persist($order);
+        foreach ($order->getItems() as $item) {
+            $item->setOrder($order);
+            $em->persist($item);
+        }
         $em->flush();
     }
     /**
