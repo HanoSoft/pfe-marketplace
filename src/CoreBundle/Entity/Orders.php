@@ -22,11 +22,28 @@ class Orders
     private $id;
 
     /**
-     * @var \string
+     * @var \DateTime
      *
-     * @ORM\Column(name="orderDate", type="string", length=255,nullable=true)
+     * @ORM\Column(name="orderDate", type="date",nullable=true)
      */
     private $orderDate;
+
+    /**
+     * @param \DateTime $orderDate
+     */
+    public function setOrderDate($orderDate)
+    {
+        $this->orderDate = $orderDate;
+    }
+
+    /**
+     * @return \DateTime
+     *
+     */
+    public function getOrderDate()
+    {
+        return $this->orderDate;
+    }
 
     /**
      * @var string
@@ -40,39 +57,8 @@ class Orders
      *
      * @ORM\Column(name="status", type="string", length=255,nullable=true)
      */
-    private $status;
-    /**
-     * @return string
-     */
-    public function getOrderDate()
-    {
-        return $this->orderDate;
-    }
+    private $status ="En cours";
 
-    /**
-     * @param string $orderDate
-     */
-    public function setOrderDate($orderDate)
-    {
-        $this->orderDate = $orderDate;
-    }
-
-
-    /**
-     * @return string
-     */
-    public function getDeliveryDate()
-    {
-        return $this->deliveryDate;
-    }
-
-    /**
-     * @param string $deliveryDate
-     */
-    public function setDeliveryDate($deliveryDate)
-    {
-        $this->deliveryDate = $deliveryDate;
-    }
 
     /**
      * @return mixed
@@ -107,11 +93,27 @@ class Orders
     }
 
     /**
-     * @var \string
+     * @var \DateTime
      *
-     * @ORM\Column(name="deliveryDate", type="string", length=255,nullable=true)
+     * @ORM\Column(name="deliveryDate", type="date",nullable=true)
      */
     private $deliveryDate;
+
+    /**
+     * @return \DateTime
+     */
+    public function getDeliveryDate()
+    {
+        return $this->deliveryDate;
+    }
+
+    /**
+     * @param \DateTime $deliveryDate
+     */
+    public function setDeliveryDate($deliveryDate)
+    {
+        $this->deliveryDate = $deliveryDate;
+    }
 
 
     /**
@@ -190,8 +192,6 @@ class Orders
     {
         return $this->status;
     }
-
-
 
 
     /**
