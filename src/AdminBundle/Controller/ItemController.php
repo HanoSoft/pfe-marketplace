@@ -15,14 +15,23 @@ class ItemController extends Controller
 {
     public function indexAction()
     {
+       $products = array();
+        $something = array(
+            'product' => '',
+            'quantity' => ''
+        );
         $serviceItem= $this->get('core.service.item');
         $serviceProduct= $this->get('core.service.product');
         $items=$serviceItem->getItems();
         foreach ($items as $item) {
-           $products=$serviceProduct->getProduct($item->getProduct());
+            array_push($products,array(
+                'product' => $serviceProduct->getProduct($item->getProduct()),
+                'quantity' => $item->getQuantity(),
+                'size' => $item->getSize()
+            ));
         }
         return $this->render('AdminBundle:Item:index.html.twig', array(
-            'items' => $items,
+            'items' => $products,
         ));
     }
 

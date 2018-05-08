@@ -14,8 +14,8 @@
             <table  class="data-table table table-striped table-bordered dataTable no-footer" style="width:100%">
                 <thead>
                 <tr>
-                    <th>ID</th>
-                    <th class="sorting_asc">Nom de produit</th>
+
+                    <th >Nom de produit</th>
                     <th >Prix unitaire</th>
                     <th >Quantité</th>
                     <th >Taille</th>
@@ -27,15 +27,17 @@
                     {% if is_granted('ROLE_ADMIN') %}
                         <tr>
                             <td>
-                                <a href="{{ path('admin_item_list',{'id': item.id}) }}" class="link">
-                                    {{ item.id }}
-                                </a>
+                                {{ item.product.productName }}
                             </td>
-
-
-                            <td class="money">{{ item.quantity  }}</td>
-                            <td>{{ item.size  }}</td>
-
+                            <td>
+                                {{ item.product.price }}
+                            </td>
+                            <td>
+                                {{ item.quantity }}
+                            </td>
+                            <td>
+                                {{ item.size }}
+                            </td>
 
                         </tr>
                     {% endif %}
