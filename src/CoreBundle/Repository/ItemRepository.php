@@ -10,4 +10,22 @@ namespace CoreBundle\Repository;
  */
 class ItemRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * Retourner la liste  des articles selon la variable $active
+     * $active contenir 2 valeur true ou false
+     * return array
+     */
+    public function getActiveItems($active,$id)
+    {
+        $qb = $this->createQueryBuilder('i');
+        $qb
+            ->andWhere('i.deleted =:active')
+            ->andWhere('i.customer =:id')
+            ->setParameter('active', $active)
+            ->setParameter('id', $id)
+            ->orderBy('i.id', 'DESC');
+        ;
+        return $qb->getQuery()
+            ->getResult();
+    }
 }
