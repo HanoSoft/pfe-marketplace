@@ -12,6 +12,13 @@
                     {{ form_start(form,{'attr': {'class': 'form-horizontal form'}}) }}
                     {{ form_errors(form) }}
                         <div class="form-group">
+                            {% if app.session.flashBag.has('success') %}
+                                <div class="alert alert-success">
+                                    {% for msg in app.session.flashBag.get('success') %}
+                                        {{ msg }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
                             <label  class="col-sm-2 control-label">Marque : <span style="color:#C82829;">*</span></label>
                             <div class="col-sm-9">
                                 {{ form_widget(form.brand, {'attr': {'class': 'form-control'}}) }}
@@ -29,13 +36,7 @@
                     {{ form_rest(form) }}
                     {{ form_end(form) }}
             </div>
-            {% if app.session.flashBag.has('success') %}
-                <div class="alert alert-success">
-                    {% for msg in app.session.flashBag.get('success') %}
-                        {{ msg }}
-                    {% endfor %}
-                </div>
-            {% endif %}
+
         </div>
     </div>
 {% endblock %}

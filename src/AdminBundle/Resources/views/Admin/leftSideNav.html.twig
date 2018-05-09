@@ -16,7 +16,6 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="sidebar-menu">
                     <li class="header">Menu</li>
-
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-home"></i><span>{{ 'Home'|trans }}</span>
@@ -24,84 +23,50 @@
                     </li>
                     {% if is_granted('ROLE_ADMIN') %}
                     <li class="treeview">
-                        <a href="#">
+                        <a href="{{ path('admin_user_list') }}">
                             <i class="fa fa fa-users"></i>
                             <span> {{ 'Users'|trans }}</span>
-                            <i class="fa fa-angle-left pull-right"></i>
                         </a>
-                        <ul class="treeview-menu">
-                            {% if is_granted('ROLE_SUPER_ADMIN') %}
-                            <li><a href="{{ path('admin_user_add') }}"><i class="fa fa-angle-right"></i> Créer</a></li>
-                            {% endif %}
-                            <li><a href="{{ path('admin_user_list') }}"><i class="fa fa-angle-right"></i> Gérer</a></li>
-                        </ul>
                         {% endif %}
                     </li>
                     <li class="treeview">
-                        <a href="#">
+                        <a href="{{ path('admin_brand_list') }}">
                             <i class="	fa fa-bookmark"></i>
                             <span>{{ 'Brands'|trans }}</span>
-                            <i class="fa fa-angle-left pull-right"></i>
                         </a>
-                        <ul class="treeview-menu">
-                            <li><a href="{{ path('admin_brand_add') }}"><i class="fa fa-angle-right"></i> Créer</a></li>
-                            <li><a href="{{ path('admin_brand_list') }}"><i class="fa fa-angle-right"></i> Gérer</a></li>
-                        </ul>
                     </li>
                     <li class="treeview">
-                        <a href="#">
+                        <a href="{{ path('admin_category_list') }}">
                             <i class="fa fa-tags"></i>
                             <span>{{ 'Categories'|trans }}</span>
-                            <i class="fa fa-angle-left pull-right"></i>
                         </a>
-                        <ul class="treeview-menu">
-                            <li><a href="{{ path('admin_category_add') }}"><i class="fa fa-angle-right"></i> Créer</a></li>
-                            <li><a href="{{ path('admin_category_list') }}"><i class="fa fa-angle-right"></i> Gérer</a></li>
-                        </ul>
                     </li>
                     <li class="treeview">
-                        <a href="#">
+                        <a href="{{  path('admin_product_list') }}">
                             <i class="fa fa-archive"></i>
                             <span>{{ 'Products'|trans }}</span>
-                            <i class="fa fa-angle-left pull-right"></i>
                         </a>
-                        <ul class="treeview-menu">
-                            <li><a href="{{ path('admin_product_add') }}"><i class="fa fa-angle-right"></i> Créer</a></li>
-                            <li><a href="{{  path('admin_product_list') }}"><i class="fa fa-angle-right"></i> Gérer</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-shopping-cart"></i>
-                            <span>{{ 'Orders'|trans }}</span>
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="{{  path('admin_order_list') }}"><i class="fa fa-angle-right"></i> Gérer</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="	fa fa-star-o"></i>
-
-                            <span>{{ 'Promotions'|trans }}</span>
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="{{ path('admin_promotion_add') }}"><i class="fa fa-angle-right"></i> Créer</a></li>
-                            <li><a href="{{ path('admin_promotion_list') }}"><i class="fa fa-angle-right"></i> Gérer</a></li>
-                        </ul>
                     </li>
                     {% if is_granted('ROLE_ADMIN') %}
                     <li class="treeview">
-                        <a href="#">
+                        <a href="{{  path('admin_order_list') }}">
+                            <i class="fa fa-shopping-cart"></i>
+                            <span>{{ 'Orders'|trans }}</span>
+                        </a>
+                        {% endif %}
+                    </li>
+                    <li class="treeview">
+                        <a href="{{ path('admin_promotion_list') }}">
+                            <i class="	fa fa-star-o"></i>
+                            <span>{{ 'Promotions'|trans }}</span>
+                        </a>
+                    </li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <li class="treeview">
+                        <a href="{{ path('admin_customer_list') }}">
                             <i class="fa fa fa-users"></i>
                             <span> {{ 'Customers'|trans }}</span>
-                            <i class="fa fa-angle-left pull-right"></i>
                         </a>
-                        <ul class="treeview-menu">
-                                <li><a href="{{ path('admin_customer_list') }}"><i class="fa fa-angle-right"></i> Gérer</a></li>
-                        </ul>
                         {% endif %}
                     </li>
                     {% if is_granted('ROLE_ADMIN') %}
@@ -109,14 +74,12 @@
                             <a href="#">
                                 <i class="fa fa-cogs"></i>
                                 <span>{{ 'Configuration'|trans }}</span>
-                                <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
                                 <li class="treeview">
                                     <a href="{{ path('admin_alert_show') }}">
                                         <i class="fa fa-bell"></i>
                                         <span>{{ "Alert"|trans }}</span>
-                                        <i class="fa fa-angle-left pull-right"></i>
                                     </a>
                                 </li>
                             </ul>
