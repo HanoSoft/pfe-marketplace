@@ -16,10 +16,6 @@ class ItemController extends Controller
     public function indexAction()
     {
        $products = array();
-        $something = array(
-            'product' => '',
-            'quantity' => ''
-        );
         $serviceItem= $this->get('core.service.item');
         $serviceProduct= $this->get('core.service.product');
         $items=$serviceItem->getItems();
