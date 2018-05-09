@@ -47,11 +47,13 @@
                             <span>{{ 'Products'|trans }}</span>
                         </a>
                     </li>
+                    {% if is_granted('ROLE_ADMIN') %}
                     <li class="treeview">
                         <a href="{{  path('admin_order_list') }}">
                             <i class="fa fa-shopping-cart"></i>
                             <span>{{ 'Orders'|trans }}</span>
                         </a>
+                        {% endif %}
                     </li>
                     <li class="treeview">
                         <a href="{{ path('admin_promotion_list') }}">
