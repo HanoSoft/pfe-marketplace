@@ -57,7 +57,7 @@ class Orders
      *
      * @ORM\Column(name="status", type="string", length=255,nullable=true)
      */
-    private $status ="En cours";
+    private $status ="En attente";
 
 
     /**

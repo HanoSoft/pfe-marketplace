@@ -26,6 +26,7 @@ class OrderEditType extends AbstractType
                     'En cours' => 'En cours',
                     'En attente' => 'En attente',
                     'Livré'=>'Livré',
+                    'Retirer' => 'Retirer',
                 )));
 
     }
