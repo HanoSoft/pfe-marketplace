@@ -20,15 +20,13 @@ class OrderEditType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-
-           $builder ->add('status')->add('status', ChoiceType::class, array(
-                'choices'  => array(
-                    'En cours' => 'En cours',
-                    'En attente' => 'En attente',
-                    'Livré'=>'Livré',
-                    'Retirer' => 'Retirer',
-                )));
-
+       $builder ->add('status')->add('status', ChoiceType::class, array(
+            'choices'  => array(
+                'En cours' => 'En cours',
+                'En attente' => 'En attente',
+                'Livré'=>'Livré',
+                'Retirer' => 'Retirer',
+            )));
     }
 
     public function getParent()
