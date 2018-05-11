@@ -13,22 +13,24 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class ItemController extends Controller
 {
-    public function indexAction()
+    public function indexAction($id)
     {
-       $products = array();
-        $serviceItem= $this->get('core.service.item');
-        $serviceProduct= $this->get('core.service.product');
-        $items=$serviceItem->getItems();
+        $products = array();
+        $serviceProduct = $this->get('core.service.product');
+        $serviceOrder=$this->get('core.service.order');
+        $order=$serviceOrder->getOrder($id);
+        $items = $order->getItems();
         foreach ($items as $item) {
-            array_push($products,array(
+            array_push($products, array(
                 'product' => $serviceProduct->getProduct($item->getProduct()),
                 'quantity' => $item->getQuantity(),
                 'size' => $item->getSize()
             ));
         }
         return $this->render('AdminBundle:Item:index.html.twig', array(
-            'items' => $products,
+            'items' => $products
         ));
-    }
 
+
+    }
 }

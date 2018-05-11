@@ -38,7 +38,7 @@
                             <td>{{ order.customer.name }}</td>
                             <td>{{ order.status }}  <a href="{{ path('admin_order_edit',{'id': order.id}) }}" class="link link-success" ><em class="fa fa-edit"></em></a></td>
                             <td>{{ order.deliveryDate|date('Y-m-d') }}</td>
-                            <td><a href="{{ path('admin_item_list') }}" class="link link-success" >Afficher</a></td>
+                            <td><a href="{{ path('admin_order_item_list' , {'id': order.id})  }}" class="link link-success" >Afficher</a></td>
                             <td align="center">
                                 {% if order.deleted ==false %}
                                     <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_order_disable', {'id':order.id}) }}" >
