@@ -13,7 +13,6 @@ use AdminBundle\Form\UserEditType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-
 class UserController extends Controller
 {
     public function indexAction(Request $request)
@@ -103,5 +102,18 @@ class UserController extends Controller
             'formDelete'   => $formDelete->createView(),
         ));
     }
-
+    public function deleteAction(Request $request,$id){
+        $em=$this->getDoctrine()->getManager();
+        $formDelete = $this->get('form.factory')->create();
+        if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
+            $userManager = $this->get('fos_user.user_manager');
+            $user = $userManager->findUserBy(array('id'=>$id));
+            $em->remove($user);
+            $em->flush();
+            return $this->redirectToRoute('admin_user_list');
+        }
+        return $this->render('AdminBundle::delete.html.twig', array(
+            'formDelete' => $formDelete->createView(),
+        ));
+    }
 }
