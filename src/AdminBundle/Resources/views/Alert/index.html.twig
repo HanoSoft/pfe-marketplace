@@ -1,0 +1,115 @@
+{% extends "AdminBundle::adminLayout.html.twig" %}
+{% block content %}
+    {{ parent() }}
+    <ul id="breadcrumb">
+        <li><a href="{{ path('admin_homepage') }}"><span class="fa fa-home"> </span></a></li>
+        <li><a > Produit </a></li>
+    </ul>
+    <div class="container-fluid" style="background: #FFFFFF;">
+        <br>
+        <a href="{{ path('admin_product_add') }}" class="col-md-offset-10 btn btn-primary btn-md">
+            <span class="fa fa-plus-circle"> </span></span> Nouveau Produit </a>
+        <br>
+        <br>
+        <div class="row dataTables_wrapper form-inline dt-bootstrap no-footer">
+            <table  class="data-table table table-striped table-bordered dataTable no-footer" style="width:100%">
+                <thead>
+                <tr>
+                    <th >Id</th>
+                    <th class="sorting_asc">Produit</th>
+                    <th >Catégorie</th>
+                    <th>Prix</th>
+                    <th>Quantité</th>
+                    <th> Taille </th>
+                    <th> Status </th>
+                    <th> Etat </th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for product in products %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <tr>
+                            <td>
+                                <a href="{{ path('admin_product_show',{'id': product.id}) }}" class="link">
+                                    {{ product.id }}</a>
+                            </td>
+                            <td>{{ product.productName }}</td>
+                            <td>{{ product.category.name }}</td>
+                            <td class="money">{{ product.price }} €</td>
+                            <td class="money">{{ product.quantity }}</td>
+                            <td align="center">
+                                <a href="{{ path('admin_product_size_list', {'id': product.id}) }}" class="link link-success" >
+                                    Afficher
+                                </a>
+                            </td>
+                            <td align="center">
+                                {% if product.deleted ==false %}
+                                    <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_product_disable', {'id': product.id}) }}" >
+                                        <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
+                                    </a>
+                                {% else %}
+                                    {% if product.category.deleted==false %}
+                                        <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_product_enable', {'id': product.id}) }}" >
+                                            <span class="glyphicon glyphicon-remove " style="color:red;"></span>
+                                        </a>
+                                    {% else %}
+                                        <span class="glyphicon glyphicon-remove " style="color:red;"></span>
+                                    {% endif %}
+                                {% endif %}
+                            </td>
+                            <td>{{ product.status }}</td>
+                            <td align="center">
+                                <a href="{{ path('admin_product_edit', {'id': product.id}) }}" class="link link-success" ><em class="fa fa-edit"></em></a>
+                                <a href="#myModal" class="link link-danger" data-toggle="modal" data-wathever="{{ path('admin_product_delete', {'id': product.id}) }}" ><em class="fa fa-trash-o"></em></a>
+                                <a href="{{ path('admin_product_image_list',{'id': product.id}) }}" class="link"><em class="fa fa-picture-o"></em></a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        {% if product.category.brand.user.username==app.user.username %}
+                            <tr>
+                                <td>
+                                    <a href="{{ path('admin_product_show',{'id': product.id}) }}" class="link">
+                                        {{ product.id }}</a>
+                                </td>
+                                <td>{{ product.productName }}</td>
+                                <td>{{ product.category.name }}</td>
+                                <td class="money">{{ product.price }} €</td>
+                                <td class="money">{{ product.quantity }}</td>
+                                <td>
+                                    <a href="{{ path('admin_product_size_list', {'id': product.id}) }}" class="link link-success" >
+                                        Afficher
+                                    </a>
+                                </td>
+                                <td align="center">
+                                    {% if product.deleted ==false %}
+                                        <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_product_disable', {'id': product.id}) }}" >
+                                            <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
+                                        </a>
+                                    {% else %}
+                                        {% if product.category.deleted==false %}
+                                            <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_product_enable', {'id': product.id}) }}" >
+                                                <span class="glyphicon glyphicon-remove " style="color:red;"></span>
+                                            </a>
+                                        {% else %}
+                                            <span class="glyphicon glyphicon-remove " style="color:red;"></span>
+                                        {% endif %}
+                                    {% endif %}
+                                </td>
+                                <td>{{ product.status }}</td>
+                                <td align="center">
+                                    <a href="{{ path('admin_product_edit', {'id': product.id}) }}" class="link link-success" ><em class="fa fa-edit"></em></a>
+                                    <a href="#myModal" class="link link-danger" data-toggle="modal" data-wathever="{{ path('admin_product_delete', {'id': product.id}) }}" ><em class="fa fa-trash-o"></em></a>
+                                    <a href="{{ path('admin_product_image_list',{'id': product.id}) }}" class="link"><em class="fa fa-picture-o"></em></a>
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {{ include("AdminBundle::delete.html.twig") }}
+{% endblock %}
+

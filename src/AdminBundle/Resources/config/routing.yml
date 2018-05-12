@@ -206,7 +206,7 @@ admin_alert_add:
     defaults: { _controller: AdminBundle:Alert:add }
 admin_alert_show:
     path:     /admin/alert/show
-    defaults: { _controller: AdminBundle:Alert:list }
+    defaults: { _controller: AdminBundle:Alert:index }
 admin_alert_edit:
     path:     /admin/alert/edit/{id}
     defaults:
