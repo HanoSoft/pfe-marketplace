@@ -18,7 +18,7 @@ class AlertController extends Controller
         $serviceProduct = $this->get('core.service.product');
         $products=$serviceProduct->getProducts();
         $formDelete = $this->get('form.factory')->create();
-        return $this->render('AdminBundle:Product:index.html.twig', array(
+        return $this->render('AdminBundle:Alert:index.html.twig', array(
             'products' => $products,
             'formDelete'   => $formDelete->createView(),
         ));
