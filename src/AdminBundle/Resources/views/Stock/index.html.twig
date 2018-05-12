@@ -3,12 +3,12 @@
     {{ parent() }}
     <ul id="breadcrumb">
         <li><a href="{{ path('admin_homepage') }}"><span class="fa fa-home"> </span></a></li>
-        <li><a > Produit </a></li>
+        <li><a > Produits </a></li>
     </ul>
     <div class="container-fluid" style="background: #FFFFFF;">
         <br>
         <a href="{{ path('admin_product_add') }}" class="col-md-offset-10 btn btn-primary btn-md">
-            <span class="fa fa-plus-circle"> </span></span> Nouveau Produit </a>
+            <span class="fa fa-plus-circle"> </span></span> Additionner quantité </a>
         <br>
         <br>
         <div class="row dataTables_wrapper form-inline dt-bootstrap no-footer">
@@ -38,8 +38,8 @@
 
                             <td>{{ product.status }}</td>
                             <td align="center">
-                                <a href="{{ path('admin_product_edit', {'id': product.id}) }}" class="link link-success" ><em class="fa fa-plus-square"></em></a>
-                                <a href="{{ path('admin_product_image_list',{'id': product.id}) }}" class="link link-danger"><em class="fa fa-minus-square"></em></a>
+                                <a href="{{ path('admin_stock_edit', {'id': product.id}) }}" class="link link-success" ><em class="fa fa-plus-square"></em></a>
+                                <a href="#" class="link link-danger"><em class="fa fa-minus-square"></em></a>
                             </td>
                         </tr>
 
@@ -61,8 +61,8 @@
 
                                 <td>{{ product.status }}</td>
                                 <td align="center">
-                                    <a href="{{ path('admin_product_edit', {'id': product.id}) }}" class="link link-success" ><em class="fa fa-plus-square"></em></a>
-                                    <a href="{{ path('admin_product_image_list',{'id': product.id}) }}" class="link link-danger"><em class="fa fa-minus-square"></em></a>
+                                    <a href="#" class="link link-success" ><em class="fa fa-plus-square"></em></a>
+                                    <a href="#" class="link link-danger"><em class="fa fa-minus-square"></em></a>
                                 </td>
                             </tr>
                         {% endif %}
@@ -72,6 +72,6 @@
             </table>
         </div>
     </div>
-    {{ include("AdminBundle::delete.html.twig") }}
+
 {% endblock %}
 

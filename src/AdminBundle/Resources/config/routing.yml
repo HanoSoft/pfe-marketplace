@@ -206,7 +206,7 @@ admin_alert_add:
     defaults: { _controller: AdminBundle:Alert:add }
 admin_alert_show:
     path:     /admin/alert/show
-    defaults: { _controller: AdminBundle:Alert:index }
+    defaults: { _controller: AdminBundle:Alert:list }
 admin_alert_edit:
     path:     /admin/alert/edit/{id}
     defaults:
@@ -300,3 +300,9 @@ admin_order_item_list:
             _controller: AdminBundle:Item:index
             requirements:
             id: \d+
+admin_stock_list:
+    path:     /admin/stock
+    defaults: { _controller: AdminBundle:Stock:index }
+admin_stock_edit:
+    path:     /admin/stock/edit
+    defaults: { _controller: AdminBundle:Stock:edit }
