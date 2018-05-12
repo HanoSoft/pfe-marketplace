@@ -6,11 +6,14 @@
         <li><a href="{{ path('admin_stock_list') }}"> Stock </a></li>
         <li><a> Modifier</a></li>
     </ul>
+
     <div class=" form-grids row form-grids-right">
         <div class="widget-shadow " data-example-id="basic-forms">
             <div class="form-body">
                 {{ form_start(form,{'attr': {'class': 'form-horizontal form'}}) }}
                 {{ form_errors(form) }}
+
+
 
 
                 <div class="form-group has-feedback">
@@ -22,7 +25,7 @@
                 </div>
 
 
-                <button class="btn btn-success col-md-offset-10 " disabled="true" type="submit" ><span class="fa fa-edit"> </span> Modifier</button>
+                <button class="btn btn-success col-md-offset-10 " disabled="true" type="submit" ><span class="fa fa-edit"> </span> Valider</button>
                 {{ form_rest(form) }}
                 {{ form_end(form) }}
             </div>

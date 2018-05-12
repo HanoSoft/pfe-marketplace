@@ -26,7 +26,6 @@ class StockController extends Controller
     }
     public function editAction()
     {
-
     }
 
 }
