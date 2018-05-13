@@ -7,8 +7,7 @@
     </ul>
     <div class="container-fluid" style="background: #FFFFFF;">
         <br>
-        <a href="{{ path('admin_stock_edit') }}" class="col-md-offset-10 btn btn-primary btn-md">
-            <span class="fa fa-plus-circle"> </span></span> Additionner quantité </a>
+
         <br>
         <br>
         <div class="row dataTables_wrapper form-inline dt-bootstrap no-footer">
@@ -28,8 +27,8 @@
                     {% if is_granted('ROLE_ADMIN') %}
                         <tr>
                             <td>
-                                <a href="{{ path('admin_product_show',{'id': product.id}) }}" class="link">
-                                    {{ product.id }}</a>
+
+                                    {{ product.id }}
                             </td>
                             <td>{{ product.productName }}</td>
                             <td>{{ product.category.name }}</td>
@@ -38,14 +37,10 @@
 
                             <td>{{ product.status }}</td>
                             <td align="center">
-                                <a href="{{ path('admin_stock_edit', {'id': product.id}) }}" class="link link-success" ><em class="fa fa-plus-square"></em></a>
-                                <a href="#" class="link link-danger"><em class="fa fa-minus-square"></em></a>
+                                <a href="{{ path('admin_stock_add', {'id': product.id}) }}" class="link link-success" ><em class="fa fa-plus-square"></em></a>
+                                <a href="{{ path('admin_stock_decrease', {'id': product.id}) }}" class="link link-danger"><em class="fa fa-minus-square"></em></a>
                             </td>
                         </tr>
-
-
-
-
                     {% else %}
                         {% if product.category.brand.user.username==app.user.username %}
                             <tr>

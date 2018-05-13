@@ -29,6 +29,7 @@ class OrderController extends FOSRestController
     public function createAction($id,Orders $order)
     {
         $serviceCustomer=$this->get('core.service.customer');
+        $serviceProduct=$this->get('core.service.product');
         $em = $this->getDoctrine()->getManager();
         $customer=$serviceCustomer->getCustomer($id);
         $order->setCustomer($customer);
@@ -38,6 +39,8 @@ class OrderController extends FOSRestController
         foreach ($order->getItems() as $item) {
             $item->setOrder($order);
             $em->persist($item);
+            $product=$serviceProduct->getProduct($item->getProduct());
+            $product->setQuantity($product->getQuantity()-$item->getQuantity());
         }
         $em->flush();
     }
@@ -54,5 +57,28 @@ class OrderController extends FOSRestController
         $serviceOrder=$this->get('core.service.order');
         $orders=$serviceOrder->getActiveOrders(false,$id);
         return $orders;
+    }
+    /**
+     * @Rest\Put(
+     *    path = "api/orders/cancel/{id}",
+     *    name = "api_orders_cancel",
+     * )
+     * @View(StatusCode = 200)
+     *
+     *
+     */
+    public function cancelAction($id)
+    {
+        $serviceOrder= $this->get('core.service.order');
+        $serviceProduct=$this->get('core.service.product');
+        $em = $this->getDoctrine()->getManager();
+        $order=$serviceOrder->getOrder($id);
+        $order->setStatus('Annuler');
+        $em->persist($order);
+        foreach ($order->getItems() as $item) {
+            $product=$serviceProduct->getProduct($item->getProduct());
+            $product->setQuantity($product->getQuantity()+$item->getQuantity());
+        }
+        $em->flush();
     }
 }

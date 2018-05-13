@@ -28,6 +28,4 @@ class BrandController extends FOSRestController
         $brands=$brandService->getActiveBrands(false);
         return $brands;
     }
-
-
 }

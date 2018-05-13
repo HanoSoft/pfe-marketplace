@@ -303,6 +303,9 @@ admin_order_item_list:
 admin_stock_list:
     path:     /admin/stock
     defaults: { _controller: AdminBundle:Stock:index }
-admin_stock_edit:
-    path:     /admin/stock/edit
-    defaults: { _controller: AdminBundle:Stock:edit }
+admin_stock_add:
+    path:     /admin/stock/add/{id}
+    defaults: { _controller: AdminBundle:Stock:add }
+admin_stock_decrease:
+    path:     /admin/stock/decrease/{id}
+    defaults: { _controller: AdminBundle:Stock:decrease }

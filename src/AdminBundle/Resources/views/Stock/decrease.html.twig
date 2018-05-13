@@ -10,22 +10,24 @@
     <div class=" form-grids row form-grids-right">
         <div class="widget-shadow " data-example-id="basic-forms">
             <div class="form-body">
-               {# {{ form_start(form,{'attr': {'class': 'form-horizontal form'}}) }}
-                {{ form_errors(form) }}
-                #}
                 <form {{ path('admin_stock_add', {'id': product.id}) }}" method="post" class="form-horizontal form">
                 <div class="form-group has-feedback">
                     <label  class="col-sm-2 control-label">Quantité : *</label>
                     <div class="col-sm-9">
-                   <input type="number" class="form-control" minlength="1" name="quantity">
+                        <input type="number" class="form-control" minlength="1" name="quantity">
                     </div>
                     <span class="glyphicon"></span>
                     {{ form_rest(form) }}
                 </div>
                 <button class="btn btn-success col-md-offset-10 " disabled="true" type="submit" ><span class="fa fa-edit"> </span> Valider</button>
-            </form>
+                </form>
             </div>
         </div>
     </div>
+    {% if msg !='' %}
+        <div class="alert alert-warning">
+            {{ msg }}
+        </div>
+    {% endif %}
 {% endblock %}
 
