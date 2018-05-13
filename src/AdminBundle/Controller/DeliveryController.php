@@ -94,5 +94,20 @@ class DeliveryController extends Controller
             'formDelete'   => $formDelete->createView(),
         ));
     }
+    public function enableAction(Request $request,$id)
+    {
+        $formDelete = $this->get('form.factory')->create();
+        if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
+            $serviceDelivery = $this->get('core.service.delivery');
+            $em = $this->getDoctrine()->getManager();
+            $delivery=$serviceDelivery->getDelivery($id);
+            $delivery->setDeleted(false);
+            $em->flush();
+            return $this->redirectToRoute('admin_delivery_list');
+        }
+        return $this->render('AdminBundle::delete.html.twig', array(
+            'formDelete'   => $formDelete->createView(),
+        ));
+    }
 
 }
