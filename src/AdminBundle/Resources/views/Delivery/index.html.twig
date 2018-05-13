@@ -24,7 +24,6 @@
                     <th >Livraison gratuite</th>
                     <th> Status </th>
                     <th>Action</th>
-
                 </tr>
                 </thead>
                 <tbody >
@@ -40,38 +39,28 @@
                             <td>{{ delivery.deliveryTime }}</td>
                             <td>{{ delivery.address }}</td>
                             <td>{{ delivery.price }} €</td>
-
-
                             <td align="center">
-                                {% if delivery.freeDelivery ==false %}
-                                    <a href="#myModal" class="link" data-toggle="modal" data-wathever="#" >
+                                {% if delivery.freeDelivery ==true %}
                                         <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
                                     </a>
-
                                 {% else %}
                                     <span class="glyphicon glyphicon-remove " style="color:red;"></span>
-
                                 {% endif %}
                             </td>
-
                             <td align="center">
                                 {% if delivery.deleted ==false %}
                                     <a href="#myModal" class="link" data-toggle="modal" data-wathever="#" >
                                         <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
                                     </a>
-
                                 {% else %}
                                     <span class="glyphicon glyphicon-remove " style="color:red;"></span>
-
                                 {% endif %}
                             </td>
                             <td align="center">
                                 <a href="#" class="link link-success" ><em class="fa fa-edit"></em></a>
                                 <a href="#myModal" class="link link-danger" data-toggle="modal" data-wathever="" ><em class="fa fa-trash-o"></em></a>
                             </td>
-
                         </tr>
-
                     {% endif %}
                 {% endfor %}
                 </tbody>
