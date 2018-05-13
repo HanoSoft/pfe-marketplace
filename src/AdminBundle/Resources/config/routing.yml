@@ -312,3 +312,13 @@ admin_stock_decrease:
 admin_delivery_list:
     path:     /admin/deliveries
     defaults: { _controller: AdminBundle:Delivery:index }
+admin_delivery_add:
+    path:     /admin/delivery/add
+    defaults: { _controller: AdminBundle:Delivery:add }
+
+admin_delivery_edit:
+    path:     /admin/delivery/edit/{id}
+    defaults:
+            _controller: AdminBundle:Delivery:edit
+            requirements:
+            id: \d+

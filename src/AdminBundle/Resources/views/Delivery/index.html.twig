@@ -8,7 +8,7 @@
     </ul>
     <div class="container-fluid" style="background: #FFFFFF;">
         <br>
-        <a href="#" class="col-md-offset-10 btn btn-primary btn-md">
+        <a href="{{ path('admin_delivery_add') }}" class="col-md-offset-10 btn btn-primary btn-md">
             <span class="fa fa-plus-circle"> </span></span> Nouvelle Livraison </a>
         <br>
         <br>
@@ -23,6 +23,7 @@
                     <th>Prix</th>
                     <th >Livraison gratuite</th>
                     <th> Status </th>
+                    <th>Action</th>
 
                 </tr>
                 </thead>
@@ -63,6 +64,10 @@
                                     <span class="glyphicon glyphicon-remove " style="color:red;"></span>
 
                                 {% endif %}
+                            </td>
+                            <td align="center">
+                                <a href="#" class="link link-success" ><em class="fa fa-edit"></em></a>
+                                <a href="#myModal" class="link link-danger" data-toggle="modal" data-wathever="" ><em class="fa fa-trash-o"></em></a>
                             </td>
 
                         </tr>
