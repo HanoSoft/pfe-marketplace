@@ -12,7 +12,6 @@
                 {{ form_start(form,{'attr': {'class': 'form-horizontal form'}}) }}
                 {{ form_errors(form) }}
                 <div class="form-group">
-
                     {% if app.session.flashBag.has('success') %}
                         <div class="alert alert-success">
                             {% for msg in app.session.flashBag.get('success') %}
@@ -20,7 +19,6 @@
                             {% endfor %}
                         </div>
                     {% endif %}
-
                     <label  class="col-sm-2 control-label">Nom :</label>
                     <div class="col-sm-9">
                         {{ form_widget(form.name, {'attr': {'class': 'form-control ','placeholder':'Nom','minlength':'2'}}) }}
@@ -35,16 +33,13 @@
                     <span class="glyphicon " ></span>
                 </div>
                 <div class="form-group has-feedback">
-
                     <label  class="col-sm-2 control-label">Adresse :</label>
                     <div class="col-sm-9">
                         {{ form_widget(form.address, {'attr': {'class': 'form-control ','placeholder':'Adresse','minlength':'2'}}) }}
-
                     </div>
                     <span class="glyphicon " ></span>
                 </div>
                 <div class="form-group has-feedback">
-
                     <label  class="col-sm-2 control-label">Prix : </label>
                     <div class="col-sm-9">
                         {{ form_widget(form.price, {'attr': {'class': 'form-control','placeholder':'Prix','minlength':'1'}}) }}
@@ -58,7 +53,6 @@
                     </div>
                     <span class="glyphicon "></span>
                 </div>
-
                 <button class="btn btn-warning col-md-offset-10 " type="submit" disabled="true" ><span class="fa fa-plus-circle"> </span> Ajouter</button>
                 {{ form_rest(form) }}
                 {{ form_end(form) }}

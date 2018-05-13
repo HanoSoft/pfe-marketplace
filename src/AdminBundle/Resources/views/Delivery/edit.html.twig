@@ -6,15 +6,12 @@
         <li><a href="{{ path('admin_delivery_list') }}"> Livraisons</a></li>
         <li><a >Modifier</a></li>
     </ul>
-
     <div class=" form-grids row form-grids-right">
         <div class="widget-shadow " data-example-id="basic-forms">
 
             <div class="form-body">
                 {{ form_start(form,{'attr': {'class': 'form-horizontal form'}}) }}
                 {{ form_errors(form) }}
-
-
                 <div class="form-group">
                     <label  class="col-sm-2 control-label">Nom :</label>
                     <div class="col-sm-9">
@@ -22,7 +19,6 @@
                     </div>
                     <span class="glyphicon " id="categoryAlertIcon"></span>
                 </div>
-
                 <div class="form-group has-feedback">
                     <label  class="col-sm-2 control-label">Délai :</label>
                     <div class="col-sm-9">
@@ -37,15 +33,13 @@
                     </div>
                     <span class="glyphicon " id="categoryAlertIcon"></span>
                 </div>
-
                 <div class="form-group has-feedback">
                     <label  class="col-sm-2 control-label">Prix :</label>
                     <div class="col-sm-9">
-                        {{ form_widget(form.price, {'attr': {'class': 'form-control ','placeholder':'Prix','minlength':'2'}}) }}
+                        {{ form_widget(form.price, {'attr': {'class': 'form-control ','placeholder':'Prix','minlength':'1'}}) }}
                     </div>
                     <span class="glyphicon " id="categoryAlertIcon"></span>
                 </div>
-
                 <div class="form-group has-feedback">
                     <label  class="col-sm-2 control-label">Livraison gratuite :</label>
                     <div class="col-sm-9">
@@ -53,7 +47,6 @@
                     </div>
                     <span class="glyphicon " id="categoryAlertIcon"></span>
                 </div>
-
                 <button class="btn btn-success col-md-offset-10 " type="submit" disabled="true"><span class="fa fa-edit"> </span> Modifier</button>
                 {{ form_rest(form) }}
                 {{ form_end(form) }}
