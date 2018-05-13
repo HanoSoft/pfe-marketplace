@@ -38,7 +38,6 @@ class DeliveryController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($delivery);
             $em->flush();
-            $id=$delivery->getId();
             $session->getFlashBag()->add('success', 'la livraison est bien enregistrée !');
             return $this->redirectToRoute('admin_delivery_add');
         }
