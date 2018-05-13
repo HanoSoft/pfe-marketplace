@@ -10,6 +10,7 @@ namespace AdminBundle\Controller;
 
 
 use CoreBundle\Entity\Delivery;
+use CoreBundle\Form\DeliveryEditType;
 use CoreBundle\Form\DeliveryType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -44,6 +45,20 @@ class DeliveryController extends Controller
             'form' => $form->createView(),
         ));
 
+    }
+    public function editAction(Request $request ,$id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $serviceDelivery = $this->get('core.service.delivery');
+        $delivery=$serviceDelivery->getOrder($id);
+        $form = $this->get('form.factory')->create(DeliveryEditType::class,$delivery);
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+            $em->flush();
+            return $this->redirectToRoute('admin_delivery_list',array('id' => $id));
+        }
+        return $this->render('AdminBundle:Delivery:edit.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
 
 }
