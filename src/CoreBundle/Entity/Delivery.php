@@ -43,11 +43,11 @@ class Delivery
     private $address;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="timeLimit", type="string", length=255)
+     * @ORM\Column(name="deliveryTime", type="integer")
      */
-    private $timeLimit;
+    private $deliveryTime;
 
     /**
      * @var bool
@@ -170,29 +170,9 @@ class Delivery
         return $this->deleted;
     }
 
-    /**
-     * Set timeLimit
-     *
-     * @param string $timeLimit
-     *
-     * @return Delivery
-     */
-    public function setTimeLimit($timeLimit)
-    {
-        $this->timeLimit = $timeLimit;
 
-        return $this;
-    }
 
-    /**
-     * Get timeLimit
-     *
-     * @return string
-     */
-    public function getTimeLimit()
-    {
-        return $this->timeLimit;
-    }
+
 
     /**
      * Set freeDelivery
@@ -216,5 +196,29 @@ class Delivery
     public function getFreeDelivery()
     {
         return $this->freeDelivery;
+    }
+
+    /**
+     * Set deliveryTime
+     *
+     * @param integer $deliveryTime
+     *
+     * @return Delivery
+     */
+    public function setDeliveryTime($deliveryTime)
+    {
+        $this->deliveryTime = $deliveryTime;
+
+        return $this;
+    }
+
+    /**
+     * Get deliveryTime
+     *
+     * @return integer
+     */
+    public function getDeliveryTime()
+    {
+        return $this->deliveryTime;
     }
 }
