@@ -40,7 +40,7 @@ class DeliveryController extends Controller
             $em->flush();
             $id=$delivery->getId();
             $session->getFlashBag()->add('success', 'la livraison est bien enregistrée !');
-            return $this->redirectToRoute('admin_delivery_add',array('id' => $id));
+            return $this->redirectToRoute('admin_delivery_add');
         }
         return $this->render('AdminBundle:Delivery:add.html.twig', array(
             'form' => $form->createView(),
@@ -79,6 +79,20 @@ class DeliveryController extends Controller
             'formDelete' => $formDelete->createView(),
         ));
     }
-   
+    public function disableAction(Request $request,$id)
+    {
+        $formDelete = $this->get('form.factory')->create();
+        if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
+            $serviceDelivery = $this->get('core.service.delivery');
+            $em = $this->getDoctrine()->getManager();
+            $delivery=$serviceDelivery->getDelivery($id);
+            $delivery->setDeleted(true);
+            $em->flush();
+            return $this->redirectToRoute('admin_delivery_list');
+        }
+        return $this->render('AdminBundle::delete.html.twig', array(
+            'formDelete'   => $formDelete->createView(),
+        ));
+    }
 
 }

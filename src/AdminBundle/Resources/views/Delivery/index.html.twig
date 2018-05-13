@@ -49,11 +49,17 @@
                             </td>
                             <td align="center">
                                 {% if delivery.deleted ==false %}
-                                    <a href="#myModal" class="link" data-toggle="modal" data-wathever="#" >
+                                    <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_delivery_disable', {'id':delivery.id}) }}" >
                                         <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
                                     </a>
                                 {% else %}
+                                    {% if delivery.deleted==true %}
+                                        <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_delivery_enable', {'id': delivery.id}) }}" >
+                                            <span class="glyphicon glyphicon-remove " style="color:red;"></span>
+                                        </a>
+                                {% else %}
                                     <span class="glyphicon glyphicon-remove " style="color:red;"></span>
+                                {% endif %}
                                 {% endif %}
                             </td>
                             <td align="center">

@@ -328,3 +328,15 @@ admin_delivery_delete:
             _controller: AdminBundle:Delivery:delete
             requirements:
             id: \d+
+admin_delivery_disable:
+    path:     /admin/delivery/disable/{id}
+    defaults:
+            _controller: AdminBundle:Delivery:disable
+            requirements:
+            id: \d+
+admin_delivery_enable:
+        path:     /admin/delivery/enable/{id}
+        defaults:
+                _controller: AdminBundle:Delivery:enable
+                requirements:
+                id: \d+
