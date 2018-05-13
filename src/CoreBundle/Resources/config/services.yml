@@ -24,5 +24,8 @@ services:
     core.service.item:
                                 class: CoreBundle\Service\ItemService
                                 arguments: ['@doctrine.orm.entity_manager']
+    core.service.delivery:
+                                    class: CoreBundle\Service\DeliveryService
+                                    arguments: ['@doctrine.orm.entity_manager']
 
 

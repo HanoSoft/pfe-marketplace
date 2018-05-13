@@ -309,3 +309,6 @@ admin_stock_add:
 admin_stock_decrease:
     path:     /admin/stock/decrease/{id}
     defaults: { _controller: AdminBundle:Stock:decrease }
+admin_delivery_list:
+    path:     /admin/deliveries
+    defaults: { _controller: AdminBundle:Delivery:index }
