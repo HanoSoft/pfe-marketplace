@@ -76,6 +76,14 @@
                         </a>
                     </li>
                     {% if is_granted('ROLE_ADMIN') %}
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-truck"></i>
+                            <span> {{ 'Delivery'|trans }}</span>
+                        </a>
+                        {% endif %}
+                    </li>
+                    {% if is_granted('ROLE_ADMIN') %}
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-cogs"></i>
