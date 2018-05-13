@@ -322,3 +322,9 @@ admin_delivery_edit:
             _controller: AdminBundle:Delivery:edit
             requirements:
             id: \d+
+admin_delivery_delete:
+    path:     /admin/delivery/delete/{id}
+    defaults:
+            _controller: AdminBundle:Delivery:delete
+            requirements:
+            id: \d+

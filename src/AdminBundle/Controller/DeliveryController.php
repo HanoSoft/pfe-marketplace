@@ -15,6 +15,7 @@ use CoreBundle\Form\DeliveryType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class DeliveryController extends Controller
 {
@@ -50,15 +51,34 @@ class DeliveryController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $serviceDelivery = $this->get('core.service.delivery');
-        $delivery=$serviceDelivery->getOrder($id);
+        $delivery=$serviceDelivery->getDelivery($id);
         $form = $this->get('form.factory')->create(DeliveryEditType::class,$delivery);
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $em->flush();
-            return $this->redirectToRoute('admin_delivery_list',array('id' => $id));
+            return $this->redirectToRoute('admin_delivery_list');
         }
         return $this->render('AdminBundle:Delivery:edit.html.twig', array(
             'form' => $form->createView(),
         ));
     }
+
+    public function deleteAction(Request $request,$id){
+        $em=$this->getDoctrine()->getManager();
+        $serviceDelivery = $this->get('core.service.delivery');
+        $delivery=$serviceDelivery->getDelivery($id);
+        if (null === $delivery) {
+            throw new NotFoundHttpException("La livraison  de l'id ".$id." n'existe pas.");
+        }
+        $formDelete = $this->get('form.factory')->create();
+        if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
+            $em->remove($delivery);
+            $em->flush();
+            return $this->redirectToRoute('admin_delivery_list');
+        }
+        return $this->render('AdminBundle::delete.html.twig', array(
+            'formDelete' => $formDelete->createView(),
+        ));
+    }
+   
 
 }
