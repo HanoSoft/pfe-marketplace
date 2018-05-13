@@ -9,7 +9,9 @@
 namespace AdminBundle\Controller;
 
 
-class DeliveryController
+use Symfony\Component\HttpKernel\Tests\Controller;
+
+class DeliveryController extends Controller
 {
 
 }
