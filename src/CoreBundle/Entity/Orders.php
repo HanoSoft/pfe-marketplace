@@ -46,12 +46,33 @@ class Orders
     }
 
     /**
-     * @var string
+     * @var float
      *
-     * @ORM\Column(name="amount", type="decimal", precision=10, scale=0)
+     * @ORM\Column(name="amount", type="float")
      */
     private $amount;
 
+    /**
+     *@ORM\ManyToOne(targetEntity="CoreBundle\Entity\Delivery",inversedBy="orders",cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $delivery;
+
+    /**
+     * @return mixed
+     */
+    public function getDelivery()
+    {
+        return $this->delivery;
+    }
+
+    /**
+     * @param mixed $delivery
+     */
+    public function setDelivery($delivery)
+    {
+        $this->delivery = $delivery;
+    }
     /**
      * @var string
      *
@@ -148,7 +169,7 @@ class Orders
     /**
      * Set amount
      *
-     * @param string $amount
+     * @param float $amount
      *
      * @return Orders
      */

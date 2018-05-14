@@ -24,12 +24,8 @@ class DelivryController extends FOSRestController
      */
     public function indexAction()
     {
-        $repository = $this->getDoctrine()
-            ->getManager()
-            ->getRepository('CoreBundle:Delivery')
-        ;
-        // On récupère l'entité correspondante
-        $delivrys = $repository->findAll();
-        return $delivrys;
+        $serviceDelivery=$this->get('core.service.delivery');
+        $delivery=$serviceDelivery->getActiveDeliveries(false);
+        return $delivery;
     }
 }
