@@ -1,0 +1,76 @@
+{% extends "AdminBundle::adminLayout.html.twig" %}
+{% block content %}
+    {{ parent() }}
+
+    <ul id="breadcrumb">
+        <li><a href="{{ path('admin_homepage') }}"><span class="fa fa-home"> </span></a></li>
+        <li><a>Promotions</a></li>
+    </ul>
+    <div class="container-fluid" style="background: #FFFFFF;">
+        <br>
+        <a href="{{ path('admin_product_add') }}" class="col-md-offset-10 btn btn-primary btn-md">
+            <span class="fa fa-plus-circle"> </span></span> Nouvelle Promotion </a>
+        <br>
+        <br>
+        <div class="row dataTables_wrapper form-inline dt-bootstrap no-footer">
+            <table  class="data-table table table-striped table-bordered dataTable no-footer" style="width:100%">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th class="sorting_asc">Nom</th>
+                    <th>Remise</th>
+                    <th >Date de début</th>
+                    <th >Date de fin</th>
+                    <th> Status </th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody >
+                {% for delivery in deliveries %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <tr>
+                            <td>
+                                <a href="{{ path('admin_delivery_list',{'id': delivery.id}) }}" class="link">
+                                    {{ delivery.id }}
+                                </a>
+                            </td>
+                            <td>{{ delivery.name }}</td>
+                            <td>{{ delivery.deliveryTime }}</td>
+                            <td>{{ delivery.address }}</td>
+                            <td>{{ delivery.price }} €</td>
+                            <td align="center">
+                                {% if delivery.freeDelivery ==true %}
+                                    <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
+                                    </a>
+                                {% else %}
+                                    <span class="glyphicon glyphicon-remove " style="color:red;"></span>
+                                {% endif %}
+                            </td>
+                            <td align="center">
+                                {% if delivery.deleted ==false %}
+                                    <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_delivery_disable', {'id':delivery.id}) }}" >
+                                        <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
+                                    </a>
+                                {% else %}
+                                    {% if delivery.deleted==true %}
+                                        <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_delivery_enable', {'id': delivery.id}) }}" >
+                                            <span class="glyphicon glyphicon-remove " style="color:red;"></span>
+                                        </a>
+                                    {% else %}
+                                        <span class="glyphicon glyphicon-remove " style="color:red;"></span>
+                                    {% endif %}
+                                {% endif %}
+                            </td>
+                            <td align="center">
+                                <a href="{{ path('admin_delivery_edit', {'id': delivery.id}) }}" class="link link-success" ><em class="fa fa-edit"></em></a>
+                                <a href="#myModal" class="link link-danger" data-toggle="modal" data-wathever="{{ path('admin_delivery_delete', {'id': delivery.id}) }}" ><em class="fa fa-trash-o"></em></a>
+                            </td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {{ include("AdminBundle::delete.html.twig") }}
+{% endblock %}
