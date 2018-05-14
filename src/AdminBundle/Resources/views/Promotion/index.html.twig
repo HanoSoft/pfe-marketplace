@@ -26,34 +26,23 @@
                 </tr>
                 </thead>
                 <tbody >
-                {% for delivery in deliveries %}
+                {% for promotion in promotions %}
                     {% if is_granted('ROLE_ADMIN') %}
                         <tr>
-                            <td>
-                                <a href="{{ path('admin_delivery_list',{'id': delivery.id}) }}" class="link">
-                                    {{ delivery.id }}
-                                </a>
-                            </td>
-                            <td>{{ delivery.name }}</td>
-                            <td>{{ delivery.deliveryTime }}</td>
-                            <td>{{ delivery.address }}</td>
-                            <td>{{ delivery.price }} €</td>
+                            <td>{{ promotion.id }}</td>
+                            <td>{{ promotion.name }}</td>
+                            <td>{{ promotion.discount }} %</td>
+                            <td>{{ promotion.startDate|date('Y-m-d') }}</td>
+                            <td>{{ promotion.endDate|date('Y-m-d') }} </td>
+
                             <td align="center">
-                                {% if delivery.freeDelivery ==true %}
-                                    <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
-                                    </a>
-                                {% else %}
-                                    <span class="glyphicon glyphicon-remove " style="color:red;"></span>
-                                {% endif %}
-                            </td>
-                            <td align="center">
-                                {% if delivery.deleted ==false %}
-                                    <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_delivery_disable', {'id':delivery.id}) }}" >
+                                {% if promotion.deleted ==false %}
+                                    <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_promotion_disable', {'id':promotion.id}) }}" >
                                         <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
                                     </a>
                                 {% else %}
-                                    {% if delivery.deleted==true %}
-                                        <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_delivery_enable', {'id': delivery.id}) }}" >
+                                    {% if promotion.deleted==true %}
+                                        <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_promotion_enable', {'id': promotion.id}) }}" >
                                             <span class="glyphicon glyphicon-remove " style="color:red;"></span>
                                         </a>
                                     {% else %}
@@ -62,8 +51,8 @@
                                 {% endif %}
                             </td>
                             <td align="center">
-                                <a href="{{ path('admin_delivery_edit', {'id': delivery.id}) }}" class="link link-success" ><em class="fa fa-edit"></em></a>
-                                <a href="#myModal" class="link link-danger" data-toggle="modal" data-wathever="{{ path('admin_delivery_delete', {'id': delivery.id}) }}" ><em class="fa fa-trash-o"></em></a>
+                                <a href="{{ path('admin_promotion_edit', {'id': promotion.id}) }}" class="link link-success" ><em class="fa fa-edit"></em></a>
+                                <a href="#myModal" class="link link-danger" data-toggle="modal" data-wathever="{{ path('admin_promotion_delete', {'id': promotion.id}) }}" ><em class="fa fa-trash-o"></em></a>
                             </td>
                         </tr>
                     {% endif %}

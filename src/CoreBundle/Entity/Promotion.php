@@ -39,13 +39,13 @@ class Promotion
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="start_date", type="date")
+     * @ORM\Column(name="startDate", type="date")
      */
     private $startDate;
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="end_date", type="date")
+     * @ORM\Column(name="endDate", type="date")
      */
     private $endDate;
 
