@@ -1,7 +1,6 @@
 {% extends "AdminBundle::adminLayout.html.twig" %}
 {% block content %}
     {{ parent() }}
-
     <ul id="breadcrumb">
         <li><a href="{{ path('admin_homepage') }}"><span class="fa fa-home"> </span></a></li>
         <li><a>Promotions</a></li>
@@ -34,7 +33,6 @@
                             <td>{{ promotion.discount }} %</td>
                             <td>{{ promotion.startDate|date('Y-m-d') }}</td>
                             <td>{{ promotion.endDate|date('Y-m-d') }} </td>
-
                             <td align="center">
                                 {% if promotion.deleted ==false %}
                                     <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_promotion_disable', {'id':promotion.id}) }}" >

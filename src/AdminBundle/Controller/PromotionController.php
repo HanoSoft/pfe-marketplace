@@ -8,7 +8,6 @@
 
 namespace AdminBundle\Controller;
 
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class PromotionController extends Controller
