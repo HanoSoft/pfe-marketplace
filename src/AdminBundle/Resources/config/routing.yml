@@ -322,3 +322,37 @@ admin_delivery_enable:
                 _controller: AdminBundle:Delivery:enable
                 requirements:
                 id: \d+
+admin_promotion_list:
+    path:     /admin/promotions
+    defaults: { _controller: AdminBundle:Promotion:index }
+
+admin_promotion_add:
+    path:     /admin/promotion/add
+    defaults: { _controller: AdminBundle:Promotion:add }
+
+admin_promotion_edit:
+    path:     /admin/promotion/edit/{id}
+    defaults:
+            _controller: AdminBundle:Promotion:edit
+            requirements:
+            id: \d+
+
+admin_promotion_delete:
+    path:     /admin/promotion/delete/{id}
+    defaults:
+            _controller: AdminBundle:Promotion:delete
+            requirements:
+            id:
+admin_promotion_disable:
+    path:     /admin/promotion/disable/{id}
+    defaults:
+            _controller: AdminBundle:Promotion:disable
+            requirements:
+            id:
+
+admin_promotion_enable:
+        path:     /admin/promotion/enable/{id}
+        defaults:
+                _controller: AdminBundle:Promotion:enable
+                requirements:
+                id: \d+

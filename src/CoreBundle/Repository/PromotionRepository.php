@@ -10,4 +10,19 @@ namespace CoreBundle\Repository;
  */
 class PromotionRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * Retourner la liste  des promotions selon la variable $active
+     * $active contenir 2 valeur true ou false
+     * return array
+     */
+    public function getActivePromotions($active)
+    {
+        $qb = $this->createQueryBuilder('p');
+        $qb
+            ->where('p.deleted =:active')
+            ->setParameter('active', $active)
+        ;
+        return $qb->getQuery()
+            ->getResult();
+    }
 }

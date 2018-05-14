@@ -27,5 +27,8 @@ services:
     core.service.delivery:
                                     class: CoreBundle\Service\DeliveryService
                                     arguments: ['@doctrine.orm.entity_manager']
+    core.service.promotion:
+                                        class: CoreBundle\Service\PromotionService
+                                        arguments: ['@doctrine.orm.entity_manager']
 
 
