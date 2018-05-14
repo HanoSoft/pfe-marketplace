@@ -28,7 +28,7 @@ class Promotion
      */
     private $discount;
 
-    private $deleted=false;
+
 
     /**
      * @var string
@@ -81,6 +81,12 @@ class Promotion
     {
         $this->endDate = $endDate;
     }
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="deleted", type="boolean")
+     */
+    private $deleted=false;
 
     /**
      * Get id
@@ -116,29 +122,8 @@ class Promotion
         return $this->discount;
     }
 
-    /**
-     * Set deleted
-     *
-     * @param boolean $deleted
-     *
-     * @return Promotion
-     */
-    public function setDeleted($deleted)
-    {
-        $this->deleted = $deleted;
 
-        return $this;
-    }
 
-    /**
-     * Get deleted
-     *
-     * @return bool
-     */
-    public function getDeleted()
-    {
-        return $this->deleted;
-    }
 
     /**
      * Set name
@@ -171,4 +156,28 @@ class Promotion
 
     }
 
+
+    /**
+     * Set deleted
+     *
+     * @param boolean $deleted
+     *
+     * @return Promotion
+     */
+    public function setDeleted($deleted)
+    {
+        $this->deleted = $deleted;
+
+        return $this;
+    }
+
+    /**
+     * Get deleted
+     *
+     * @return boolean
+     */
+    public function getDeleted()
+    {
+        return $this->deleted;
+    }
 }
