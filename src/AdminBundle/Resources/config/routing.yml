@@ -213,24 +213,6 @@ admin_alert_edit:
             _controller: AdminBundle:Alert:edit
             requirements:
             id: \d+
-admin_promotion_add:
-    path:     /admin/promotion/add
-    defaults: { _controller: AdminBundle:Promotion:add }
-admin_promotion_list:
-    path:     /admin/promotion/list
-    defaults: { _controller: AdminBundle:Promotion:list }
-admin_promotion_edit:
-        path:     /admin/promotion/edit/{id}
-        defaults:
-                _controller: AdminBundle:Promotion:edit
-                requirements:
-                id: \d+
-admin_product_promotion:
-        path:     /admin/product/{id}/promotions
-        defaults:
-                _controller: AdminBundle:ProductService:promotion
-                requirements:
-                id: \d+
 admin_user_add:
     path:     /admin/user/add
     defaults: { _controller: AdminBundle:User:add }

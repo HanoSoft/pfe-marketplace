@@ -28,25 +28,6 @@ class Promotion
      */
     private $discount;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="start_date", type="string", length=255)
-     */
-    private $startDate;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="end_date", type="string", length=255)
-     */
-    private $endDate;
-
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="deleted", type="boolean")
-     */
     private $deleted=false;
 
     /**
@@ -55,6 +36,51 @@ class Promotion
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="start_date", type="date")
+     */
+    private $startDate;
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="end_date", type="date")
+     */
+    private $endDate;
+
+    /**
+     * @return \DateTime
+     */
+    public function getStartDate()
+    {
+        return $this->startDate;
+    }
+
+
+    /**
+     * @param \DateTime $startDate
+     */
+    public function setStartDate($startDate)
+    {
+        $this->startDate = $startDate;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getEndDate()
+    {
+        return $this->endDate;
+    }
+
+    /**
+     * @param \DateTime $endDate
+     */
+    public function setEndDate($endDate)
+    {
+        $this->endDate = $endDate;
+    }
 
     /**
      * Get id
@@ -88,54 +114,6 @@ class Promotion
     public function getDiscount()
     {
         return $this->discount;
-    }
-
-    /**
-     * Set startDate
-     *
-     * @param \string $startDate
-     *
-     * @return Promotion
-     */
-    public function setStartDate($startDate)
-    {
-        $this->startDate = $startDate;
-
-        return $this;
-    }
-
-    /**
-     * Get startDate
-     *
-     * @return \string
-     */
-    public function getStartDate()
-    {
-        return $this->startDate;
-    }
-
-    /**
-     * Set endDate
-     *
-     * @param \string $endDate
-     *
-     * @return Promotion
-     */
-    public function setEndDate($endDate)
-    {
-        $this->endDate = $endDate;
-
-        return $this;
-    }
-
-    /**
-     * Get endDate
-     *
-     * @return \string
-     */
-    public function getEndDate()
-    {
-        return $this->endDate;
     }
 
     /**
