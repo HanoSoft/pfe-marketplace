@@ -77,6 +77,36 @@ class PromotionController extends Controller
             'formDelete' => $formDelete->createView(),
         ));
     }
+    public function disableAction(Request $request,$id)
+    {
+        $formDelete = $this->get('form.factory')->create();
+        if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
+            $servicePromotion = $this->get('core.service.promotion');
+            $em = $this->getDoctrine()->getManager();
+            $promotion=$servicePromotion->getPromotion($id);
+            $promotion->setDeleted(true);
+            $em->flush();
+            return $this->redirectToRoute('admin_promotion_list');
+        }
+        return $this->render('AdminBundle::delete.html.twig', array(
+            'formDelete'   => $formDelete->createView(),
+        ));
+    }
+    public function enableAction(Request $request,$id)
+    {
+        $formDelete = $this->get('form.factory')->create();
+        if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
+            $servicePromotion = $this->get('core.service.promotion');
+            $em = $this->getDoctrine()->getManager();
+            $promotion=$servicePromotion->getPromotion($id);
+            $promotion->setDeleted(false);
+            $em->flush();
+            return $this->redirectToRoute('admin_promotion_list');
+        }
+        return $this->render('AdminBundle::delete.html.twig', array(
+            'formDelete'   => $formDelete->createView(),
+        ));
+    }
 
 
 }
