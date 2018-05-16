@@ -19,22 +19,26 @@ class OrderController extends FOSRestController
 {
     /**
      * @Rest\Post(
-     *    path = "api/orders/{id}",
+     *    path = "api/orders/{id}/{deliveryId}",
      *    name = "api_orders_create",
      * )
      * @View(StatusCode = 201)
      * @ParamConverter("order", converter="fos_rest.request_body")
      *
      */
-    public function createAction($id,Orders $order)
+    public function createAction($id,Orders $order,$deliveryId)
     {
         $serviceCustomer=$this->get('core.service.customer');
         $serviceProduct=$this->get('core.service.product');
+        $serviceDelivery=$this->get('core.service.delivery');
+        $delivery=$serviceDelivery->getDelivery($deliveryId);
         $em = $this->getDoctrine()->getManager();
         $customer=$serviceCustomer->getCustomer($id);
         $order->setCustomer($customer);
         $order->setOrderDate(new \DateTime());
         $order->setDeliveryDate(new \DateTime('14 days'));
+        $order->setDelivery($delivery);
+        $order->setAmount($order->getAmount()+$delivery->getPrice());
         $em->persist($order);
         foreach ($order->getItems() as $item) {
             $item->setOrder($order);

@@ -48,7 +48,27 @@ class Delivery
      * @ORM\Column(name="deliveryTime", type="integer")
      */
     private $deliveryTime;
+    /**
+     *@ORM\OneToMany(targetEntity="CoreBundle\Entity\Orders",mappedBy="delivery")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $orders;
 
+    /**
+     * @return mixed
+     */
+    public function getOrders()
+    {
+        return $this->orders;
+    }
+
+    /**
+     * @param mixed $orders
+     */
+    public function setOrders($orders)
+    {
+        $this->orders = $orders;
+    }
     /**
      * @var bool
      *
