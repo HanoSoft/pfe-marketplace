@@ -14,6 +14,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use CoreBundle\Form\PromotionType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 
 class PromotionController extends Controller
 {
@@ -56,6 +58,23 @@ class PromotionController extends Controller
         }
         return $this->render('AdminBundle:Promotion:edit.html.twig', array(
             'form' => $form->createView(),
+        ));
+    }
+    public function deleteAction(Request $request,$id){
+        $em=$this->getDoctrine()->getManager();
+        $servicePromotion = $this->get('core.service.promotion');
+        $promotion=$servicePromotion->getPromotion($id);
+        if (null === $promotion) {
+            throw new NotFoundHttpException("La promotion  de l'id ".$id." n'existe pas.");
+        }
+        $formDelete = $this->get('form.factory')->create();
+        if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
+            $em->remove($promotion);
+            $em->flush();
+            return $this->redirectToRoute('admin_promotion_list');
+        }
+        return $this->render('AdminBundle::delete.html.twig', array(
+            'formDelete' => $formDelete->createView(),
         ));
     }
 
