@@ -16,8 +16,8 @@ class PromotionType extends AbstractType
     {
         $builder->add('discount')
             ->add('name')
-            ->add('startDate',TextType::class )
-            ->add('endDate',TextType::class);
+            ->add('startDate' )
+            ->add('endDate');
     }
     /**
      * {@inheritdoc}

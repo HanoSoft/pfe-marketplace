@@ -9,6 +9,7 @@
 namespace AdminBundle\Controller;
 
 use CoreBundle\Entity\Promotion;
+use CoreBundle\Form\PromotionEditType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use CoreBundle\Form\PromotionType;
 use Symfony\Component\HttpFoundation\Request;
@@ -35,8 +36,8 @@ class PromotionController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($promotion);
             $em->flush();
-            $session->getFlashBag()->add('success', 'la livraison est bien enregistrée !');
-            return $this->redirectToRoute('admin_delivery_add');
+            $session->getFlashBag()->add('success', 'la promotion est bien enregistrée !');
+            return $this->redirectToRoute('admin_promotion_add');
         }
         return $this->render('AdminBundle:Promotion:add.html.twig', array(
             'form' => $form->createView(),
