@@ -17,7 +17,7 @@ class BrandEditType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-
+        $builder->remove('tag');
     }
 
     public function getParent()

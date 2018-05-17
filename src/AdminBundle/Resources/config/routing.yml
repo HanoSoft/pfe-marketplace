@@ -327,7 +327,7 @@ admin_promotion_list:
     defaults: { _controller: AdminBundle:Promotion:index }
 
 admin_promotion_add:
-    path:     /admin/promotion/add
+    path:     /admin/promotion/add/{id}
     defaults: { _controller: AdminBundle:Promotion:add }
 
 admin_promotion_edit:

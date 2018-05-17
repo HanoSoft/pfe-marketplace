@@ -63,6 +63,8 @@
                                     <a href="{{ path('admin_product_edit', {'id': product.id}) }}" class="link link-success" ><em class="fa fa-edit"></em></a>
                                     <a href="#myModal" class="link link-danger" data-toggle="modal" data-wathever="{{ path('admin_product_delete', {'id': product.id}) }}" ><em class="fa fa-trash-o"></em></a>
                                     <a href="{{ path('admin_product_image_list',{'id': product.id}) }}" class="link"><em class="fa fa-picture-o"></em></a>
+                                    <a href="{{ path('admin_promotion_add',{'id': product.id}) }}" class="link"><em class="fa fa-gift"></em></a>
+
                                 </td>
                             </tr>
                             {% else %}
@@ -101,6 +103,8 @@
                                             <a href="{{ path('admin_product_edit', {'id': product.id}) }}" class="link link-success" ><em class="fa fa-edit"></em></a>
                                             <a href="#myModal" class="link link-danger" data-toggle="modal" data-wathever="{{ path('admin_product_delete', {'id': product.id}) }}" ><em class="fa fa-trash-o"></em></a>
                                             <a href="{{ path('admin_product_image_list',{'id': product.id}) }}" class="link"><em class="fa fa-picture-o"></em></a>
+                                            <a href="{{ path('admin_product_image_list',{'id': product.id}) }}" class="link"><em class="fa fa-gift"></em></a>
+
                                         </td>
                                     </tr>
                             {% endif %}

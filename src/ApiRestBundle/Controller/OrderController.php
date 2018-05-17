@@ -36,7 +36,7 @@ class OrderController extends FOSRestController
         $customer=$serviceCustomer->getCustomer($id);
         $order->setCustomer($customer);
         $order->setOrderDate(new \DateTime());
-        $order->setDeliveryDate(new \DateTime('14 days'));
+        $order->setDeliveryDate(new \DateTime($delivery->getDeliveryTime().' days'));
         $order->setDelivery($delivery);
         $order->setAmount($order->getAmount()+$delivery->getPrice());
         $em->persist($order);

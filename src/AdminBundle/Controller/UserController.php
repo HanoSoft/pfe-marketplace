@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class UserController extends Controller
 {
-    public function indexAction(Request $request)
+    public function indexAction()
     {
         if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
             return $this->redirectToRoute('admin_access_denied');

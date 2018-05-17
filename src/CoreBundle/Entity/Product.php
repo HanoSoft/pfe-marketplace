@@ -76,6 +76,26 @@ class Product
     private $category;
 
     /**
+     * @ORM\ManyToMany(targetEntity="CoreBundle\Entity\Promotion", cascade={"persist"})
+     */
+    private $promotions;
+
+    /**
+     * @return mixed
+     */
+    public function getPromotions()
+    {
+        return $this->promotions;
+    }
+
+    /**
+     * @param mixed $promotions
+     */
+    public function setPromotions($promotions)
+    {
+        $this->promotions = $promotions;
+    }
+    /**
      * @var string
      *
      * @ORM\Column(name="status", type="string", length=255)
@@ -334,4 +354,28 @@ class Product
 
 
 
+
+    /**
+     * Add promotion
+     *
+     * @param \CoreBundle\Entity\Promotion $promotion
+     *
+     * @return Product
+     */
+    public function addPromotion(\CoreBundle\Entity\Promotion $promotion)
+    {
+        $this->promotions[] = $promotion;
+
+        return $this;
+    }
+
+    /**
+     * Remove promotion
+     *
+     * @param \CoreBundle\Entity\Promotion $promotion
+     */
+    public function removePromotion(\CoreBundle\Entity\Promotion $promotion)
+    {
+        $this->promotions->removeElement($promotion);
+    }
 }
