@@ -28,7 +28,11 @@ class Promotion
      */
     private $discount;
 
-
+    /**
+     *@ORM\ManyToOne(targetEntity="CoreBundle\Entity\Product",inversedBy="promotions",cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $product;
 
     /**
      * @var string

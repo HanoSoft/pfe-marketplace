@@ -76,7 +76,8 @@ class Product
     private $category;
 
     /**
-     * @ORM\ManyToMany(targetEntity="CoreBundle\Entity\Promotion", cascade={"persist"})
+     *@ORM\OneToMany(targetEntity="CoreBundle\Entity\Promotion",mappedBy="product")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $promotions;
 

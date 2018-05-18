@@ -28,12 +28,6 @@ class ProductSize
      */
     private $size;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="type", type="string", length=255,nullable=true)
-     */
-    private $type;
 
     /**
      *@ORM\ManyToOne(targetEntity="CoreBundle\Entity\Product",inversedBy="sizes",cascade={"persist"})
@@ -82,29 +76,7 @@ class ProductSize
         return $this->size;
     }
 
-    /**
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return ProductSize
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
 
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
 
     /**
      * Set product
