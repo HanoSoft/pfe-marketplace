@@ -14,14 +14,8 @@ class ProductSizeType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('size')
-            ->add('type')->add('type', ChoiceType::class, array(
-                'choices'  => array(
-                    'sans type' => null,
-                    'Pouce' => 'Pouces',
-                    'Centimètres' => 'Centimètres',
-                    'Mètre'=>'Mètre',
-                )));
+        $builder->add('size');
+           
     }
     /**
      * {@inheritdoc}
