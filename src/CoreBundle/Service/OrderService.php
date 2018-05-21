@@ -12,10 +12,8 @@ use CoreBundle\Entity\Orders;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 
-
 class OrderService
 {
-
     /**
      * @var EntityRepository
      */
@@ -48,6 +46,4 @@ class OrderService
     public function getOrder($id){
         return $this->repository->find($id);
     }
-
-
 }

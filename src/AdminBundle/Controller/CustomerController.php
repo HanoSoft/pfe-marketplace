@@ -11,7 +11,6 @@ namespace AdminBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-
 class CustomerController extends Controller
 {
     public function indexAction()
@@ -30,7 +29,8 @@ class CustomerController extends Controller
         if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
             $serviceCustomer = $this->get('core.service.customer');
             $em = $this->getDoctrine()->getManager();
-            $serviceCustomer->disableCustomer($id);
+            $customer=$serviceCustomer->getCustomer($id);
+            $customer->setDeleted(true);
             $em->flush();
             return $this->redirectToRoute('admin_customer_list');
         }
@@ -38,5 +38,4 @@ class CustomerController extends Controller
             'formDelete' => $formDelete->createView(),
         ));
     }
-
 }

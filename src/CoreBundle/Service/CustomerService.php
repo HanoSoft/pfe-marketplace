@@ -45,18 +45,4 @@ class CustomerService
     public function getCustomer($id){
         return $this->repository->find($id);
     }
-
-    /**
-     * permet de désactiver un client
-     *
-     */
-    public function disableCustomer($id){
-        $customer=$this->getCustomer($id);
-        if (null === $customer) {
-            throw new NotFoundHttpException("le client de l'".$id." n'existe pas.");
-        }
-        $customer->setDeleted(true);
-
-    }
-
 }

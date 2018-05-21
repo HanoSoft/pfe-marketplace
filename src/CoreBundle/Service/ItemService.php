@@ -12,7 +12,6 @@ use CoreBundle\Entity\Item;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 
-
 class ItemService
 {
     /**
@@ -24,7 +23,6 @@ class ItemService
     {
         $this->repository=$em->getRepository(Item::class);
     }
-
     /**
      * Retourner la liste  des articles
      * return array
@@ -47,5 +45,4 @@ class ItemService
     public function getItem($id){
         return $this->repository->find($id);
     }
-
 }

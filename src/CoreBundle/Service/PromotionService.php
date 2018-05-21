@@ -25,16 +25,6 @@ class PromotionService
         $this->repository=$em->getRepository(Promotion::class);
     }
     /**
-     * permet de parcourir un tableau d'objets et changer l'etat pour chaque element
-     * selon la valeur de $value true/false
-     */
-    private function setStatus($objects,$value)
-    {
-        foreach ($objects as $object) {
-            $object->setDeleted($value);
-        }
-    }
-    /**
      * Retourner la liste  des promotions
      * return array
      */
@@ -56,5 +46,4 @@ class PromotionService
     public function getPromotion($id){
         return $this->repository->find($id);
     }
-
 }

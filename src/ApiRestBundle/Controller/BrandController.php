@@ -20,7 +20,7 @@ class BrandController extends FOSRestController
      *     name = "api_brand_list",
      *
      * )
-     * @View
+     * @View(StatusCode = 200)
      */
     public function indexAction()
     {
