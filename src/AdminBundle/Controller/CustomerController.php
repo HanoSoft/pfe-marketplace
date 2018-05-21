@@ -38,4 +38,19 @@ class CustomerController extends Controller
             'formDelete' => $formDelete->createView(),
         ));
     }
+    public function enableAction(Request $request,$id)
+    {
+        $formDelete = $this->get('form.factory')->create();
+        if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
+            $serviceCustomer = $this->get('core.service.customer');
+            $em = $this->getDoctrine()->getManager();
+            $customer=$serviceCustomer->getDelivery($id);
+            $customer->setDeleted(false);
+            $em->flush();
+            return $this->redirectToRoute('admin_customer_list');
+        }
+        return $this->render('AdminBundle::delete.html.twig', array(
+            'formDelete'   => $formDelete->createView(),
+        ));
+    }
 }
