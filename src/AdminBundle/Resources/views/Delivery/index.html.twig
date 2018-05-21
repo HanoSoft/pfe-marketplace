@@ -21,7 +21,6 @@
                     <th >Délai</th>
                     <th >Adresse</th>
                     <th>Prix</th>
-                    <th >Livraison gratuite</th>
                     <th> Status </th>
                     <th>Action</th>
                 </tr>
@@ -35,14 +34,6 @@
                             <td>{{ delivery.deliveryTime }}</td>
                             <td>{{ delivery.address }}</td>
                             <td>{{ delivery.price }} €</td>
-                            <td align="center">
-                                {% if delivery.freeDelivery ==true %}
-                                        <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
-                                    </a>
-                                {% else %}
-                                    <span class="glyphicon glyphicon-remove " style="color:red;"></span>
-                                {% endif %}
-                            </td>
                             <td align="center">
                                 {% if delivery.deleted ==false %}
                                     <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_delivery_disable', {'id':delivery.id}) }}" >

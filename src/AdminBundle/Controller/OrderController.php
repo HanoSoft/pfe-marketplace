@@ -8,11 +8,9 @@
 
 namespace AdminBundle\Controller;
 
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use CoreBundle\Form\OrderEditType;
-
 
 class OrderController extends Controller
 {
@@ -40,5 +38,4 @@ class OrderController extends Controller
             'form' => $form->createView(),
         ));
     }
-
 }

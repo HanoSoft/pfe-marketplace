@@ -48,10 +48,14 @@
                                     <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_customer_disable', {'id':customer.id}) }}" >
                                         <span class="glyphicon glyphicon-ok" style="color:#78D07D;"></span>
                                     </a>
-
+                                {% else %}
+                                    {% if customer.deleted==true %}
+                                        <a href="#myModal" class="link" data-toggle="modal" data-wathever="{{ path('admin_customer_enable', {'id': customer.id}) }}" >
+                                            <span class="glyphicon glyphicon-remove " style="color:red;"></span>
+                                        </a>
                                     {% else %}
                                         <span class="glyphicon glyphicon-remove " style="color:red;"></span>
-
+                                    {% endif %}
                                 {% endif %}
                             </td>
 

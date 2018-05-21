@@ -22,17 +22,10 @@ class DeliveryType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-
             $builder->add('name')
                 ->add('price',MoneyType::class,array('currency'=>''))
                 ->add('address')
-                ->add('deliveryTime')
-                ->add('freeDelivery',ChoiceType::class, array(
-                    'choices'  => array(
-                        'Oui' => '1',
-                        'Non' => '0',
-                    )
-                ));
+                ->add('deliveryTime');
     }
     /**
      * {@inheritdoc}
@@ -43,7 +36,6 @@ class DeliveryType extends AbstractType
             'data_class' => 'CoreBundle\Entity\Delivery'
         ));
     }
-
     /**
      * {@inheritdoc}
      */
@@ -51,6 +43,4 @@ class DeliveryType extends AbstractType
     {
         return 'corebundle_delivery';
     }
-
-
 }
