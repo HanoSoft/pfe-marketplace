@@ -44,7 +44,7 @@ class CustomerController extends Controller
         if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
             $serviceCustomer = $this->get('core.service.customer');
             $em = $this->getDoctrine()->getManager();
-            $customer=$serviceCustomer->getDelivery($id);
+            $customer=$serviceCustomer->getCustomer($id);
             $customer->setDeleted(false);
             $em->flush();
             return $this->redirectToRoute('admin_customer_list');
