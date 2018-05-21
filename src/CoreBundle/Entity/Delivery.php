@@ -72,18 +72,9 @@ class Delivery
     /**
      * @var bool
      *
-     * @ORM\Column(name="freeDelivery", type="boolean")
-     */
-    private $freeDelivery;
-
-    /**
-     * @var bool
-     *
      * @ORM\Column(name="deleted", type="boolean")
      */
     private $deleted=false;
-
-
     /**
      * Get id
      *
@@ -93,7 +84,6 @@ class Delivery
     {
         return $this->id;
     }
-
     /**
      * Set name
      *
@@ -107,7 +97,6 @@ class Delivery
 
         return $this;
     }
-
     /**
      * Get name
      *
@@ -117,7 +106,6 @@ class Delivery
     {
         return $this->name;
     }
-
     /**
      * Set price
      *
@@ -131,7 +119,6 @@ class Delivery
 
         return $this;
     }
-
     /**
      * Get price
      *
@@ -141,7 +128,6 @@ class Delivery
     {
         return $this->price;
     }
-
     /**
      * Set address
      *
@@ -155,7 +141,6 @@ class Delivery
 
         return $this;
     }
-
     /**
      * Get address
      *
@@ -165,7 +150,6 @@ class Delivery
     {
         return $this->address;
     }
-
     /**
      * Set deleted
      *
@@ -179,7 +163,6 @@ class Delivery
 
         return $this;
     }
-
     /**
      * Get deleted
      *
@@ -189,35 +172,6 @@ class Delivery
     {
         return $this->deleted;
     }
-
-
-
-
-
-    /**
-     * Set freeDelivery
-     *
-     * @param boolean $freeDelivery
-     *
-     * @return Delivery
-     */
-    public function setFreeDelivery($freeDelivery)
-    {
-        $this->freeDelivery = $freeDelivery;
-
-        return $this;
-    }
-
-    /**
-     * Get freeDelivery
-     *
-     * @return boolean
-     */
-    public function getFreeDelivery()
-    {
-        return $this->freeDelivery;
-    }
-
     /**
      * Set deliveryTime
      *
@@ -231,7 +185,6 @@ class Delivery
 
         return $this;
     }
-
     /**
      * Get deliveryTime
      *
