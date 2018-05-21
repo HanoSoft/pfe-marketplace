@@ -35,6 +35,22 @@ class Promotion
     private $product;
 
     /**
+     * @return mixed
+     */
+    public function getProduct()
+    {
+        return $this->product;
+    }
+
+    /**
+     * @param mixed $product
+     */
+    public function setProduct($product)
+    {
+        $this->product = $product;
+    }
+
+    /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
@@ -125,10 +141,6 @@ class Promotion
     {
         return $this->discount;
     }
-
-
-
-
     /**
      * Set name
      *
@@ -159,8 +171,6 @@ class Promotion
     {
 
     }
-
-
     /**
      * Set deleted
      *

@@ -24,7 +24,23 @@ class BrandController extends FOSRestController
      */
     public function indexAction()
     {
+        $date=new \DateTime();
+        $date->format('Y-m-d');
         $brandService=$this->get('core.service.brand');
+        $brands=$brandService->getActiveBrands(false);
+        foreach ($brands as $brand) {
+            foreach ($brand->getCategories() as $category) {
+                foreach ($category->getProducts() as $product) {
+                    foreach ($product->getPromotions() as $promotion) {
+                      if ($promotion->getEndDate() <$date){
+                            $promotion->setDeleted(true);
+                          $em = $this->getDoctrine()->getManager();
+                          $em->flush();
+                        }
+                    }
+                }
+            }
+        }
         $brands=$brandService->getActiveBrands(false);
         return $brands;
     }

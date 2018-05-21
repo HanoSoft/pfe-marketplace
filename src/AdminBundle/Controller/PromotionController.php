@@ -38,8 +38,8 @@ class PromotionController extends Controller
         $form = $this->createForm(PromotionType::class,$promotion);
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $promotion->setProduct($product);
             $em->persist($promotion);
-            $product->addPromotion($promotion);
             $em->flush();
             $session->getFlashBag()->add('success', 'la promotion est bien enregistrée !');
             return $this->redirectToRoute('admin_promotion_add',array('id' => $id));
