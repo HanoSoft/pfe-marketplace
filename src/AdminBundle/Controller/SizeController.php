@@ -24,6 +24,9 @@ class SizeController extends Controller
             $size->setProduct($product);
             $em->persist($size);
             $em->flush();
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Ajouter taille',$size->getId());
             $session->getFlashBag()->add('success', 'la taille est bien enregistrée !');
             return $this->redirectToRoute('admin_product_size_add',array('id' => $id));
         }
@@ -37,6 +40,9 @@ class SizeController extends Controller
         $serviceProduct = $this->get('core.service.product');
         $product=$serviceProduct->getProduct($id);
         $sizes=$product->getSizes();
+        $app=$this->getUser();
+        $historyService=$this->get('core.service.history');
+        $historyService->addHistory($app->getUserName(),'Consulter tailles',0);
         $formDelete = $this->get('form.factory')->create();
         return $this->render('AdminBundle:ProductSize:index.html.twig', array(
             'sizes' => $sizes,
@@ -52,6 +58,9 @@ class SizeController extends Controller
         $form = $this->get('form.factory')->create(ProductSizeEditType::class,$size);
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $em->flush();
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Modifier taille',$size->getId());
             return $this->redirectToRoute('admin_product_size_list',array('id' => $idp));
         }
         return $this->render('AdminBundle:ProductSize:edit.html.twig', array(
@@ -67,6 +76,9 @@ class SizeController extends Controller
             $size=$serviceSize->getSize($id);
             $size->setDeleted(true);
             $em->flush();
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Désactiver taille',$size->getId());
             return $this->redirectToRoute('admin_product_size_list',array('id' => $idp));
         }
         return $this->render('AdminBundle::delete.html.twig', array(
@@ -82,6 +94,9 @@ class SizeController extends Controller
             $size=$serviceSize->getSize($id);
             $size->setDeleted(false);
             $em->flush();
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Activer taille',$size->getId());
             return $this->redirectToRoute('admin_product_size_list',array('id' => $idp));
         }
         return $this->render('AdminBundle::delete.html.twig', array(
@@ -99,6 +114,9 @@ class SizeController extends Controller
         if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
             $em->remove($size);
             $em->flush();
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Supprimer taille',$size->getId());
             return $this->redirectToRoute('admin_product_size_list',array('id' => $idp));
         }
         return $this->render('AdminBundle::delete.html.twig', array(

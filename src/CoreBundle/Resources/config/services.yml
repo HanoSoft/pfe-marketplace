@@ -3,32 +3,34 @@ services:
         class: CoreBundle\Service\ProductService
         arguments: ['@doctrine.orm.entity_manager']
     core.service.size:
-            class: CoreBundle\Service\SizeService
-            arguments: ['@doctrine.orm.entity_manager']
-
+        class: CoreBundle\Service\SizeService
+        arguments: ['@doctrine.orm.entity_manager']
     core.service.category:
-            class: CoreBundle\Service\CategoryService
-            arguments: ['@doctrine.orm.entity_manager']
+        class: CoreBundle\Service\CategoryService
+        arguments: ['@doctrine.orm.entity_manager']
     core.service.image:
-                class: CoreBundle\Service\ImageService
-                arguments: ['@doctrine.orm.entity_manager']
+        class: CoreBundle\Service\ImageService
+        arguments: ['@doctrine.orm.entity_manager']
     core.service.brand:
-                    class: CoreBundle\Service\BrandService
-                    arguments: ['@doctrine.orm.entity_manager']
+        class: CoreBundle\Service\BrandService
+        arguments: ['@doctrine.orm.entity_manager']
     core.service.customer:
-                        class: CoreBundle\Service\CustomerService
-                        arguments: ['@doctrine.orm.entity_manager']
+        class: CoreBundle\Service\CustomerService
+        arguments: ['@doctrine.orm.entity_manager']
     core.service.order:
-                            class: CoreBundle\Service\OrderService
-                            arguments: ['@doctrine.orm.entity_manager']
+        class: CoreBundle\Service\OrderService
+        arguments: ['@doctrine.orm.entity_manager']
     core.service.item:
-                                class: CoreBundle\Service\ItemService
-                                arguments: ['@doctrine.orm.entity_manager']
+        class: CoreBundle\Service\ItemService
+        arguments: ['@doctrine.orm.entity_manager']
     core.service.delivery:
-                                    class: CoreBundle\Service\DeliveryService
-                                    arguments: ['@doctrine.orm.entity_manager']
+        class: CoreBundle\Service\DeliveryService
+        arguments: ['@doctrine.orm.entity_manager']
     core.service.promotion:
-                                        class: CoreBundle\Service\PromotionService
-                                        arguments: ['@doctrine.orm.entity_manager']
+        class: CoreBundle\Service\PromotionService
+        arguments: ['@doctrine.orm.entity_manager']
+    core.service.history:
+            class: CoreBundle\Service\HistoryService
+            arguments: ['@doctrine.orm.entity_manager']
 
 

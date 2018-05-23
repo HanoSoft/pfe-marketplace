@@ -2,6 +2,7 @@
 
 namespace AdminBundle\DataFixtures\ORM;
 
+use CoreBundle\Entity\Delivery;
 use CoreBundle\Entity\ProductSize;
 use CoreBundle\Entity\Tag;
 use Doctrine\Common\DataFixtures\FixtureInterface;
@@ -2683,5 +2684,29 @@ Fermoir mousqueton.<br />
         $manager->persist($product);
         $manager->flush();
 
+        /*Delivery Fixtures*/
+        $delivery=new Delivery();
+        $delivery->setName('SOCRATESOFT');
+        $delivery->setPrice(3.99);
+        $delivery->setAddress('47 RUE DES PETITES ECURIES 75010 PARIS 10');
+        $delivery->setDeliveryTime(3);
+        $manager->persist($delivery);
+        $manager->flush();
+        //delivery number 2
+        $delivery=new Delivery();
+        $delivery->setName('STEPHANE TO');
+        $delivery->setPrice(4.99);
+        $delivery->setAddress('5 RUE PAPILLON 75009 PARIS');
+        $delivery->setDeliveryTime(2);
+        $manager->persist($delivery);
+        $manager->flush();
+        //delivery number 3
+        $delivery=new Delivery();
+        $delivery->setName('BUREAU DE POSTE PARIS MONTHOLON');
+        $delivery->setPrice(5);
+        $delivery->setAddress('14 RUE BLEUE 75009 PARIS');
+        $delivery->setDeliveryTime(2);
+        $manager->persist($delivery);
+        $manager->flush();
     }
 }

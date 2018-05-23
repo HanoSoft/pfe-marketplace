@@ -1,0 +1,44 @@
+{% extends "AdminBundle::adminLayout.html.twig" %}
+{% block content %}
+    {{ parent() }}
+    <ul id="breadcrumb">
+        <li><a href="{{ path('admin_homepage') }}"><span class="fa fa-home"> </span></a></li>
+        <li><a > Marque</a></li>
+    </ul>
+    <div class="container-fluid " style="background: #FFFFFF;">
+
+        <div class="row dataTables_wrapper form-inline dt-bootstrap no-footer">
+            <table  class="data-table table table-striped table-bordered dataTable no-footer" style="width:100%">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom d'utilisateur</th>
+                    <th class="sorting_asc">Date d'opération</th>
+                    <th> Opération </th>
+                    <th> Element </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for history in histories %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                       <tr>
+                        <td>
+                            {{ history.id }}
+                        </td>
+                        <td>{{ history.user }}</td>
+                        <td>{{ history.operationDate|date('d-m-y H:i:s') }}</td>
+                        <td align="center">
+                            {{ history.type }}
+                        </td>
+                        <td align="center">
+                          {{ history.elementId }}
+                        </td>
+                       </tr>
+                {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

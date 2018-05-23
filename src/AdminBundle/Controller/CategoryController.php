@@ -16,6 +16,9 @@ class CategoryController extends Controller
     {
         $serviceCategory = $this->get('core.service.category');
         $categories=$serviceCategory->getCategories();
+        $app=$this->getUser();
+        $historyService=$this->get('core.service.history');
+        $historyService->addHistory($app->getUserName(),'consulter catégories',0);
         $formDelete = $this->get('form.factory')->create();
         return $this->render('AdminBundle:Category:index.html.twig', array(
             'categories' => $categories,
@@ -30,6 +33,9 @@ class CategoryController extends Controller
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($category);
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Ajouter catégorie',$category->getId());
             $em->flush();
             $id=$category->getId();
             $session->getFlashBag()->add('success', 'la categorie est bien enregistrée !');
@@ -47,6 +53,9 @@ class CategoryController extends Controller
         $form = $this->get('form.factory')->create(CategoryEditType::class,$category);
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $em->flush();
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Modifier catégorie',$category->getId());
             return $this->redirectToRoute('admin_category_list');
         }
         return $this->render('AdminBundle:Category:edit.html.twig', array(
@@ -61,6 +70,9 @@ class CategoryController extends Controller
             $serviceProduct = $this->get('core.service.product');
             $category=$serviceCategory->getCategory($id);
             $category->setDeleted(true);
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Désactiver catégorie',$category->getId());
             $em = $this->getDoctrine()->getManager();
             $products=$category->getProducts();
             foreach ($products as $product){
@@ -81,6 +93,9 @@ class CategoryController extends Controller
             $serviceProduct = $this->get('core.service.product');
             $category=$serviceCategory->getCategory($id);
             $category->setDeleted(false);
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Activer catégorie',$category->getId());
             $em = $this->getDoctrine()->getManager();
             $products=$category->getProducts();
             foreach ($products as $product){
@@ -112,6 +127,9 @@ class CategoryController extends Controller
                $em->remove($product);
             }
             $em->remove($category);
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Supprimer catégorie',$category->getId());
             $em->flush();
             return $this->redirectToRoute('admin_category_list');
         }
@@ -125,6 +143,9 @@ class CategoryController extends Controller
            $category=$serviceCategory->getCategory($id);
            $formDelete = $this->get('form.factory')->create();
            $products=$category->getProducts();
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),"Consulter les produits d'une categorie",$category->getId());
             return $this->render('AdminBundle:Category:products.html.twig', array(
                 'products' => $products,
                 'formDelete'=> $formDelete->createView(),

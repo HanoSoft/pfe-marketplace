@@ -30,10 +30,7 @@ class UserController extends Controller
     }
     public function addAction(Request $request)
     {
-        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
-            return $this->redirectToRoute('admin_access_denied');
-        }
-        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
             return $this->redirectToRoute('admin_access_denied');
         }
         $userManager = $this->get('fos_user.user_manager');
@@ -45,7 +42,10 @@ class UserController extends Controller
             $user->addRole($role);
             $user->setEnabled(true);
             $userManager->updateUser($user);
-            return $this->redirectToRoute('admin_user_list');
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Ajouter un utilisateur',$user->getId());
+;           return $this->redirectToRoute('admin_user_list');
         }
         return $this->render('AdminBundle:User:add.html.twig', array(
             'form' => $form->createView(),
@@ -62,6 +62,9 @@ class UserController extends Controller
             $user = $userManager->findUserBy(array('id'=>$id));
             $user->setEnabled(false);
             $userManager->updateUser($user);
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Désactiver un utilisateur',$user->getId());
             return $this->redirectToRoute('admin_user_list');
         }
         return $this->render('AdminBundle::delete.html.twig', array(
@@ -79,6 +82,9 @@ class UserController extends Controller
         $form->setData($user);
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $userManager->updateUser($user);
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Modifier un utilisateur',$user->getId());
             return $this->redirectToRoute('admin_user_list');
         }
         return $this->render('AdminBundle:User:edit.html.twig', array(
@@ -96,6 +102,9 @@ class UserController extends Controller
             $user = $userManager->findUserBy(array('id'=>$id));
             $user->setEnabled(true);
             $userManager->updateUser($user);
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Activer un utilisateur',$user->getId());
             return $this->redirectToRoute('admin_user_list');
         }
         return $this->render('AdminBundle::delete.html.twig', array(
@@ -108,6 +117,9 @@ class UserController extends Controller
         if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
             $userManager = $this->get('fos_user.user_manager');
             $user = $userManager->findUserBy(array('id'=>$id));
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Supprimer un utilisateur',$user->getId());
             $em->remove($user);
             $em->flush();
             return $this->redirectToRoute('admin_user_list');

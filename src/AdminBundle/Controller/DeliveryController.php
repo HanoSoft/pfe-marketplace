@@ -22,6 +22,9 @@ class DeliveryController extends Controller
     {
         $serviceDelivery = $this->get('core.service.delivery');
         $deliveries=$serviceDelivery->getDeliveries();
+        $app=$this->getUser();
+        $historyService=$this->get('core.service.history');
+        $historyService->addHistory($app->getUserName(),'Consulter livreurs',0);
         $formDelete = $this->get('form.factory')->create();
         return $this->render('AdminBundle:Delivery:index.html.twig', array(
             'deliveries' => $deliveries,
@@ -36,6 +39,9 @@ class DeliveryController extends Controller
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($delivery);
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Ajouter livreur',$delivery->getId());
             $em->flush();
             $session->getFlashBag()->add('success', 'la livraison est bien enregistrée !');
             return $this->redirectToRoute('admin_delivery_add');
@@ -50,6 +56,9 @@ class DeliveryController extends Controller
         $em = $this->getDoctrine()->getManager();
         $serviceDelivery = $this->get('core.service.delivery');
         $delivery=$serviceDelivery->getDelivery($id);
+        $app=$this->getUser();
+        $historyService=$this->get('core.service.history');
+        $historyService->addHistory($app->getUserName(),'Modifier livreur',$delivery->getId());
         $form = $this->get('form.factory')->create(DeliveryEditType::class,$delivery);
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $em->flush();
@@ -70,6 +79,9 @@ class DeliveryController extends Controller
         $formDelete = $this->get('form.factory')->create();
         if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
             $em->remove($delivery);
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Supprimer livreur',$delivery->getId());
             $em->flush();
             return $this->redirectToRoute('admin_delivery_list');
         }
@@ -85,6 +97,9 @@ class DeliveryController extends Controller
             $em = $this->getDoctrine()->getManager();
             $delivery=$serviceDelivery->getDelivery($id);
             $delivery->setDeleted(true);
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Désactiver livreur',$delivery->getId());
             $em->flush();
             return $this->redirectToRoute('admin_delivery_list');
         }
@@ -100,6 +115,9 @@ class DeliveryController extends Controller
             $em = $this->getDoctrine()->getManager();
             $delivery=$serviceDelivery->getDelivery($id);
             $delivery->setDeleted(false);
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Activer livreur',$delivery->getId());
             $em->flush();
             return $this->redirectToRoute('admin_delivery_list');
         }

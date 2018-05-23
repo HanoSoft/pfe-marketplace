@@ -17,6 +17,9 @@ class CustomerController extends Controller
     {
         $serviceCustomer = $this->get('core.service.customer');
         $customers=$serviceCustomer->getCustomers();
+        $app=$this->getUser();
+        $historyService=$this->get('core.service.history');
+        $historyService->addHistory($app->getUserName(),'Consulter clients',0);
         $formDelete = $this->get('form.factory')->create();
         return $this->render('AdminBundle:Customer:index.html.twig', array(
             'customers' => $customers,
@@ -31,6 +34,9 @@ class CustomerController extends Controller
             $em = $this->getDoctrine()->getManager();
             $customer=$serviceCustomer->getCustomer($id);
             $customer->setDeleted(true);
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Désactiver Client',$customer->getId());
             $em->flush();
             return $this->redirectToRoute('admin_customer_list');
         }
@@ -47,6 +53,9 @@ class CustomerController extends Controller
             $customer=$serviceCustomer->getCustomer($id);
             $customer->setDeleted(false);
             $em->flush();
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Activer Client',$customer->getId());
             return $this->redirectToRoute('admin_customer_list');
         }
         return $this->render('AdminBundle::delete.html.twig', array(

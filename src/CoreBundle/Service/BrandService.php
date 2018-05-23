@@ -8,7 +8,6 @@
 
 namespace CoreBundle\Service;
 
-
 use CoreBundle\Entity\Brand;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;

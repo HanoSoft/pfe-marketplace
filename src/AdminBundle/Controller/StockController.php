@@ -17,6 +17,9 @@ class StockController extends Controller
     {
         $serviceProduct = $this->get('core.service.product');
         $products=$serviceProduct->getProducts();
+        $app=$this->getUser();
+        $historyService=$this->get('core.service.history');
+        $historyService->addHistory($app->getUserName(),'Consulter produits',0);
         return $this->render('AdminBundle:Stock:index.html.twig', array(
             'products' => $products,
         ));
@@ -27,6 +30,9 @@ class StockController extends Controller
         $qte=$request->request->get("quantity");
         $serviceProduct = $this->get('core.service.product');
         $product=$serviceProduct->getProduct($id);
+        $app=$this->getUser();
+        $historyService=$this->get('core.service.history');
+        $historyService->addHistory($app->getUserName(),'Ajouter stock',$product->getId());
         $form = $this->get('form.factory')->create();
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $product->setQuantity($product->getQuantity()+$qte);
@@ -50,6 +56,9 @@ class StockController extends Controller
             if ($qte< $product->getQuantity()){
                 $product->setQuantity($product->getQuantity()-$qte);
                 $em->flush();
+                $app=$this->getUser();
+                $historyService=$this->get('core.service.history');
+                $historyService->addHistory($app->getUserName(),'Supprimer stock',$product->getId());
                 return $this->redirectToRoute('admin_stock_list');
             }
             elseif ($qte == $product->getQuantity()){

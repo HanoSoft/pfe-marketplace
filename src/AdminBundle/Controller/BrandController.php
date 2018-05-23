@@ -22,6 +22,9 @@ class BrandController extends Controller
     {
         $serviceBrand = $this->get('core.service.brand');
         $brands=$serviceBrand->getBrands();
+        $app=$this->getUser();
+        $historyService=$this->get('core.service.history');
+        $historyService->addHistory($app->getUserName(),'Consulter marques',0);
         $formDelete = $this->get('form.factory')->create();
         return $this->render('AdminBundle:Brand:index.html.twig', array(
             'brands' => $brands,
@@ -42,6 +45,9 @@ class BrandController extends Controller
             $user = $serviceUser->findUserBy(array('id'=>$id));
             $brand->setUser($user);
             $em->persist($brand);
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Ajouter marque',$brand->getId());
             $em->flush();
             $session->getFlashBag()->add('success', 'la marque est bien enregistrée !');
             return $this->redirectToRoute('admin_brand_add');
@@ -54,6 +60,9 @@ class BrandController extends Controller
     {
         $serviceBrand = $this->get('core.service.brand');
         $brand = $serviceBrand->getBrand($id);
+        $app=$this->getUser();
+        $historyService=$this->get('core.service.history');
+        $historyService->addHistory($app->getUserName(),'consulter une marque',$brand->getId());
         return $this->render('AdminBundle:Brand:show.html.twig', array(
             'brand' => $brand,
         ));
@@ -67,6 +76,9 @@ class BrandController extends Controller
             $em = $this->getDoctrine()->getManager();
             $brand=$serviceBrand->getBrand($id);
             $brand->setDeleted(true);
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Désactiver marque',$brand->getId());
             $categories=$brand->getCategories();
             foreach ($categories as $category){
                 $category->setDeleted(true);
@@ -91,6 +103,9 @@ class BrandController extends Controller
             $em = $this->getDoctrine()->getManager();
             $brand=$serviceBrand->getBrand($id);
             $brand->setDeleted(false);
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Activer marque',$brand->getId());
             $categories=$brand->getCategories();
             foreach ($categories as $category){
                 $category->setDeleted(false);
@@ -114,6 +129,9 @@ class BrandController extends Controller
         $form = $this->get('form.factory')->create(BrandEditType::class,$brand);
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $em->flush();
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Modifier marque',$brand->getId());
             return $this->redirectToRoute('admin_brand_list');
         }
         return $this->render('AdminBundle:Brand:edit.html.twig', array(
@@ -124,7 +142,6 @@ class BrandController extends Controller
     {
         $em=$this->getDoctrine()->getManager();
         $serviceBrand = $this->get('core.service.brand');
-        $serviceProduct=$this->get('core.service.product');
         $brand=$serviceBrand->getBrand($id);
         if (null === $brand) {
             throw new NotFoundHttpException("La marque de l'id ".$id." n'existe pas.");
@@ -146,6 +163,9 @@ class BrandController extends Controller
                 $em->remove($category);
             }
             $em->remove($brand);
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Supprimer marque',$brand->getId());
             $em->flush();
             return $this->redirectToRoute('admin_brand_list');
         }

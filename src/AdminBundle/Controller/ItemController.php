@@ -27,6 +27,9 @@ class ItemController extends Controller
                 'size' => $item->getSize()
             ));
         }
+        $app=$this->getUser();
+        $historyService=$this->get('core.service.history');
+        $historyService->addHistory($app->getUserName(),'Consulter items',$order->getId());
         return $this->render('AdminBundle:Item:index.html.twig', array(
             'items' => $products
         ));

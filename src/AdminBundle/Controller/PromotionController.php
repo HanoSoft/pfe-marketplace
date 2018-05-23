@@ -23,6 +23,9 @@ class PromotionController extends Controller
     {
         $servicePromotion = $this->get('core.service.promotion');
         $promotions=$servicePromotion->getPromotions();
+        $app=$this->getUser();
+        $historyService=$this->get('core.service.history');
+        $historyService->addHistory($app->getUserName(),'Consulter promotions',0);
         $formDelete = $this->get('form.factory')->create();
         return $this->render('AdminBundle:Promotion:index.html.twig', array(
             'promotions' => $promotions,
@@ -41,6 +44,9 @@ class PromotionController extends Controller
             $promotion->setProduct($product);
             $em->persist($promotion);
             $em->flush();
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Ajouter promotion',$promotion->getId());
             $session->getFlashBag()->add('success', 'la promotion est bien enregistrée !');
             return $this->redirectToRoute('admin_promotion_add',array('id' => $id));
         }
@@ -56,6 +62,9 @@ class PromotionController extends Controller
         $form = $this->get('form.factory')->create(PromotionEditType::class,$promotion);
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $em->flush();
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Modifier promotion',$promotion->getId());
             return $this->redirectToRoute('admin_promotion_list');
         }
         return $this->render('AdminBundle:Promotion:edit.html.twig', array(
@@ -73,6 +82,9 @@ class PromotionController extends Controller
         if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
             $em->remove($promotion);
             $em->flush();
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Supprimer Promotion',$promotion->getId());
             return $this->redirectToRoute('admin_promotion_list');
         }
         return $this->render('AdminBundle::delete.html.twig', array(
@@ -88,6 +100,9 @@ class PromotionController extends Controller
             $promotion=$servicePromotion->getPromotion($id);
             $promotion->setDeleted(true);
             $em->flush();
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Désactiver promotion',$promotion->getId());
             return $this->redirectToRoute('admin_promotion_list');
         }
         return $this->render('AdminBundle::delete.html.twig', array(
@@ -103,6 +118,9 @@ class PromotionController extends Controller
             $promotion=$servicePromotion->getPromotion($id);
             $promotion->setDeleted(false);
             $em->flush();
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Activer promotion',$promotion->getId());
             return $this->redirectToRoute('admin_promotion_list');
         }
         return $this->render('AdminBundle::delete.html.twig', array(

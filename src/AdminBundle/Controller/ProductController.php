@@ -16,6 +16,9 @@ class ProductController extends Controller
         $serviceProduct = $this->get('core.service.product');
         $products=$serviceProduct->getProducts();
         $formDelete = $this->get('form.factory')->create();
+        $app=$this->getUser();
+        $historyService=$this->get('core.service.history');
+        $historyService->addHistory($app->getUserName(),'Consulter produits',0);
         return $this->render('AdminBundle:Product:index.html.twig', array(
             'products' => $products,
             'formDelete'   => $formDelete->createView(),
@@ -29,6 +32,9 @@ class ProductController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
             $em->flush();
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Ajouter produit',$product->getId());
             $id=$product->getId();
             return $this->redirectToRoute('admin_product_size_add',array('id' => $id));
         }
@@ -44,6 +50,9 @@ class ProductController extends Controller
         $form = $this->get('form.factory')->create(ProductEditType::class,$product);
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $em->flush();
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Modifier produit',$product->getId());
             return $this->redirectToRoute('admin_product_list');
         }
         return $this->render('AdminBundle:Product:edit.html.twig', array(
@@ -54,6 +63,9 @@ class ProductController extends Controller
     {
         $serviceProduct = $this->get('core.service.product');
         $product=$serviceProduct->getProduct($id);
+        $app=$this->getUser();
+        $historyService=$this->get('core.service.history');
+        $historyService->addHistory($app->getUserName(),'consulter un produit',$product->getId());
         return $this->render('AdminBundle:Product:show.html.twig', array(
             'product' => $product,
         ));
@@ -65,6 +77,9 @@ class ProductController extends Controller
             $serviceProduct = $this->get('core.service.product');
             $em = $this->getDoctrine()->getManager();
             $serviceProduct->disableProduct($id);
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Désactiver produit',$id);
             $em->flush();
             return $this->redirectToRoute('admin_product_list');
         }
@@ -80,6 +95,9 @@ class ProductController extends Controller
             $em = $this->getDoctrine()->getManager();
             $serviceProduct->enableProduct($id);
             $em->flush();
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Activer Client',$id);
             return $this->redirectToRoute('admin_product_list');
         }
         return $this->render('AdminBundle::delete.html.twig', array(
@@ -104,6 +122,9 @@ class ProductController extends Controller
                 $em->remove($size);
             }
             $em->remove($product);
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Désactiver Client',$product->getId());
             $em->flush();
             return $this->redirectToRoute('admin_product_list');
         }

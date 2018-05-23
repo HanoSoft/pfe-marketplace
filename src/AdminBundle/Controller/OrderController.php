@@ -19,6 +19,9 @@ class OrderController extends Controller
         $serviceOrder = $this->get('core.service.order');
         $orders=$serviceOrder->getOrders();
         $formDelete = $this->get('form.factory')->create();
+        $app=$this->getUser();
+        $historyService=$this->get('core.service.history');
+        $historyService->addHistory($app->getUserName(),'Consulter commandes',0);
         return $this->render('AdminBundle:Order:index.html.twig', array(
             'orders' => $orders,
             'formDelete'   => $formDelete->createView(),
@@ -32,6 +35,9 @@ class OrderController extends Controller
         $form = $this->get('form.factory')->create(OrderEditType::class,$order);
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $em->flush();
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Modifier commande',$order->getId());
             return $this->redirectToRoute('admin_order_list',array('id' => $id));
         }
         return $this->render('AdminBundle:Order:edit.html.twig', array(

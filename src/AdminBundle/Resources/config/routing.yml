@@ -362,3 +362,7 @@ admin_promotion_enable:
                 _controller: AdminBundle:Promotion:enable
                 requirements:
                 id: \d+
+admin_historic_list:
+      path:     /admin/historic/list
+      defaults:
+          _controller: AdminBundle:History:index

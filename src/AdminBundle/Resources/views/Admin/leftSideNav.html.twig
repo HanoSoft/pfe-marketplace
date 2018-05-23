@@ -81,22 +81,14 @@
                             <i class="fa fa-truck"></i>
                             <span> {{ 'Delivery'|trans }}</span>
                         </a>
-                        {% endif %}
                     </li>
-                    {% if is_granted('ROLE_ADMIN') %}
+                    {% endif %}
+                    {% if is_granted('ROLE_SUPER_ADMIN') %}
                         <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-cogs"></i>
-                                <span>{{ 'Configuration'|trans }}</span>
+                            <a href="{{ path('admin_historic_list') }}">
+                                <i class="fa fa-truck"></i>
+                                <span> {{ 'Historic'|trans }}</span>
                             </a>
-                            <ul class="treeview-menu">
-                                <li class="treeview">
-                                    <a href="{{ path('admin_alert_show') }}">
-                                        <i class="fa fa-bell"></i>
-                                        <span>{{ "Alert"|trans }}</span>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
                     {% endif %}
             </ul>
