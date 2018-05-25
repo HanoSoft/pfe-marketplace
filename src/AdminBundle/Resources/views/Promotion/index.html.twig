@@ -15,7 +15,6 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th class="sorting_asc">Nom</th>
                     <th>Remise</th>
                     <th >Date de début</th>
                     <th >Date de fin</th>
@@ -28,7 +27,6 @@
                     {% if is_granted('ROLE_ADMIN') %}
                         <tr>
                             <td>{{ promotion.id }}</td>
-                            <td>{{ promotion.name }}</td>
                             <td>{{ promotion.discount }} %</td>
                             <td>{{ promotion.startDate|date('d-m-Y') }}</td>
                             <td>{{ promotion.endDate|date('d-m-Y') }} </td>

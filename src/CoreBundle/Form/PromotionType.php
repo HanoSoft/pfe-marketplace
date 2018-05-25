@@ -16,12 +16,11 @@ class PromotionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('discount')
-            ->add('name')
-            ->add('startDate',DateType::class,[
-                'widget' => 'single_text'])
-            ->add('endDate',DateType::class,[
-                'widget' => 'single_text']);
-    }
+                ->add('startDate',DateType::class,[
+                    'widget' => 'single_text'])
+                ->add('endDate',DateType::class,[
+                    'widget' => 'single_text']);
+        }
     /**
      * {@inheritdoc}
      */

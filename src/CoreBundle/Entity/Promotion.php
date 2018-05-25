@@ -51,12 +51,6 @@ class Promotion
     }
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255)
-     */
-    private $name;
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="startDate", type="date")
@@ -140,29 +134,6 @@ class Promotion
     public function getDiscount()
     {
         return $this->discount;
-    }
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Promotion
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
     }
     /**
      * Constructor

@@ -8,6 +8,7 @@
 
 namespace ApiRestBundle\Controller;
 
+use CoreBundle\Entity\Address;
 use CoreBundle\Entity\Customer;
 use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\Controller\Annotations\Post;
@@ -34,8 +35,17 @@ class CustomerController extends FOSRestController
          */
         $sponsorshipCode=substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0,8);
         $customer->setSponsorshipCode($sponsorshipCode);
+        $address=new Address();
+        $address->setName("Domicile");
+        $address->setAddress("Rue Ambroise Thomas");
+        $address->setCity("Paris");
+        $address->setCountry("France");
+        $address->setPostalCode(75009);
         $em = $this->getDoctrine()->getManager();
+        $customer->setPwd(sha1($customer->getPwd()));
         $em->persist($customer);
+        $address->setCustomer($customer);
+        $em->persist($address);
         $em->flush();
     }
     /**

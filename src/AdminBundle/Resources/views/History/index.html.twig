@@ -13,20 +13,20 @@
                 <tr>
                     <th>Id</th>
                     <th>Nom d'utilisateur</th>
-                    <th class="sorting_asc">Date d'opération</th>
+                    <th >Date d'opération</th>
                     <th> Opération </th>
                     <th> Element </th>
                 </tr>
                 </thead>
                 <tbody>
                 {% for history in histories %}
-                    {% if is_granted('ROLE_ADMIN') %}
+                    {% if is_granted('ROLE_SUPER_ADMIN') %}
                        <tr>
                         <td>
                             {{ history.id }}
                         </td>
                         <td>{{ history.user }}</td>
-                        <td>{{ history.operationDate|date('d-m-y H:i:s') }}</td>
+                        <td>{{ history.operationDate|date('d-m-Y H:i:s') }}</td>
                         <td align="center">
                             {{ history.type }}
                         </td>
