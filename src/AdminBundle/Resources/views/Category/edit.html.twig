@@ -3,7 +3,7 @@
     {{ parent() }}
     <ul id="breadcrumb">
         <li><a href="{{ path('admin_homepage') }}"><span class="fa fa-home"> </span></a></li>
-        <li><a href="{{ path('admin_category_list') }}"> Catégorie</a></li>
+        <li><a href="{{ path('admin_category_list') }}"> Catégories</a></li>
         <li><a >Modifier</a></li>
     </ul>
 
@@ -14,7 +14,7 @@
                     {{ form_start(form,{'attr': {'class': 'form-horizontal form'}}) }}
                     {{ form_errors(form) }}
                     <div class="form-group">
-                        <label  class="col-sm-2 control-label">Marque : <span style="color:#C82829;">*</span></label>
+                        <label  class="col-sm-2 control-label">Marque : </label>
                         <div class="col-sm-9">
                             {{ form_widget(form.brand, {'attr': {'class': 'form-control'}}) }}
                         </div>

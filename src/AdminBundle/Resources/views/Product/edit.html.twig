@@ -3,7 +3,7 @@
     {{ parent() }}
     <ul id="breadcrumb">
         <li><a href="{{ path('admin_homepage') }}"><span class="fa fa-home"> </span></a></li>
-        <li><a href="{{ path('admin_product_list') }}"> Produit</a></li>
+        <li><a href="{{ path('admin_product_list') }}"> Produits</a></li>
         <li><a> Modifier</a></li>
     </ul>
     <div class=" form-grids row form-grids-right">
@@ -12,34 +12,34 @@
                 {{ form_start(form,{'attr': {'class': 'form-horizontal form'}}) }}
                 {{ form_errors(form) }}
                 <div class="form-group">
-                    <label  class="col-sm-2 control-label">Catégorie : <span style="color:#C82829;">*</span></label>
+                    <label  class="col-sm-2 control-label">Catégorie : </label>
                     <div class="col-sm-9">
                         {{ form_widget(form.category, {'attr': {'class': 'form-control'}}) }}
                     </div>
                 </div>
                 <div class="form-group has-feedback">
-                    <label  class="col-sm-2 control-label">Produit : *</label>
+                    <label  class="col-sm-2 control-label">Produit : </label>
                     <div class="col-sm-9" >
                         {{ form_widget(form.productName, {'attr': {'class': 'form-control','placeholder':'Nom De Produit','minlength':'2'}}) }}
                     </div>
                     <span class="glyphicon "></span>
                 </div>
                 <div class="form-group has-feedback">
-                    <label  class="col-sm-2 control-label">Description : *</label>
+                    <label  class="col-sm-2 control-label">Description : </label>
                     <div class="col-sm-9">
                         {{ form_widget(form.productDetails, {'attr': {'class': 'form-control','placeholder':'Description','rows':'10','cols':'100','minlength':'5'}}) }}
                     </div>
                     <span class="glyphicon "></span>
                 </div>
                 <div class="form-group has-feedback">
-                    <label  class="col-sm-2 control-label">Quantité : *</label>
+                    <label  class="col-sm-2 control-label">Quantité : </label>
                     <div class="col-sm-9">
                         {{ form_widget(form.quantity, {'attr': {'class': 'form-control','placeholder':'Quantité','minlength':'1'}}) }}
                     </div>
                     <span class="glyphicon"></span>
                 </div>
                 <div class="form-group has-feedback">
-                    <label  class="col-sm-2 control-label">Prix : *</label>
+                    <label  class="col-sm-2 control-label">Prix : </label>
                     <div class="col-sm-9 ">
                         {{ form_widget(form.price, {'attr': {'class': 'form-control number','placeholder':'Prix','minlength':'1'}}) }}
                     </div>

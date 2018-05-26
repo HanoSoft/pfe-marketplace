@@ -3,7 +3,7 @@
     {{ parent() }}
     <ul id="breadcrumb">
         <li><a href="{{ path('admin_homepage') }}"><span class="fa fa-home"> </span></a></li>
-        <li><a href="{{ path('admin_category_list') }}"> Catégorie</a></li>
+        <li><a href="{{ path('admin_category_list') }}"> Catégories</a></li>
         <li><a > Ajouter</a></li>
     </ul>
      <div class=" form-grids row form-grids-right">
@@ -19,7 +19,7 @@
                                     {% endfor %}
                                 </div>
                             {% endif %}
-                            <label  class="col-sm-2 control-label">Marque : <span style="color:#C82829;">*</span></label>
+                            <label  class="col-sm-2 control-label">Marque :</label>
                             <div class="col-sm-9">
                                 {{ form_widget(form.brand, {'attr': {'class': 'form-control'}}) }}
                             </div>

@@ -2,4 +2,7 @@
 {% block body %}
     {{ include("AdminBundle:Admin:leftSideNav.html.twig") }}
     {{ include("AdminBundle:Admin:header.html.twig") }}
+    {% block homePage %}
+    {{ include("AdminBundle:Admin:homepage.html.twig") }}
+    {% endblock %}
 {% endblock %}

@@ -56,6 +56,7 @@ class ImageController extends Controller
         }
         return $this->render('AdminBundle:Image:edit.html.twig', array(
             'form' => $form->createView(),
+            'id' => $idp
         ));
     }
     public function disableAction(Request $request,$idp,$id)

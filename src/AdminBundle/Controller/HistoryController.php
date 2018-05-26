@@ -17,6 +17,7 @@ class HistoryController extends Controller
         $history=$serviceHistory->getHistory();
         return $this->render('AdminBundle:History:index.html.twig', array(
             'histories' => $history,
+            'time' => new \DateTime(),
         ));
     }
 }

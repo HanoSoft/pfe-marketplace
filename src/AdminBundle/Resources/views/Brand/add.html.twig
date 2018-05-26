@@ -3,7 +3,7 @@
     {{ parent() }}
     <ul id="breadcrumb">
         <li><a href="{{ path('admin_homepage') }}"><span class="fa fa-home"> </span></a></li>
-        <li><a href="{{ path('admin_brand_list') }}"> Marque</a></li>
+        <li><a href="{{ path('admin_brand_list') }}"> Marques</a></li>
         <li><a > Ajouter</a></li>
     </ul>
     <div class=" form-grids row form-grids-right">
@@ -23,21 +23,21 @@
                         </div>
                     {% endif %}
 
-                    <label  class="col-sm-2 control-label">Tag : *</label>
+                    <label  class="col-sm-2 control-label">Tag : </label>
                     <div class="col-sm-9">
                         {{ form_widget(form.tag, {'attr': {'class': 'form-control'}}) }}
                     </div>
                     <span class="glyphicon "></span>
                 </div>
                 <div class="form-group">
-                    <label  class="col-sm-2 control-label">Nom : *</label>
+                    <label  class="col-sm-2 control-label">Nom : </label>
                     <div class="col-sm-9">
                         {{ form_widget(form.brandName, {'attr': {'class': 'form-control','placeholder':'Nom de marque','minlength':'2'}}) }}
                     </div>
                     <span class="glyphicon "></span>
                 </div>
                 <div class="form-group">
-                    <label  class="col-sm-2 control-label">Description : *</label>
+                    <label  class="col-sm-2 control-label">Description : </label>
                     <div class="col-sm-9">
                         {{ form_widget(form.description, {'attr': {'class': 'form-control','placeholder':'Description','rows':'10','cols':'100','minlength':'5'}}) }}
                     </div>
@@ -47,7 +47,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="avatar-upload col-md-offset-3 col-md-2 ">
-                            <p><b>Logo : *</b></p>
+                            <p><b>Logo : </b></p>
                             <div class="avatar-edit">
                                 {{ form_widget(form.logo.file, {'attr': {'class': 'form-control','placeholder':'file','accept':'image/*'}}) }}
                                 <label for="corebundle_brand_logo_file"></label>
@@ -58,7 +58,7 @@
                             </div>
                         </div>
                         <div class="avatar-upload col-md-2 col-md-offset-1">
-                            <p><b>Image : *</b></p>
+                            <p><b>Image : </b></p>
                             <div class="avatar-edit ">
                                 {{ form_widget(form.brandImage.file, {'attr': {'class': 'form-control','placeholder':'file','accept':'image/*'}}) }}
                                 <label for="corebundle_brand_brandImage_file"></label>

@@ -38,7 +38,7 @@ class HistoryService
     public function addHistory($user,$type,$elemnt){
         $history=new History();
         $history->setUser($user);
-        $history->setOperationDate(new \DateTime());
+        $history->setOperationDate(new \DateTime('now'));
         $history->setType($type);
         $history->setElementId($elemnt);
         $this->em->persist($history);

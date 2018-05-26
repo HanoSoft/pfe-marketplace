@@ -11,13 +11,6 @@
             <div class="form-body">
                 {{ form_start(form,{'attr': {'class': 'form-horizontal form'}}) }}
                 {{ form_errors(form) }}
-                <div class="form-group">
-                    <label  class="col-sm-2 control-label">Nom :</label>
-                    <div class="col-sm-9">
-                        {{ form_widget(form.name, {'attr': {'class': 'form-control ','placeholder':'Nom','minlength':'2'}}) }}
-                    </div>
-                    <span class="glyphicon " id="categoryAlertIcon"></span>
-                </div>
                 <div class="form-group has-feedback">
                     <label  class="col-sm-2 control-label">Remise :</label>
                     <div class="col-sm-9">
