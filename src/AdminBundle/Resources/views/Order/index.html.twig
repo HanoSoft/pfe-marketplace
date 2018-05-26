@@ -20,8 +20,10 @@
                     <th >Client</th>
                     <th >Etat</th>
                     <th >Date de livraison</th>
+                    <th>Livreur</th>
                     <th >Article</th>
                     <th>Status</th>
+
                 </tr>
                 </thead>
                 <tbody >
@@ -38,6 +40,7 @@
                             <td>{{ order.customer.name }}</td>
                             <td>{{ order.status }}  <a href="{{ path('admin_order_edit',{'id': order.id}) }}" class="link link-success" ><em class="fa fa-edit"></em></a></td>
                             <td>{{ order.deliveryDate|date('d-m-Y') }}</td>
+                            <td>{{ order.delivery.name }}</td>
                             <td><a href="{{ path('admin_order_item_list' , {'id': order.id})  }}" class="link link-success" >Afficher</a></td>
                             <td align="center">
                                 {% if order.deleted ==false %}
