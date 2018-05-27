@@ -2,6 +2,8 @@
 
 namespace AdminBundle\DataFixtures\ORM;
 
+use CoreBundle\Entity\Address;
+use CoreBundle\Entity\Customer;
 use CoreBundle\Entity\Delivery;
 use CoreBundle\Entity\ProductSize;
 use CoreBundle\Entity\Tag;
@@ -2707,6 +2709,23 @@ Fermoir mousqueton.<br />
         $delivery->setAddress('14 RUE BLEUE 75009 PARIS');
         $delivery->setDeliveryTime(2);
         $manager->persist($delivery);
+        $manager->flush();
+        /*customers*/
+        $customer =new Customer();
+        $customer->setName("client1");
+        $customer->setEmail("customer@email.com");
+        $customer->setPwd(sha1("123"));
+        $customer->setSponsorshipCode(substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0,8));
+        $customer->setPhoneNumber(33587456);
+        $address= new Address();
+        $address->setCountry("France");
+        $address->setName("Domicile");
+        $address->setPostalCode(75009);
+        $address->setCity("Paris");
+        $address->setAddress("Rue Ambroise Thomas");
+        $manager->persist($customer);
+        $address->setCustomer($customer);
+        $manager->persist($address);
         $manager->flush();
     }
 }
