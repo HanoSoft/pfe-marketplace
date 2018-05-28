@@ -366,3 +366,9 @@ admin_historic_list:
       path:     /admin/historic/list
       defaults:
           _controller: AdminBundle:History:index
+admin_customer_show:
+        path:     /admin/customer/show/{id}
+        defaults:
+                _controller: AdminBundle:Customer:show
+                requirements:
+                id: \d+

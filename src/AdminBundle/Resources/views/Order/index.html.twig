@@ -37,7 +37,11 @@
                             </td>
                             <td>{{ order.orderDate|date('d-m-Y') }}</td>
                             <td>{{ order.amount }}</td>
-                            <td>{{ order.customer.name }}</td>
+                            <td>
+                                <a href="#customer" class="link" data-toggle="modal" data-wathever="{{ path('admin_customer_show', {'id': order.customer.id}) }}" >
+                                   {{ order.customer.name }}
+                                </a>
+                            </td>
                             <td>{{ order.status }}  <a href="{{ path('admin_order_edit',{'id': order.id}) }}" class="link link-success" ><em class="fa fa-edit"></em></a></td>
                             <td>{{ order.deliveryDate|date('d-m-Y') }}</td>
                             <td>{{ order.delivery.name }}</td>
@@ -53,6 +57,7 @@
                             </td>
                         </tr>
                     {% endif %}
+                    {{ include("AdminBundle:Customer:show.html.twig") }}
                 {% endfor %}
                 </tbody>
 
@@ -61,6 +66,6 @@
     </div>
 
 
-    {{ include("AdminBundle::delete.html.twig") }}
+
 
 {% endblock %}
