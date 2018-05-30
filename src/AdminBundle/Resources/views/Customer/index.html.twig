@@ -32,9 +32,7 @@
                     {% if is_granted('ROLE_ADMIN') %}
                         <tr>
                             <td>
-                                <a href="{{ path('admin_customer_list',{'id': customer.id}) }}" class="link">
-                                    {{ customer.id }}
-                                </a>
+                                {{ customer.id }}
                             </td>
                             <td>{{ customer.name }}</td>
                             <td>{{ customer.familyName }}</td>
