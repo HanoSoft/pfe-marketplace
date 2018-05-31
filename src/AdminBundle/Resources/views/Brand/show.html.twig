@@ -12,7 +12,7 @@
                             <img id="cph_middle_SaleContainer_ctl00_ImgLogo" src="{{ asset('uploads/brand/'~ brand.logo.name ) }}" alt="">
                         </li>
                         {% for category in brand.categories %}
-                        <li><a href="#">{{ category.name }}<span>›</span></a></li>
+                        <li><a href="{{ path('admin_category_product_list',{'id': category.id}) }}">{{ category.name }}<span>›</span></a></li>
                         {% endfor %}
                      </ul>
                 </div>
