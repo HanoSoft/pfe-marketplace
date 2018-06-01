@@ -113,18 +113,10 @@ class ProductController extends Controller
         }
         $formDelete = $this->get('form.factory')->create();
         if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
-            $images=$product->getImages();
-            $sizes=$product->getSizes();
-            foreach ($images as $image){
-                $em->remove($image);
-            }
-            foreach ($sizes as $size){
-                $em->remove($size);
-            }
             $em->remove($product);
             $app=$this->getUser();
             $historyService=$this->get('core.service.history');
-            $historyService->addHistory($app->getUserName(),'Désactiver Client',$product->getId());
+            $historyService->addHistory($app->getUserName(),'Supprimer produit',$product->getId());
             $em->flush();
             return $this->redirectToRoute('admin_product_list');
         }

@@ -29,8 +29,8 @@ class Promotion
     private $discount;
 
     /**
-     *@ORM\ManyToOne(targetEntity="CoreBundle\Entity\Product",inversedBy="promotions",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+     *@ORM\ManyToOne(targetEntity="CoreBundle\Entity\Product",inversedBy="promotions",cascade={"persist","remove"})
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $product;
 

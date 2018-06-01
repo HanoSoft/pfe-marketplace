@@ -70,8 +70,8 @@ class Product
     private $sizes;
 
     /**
-     *@ORM\ManyToOne(targetEntity="CoreBundle\Entity\Category",inversedBy="products",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+     *@ORM\ManyToOne(targetEntity="CoreBundle\Entity\Category",inversedBy="products",cascade={"persist","remove"})
+     * @ORM\JoinColumn(nullable=false,onDelete="CASCADE")
      */
     private $category;
 

@@ -117,15 +117,6 @@ class CategoryController extends Controller
         }
         $formDelete = $this->get('form.factory')->create();
         if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
-            foreach ($category->getProducts() as $product) {
-                foreach ($product->getImages() as $image){
-                    $em->remove($image);
-                }
-                foreach ($product->getSizes() as $size){
-                    $em->remove($size);
-                }
-               $em->remove($product);
-            }
             $em->remove($category);
             $app=$this->getUser();
             $historyService=$this->get('core.service.history');

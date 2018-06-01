@@ -148,20 +148,6 @@ class BrandController extends Controller
         }
         $formDelete = $this->get('form.factory')->create();
         if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
-           $categories=$brand->getCategories();
-            foreach ($categories as $category) {
-                $products=$category->getProducts();
-                foreach ($products as $product){
-                    foreach ($product->getImages() as $image){
-                        $em->remove($image);
-                    }
-                    foreach ($product->getSizes() as $size){
-                        $em->remove($size);
-                    }
-                    $em->remove($product);
-                }
-                $em->remove($category);
-            }
             $em->remove($brand);
             $app=$this->getUser();
             $historyService=$this->get('core.service.history');

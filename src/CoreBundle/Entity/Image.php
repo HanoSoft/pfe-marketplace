@@ -43,8 +43,8 @@ class Image
     private $deleted=false;
 
     /**
-     *@ORM\ManyToOne(targetEntity="CoreBundle\Entity\Product",inversedBy="images",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+     *@ORM\ManyToOne(targetEntity="CoreBundle\Entity\Product",inversedBy="images",cascade={"persist","remove"})
+     * @ORM\JoinColumn(nullable=false,onDelete="CASCADE")
      */
     private $product;
 
