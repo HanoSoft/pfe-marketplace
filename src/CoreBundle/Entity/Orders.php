@@ -54,7 +54,7 @@ class Orders
 
     /**
      *@ORM\ManyToOne(targetEntity="CoreBundle\Entity\Delivery",inversedBy="orders",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\JoinColumn(nullable=true,onDelete="SET NULL")
      */
     private $delivery;
 

@@ -26,7 +26,6 @@ class CustomerController extends Controller
             'formDelete'   => $formDelete->createView(),
         ));
     }
-
     public function enableAction(Request $request,$id)
     {
         $formDelete = $this->get('form.factory')->create();
@@ -39,6 +38,24 @@ class CustomerController extends Controller
             $app=$this->getUser();
             $historyService=$this->get('core.service.history');
             $historyService->addHistory($app->getUserName(),'Activer Client',$customer->getId());
+            return $this->redirectToRoute('admin_customer_list');
+        }
+        return $this->render('AdminBundle::delete.html.twig', array(
+            'formDelete'   => $formDelete->createView(),
+        ));
+    }
+    public function disableAction(Request $request,$id)
+    {
+        $formDelete = $this->get('form.factory')->create();
+        if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
+            $serviceCustomer = $this->get('core.service.customer');
+            $em = $this->getDoctrine()->getManager();
+            $customer=$serviceCustomer->getCustomer($id);
+            $customer->setDeleted(true);
+            $em->flush();
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Désactiver Client',$customer->getId());
             return $this->redirectToRoute('admin_customer_list');
         }
         return $this->render('AdminBundle::delete.html.twig', array(

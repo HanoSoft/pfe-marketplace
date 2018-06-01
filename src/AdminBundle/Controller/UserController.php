@@ -51,29 +51,9 @@ class UserController extends Controller
             'form' => $form->createView(),
         ));
     }
-    public function disableAction(Request $request,$id)
-    {
-        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
-            return $this->redirectToRoute('admin_access_denied');
-        }
-        $formDelete = $this->get('form.factory')->create();
-        if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
-            $userManager = $this->get('fos_user.user_manager');
-            $user = $userManager->findUserBy(array('id'=>$id));
-            $user->setEnabled(false);
-            $userManager->updateUser($user);
-            $app=$this->getUser();
-            $historyService=$this->get('core.service.history');
-            $historyService->addHistory($app->getUserName(),'Désactiver un utilisateur',$user->getId());
-            return $this->redirectToRoute('admin_user_list');
-        }
-        return $this->render('AdminBundle::delete.html.twig', array(
-            'formDelete'   => $formDelete->createView(),
-        ));
-    }
     public function editAction(Request $request,$id)
     {
-        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
             return $this->redirectToRoute('admin_access_denied');
         }
         $userManager = $this->get('fos_user.user_manager');
@@ -91,9 +71,30 @@ class UserController extends Controller
             'form' => $form->createView(),
         ));
     }
+    public function disableAction(Request $request,$id)
+    {
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('admin_access_denied');
+        }
+        $formDelete = $this->get('form.factory')->create();
+        if ($request->isMethod('POST') && $formDelete->handleRequest($request)->isValid()) {
+            $userManager = $this->get('fos_user.user_manager');
+            $user = $userManager->findUserBy(array('id'=>$id));
+            $user->setEnabled(false);
+            $userManager->updateUser($user);
+            $app=$this->getUser();
+            $historyService=$this->get('core.service.history');
+            $historyService->addHistory($app->getUserName(),'Désactiver un utilisateur',$user->getId());
+            return $this->redirectToRoute('admin_user_list');
+        }
+        return $this->render('AdminBundle::delete.html.twig', array(
+            'formDelete'   => $formDelete->createView(),
+        ));
+    }
+
     public function enableAction(Request $request,$id)
     {
-        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
             return $this->redirectToRoute('admin_access_denied');
         }
         $formDelete = $this->get('form.factory')->create();

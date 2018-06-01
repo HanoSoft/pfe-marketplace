@@ -42,7 +42,11 @@
                             </td>
                             <td>{{ order.status }}  <a href="{{ path('admin_order_edit',{'id': order.id}) }}" class="link link-success" ><em class="fa fa-edit"></em></a></td>
                             <td>{{ order.deliveryDate|date('d-m-Y') }}</td>
-                            <td>{{ order.delivery.name }}</td>
+                            {% if order.delivery is null %}
+                                <td>---------</td>
+                            {% else %}
+                                <td>{{ order.delivery.name }}</td>
+                            {% endif %}
                             <td><a href="{{ path('admin_order_item_list' , {'id': order.id})  }}" class="link link-success" >Afficher</a></td>
                             <td align="center">
                                 {% if order.deleted ==false %}
