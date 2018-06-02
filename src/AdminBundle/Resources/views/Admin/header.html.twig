@@ -37,7 +37,17 @@
                             <span class="prfil-img"><img src="{{ asset('assets/admin/images/user.png' ) }}" alt=""> </span>
                             <div class="user-name">
                                 <p>{{ app.user.username }}</p>
-                                <span>Administrator</span>
+                               <span>
+                                {% for role in app.user.roles %}
+                                    {% if role =="ROLE_SUPER_ADMIN" %}
+                                        Super Admin
+                                    {% elseif role =="ROLE_ADMIN" %}
+                                        Admin
+                                    {% elseif role =="ROLE_PARTNER" %}
+                                        Partner
+                                    {% endif %}
+                                {% endfor %}
+                               </span>
                             </div>
                             <i class="fa fa-angle-down lnr"></i>
                             <i class="fa fa-angle-up lnr"></i>
