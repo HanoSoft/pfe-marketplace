@@ -32,11 +32,15 @@ class BrandController extends FOSRestController
             foreach ($brand->getCategories() as $category) {
                 foreach ($category->getProducts() as $product) {
                     foreach ($product->getPromotions() as $promotion) {
-                      if ($promotion->getEndDate() <$date){
-                            $promotion->setDeleted(true);
+                      if ($promotion->getEndDate() <$date|| $promotion->getStartDate()>$date){
+                          $promotion->setDeleted(true);
                           $em = $this->getDoctrine()->getManager();
                           $em->flush();
-                        }
+                      }elseif ($promotion->getStartDate()<=$date ){
+                          $promotion->setDeleted(false);
+                          $em = $this->getDoctrine()->getManager();
+                          $em->flush();
+                      }
                     }
                 }
             }
