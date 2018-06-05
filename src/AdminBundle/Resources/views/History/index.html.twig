@@ -31,7 +31,11 @@
                             {{ history.type }}
                         </td>
                         <td align="center">
-                          {{ history.elementId }}
+                            {% if history.elementId ==0 %}
+                                ------
+                            {% else %}
+                                {{ history.elementId }}
+                            {% endif %}
                         </td>
                        </tr>
                 {% endif %}
