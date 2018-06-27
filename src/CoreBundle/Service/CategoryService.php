@@ -24,22 +24,24 @@ class CategoryService
         $this->repository=$em->getRepository(Category::class);
     }
     /**
-     * Retourner la liste  des caegories
-     * return array
+     * Return all categories
+     * @return array \CoreBundle\Entity\Category
      */
     public function getCategories(){
         return $this->repository->findAll();
     }
     /**
-     * Retourner la liste  des categories actives
-     * return array
+     * Return a category list according to the variable $active
+     * @param boolean $active it represents the category status.
+     * @return array \CoreBundle\Entity\Category
      */
     public function getActiveCategories(){
         return $this->repository->getActiveCategories();
     }
     /**
-     * Retourner une seule categorie selon l'id
-     *
+     * return a single category according to the Id
+     * @param number $id it represents the category Id
+     * @return \CoreBundle\Entity\Category
      */
     public function getCategory($id){
         return $this->repository->find($id);

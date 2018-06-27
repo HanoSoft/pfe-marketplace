@@ -25,23 +25,24 @@ class DeliveryService
     }
 
     /**
-     * Retourner la liste  des livraisons
-     * return array
+     * Return all deliveries
+     * @return array \CoreBundle\Entity\Delivery
      */
     public function getDeliveries(){
         return $this->repository->findAll();
     }
     /**
-     * Retourner la liste  des livraisons selon la variable $active
-     * $active prend 2 valeur true ou false
-     * return array
+     * Return a delivery list according to the variable $active
+     * @param boolean $active it represents the delivery status.
+     * @return array \CoreBundle\Entity\Delivery
      */
     public function getActiveDeliveries($active){
         return $this->repository->getActiveDeliveries($active);
     }
     /**
-     * Retourner un seul livraison selon l'id
-     *
+     * return a single delivery according to the Id
+     * @param number $id it represents the delivery Id
+     * @return \CoreBundle\Entity\Delivery
      */
     public function getDelivery($id){
         return $this->repository->find($id);

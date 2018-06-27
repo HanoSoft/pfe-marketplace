@@ -25,8 +25,9 @@ class SizeService
         $this->repository=$em->getRepository(ProductSize::class);
     }
     /**
-     * Retourner un seul taille selon l'id
-     *
+     * return a single size according to the Id
+     * @param number $id it represents the size Id
+     * @return \CoreBundle\Entity\ProductSize
      */
     public function getSize($id){
         return $this->repository->find($id);

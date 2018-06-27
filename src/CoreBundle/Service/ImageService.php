@@ -24,8 +24,9 @@ class ImageService
         $this->repository=$em->getRepository(Image::class);
     }
     /**
-     * Retourner un seul image selon l'id
-     * return object
+     * return a single image according to the Id
+     * @param number $id it represents the image Id
+     * @return \CoreBundle\Entity\Image
      */
     public function getImage($id){
         return $this->repository->find($id);

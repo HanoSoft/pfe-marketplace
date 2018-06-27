@@ -24,23 +24,24 @@ class BrandService
         $this->repository=$em->getRepository(Brand::class);
     }
     /**
-     * Retourner la liste  des marques
-     * return array
+     * Return all brands
+     * @return array \CoreBundle\Entity\Brand
      */
     public function getBrands(){
         return $this->repository->findAll();
     }
     /**
-     * Retourner la liste  des marques selon la variable $active
-     * $active prend 2 valeurs true ou false
-     * return array
+     * Return a brand list according to the variable $active
+     * @param boolean $active it represents the brand status.
+     * @return array \CoreBundle\Entity\Brand
      */
     public function getActiveBrands($active){
         return $this->repository->getActiveBrands($active);
     }
     /**
-     * Retourner un seul marque selon l'id
-     *
+     * return a single brand according to the Id
+     * @param number $id it represents the brand Id
+     * @return \CoreBundle\Entity\Brand
      */
     public function getBrand($id){
         return $this->repository->find($id);

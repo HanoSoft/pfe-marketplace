@@ -25,23 +25,24 @@ class OrderService
     }
 
     /**
-     * Retourner la liste  des commandes
-     * return array
+     * Return all orders
+     * @return array \CoreBundle\Entity\Orders
      */
     public function getOrders(){
         return $this->repository->findAll();
     }
     /**
-     * Retourner la liste  des commandes selon la variable $active
-     * $active prend 2 valeur true ou false
-     * return array
+     * Return a order list according to the variable $active
+     * @param boolean $active it represents the order status.
+     * @return array \CoreBundle\Entity\Orders
      */
     public function getActiveOrders($active,$id){
         return $this->repository->getActiveOrders($active,$id);
     }
     /**
-     * Retourner une seule commande selon l'id
-     *
+     * return a single order according to the Id
+     * @param number $id it represents the order Id
+     * @return \CoreBundle\Entity\Orders
      */
     public function getOrder($id){
         return $this->repository->find($id);

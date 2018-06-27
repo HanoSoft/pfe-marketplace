@@ -25,8 +25,9 @@ class ProductService
         $this->repository=$em->getRepository(Product::class);
     }
     /**
-     * permet de parcourir un tableau d'objets et changer l'etat pour chaque element
-     * selon la valeur de $value true/false
+     * browse an array of objects and change the status for each element
+     * @param array $objects
+     * @param boolean $value
      */
     private function setStatus($objects,$value)
     {
@@ -35,30 +36,31 @@ class ProductService
         }
     }
     /**
-     * Retourner la liste  des produits
-     * return array
+     * Return all products
+     * @return array \CoreBundle\Entity\Product
      */
     public function getProducts(){
         return $this->repository->findAll();
     }
     /**
-     * Retourner la liste  des produits selon la variable $active
-     * $active prend 2 valeur true ou false
-     * return array
+     * Return a product list according to the variable $active
+     * @param boolean $active it represents the product status.
+     * @return array \CoreBundle\Entity\Product
      */
     public function getActiveProducts($active){
         return $this->repository->getActiveProducts($active);
     }
     /**
-     * Retourner un seul produit selon l'id
-     *
+     * return a single product according to the Id
+     * @param number $id it represents the product Id
+     * @return \CoreBundle\Entity\Product
      */
     public function getProduct($id){
         return $this->repository->find($id);
     }
     /**
-     * permet de désactiver un produit
-     *
+     * disable a product
+     * @param number $id it represents the product Id
      */
     public function disableProduct($id){
         $product=$this->getProduct($id);
@@ -72,8 +74,8 @@ class ProductService
         $this->setStatus($sizes,true);
     }
     /**
-     * permet d'activer un produit
-     *
+     * activate a product
+     *@param number $id it represents the product Id
      */
     public function enableProduct($id){
         $product=$this->getProduct($id);

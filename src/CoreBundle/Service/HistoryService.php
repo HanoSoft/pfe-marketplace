@@ -25,15 +25,19 @@ class HistoryService
         $this->em=$em;
     }
     /**
-     * Retourner la liste  d'historiques
-     * return array
+     * Return all  operations
+     * @return array \CoreBundle\Entity\History
      */
     public function getHistory(){
         return $this->repository->findAll();
     }
+
     /**
-     * ajouter l'historique d'une operation
-     *
+     * add a new  operation
+     * @param string $user the user name
+     * @param string $type the operation name
+     * @param number $elemnt the id of the element affected by the operation
+     * @throws \Doctrine\ORM\OptimisticLockException
      */
     public function addHistory($user,$type,$elemnt){
         $history=new History();

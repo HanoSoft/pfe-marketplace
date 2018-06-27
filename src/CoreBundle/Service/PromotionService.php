@@ -25,23 +25,24 @@ class PromotionService
         $this->repository=$em->getRepository(Promotion::class);
     }
     /**
-     * Retourner la liste  des promotions
-     * return array
+     * Return all promotions
+     * @return array \CoreBundle\Entity\Promotion
      */
     public function getPromotions(){
         return $this->repository->findAll();
     }
     /**
-     * Retourner la liste  des promotions selon la variable $active
-     * $active prend 2 valeur true ou false
-     * return array
+     * Return a promotion list according to the variable $active
+     * @param boolean $active it represents the promotion status.
+     * @return array \CoreBundle\Entity\Promotion
      */
     public function getActivePromotions($active){
         return $this->repository->getActivePromotions($active);
     }
     /**
-     * Retourner un seul promotion selon l'id
-     *
+     * return a single promotion according to the Id
+     * @param number $id it represents the promotion Id
+     * @return \CoreBundle\Entity\Promotion
      */
     public function getPromotion($id){
         return $this->repository->find($id);

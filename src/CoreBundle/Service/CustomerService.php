@@ -25,22 +25,24 @@ class CustomerService
         $this->repository=$em->getRepository(Customer::class);
     }
     /**
-     * Retourner la liste  des clients
-     * return array
+     * Return all customers
+     * @return array \CoreBundle\Entity\Customer
      */
     public function getCustomers(){
         return $this->repository->findAll();
     }
     /**
-     * Retourner la liste  des client actives
-     * return array
+     * Return a customer list according to the variable $active
+     * @param boolean $active it represents the customer status.
+     * @return array \CoreBundle\Entity\Customer
      */
     public function getActiveCustomers($active){
         return $this->repository->getActiveCustomers($active);
     }
     /**
-     * Retourner un seul client selon l'id
-     *
+     * return a single customer according to the Id
+     * @param number $id it represents the customer Id
+     * @return \CoreBundle\Entity\Customer
      */
     public function getCustomer($id){
         return $this->repository->find($id);

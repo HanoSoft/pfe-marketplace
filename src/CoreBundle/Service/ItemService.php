@@ -24,23 +24,24 @@ class ItemService
         $this->repository=$em->getRepository(Item::class);
     }
     /**
-     * Retourner la liste  des articles
-     * return array
+     * Return all items
+     * @return array \CoreBundle\Entity\Item
      */
     public function getItems(){
         return $this->repository->findAll();
     }
     /**
-     * Retourner la liste  des articles selon la variable $active
-     * $active prend 2 valeur true ou false
-     * return array
+     * Return a item list according to the variable $active
+     * @param boolean $active it represents the item status.
+     * @return array \CoreBundle\Entity\Item
      */
     public function getActiveItems($active,$id){
         return $this->repository->getActiveItems($active,$id);
     }
     /**
-     * Retourner un seul article selon l'id
-     *
+     * return a single item according to the Id
+     * @param number $id it represents the item Id
+     * @return \CoreBundle\Entity\Item
      */
     public function getItem($id){
         return $this->repository->find($id);
