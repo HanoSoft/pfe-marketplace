@@ -2,9 +2,7 @@ api_rest:
     resource: "@ApiRestBundle/Controller"
     type: annotation
 
-core:
-    resource: "@CoreBundle/Controller"
-    type: annotation
+
 
 admin:
     resource: "@AdminBundle/Resources/config/routing.yml"
